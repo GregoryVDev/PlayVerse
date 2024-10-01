@@ -20,7 +20,7 @@ PlayVerse is a gaming blog developed by Jonathan and Gregory as part of our inte
 
 #### Installation Instructions
 
-- Clone GitHub 🔗: https://github.com/GregoryVDev/Playverse
+- Clone GitHub 🔗: https://github.com/GregoryVDev/PlayVerse
 - Run the project 🐋: Run the project on a local server with Docker.
 - Branches 🌿: Created two branches.
 
