@@ -8,16 +8,16 @@
 /*  NUNITO */
 
 @font-face {
-  font-family: "Nunito-Black.tff";
+  font-family: "Nunito-Black";
   src: url("../css/nunito/Nunito-Black.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: "Nunito-Bold.tff";
+  font-family: "Nunito-Bold";
   src: url("../css/nunito/Nunito-Bold.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: "Nunito-Regular.tff";
+  font-family: "Nunito-Regular";
   src: url("../css/nunito/Nunito-Regular.ttf") format("truetype");
 }
