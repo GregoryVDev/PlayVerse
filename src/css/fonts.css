@@ -1,23 +1,23 @@
 /* AUDIOWIDE */
 
 @font-face {
-  font-family: "Audiowide-Regular";
-  src: url("../css/audiowide/Audiowide-Regular.ttf") format("truetype");
+    font-family: "Audiowide-Regular";
+    src: url("../css/audiowide/Audiowide-Regular.ttf") format("truetype");
 }
 
 /*  NUNITO */
 
 @font-face {
-  font-family: "Nunito-Black.tff";
-  src: url("../css/nunito/Nunito-Black.ttf") format("truetype");
+    font-family: "Nunito-Black";
+    src: url("../css/nunito/Nunito-Black.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: "Nunito-Bold.tff";
-  src: url("../css/nunito/Nunito-Bold.ttf") format("truetype");
+    font-family: "Nunito-Bold";
+    src: url("../css/nunito/Nunito-Bold.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: "Nunito-Regular.tff";
-  src: url("../css/nunito/Nunito-Regular.ttf") format("truetype");
+    font-family: "Nunito-Regular";
+    src: url("../css/nunito/Nunito-Regular.ttf") format("truetype");
 }

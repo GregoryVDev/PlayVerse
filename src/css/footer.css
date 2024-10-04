@@ -1,0 +1,136 @@
+h1 {
+    font-size: clamp(
+        var(--font-size-h1-min),
+        var(--font-size-h1-preferred),
+        var(--font-size-h1-max)
+    );
+}
+h2 {
+    font-size: clamp(
+        var(--font-size-h2-min),
+        var(--font-size-h2-preferred),
+        var(--font-size-h2-max)
+    );
+}
+p {
+    font-size: clamp(
+        var(--font-size-p-min),
+        var(--font-size-p-preferred),
+        var(--font-size-p-max)
+    );
+}
+footer {
+    background-color: var(--colorSecondary);
+    font-family: var(--NunitoRegular);
+}
+
+.footer-logo-playverse {
+    width: 50%;
+    margin: auto;
+}
+.footer-info {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: clamp(
+        var(--font-size-p-min),
+        var(--font-size-p-preferred),
+        var(--font-size-p-max)
+    );
+
+    li {
+        margin-bottom: 10px;
+    }
+
+    li > a {
+        color: var(--colorPara);
+    }
+}
+
+.container-footer-nos-reseaux {
+    text-align: center;
+    margin-bottom: 20px;
+
+    p {
+        font-size: clamp(
+            var(--font-size-p-min),
+            var(--font-size-p-preferred),
+            var(--font-size-p-max)
+        );
+    }
+
+    .footer-nos-reseaux {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: auto;
+        margin-top: 3%;
+        a > img {
+            width: 30px;
+        }
+    }
+}
+
+.footer-copyright {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--colorMain);
+    height: 70px;
+    border-top: 1px solid white;
+    font-size: clamp(
+        var(--font-size-p-min),
+        var(--font-size-p-preferred),
+        var(--font-size-p-max)
+    );
+}
+
+.footer-logo-playverse-inside {
+    display: none;
+}
+
+@media all and (min-width: 769px) and (max-width: 1023px) {
+    .container-footer {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+    }
+
+    .footer-logo-playverse {
+        width: 30%;
+    }
+}
+
+@media all and (min-width: 1024px) {
+    .footer-info {
+        width: 400px;
+    }
+
+    .footer-logo-playverse {
+        display: none;
+    }
+
+    .footer-info {
+        margin-bottom: 0%;
+    }
+
+    .container-footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10%;
+        margin: auto;
+        width: 70%;
+        height: 200px;
+    }
+
+    .footer-logo-playverse-inside {
+        width: 200px;
+        display: flex;
+    }
+    .container-footer-nos-reseaux {
+        width: 480px;
+    }
+    .footer-nos-reseaux > a > img {
+        width: 50px;
+    }
+}
