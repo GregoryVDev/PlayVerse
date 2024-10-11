@@ -7,6 +7,49 @@ burgerMenu.addEventListener("click", function () {
   overlay.classList.toggle("overlay");
 });
 
+// DROPDOWN
+
+// Fonction pour basculer l'affichage du dropdown et la flèche
+function toggleDropdown() {
+  // On récupère le dropdown
+  let dropdown = document.querySelector(".dropdown");
+
+  // On bascule la classe 'active' pour ouvrir/fermer le menu et changer la flèche
+  dropdown.classList.toggle("active");
+
+  // On gère l'affichage du dropdown
+  let dropdownContent = dropdown.querySelector(".dropdown-content");
+  if (dropdown.classList.contains("active")) {
+    dropdownContent.style.display = "block"; // Affiche le menu
+    // Utiliser setTimeout pour permettre aux transitions CSS de se produire
+    setTimeout(() => {
+      dropdownContent.style.opacity = "1"; // Définit l'opacité à 1 pour la transition
+      dropdownContent.style.transform = "translateY(0)"; // Définit la transformation pour l'animation
+    }, 10);
+  } else {
+    dropdownContent.style.opacity = "0"; // Définit l'opacité à 0 pour la transition
+    dropdownContent.style.transform = "translateY(-10px)"; // Réduit la transformation pour l'animation
+    // Utiliser setTimeout pour masquer le menu après la transition
+    setTimeout(() => {
+      dropdownContent.style.display = "none"; // Cache le menu
+    }, 300); // Doit correspondre à la durée de la transition CSS
+  }
+}
+
+// Optionnel: pour fermer le menu si on clique ailleurs sur la page
+window.onclick = function (event) {
+  if (!event.target.matches(".dropdown > a")) {
+    let dropdowns = document.getElementsByClassName("dropdown");
+    for (let i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains("active")) {
+        openDropdown.classList.remove("active");
+        openDropdown.querySelector(".dropdown-content").style.display = "none"; // Cache le menu
+      }
+    }
+  }
+};
+
 // PAGINATION FAVORIS
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -87,4 +130,33 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   showPage(currentPage);
+});
+
+// AFFICHER LE MOT DE PASSE (VISIBILITY)
+
+document.addEventListener("DOMContentLoaded", function () {
+  // On récupère toutes les class "toggle-password"
+  const eyeIcons = document.querySelectorAll(".toggle-password");
+  // On récupère l'id pass dans l'input password
+  const passInput = document.getElementById("pass");
+  // On récupère l'id pass2 dans l'input password confirm
+  const passConfirm = document.getElementById("pass2");
+  // On récupère l'id passCo dans l'input connexion
+  const passConnect = document.getElementById("passCo");
+
+  // On réalise une boucle pour chaque icon qui est affichée
+  eyeIcons.forEach(function (eyeIcon) {
+    // On ajoute un event click dans la fonction "eyeIcon"
+    eyeIcon.addEventListener("click", function () {
+      // On vérifie quel icon (this) appartient à quel input (previousElementSibling)
+
+      // Si l'icone adéquat de l'input est strictement égale au type pasword alors il devient un type text
+      if (this.previousElementSibling.type === "password") {
+        this.previousElementSibling.type = "text";
+        // Sinon il redevient type mot de passe
+      } else {
+        this.previousElementSibling.type = "password";
+      }
+    });
+  });
 });

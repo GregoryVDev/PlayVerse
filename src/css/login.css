@@ -1,0 +1,256 @@
+/* INSCRIPTION */
+
+h1 {
+  text-align: center;
+  margin: 50px 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 0 50px 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: auto;
+}
+
+label {
+  display: none;
+}
+
+.politique {
+  text-decoration: underline;
+  color: var(--colorPara) !important;
+}
+
+.politique:hover {
+  color: var(--colorTitle) !important;
+}
+
+input {
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  border: transparent;
+  background: var(--colorSecondary);
+  color: var(--colorPara);
+  font-family: var(--nunitoRegular);
+}
+
+input:focus {
+  outline: none;
+  border: none;
+}
+
+::placeholder {
+  color: var(--colorPara);
+}
+
+.container-password input,
+.container-confirm input {
+  padding: 10px 40px 10px 10px;
+}
+
+#envoie {
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+  background: var(--colorButton);
+  color: var(--colorPara);
+  border: transparent;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+#envoie:hover {
+  opacity: 0.9;
+}
+
+input[type="checkbox"] {
+  accent-color: var(--colorButton);
+}
+
+.container-password {
+  position: relative;
+}
+
+.container-password img,
+.container-confirm img {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.container-confirm {
+  position: relative;
+}
+
+.container-general {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.container-general a {
+  color: var(--colorPara);
+  font-size: 0.9rem;
+  width: 112px;
+}
+
+.container-politique {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.container-paragraph {
+  display: flex;
+}
+
+.container-politique label {
+  display: block;
+  font-size: 0.9rem;
+  width: 65%;
+}
+
+.container-politique input {
+  width: 7%;
+  height: 10%;
+}
+
+.container-inscription .halo {
+  display: none;
+}
+
+/* MOBILE */
+
+@media all and (min-width: 480px) and (max-width: 767px) {
+  .container-general {
+    flex-direction: row;
+  }
+
+  .container-politique label {
+    width: 100%;
+  }
+}
+
+/* TABLET */
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  .container-inscription {
+    display: flex;
+  }
+
+  .container-inscription .halo {
+    display: block;
+    height: 48%;
+    width: 375px;
+  }
+
+  .container-politique {
+    gap: 10px;
+  }
+
+  .container-general {
+    flex-direction: row;
+  }
+
+  form {
+    padding: 0 28px 20px;
+    margin: auto 0 auto auto;
+  }
+}
+
+@media all and (min-width: 1024px) {
+  .container-inscription {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+  }
+
+  .container-inscription .halo {
+    display: block;
+    height: 100%;
+    width: 440px;
+  }
+
+  .container-general {
+    flex-direction: row;
+  }
+
+  form {
+    padding: 0px 20px 20px;
+    margin: auto 0 auto 0;
+  }
+}
+
+/* CONNEXION */
+
+.container-connexion .ca {
+  display: none;
+}
+
+.container-para {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.container-para a {
+  color: var(--colorPara);
+}
+
+/* MOBILE */
+@media all and (min-width: 480px) and (max-width: 767px) {
+  .container-para {
+    flex-direction: row;
+  }
+}
+
+/* TABLET */
+
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  .container-connexion {
+    display: flex;
+    gap: 55px;
+  }
+
+  .container-connexion .ca {
+    display: block;
+    height: 48%;
+    width: 375px;
+  }
+
+  .container-para {
+    flex-direction: row;
+  }
+}
+
+/* DESKTOP */
+
+@media all and (min-width: 1024px) {
+  .container-connexion {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+  }
+
+  .container-connexion .ca {
+    display: block;
+    height: 100%;
+    width: 440px;
+  }
+
+  .container-para {
+    flex-direction: row;
+  }
+}

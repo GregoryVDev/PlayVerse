@@ -180,11 +180,83 @@ header {
   gap: 20px;
 }
 
+/* DROPDOWN */
+
+.dropdown-content {
+  display: none; /* Cache le menu par défaut */
+  width: 100%;
+  position: absolute;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(-10px); /*Commence légèrement au-dessus*/
+  transition: opacity 0.5s ease, transform 0.5s ease; /*Transition fluide*/
+}
+
+.dropdown-content a {
+  color: white; /* Couleur des liens dans le dropdown */
+  padding: 12px 30px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Flèche à côté du texte du dropdown */
+.dropdown > a::after {
+  content: " ▼";
+  font-size: 12px;
+  transition: transform 0.5s ease; /*Transition pour la flèche */
+}
+
+/* Flèche vers le haut quand le dropdown est ouvert */
+.dropdown.active > a::after {
+  content: " ▲"; /* Flèche vers le haut */
+  transform: rotate(180deg); /* Flèche vers le haut avec rotation */
+}
+
+/* Affichage du dropdown quand il est actif */
+.dropdown.active .dropdown-content {
+  display: flex !important; /* Affiche le menu */
+  flex-direction: column;
+  width: 100%;
+  opacity: 1; /* Pleine opacité */
+  transform: translateY(0); /*Retourne à sa position d'origine */
+  font-size: 0.9em;
+}
+
 /* MOBILE */
 
-@media all and (min-width: 480px) and (max-width: 768px) {
+@media all and (min-width: 321px) and (max-width: 768px) {
   header {
     justify-content: space-between;
+  }
+
+  .dropdown-content {
+    display: flex !important;
+    flex-direction: column !important;
+    min-width: 140px;
+    box-shadow: none;
+  }
+
+  /* Flèche à côté du texte du dropdown */
+  .dropdown > a::after {
+    content: " ▼";
+    font-size: 12px;
+    transition: transform 0.5s ease; /* Transition pour la flèche */
+  }
+
+  /* Flèche vers le haut quand le dropdown est ouvert */
+  .dropdown.active > a::after {
+    content: " ▲"; /* Flèche vers le haut */
+    transform: rotate(180deg); /* Flèche vers le haut avec rotation */
+  }
+
+  /* Affichage du dropdown quand il est actif */
+  .dropdown.active .dropdown-content {
+    display: flex; /* Affiche le menu */
+    flex-direction: column !important;
+    opacity: 1; /* Pleine opacité */
+    transform: translateY(0); /* Retourne à sa position d'origine */
   }
 }
 
@@ -195,6 +267,18 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-around;
+  }
+
+  .dropdown-content {
+    box-shadow: none;
+  }
+
+  .dropdown.active .dropdown-content {
+    text-align: left;
+  }
+
+  .dropdown-content a {
+    padding: 15px 0px 5px;
   }
 
   #burger-menu {
@@ -268,6 +352,27 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-around;
+  }
+
+  .dropdown-content {
+    box-shadow: none;
+    width: auto;
+    display: flex !important;
+    flex-direction: column !important;
+    font-size: 0.9em;
+  }
+
+  .dropdown.active .dropdown-content {
+    display: flex !important; /* Affiche le menu */
+    flex-direction: column;
+    opacity: 1; /* Pleine opacité */
+    transform: translateY(0); /* Retourne à sa position d'origine */
+    width: auto;
+  }
+
+  .dropdown-content a {
+    text-align: left;
+    padding: 15px 0px;
   }
 
   #search {

@@ -1,0 +1,38 @@
+.bg-body-tertiary {
+  background: var(--colorSecondary) !important;
+}
+
+.navbar-brand {
+  color: var(--ColorPara) !important;
+}
+
+.navbar-toggler-icon {
+  background: url("../img/logos/menu.svg") no-repeat;
+}
+
+.navbar-toggler-icon {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.navbar {
+  --bs-navbar-color: var(--ColorPara);
+}
+
+button.navbar-toggler {
+  background: radial-gradient(var(--colorButton), transparent);
+}
+
+.navbar-nav .dropdown-menu {
+  padding-left: 10px;
+}
+
+.nav-link:focus,
+.nav-link:hover {
+  color: var(--colorTitle);
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show {
+  color: var(--colorBackOffice);
+}
