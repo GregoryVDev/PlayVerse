@@ -64,7 +64,7 @@
     <button id="delete">Tout supprimer</button>
 </section>
 </main>
-<? require_once("./template/footer.php") ?>
+<? include "./template/footer.php" ?>
 </body>
 <script src="./js/script.js"></script>
 
