@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <main>
     <? include "./template/navbar.php" ?>
     <section class="illustration-favoris"></section>

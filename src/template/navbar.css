@@ -356,9 +356,8 @@ header {
 
   .dropdown-content {
     box-shadow: none;
-    width: auto;
-    display: flex !important;
-    flex-direction: column !important;
+    width: 130px;
+    text-align: left;
     font-size: 0.9em;
   }
 
