@@ -44,41 +44,42 @@ if (!empty($_POST)) {
 
 ?>
 <? include "./template/navbar.php" ?>
-<h1>Inscription</h1>
-<div class="container-inscription">
-    <form method="POST">
-        <div class="container-pseudo">
-            <label for="pseudo">Pseudo :</label>
-            <input type="text" class="form-input" name="pseudo" id="pseudo" placeholder="Pseudo">
-        </div>
-        <div class="container-email">
-            <label for="email">Email :</label>
-            <input type="email" class="form-input" name="email" id="email" placeholder="Email">
-        </div>
-        <div class="container-password">
-            <label for="pass">Mot de passe :</label>
-            <input type="password" class="form-input" name="pass" id="pass" placeholder="Mot de passe">
-            <img src="./img/logos/eye.svg" alt="Afficher/Masquer mot de passe" id="myPass" class="toggle-password">
-        </div>
-        <div class="container-confirm">
-            <label for="pass2">Confirmation :</label>
-            <input type="password" class="form-input" name="pass2" id="pass2" placeholder="Confirmation mot de passe">
-            <img src="./img/logos/eye.svg" alt="Afficher/Masquer mot de passe" id="myPassConfirm" class="toggle-password">
-        </div>
-        <div class="container-general">
-            <div class="container-politique">
-                <label for="checkbox" class="custom-checkbox">
-                    J'accepte <a href="#" class="politique">la politique de confidentialité</a></label>
-                <input type="checkbox" id="checkbox" name="terms">
+<main>
+    <h1>Inscription</h1>
+    <div class="container-inscription">
+        <form method="POST">
+            <div class="container-pseudo">
+                <label for="pseudo">Pseudo :</label>
+                <input type="text" class="form-input" name="pseudo" id="pseudo" placeholder="Pseudo">
             </div>
-            <div class="container-paragraph">
-                <a href="connexion.php">Déjà un compte ?</a>
+            <div class="container-email">
+                <label for="email">Email :</label>
+                <input type="email" class="form-input" name="email" id="email" placeholder="Email">
             </div>
-        </div>
-        <button type="submit" id="envoie">S'inscrire</button>
-    </form>
-    <img src="./img/images/arbiter.png" alt="Halo" class="halo">
-</div>
+            <div class="container-password">
+                <label for="pass">Mot de passe :</label>
+                <input type="password" class="form-input" name="pass" id="pass" placeholder="Mot de passe">
+                <img src="./img/logos/eye.svg" alt="Afficher/Masquer mot de passe" id="myPass" class="toggle-password">
+            </div>
+            <div class="container-confirm">
+                <label for="pass2">Confirmation :</label>
+                <input type="password" class="form-input" name="pass2" id="pass2" placeholder="Confirmation mot de passe">
+                <img src="./img/logos/eye.svg" alt="Afficher/Masquer mot de passe" id="myPassConfirm" class="toggle-password">
+            </div>
+            <div class="container-general">
+                <div class="container-politique">
+                    <label for="checkbox" class="custom-checkbox">
+                        J'accepte <a href="#" class="politique">la politique de confidentialité</a></label>
+                    <input type="checkbox" id="checkbox" name="terms">
+                </div>
+                <div class="container-paragraph">
+                    <a href="connexion.php">Déjà un compte ?</a>
+                </div>
+            </div>
+            <button type="submit" id="envoie">S'inscrire</button>
+        </form>
+        <img src="./img/images/arbiter.png" alt="Halo" class="halo">
+    </div>
 </main>
 </body>
 <script src="./js/script.js"></script>
