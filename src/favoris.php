@@ -70,7 +70,3 @@ session_start();
     </section>
 </main>
 <? include "./template/footer.php" ?>
-</body>
-<script src="./js/script.js"></script>
-
-</html>

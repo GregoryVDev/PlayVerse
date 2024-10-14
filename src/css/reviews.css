@@ -1,0 +1,21 @@
+.review {
+  margin: 40px 0;
+}
+
+.review figure {
+  background: var(--colorSecondary);
+}
+
+.review figcaption h2 {
+  text-align: center;
+  margin: 25px 0;
+}
+
+.review figcaption p {
+  margin-left: 10px;
+  padding-bottom: 20px;
+}
+
+.review figure img {
+  width: 100%;
+}

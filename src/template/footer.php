@@ -1,17 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/fonts.css">
-</head>
-
-<body>
     <footer>
         <img class="footer-logo-playverse display-none" src="../img/logos/playverse.png" alt="icon playverse">
         <div class="container-footer">
@@ -48,9 +34,9 @@
                 </div>
             </div>
         </div>
-
         <p class="footer-copyright">Copyright © - 2024 PlayVerse - Tous droits réservés</p>
     </footer>
-</body>
+    </body>
+    <script src="../js/script.js"></script>
 
-</html>
+    </html>

@@ -96,7 +96,7 @@
 }
 
 #delete {
-  padding: 15px;
+  padding: 10px;
   background: var(--colorButton);
   color: var(--colorPara);
   border: none;
