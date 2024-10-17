@@ -25,7 +25,7 @@ header {
 .container-search img {
   position: absolute;
   left: 10px;
-  bottom: 6px;
+  bottom: 8px;
 }
 
 #search {
@@ -371,7 +371,7 @@ header {
 
   .dropdown-content a {
     text-align: left;
-    padding: 15px 0px;
+    padding: 10px 0px;
   }
 
   #search {
