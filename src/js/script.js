@@ -36,7 +36,7 @@ messageInput.addEventListener("blur", () => {
 
 // Carousel index
 const carousel = document.getElementById("carousel");
-const cards = Array.from(document.querySelectorAll(".card"));
+const cards = Array.from(document.querySelectorAll(".card-carrousel"));
 const cardWidth = cards[0].offsetWidth + 20; // Largeur de chaque carte (200px + 20px de marge)
 let scrollPosition = 0;
 let autoScrollInterval;

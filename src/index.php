@@ -1,96 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil Playverse</title>
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/fonts.css">
-    <link rel="stylesheet" href="../css/index.css">
-</head>
-
-<body>
-    <header>
-        <div class="container-header">
-            <h1 class="title-h1">Plonge dans l'univers de tes jeux favoris</h1>
-            <img src="../img/images/principal.png" alt="regroupement de personnages de jeux vidéo">
-        </div>
-    </header>
-
-    <main>
-
-        <div class="carousel-container">
-            <div class="carousel" id="carousel">
-                <div class="card">
-                    <span class="favorite" onclick="toggleFavorite(this)">☆</span>
-                    <a href="">
-                        <img src="../img/exemple/elden_ring.jpg" alt="elden ring">
-                    </a>
-                </div>
-                <div class="card">
-                    <span class="favorite" onclick="toggleFavorite(this)">☆</span>
-                    <a href="">
-                        <img src="../img/exemple/halo.jpg" alt="halo">
-                    </a>
-                </div>
-                <div class="card">
-                    <span class="favorite" onclick="toggleFavorite(this)">☆</span>
-                    <a href="">
-                        <img src="../img/exemple/hollow_knight.png" alt="hollow knight">
-                    </a>
-                </div>
-                <div class="card">
-                    <span class="favorite" onclick="toggleFavorite(this)">☆</span>
-                    <a href="">
-                        <img src="../img/exemple/lol.jpg" alt="league of legend">
-                    </a>
-                </div>
-                <div class="card">
-                    <span class="favorite" onclick="toggleFavorite(this)">☆</span>
-                    <a href="">
-                        <img src="../img/exemple/overwatch.png" alt="overwatch">
-                    </a>
-                </div>
-                <div class="card">
-                    <span class="favorite" onclick="toggleFavorite(this)">☆</span>
-                    <a href="">
-                        <img src="../img/exemple/mortal_kombat.png" alt="">
-                    </a>
-                </div>
-                <div class="card">
-                    <span class="favorite" onclick="toggleFavorite(this)">☆</span>
-                    <a href="">
-                        <img src="../img/exemple/sot.png" alt="sea of thieves">
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <h2 class="title-h2">Jeux du moment</h2>
-
-            <!-- a remplacer par les 4 dernier jeux ajouter -->
-            <div class="container-jeux-du-moment">
-                <a class="jeux-du-moment-lien" href="#">
-                    <img src="../img/exemple/bmw.png" alt="exemple1">
-                </a>
-                <a class="jeux-du-moment-lien" href="#">
-                    <img src="../img/exemple/frostpunk.png" alt="exemple2">
-                </a>
-                <a class="jeux-du-moment-lien" href="#">
-                    <img src="../img/exemple/sims.png" alt="exemple3">
-                </a>
-                <a class="jeux-du-moment-lien" href="#">
-                    <img src="../img/exemple/zelda.png" alt="exemple4">
+<?php include "./template/navbar.php" ?>
+<main>
+    <div class="container-header">
+        <h1 class="title-h1">Plonge dans l'univers de tes jeux favoris</h1>
+        <img src="../img/images/principal.png" alt="regroupement de personnages de jeux vidéo">
+    </div>
+    <div class="carousel-container">
+        <div class="carousel" id="carousel">
+            <div class="card-carrousel">
+                <span class="favorite" onclick="toggleFavorite(this)">☆</span>
+                <a href="">
+                    <img src="../img/exemple/elden_ring.jpg" alt="elden ring">
                 </a>
             </div>
-
-
+            <div class="card-carrousel">
+                <span class="favorite" onclick="toggleFavorite(this)">☆</span>
+                <a href="">
+                    <img src="../img/exemple/halo.jpg" alt="halo">
+                </a>
+            </div>
+            <div class="card-carrousel">
+                <span class="favorite" onclick="toggleFavorite(this)">☆</span>
+                <a href="">
+                    <img src="../img/exemple/hollow_knight.png" alt="hollow knight">
+                </a>
+            </div>
+            <div class="card-carrousel">
+                <span class="favorite" onclick="toggleFavorite(this)">☆</span>
+                <a href="">
+                    <img src="../img/exemple/lol.jpg" alt="league of legend">
+                </a>
+            </div>
+            <div class="card-carrousel">
+                <span class="favorite" onclick="toggleFavorite(this)">☆</span>
+                <a href="">
+                    <img src="../img/exemple/overwatch.png" alt="overwatch">
+                </a>
+            </div>
+            <div class="card-carrousel">
+                <span class="favorite" onclick="toggleFavorite(this)">☆</span>
+                <a href="">
+                    <img src="../img/exemple/mortal_kombat.png" alt="">
+                </a>
+            </div>
+            <div class="card-carrousel">
+                <span class="favorite" onclick="toggleFavorite(this)">☆</span>
+                <a href="">
+                    <img src="../img/exemple/sot.png" alt="sea of thieves">
+                </a>
+            </div>
         </div>
-    </main>
+    </div>
+
+    <div>
+        <h2 class="title-h2">Jeux du moment</h2>
+
+        <!-- a remplacer par les 4 dernier jeux ajouter -->
+        <div class="container-jeux-du-moment">
+            <a class="jeux-du-moment-lien" href="#">
+                <img src="../img/exemple/bmw.png" alt="exemple1">
+            </a>
+            <a class="jeux-du-moment-lien" href="#">
+                <img src="../img/exemple/frostpunk.png" alt="exemple2">
+            </a>
+            <a class="jeux-du-moment-lien" href="#">
+                <img src="../img/exemple/sims.png" alt="exemple3">
+            </a>
+            <a class="jeux-du-moment-lien" href="#">
+                <img src="../img/exemple/zelda.png" alt="exemple4">
+            </a>
+        </div>
+
+
+    </div>
+
 
     <section>
         <div class="parti-2">
@@ -172,8 +154,5 @@
         </div>
 
     </section>
-    <?php include_once 'template/footer.php';?>
-    <script src="../js/script.js"></script>
-</body>
-
-</html>
+</main>
+<?php include "./template/footer.php" ?>

@@ -160,6 +160,7 @@ if (isset($_SESSION["admin_gamer"])) {
 - CRUD PLATEFORME
 - CRUD JEUX
 - MESSAGERIE
-
+- Modification des images des étoiles favoris
+- Mettre tous les images en webp
 
 -->
