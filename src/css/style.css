@@ -40,9 +40,36 @@
 
 /* GENERAL */
 
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 * {
-    padding: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
     list-style: none;
+}
+html {
+    color-scheme: dark light;
+}
+body {
+    min-height: 100vh;
+}
+
+img,
+picture,
+svg,
+video {
+    display: block;
+    max-width: 100%;
+}
+p,
+li,
+figcaption {
+    text-wrap: pretty;
+}
+a {
+    text-decoration: none;
 }

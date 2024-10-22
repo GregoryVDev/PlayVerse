@@ -5,6 +5,7 @@ h1 {
         var(--font-size-h1-max)
     );
 }
+
 h2 {
     font-size: clamp(
         var(--font-size-h2-min),
@@ -12,6 +13,7 @@ h2 {
         var(--font-size-h2-max)
     );
 }
+
 p {
     font-size: clamp(
         var(--font-size-p-min),
@@ -19,6 +21,7 @@ p {
         var(--font-size-p-max)
     );
 }
+
 footer {
     background-color: var(--colorSecondary);
     font-family: var(--NunitoRegular);
@@ -28,6 +31,7 @@ footer {
     width: 50%;
     margin: auto;
 }
+
 .footer-info {
     text-align: center;
     margin-bottom: 40px;
