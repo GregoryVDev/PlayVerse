@@ -1,0 +1,199 @@
+/* FORMULAIRE D'AJOUT PEGI */
+
+.formulaire {
+  margin-top: 40px;
+}
+
+.formulaire h4 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: var(--fsize5);
+}
+
+.formulaire form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formulaire .container-title label {
+  display: none;
+}
+
+.formulaire form input {
+  padding: 8px;
+  border-radius: 10px;
+  background: var(--colorSecondary);
+  color: var(--colorPara);
+  border: none;
+}
+
+input:focus {
+  outline: none;
+  border: none;
+}
+
+.formulaire form input::placeholder {
+  color: var(--colorPara);
+  text-align: center;
+}
+
+.uploadlabel {
+  display: inline-block;
+  background-color: var(--colorSecondary);
+  color: var(--colorPara);
+  cursor: pointer;
+  font-size: 14px;
+  margin: 20px 0;
+  height: 100px;
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.icon {
+  display: none;
+}
+
+.send {
+  color: var(--colorPara);
+  padding: 5px 15px;
+  border-radius: 10px;
+  border: none;
+}
+
+/* DASHBOARD */
+
+.dashboard {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.dashboard h2 {
+  margin-bottom: 30px;
+}
+
+.container-search {
+  display: flex;
+  position: relative;
+  max-width: 300px;
+  margin: auto auto 50px;
+}
+
+.container-search img {
+  position: absolute;
+  left: 10px;
+  bottom: 9px;
+}
+
+#search {
+  border-radius: 10px;
+  padding: 10px 10px 10px 40px;
+  width: 100%;
+  border: transparent;
+  background: var(--colorSecondary);
+  color: var(--colorPara);
+  font-family: var(--nunitoRegular);
+}
+
+#search:focus {
+  outline: none;
+  border: none;
+}
+
+table {
+  width: 300px;
+  border-collapse: collapse;
+  background-color: #15143b; /* Couleur de fond sombre */
+  margin: auto;
+}
+
+th,
+td {
+  border: 1px solid white;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: #3c4065; /* Couleur des en-têtes */
+  color: white;
+}
+
+td {
+  background-color: #1b1c5a; /* Couleur des cellules */
+}
+
+td.actions {
+  display: flex;
+  flex-direction: column;
+}
+
+tbody tr:nth-child(2n) td {
+  background-color: #33335f; /* Couleur des lignes paires */
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 15px;
+}
+
+.btn-see {
+  color: var(--colorPara);
+}
+
+.btn-see:hover {
+  opacity: 0.8;
+}
+
+.btn-delete {
+  color: var(--colorBackOffice);
+}
+
+.btn-delete:hover {
+  opacity: 0.8;
+}
+
+.deleteall {
+  margin: 30px 0px;
+  color: var(--colorPara);
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
+
+/* TABLET */
+
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  table {
+    width: 600px;
+  }
+
+  td.actions {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+/* DESKTOP */
+
+@media all and (min-width: 1024px) {
+  table {
+    width: 900px;
+  }
+
+  td.actions {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .uploadlabel {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  #previewImage {
+    margin-top: 10px;
+  }
+}

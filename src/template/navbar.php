@@ -45,7 +45,7 @@
                         <a href="#" onclick="toggleDropdown()">Mon compte</a>
                         <div class="dropdown-content">
                             <a href="favoris.php">Mes favoris</a>
-                            <a href="deconnexion.php">Se déconnecter</a>
+                            <a href="deconnect.php">Se déconnecter</a>
                         </div>
                     </li>
                 </ul>

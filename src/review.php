@@ -14,6 +14,11 @@ if (isset($_GET["id"]) && !empty($_GET["id"])) {
     $result = $sql->fetch();
 }
 
+if (!isset($_GET["id"])) {
+    header("Location: reviews.php");
+    exit();
+}
+
 ?>
 
 <?php include "./template/navbar.php" ?>

@@ -49,7 +49,7 @@ if (!empty($_POST)) {
                     "user" => true
                 ];
 
-                echo "ok pour user";
+                header("Location: index.php");
             } else {
                 die("le compte n'existe pas");
             }
@@ -68,7 +68,6 @@ if (!empty($_POST)) {
             ];
 
             header("Location: ./admin/panel.php");
-            exit();
         }
     } else {
         echo "Formulaire incomplet";
