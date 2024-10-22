@@ -41,6 +41,11 @@
 
 /* GENERAL */
 
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -73,4 +78,26 @@ section {
 button {
   font-family: var(--NunitoRegular);
   background: var(--colorButton);
+}
+
+body {
+  min-height: 100vh;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+p,
+li,
+figcaption {
+  text-wrap: pretty;
+}
+
+a {
+  text-decoration: none;
 }
