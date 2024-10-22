@@ -1,0 +1,70 @@
+.page {
+  padding-top: 80px;
+  text-align: center;
+}
+
+.red {
+  color: var(--colorBackOffice);
+  line-height: 2.5;
+}
+
+.page img {
+  width: 250px;
+}
+
+.container-gestions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 50px;
+  width: 100%;
+}
+
+.gestions {
+  position: relative;
+  display: inline-block;
+}
+
+.gestions figcaption h4 {
+  color: var(--colorPara);
+  font-family: var(--NunitoBlack);
+}
+
+.gestions img {
+  width: 280px;
+  height: 220px;
+  display: block;
+  filter: brightness(0.6); /* Sombrir la photo */
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.gestions figcaption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 18px;
+  padding: 10px;
+  width: 100%;
+}
+
+/* TABLET */
+
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  .gestions img {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+/* DESKTOP */
+
+@media all and (min-width: 1024px) {
+  .container-gestions {
+    width: 60%;
+    margin: 50px auto;
+  }
+}

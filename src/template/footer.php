@@ -34,6 +34,9 @@
                 </div>
             </div>
         </div>
-
         <p class="footer-copyright">Copyright © - 2024 PlayVerse - Tous droits réservés</p>
     </footer>
+    </body>
+    <script src="../js/script.js"></script>
+
+    </html>
