@@ -11,8 +11,14 @@ document.addEventListener("DOMContentLoaded", function () {
       reader.onload = function (e) {
         previewImage.setAttribute("src", e.target.result);
         previewImage.style.display = "block"; // Show the image preview
+        previewImage.style.margin = "20px auto";
         uploadLabel.style.display = "none"; // Hide the label
         deleteImageButton.style.display = "inline"; // Show the delete button
+        deleteImageButton.style.background = "var(--colorBackOffice";
+        deleteImageButton.style.color = "var(--colorPara)";
+        deleteImageButton.style.margin = "5px 0 10px";
+        deleteImageButton.style.borderRadius = "10px";
+        deleteImageButton.style.padding = "5px 15px";
       };
 
       reader.readAsDataURL(this.files[0]);

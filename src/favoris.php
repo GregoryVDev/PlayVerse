@@ -69,4 +69,5 @@ session_start();
         <button id="delete">Tout supprimer</button>
     </section>
 </main>
+<script src="./js/pagination.js"></script>
 <? include "./template/footer.php" ?>

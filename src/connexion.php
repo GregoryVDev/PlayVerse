@@ -81,7 +81,7 @@ if (!empty($_POST)) {
 <main>
     <h1>Connexion</h1>
     <div class="container-connexion">
-        <form method="POST">
+        <form method="POST" class="form-login">
             <div class="container-email">
                 <label for="email">Email :</label>
                 <input type="email" class="form-input" name="email" id="email" placeholder="Email">
@@ -105,6 +105,6 @@ if (!empty($_POST)) {
     </div>
 </main>
 </body>
-<script src="./js/script.js"></script>
+<script src="./js/login.js"></script>
 
 </html>
