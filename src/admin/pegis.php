@@ -1,76 +1,75 @@
-<?
+<?php
 
 session_start();
 
 require_once("../connect.php");
 
 if (isset($_SESSION["admin_gamer"])) {
-    if (isset($_POST["pegi_name"], $_POST["pegi_icon"]) && !empty($_POST["pegi_name"]) && !empty($_POST["pegi_icon"])) {
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $pegi_name = strip_tags($_POST["pegi_name"]);
-            $pegi_icon = strip_tags($_POST["pegi_icon"]);
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-            if (isset($_FILES["pegi_icon"]) && $_FILES["pegi_icon"]["error"] === 0) {
-                // Vérification des extentions et du type Mime
-                $allowed = [
-                    "jpg" => "image/jpeg",
-                    "jpeg" => "image/jpeg",
-                    "png" => "image/jpeg"
-                ];
+        $pegi_name = strip_tags($_POST["pegi_name"]);
 
-                $filename = $_FILES["pegi_icon"]["name"];
-                $filetype = $_FILES["pegi_icon"]["type"];
-                $filesize = $_FILES["pegi_icon"]["size"];
+        if ($_FILES["pegi_icon"]["error"] === 0) {
+            // Vérification des extentions et du type Mime
+            $allowed = [
+                "jpg" => "image/jpeg",
+                "jpeg" => "image/jpeg",
+                "png" => "image/png",
+                "webp" => "image/webp"
+            ];
 
-                $extension = pathinfo($filename, PATHINFO_EXTENSION);
-                // Vérification de l'absence de l'extension dans $allowed ou absence du type MIME dans les valeurs
-                if (!array_key_exists($extension, $allowed) || !in_array($filetype, $allowed)) {
-                    // L'extension soit le type est incorrect
-                    echo "Erreur: format du projet incorrect";
-                }
+            $filename = $_FILES["pegi_icon"]["name"];
+            $filetype = $_FILES["pegi_icon"]["type"];
+            $filesize = $_FILES["pegi_icon"]["size"];
 
-
-
-                // On génère un nom unique
-                $newname = md5(uniqid());
-
-                // On génère le chemin complet
-
-                $newfilename = __DIR__ . "/img/images/$newname.$extension";
-                $url_image = "./img/images/$newname.$extension";
-
-                // On déplace le fichier de tmp à images en le renommant
-                if (!move_uploaded_file($_FILES["pegi_icon"]["tmp_name"], $newfilename)) {
-                    echo "L'upload a échoué ";
-                }
-
-                // Type est correct
-                // On limite à 500Ko (525 * 525)
-                if ($filesize > 525 * 525) {
-                    echo "L'image est trop volumineux";
-                }
+            $extension = pathinfo($filename, PATHINFO_EXTENSION);
+            // Vérification de l'absence de l'extension dans $allowed ou absence du type MIME dans les valeurs
+            if (!array_key_exists($extension, $allowed) || !in_array($filetype, $allowed)) {
+                // L'extension soit le type est incorrect
+                echo "Erreur: format du projet incorrect";
             }
 
-            $sql_addpegi = "INSERT INTO pegi (pegi_name, pegi_icon) VALUES (:pegi_name, :pegi_icon)";
+            // On génère un nom unique
+            $newname = md5(uniqid());
 
-            $query = $db->prepare($sql_addpegi);
+            // On génère le chemin complet
 
-            $query->bindValue(":pegi_name", $pegi_name);
-            $query->bindValue(":pegi_icon", $pegi_icon);
+            $newfilename = __DIR__ . "/img/images/$newname.$extension";
+            $url_image = "./img/images/$newname.$extension";
 
-            $query->execute();
+            // On déplace le fichier de tmp à images en le renommant
+            if (!move_uploaded_file($_FILES["pegi_icon"]["tmp_name"], $newfilename)) {
+                echo "L'upload a échoué ";
+            }
 
-            require_once("../close.php");
-            header("Location: pegis.php");
-            exit();
+            // Type est correct
+            // On limite à 500Ko (500 * 1024)
+            if ($filesize > 500 * 1024) {
+                echo "L'image est trop volumineux";
+            }
         }
+
+        $pegi_icon = $url_image;
+
+        $sql_addpegi = "INSERT INTO pegi (pegi_name, pegi_icon) VALUES (:pegi_name, :pegi_icon)";
+
+        $query = $db->prepare($sql_addpegi);
+
+        $query->bindValue(":pegi_name", $pegi_name);
+        $query->bindValue(":pegi_icon", $pegi_icon);
+
+        $query->execute();
+
+        require_once("../close.php");
+        header("Location: pegis.php");
+
+        exit();
     }
 } else {
     header("Location: ../index.php");
 }
 
 ?>
-
 
 <? include "./template/navbar.php"; ?>
 <main>
@@ -82,14 +81,13 @@ if (isset($_SESSION["admin_gamer"])) {
             <h4>Ajouter un PEGI</h4>
             <div class="container-title">
                 <label for="titre">Titre :</label>
-                <input type="text" placeholder="Titre du PEGI" name="pegi_name" id="title">
+                <input type="text" placeholder="Titre du PEGI" name="pegi_name" id="title" required>
             </div>
             <div class="container-icon">
                 <label class="uploadlabel" for="icon" id="uploadLabel">Uploader icon du PEGI</label>
-                <input type="file" id="icon" name="pegi_icon" class="icon" placeholder="Icon du PEGI" accept="image/*">
+                <input type="file" id="icon" name="pegi_icon" class="icon" placeholder="Icon du PEGI" accept="image/*" required>
                 <img id="previewImage" src="#" alt="Aperçu de l'image" style="max-width: 100%; display: none;">
-                <button type="button" id="deleteImageButton" style="display: none;">Supprimer l'image</button>
-
+                <button type="button" id="deleteImageButton" style="display: none;">Supprimer</button>
             </div>
             <button type="submit" class="send">Envoyer</button>
         </form>

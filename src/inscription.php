@@ -47,7 +47,7 @@ if (!empty($_POST)) {
 <main>
     <h1>Inscription</h1>
     <div class="container-inscription">
-        <form method="POST">
+        <form method="POST" class="form-login">
             <div class="container-pseudo">
                 <label for="pseudo">Pseudo :</label>
                 <input type="text" class="form-input" name="pseudo" id="pseudo" placeholder="Pseudo">
@@ -82,6 +82,6 @@ if (!empty($_POST)) {
     </div>
 </main>
 </body>
-<script src="./js/script.js"></script>
+<script src="./js/login.js"></script>
 
 </html>

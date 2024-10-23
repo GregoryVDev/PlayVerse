@@ -6,7 +6,7 @@ h1 {
   font-size: var(--fsize3);
 }
 
-form {
+.form-login {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -17,7 +17,7 @@ form {
   margin: auto;
 }
 
-label {
+.form-login label {
   display: none;
 }
 
@@ -30,7 +30,7 @@ label {
   color: var(--colorTitle) !important;
 }
 
-input {
+.form-login input {
   border-radius: 10px;
   padding: 10px;
   width: 100%;
@@ -40,12 +40,12 @@ input {
   font-family: var(--nunitoRegular);
 }
 
-input:focus {
+.form-login input:focus {
   outline: none;
   border: none;
 }
 
-::placeholder {
+.form-login ::placeholder {
   color: var(--colorPara);
 }
 
@@ -163,7 +163,7 @@ input[type="checkbox"] {
     flex-direction: row;
   }
 
-  form {
+  .form-login {
     padding: 0 28px 20px;
     margin: auto 0 auto auto;
   }
@@ -186,7 +186,7 @@ input[type="checkbox"] {
     flex-direction: row;
   }
 
-  form {
+  .form-login {
     padding: 0px 20px 20px;
     margin: auto 0 auto 0;
   }
