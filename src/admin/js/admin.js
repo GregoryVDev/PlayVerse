@@ -33,3 +33,23 @@ document.addEventListener("DOMContentLoaded", function () {
     deleteImageButton.style.display = "none"; // Hide the delete button
   });
 });
+
+// DROPDOWN PLATEFORMES
+
+function toggleDropdown() {
+  // Sélectionner l'élément dropdown et ajouter/supprimer la classe 'active'
+  document.querySelector(".container-plateformes").classList.toggle("active");
+}
+
+// Fermer le dropdown si l'utilisateur clique en dehors
+window.onclick = function (event) {
+  if (!event.target.matches(".dropdown-btn")) {
+    let dropdowns = document.getElementsByClassName("list-plateformes");
+    for (let i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i];
+      if (openDropdown.style.display === "block") {
+        openDropdown.parentElement.classList.remove("active");
+      }
+    }
+  }
+};

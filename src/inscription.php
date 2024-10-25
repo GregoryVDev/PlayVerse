@@ -45,7 +45,7 @@ if (!empty($_POST)) {
 ?>
 <? include "./template/navbar.php" ?>
 <main>
-    <h1>Inscription</h1>
+    <h1 class="titre">Inscription</h1>
     <div class="container-inscription">
         <form method="POST" class="form-login">
             <div class="container-pseudo">
@@ -83,5 +83,7 @@ if (!empty($_POST)) {
 </main>
 </body>
 <script src="./js/login.js"></script>
+<script src="./js//burger.js"></script>
+
 
 </html>

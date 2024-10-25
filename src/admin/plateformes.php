@@ -7,9 +7,9 @@ require_once("../connect.php");
 if (isset($_SESSION["admin_gamer"])) {
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-        $pegi_name = strip_tags($_POST["pegi_name"]);
+        $plateforme_name = strip_tags($_POST["plateforme_name"]);
 
-        if ($_FILES["pegi_icon"]["error"] === 0) {
+        if ($_FILES["plateforme_icon"]["error"] === 0) {
             // Vérification des extentions et du type Mime
             $allowed = [
                 "jpg" => "image/jpeg",
@@ -18,9 +18,9 @@ if (isset($_SESSION["admin_gamer"])) {
                 "webp" => "image/webp"
             ];
 
-            $filename = $_FILES["pegi_icon"]["name"];
-            $filetype = $_FILES["pegi_icon"]["type"];
-            $filesize = $_FILES["pegi_icon"]["size"];
+            $filename = $_FILES["plateforme_icon"]["name"];
+            $filetype = $_FILES["plateforme_icon"]["type"];
+            $filesize = $_FILES["plateforme_icon"]["size"];
 
             $extension = pathinfo($filename, PATHINFO_EXTENSION);
             // Vérification de l'absence de l'extension dans $allowed ou absence du type MIME dans les valeurs
@@ -38,7 +38,7 @@ if (isset($_SESSION["admin_gamer"])) {
             $url_image = "./img/images/$newname.$extension";
 
             // On déplace le fichier de tmp à images en le renommant
-            if (!move_uploaded_file($_FILES["pegi_icon"]["tmp_name"], $newfilename)) {
+            if (!move_uploaded_file($_FILES["plateforme_icon"]["tmp_name"], $newfilename)) {
                 echo "L'upload a échoué ";
             }
 
@@ -49,49 +49,50 @@ if (isset($_SESSION["admin_gamer"])) {
             }
         }
 
-        $pegi_icon = $url_image;
+        $plateforme_icon = $url_image;
 
-        $sql_addpegi = "INSERT INTO pegi (pegi_name, pegi_icon) VALUES (:pegi_name, :pegi_icon)";
+        $sql_addplat = "INSERT INTO plateformes (plateforme_name, plateforme_icon) VALUES (:plateforme_name, :plateforme_icon)";
 
-        $query = $db->prepare($sql_addpegi);
+        $query = $db->prepare($sql_addplat);
 
-        $query->bindValue(":pegi_name", $pegi_name);
-        $query->bindValue(":pegi_icon", $pegi_icon);
+        $query->bindValue(":plateforme_name", $plateforme_name);
+        $query->bindValue(":plateforme_icon", $plateforme_icon);
 
         $query->execute();
 
         require_once("../close.php");
-        header("Location: pegis.php");
+        header("Location: plateformes.php");
         exit();
     }
 } else {
     header("Location: ../index.php");
 }
 
-$sql = "SELECT * FROM pegi WHERE pegi_id";
+$sql = "SELECT * FROM plateformes WHERE plateforme_id";
 $query = $db->prepare($sql);
 
 $query->execute();
 
-$pegis = $query->fetchAll(PDO::FETCH_ASSOC);
+$plateformes = $query->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
 <? include "./template/navbar.php"; ?>
 <main>
-    <section class="page">
-        <h1>Gestions des PEGIS</h1>
+    <section class="gestion">
+        <h1>Gestions des plateformes</h1>
+        <img src="./img/drrobotnik.gif" alt="Sonic">
     </section>
     <section class="formulaire">
         <form action="" method="POST" id="formajout" enctype="multipart/form-data">
-            <h4>Ajouter un PEGI</h4>
+            <h4>Ajouter une plateforme</h4>
             <div class="container-title">
-                <label for="titre">Titre :</label>
-                <input type="text" placeholder="Titre du PEGI" name="pegi_name" id="title" required>
+                <label for="name">Nom :</label>
+                <input type="text" placeholder="Nom de la plateforme" name="plateforme_name" id="title" required>
             </div>
             <div class="container-icon">
-                <label class="uploadlabel" for="icon" id="uploadLabel">Uploader icon du PEGI</label>
-                <input type="file" id="icon" name="pegi_icon" class="icon" placeholder="Icon du PEGI" accept="image/*" required>
+                <label class="uploadlabel" for="icon" id="uploadLabel">Uploader icon de la plateforme</label>
+                <input type="file" id="icon" name="plateforme_icon" class="icon" placeholder="Icon de la plateforme" accept="image/*" required>
                 <img id="previewImage" src="#" alt="Aperçu de l'image" style="max-width: 100%; display: none;">
                 <button type="button" id="deleteImageButton" style="display: none;">Supprimer</button>
             </div>
@@ -114,14 +115,14 @@ $pegis = $query->fetchAll(PDO::FETCH_ASSOC);
                     <th><input type="checkbox"></th>
                 </tr>
             </thead>
-            <?php foreach ($pegis as $pegi) { ?>
+            <?php foreach ($plateformes as $plateforme) { ?>
                 <tbody>
                     <tr data-page="1">
                         <td class="actions">
-                            <a href="editpegi.php?id=<?= $pegi["pegi_id"] ?>" class="btn-edit">Modifier</a>
-                            <a href="deletepegi.php?id=<?= $pegi["pegi_id"] ?>" class="btn-delete">Supprimer</a>
+                            <a href="editplateforme.php?id=<?= $plateforme["plateforme_id"] ?>" class="btn-edit">Modifier</a>
+                            <a href="deleteplateforme.php?id=<?= $plateforme["plateforme_id"] ?>" class="btn-delete">Supprimer</a>
                         </td>
-                        <td><?= $pegi["pegi_name"] ?></td>
+                        <td><?= $plateforme["plateforme_name"] ?></td>
                         <td><label><input type="checkbox"></label></td>
                     </tr>
                 </tbody>
@@ -140,6 +141,8 @@ $pegis = $query->fetchAll(PDO::FETCH_ASSOC);
 
 <!-- TO DO LIST
  
+- CRUD Catégorie
+- CRUD PLATEFORME
 - CRUD JEUX
 - MESSAGERIE
 

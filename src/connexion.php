@@ -79,7 +79,7 @@ if (!empty($_POST)) {
 
 <?php include "./template/navbar.php" ?>
 <main>
-    <h1>Connexion</h1>
+    <h1 class="titre">Connexion</h1>
     <div class="container-connexion">
         <form method="POST" class="form-login">
             <div class="container-email">
@@ -106,5 +106,7 @@ if (!empty($_POST)) {
 </main>
 </body>
 <script src="./js/login.js"></script>
+<script src="./js//burger.js"></script>
+<script src="./js/script.js"></script>
 
 </html>

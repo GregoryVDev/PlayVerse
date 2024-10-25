@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <?php include "./template/navbar.php" ?>
 <main>
     <div class="container-header">
@@ -135,12 +141,6 @@
 
                 <input type="submit" value="Envoyer">
             </form>
-
-
-
-
-
-
         </div>
 
         <div>
