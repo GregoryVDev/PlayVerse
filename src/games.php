@@ -1,75 +1,84 @@
 <?php include "./template/navbar.php" ?>
 <main>
 
-    <div class="container-title">
-        <h1>Voici notre séléctions de jeux PC</h1>
-        <div class="container-plateforme">
-            <img class="icon-plateforme" src="../img/logos/icon_pc.png" alt="icon pc">
-            <img class="icon-plateforme" src="../img/logos/icon_playstation.png" alt="icon playstation">
-            <img class="icon-plateforme" src="../img/logos/icon_xbox.png" alt="icon xbox">
-            <img class="icon-plateforme" src="../img/logos/icon_switch.png" alt="icon switch">
+    <div class="games-container-title">
+        <h1 class="games-h1-games">Voici notre sélection de jeux PC</h1>
+        <div class="games-container-plateforme">
+            <img class="games-icon-plateforme" src="../img/logos/icon_pc.png" alt="icon pc">
+            <img class="games-icon-plateforme" src="../img/logos/icon_playstation.png" alt="icon playstation">
+            <img class="games-icon-plateforme" src="../img/logos/icon_xbox.png" alt="icon xbox">
+            <img class="games-icon-plateforme" src="../img/logos/icon_switch.png" alt="icon switch">
         </div>
     </div>
 
-
-    <div class="jeu-container">
-        <!-- garder uniquement une des card et faire un foreach pour en afficher d'autre -->
-        <article class="card-game">
+    <div class="games-jeu-container">
+        <!-- First game card -->
+        <article class="games-card-game">
             <a href="">
-                <img class="card-img" src="../img/exemple/hollow_knight.png" alt="hollow knight" />
+                <img class="games-card-img" src="../img/exemple/hollow_knight.png" alt="hollow knight" />
             </a>
-            <div class="card-body">
-                <h3 class="card-title">NAME GAME</h3>
-                <a class="card-btn" href="">Voir</a>
+            <div class="games-card-body">
+                <h3 class="games-card-title">Hollow Knight</h3>
+                <a class="games-card-btn" href="">Voir</a>
             </div>
         </article>
 
-        <!-- les carte ici peuvent être supprimer -->
-        <article class="card-game">
+        <!-- Second game card -->
+        <article class="games-card-game">
             <a href="">
-                <img class="card-img" src="../img/exemple/elden_ring.jpg" alt="elden ring">
+                <img class="games-card-img" src="../img/exemple/elden_ring.jpg" alt="elden ring" />
             </a>
-            <div class="card-body">
-                <h3 class="card-title">NAME GAME</h3>
-                <a class="card-btn" href="">Voir</a>
+            <div class="games-card-body">
+                <h3 class="games-card-title">Elden Ring</h3>
+                <a class="games-card-btn" href="">Voir</a>
             </div>
         </article>
-        <article class="card-game">
+
+        <!-- Third game card -->
+        <article class="games-card-game">
             <a href="">
-                <img class="card-img" src="../img/exemple/lol.jpg" alt="league of legend">
+                <img class="games-card-img" src="../img/exemple/lol.jpg" alt="league of legends" />
             </a>
-            <div class="card-body">
-                <h3 class="card-title">NAME GAME</h3>
-                <a class="card-btn" href="">Voir</a>
+            <div class="games-card-body">
+                <h3 class="games-card-title">League of Legends</h3>
+                <a class="games-card-btn" href="">Voir</a>
             </div>
         </article>
-        <article class="card-game">
+
+        <!-- Fourth game card -->
+        <article class="games-card-game">
             <a href="">
-                <img class="card-img" src="../img/exemple/overwatch.png" alt="overwatch">
+                <img class="games-card-img" src="../img/exemple/overwatch.png" alt="overwatch" />
             </a>
-            <div class="card-body">
-                <h3 class="card-title">NAME GAME</h3>
-                <a class="card-btn" href="">Voir</a>
+            <div class="games-card-body">
+                <h3 class="games-card-title">Overwatch</h3>
+                <a class="games-card-btn" href="">Voir</a>
             </div>
         </article>
-        <article class="card-game">
+
+        <!-- Fifth game card -->
+        <article class="games-card-game">
             <a href="">
-                <img class="card-img" src="../img/exemple/mortal_kombat.png" alt="">
+                <img class="games-card-img" src="../img/exemple/mortal_kombat.png" alt="mortal kombat" />
             </a>
-            <div class="card-body">
-                <h3 class="card-title">NAME GAME</h3>
-                <a class="card-btn" href="">Voir</a>
+            <div class="games-card-body">
+                <h3 class="games-card-title">Mortal Kombat</h3>
+                <a class="games-card-btn" href="">Voir</a>
             </div>
         </article>
-        <article class="card-game">
+
+        <!-- Sixth game card -->
+        <article class="games-card-game">
             <a href="">
-                <img class="card-img" src="../img/exemple/sot.png" alt="sea of thieves">
+                <img class="games-card-img" src="../img/exemple/sot.png" alt="sea of thieves" />
             </a>
-            <div class="card-body">
-                <h3 class="card-title">NAME GAME</h3>
-                <a class="card-btn" href="">Voir</a>
+            <div class="games-card-body">
+                <h3 class="games-card-title">Sea of Thieves</h3>
+                <a class="games-card-btn" href="">Voir</a>
             </div>
         </article>
     </div>
+
+
 </main>
 <?php include "./template/footer.php" ?>

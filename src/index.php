@@ -1,7 +1,7 @@
 <?php include "./template/navbar.php" ?>
 <main>
     <div class="container-header">
-        <h1 class="title-h1">Plonge dans l'univers de tes jeux favoris</h1>
+        <h1 class="index-title-h1">Plonge dans l'univers de tes jeux favoris</h1>
         <img src="../img/images/principal.png" alt="regroupement de personnages de jeux vidéo">
     </div>
     <div class="carousel-container">
@@ -52,7 +52,7 @@
     </div>
 
     <div>
-        <h2 class="title-h2">Jeux du moment</h2>
+        <h2 class="index-title-h2">Jeux du moment</h2>
 
         <!-- a remplacer par les 4 dernier jeux ajouter -->
         <div class="container-jeux-du-moment">
@@ -74,35 +74,36 @@
     </div>
 
 
-    <section>
+    <section class="index-bg-color">
         <div class="parti-2">
-            <h3 class="title-h3">Rejoins les légendes du jeu vidéo et vis l'aventure ultime</h3>
+            <h3 class="index-title-h3">Rejoins les légendes du jeu vidéo et vis l'aventure ultime</h3>
             <!-- <img src="../img/images/secondary.png" alt="regroupement de personnages de jeux vidéo"> -->
             <img src="../img/images/group3.png" alt="regroupement de personnages de jeux vidéo">
         </div>
 
         <div class="container-title-review">
-            <h4 class="title-h4">Nos dernières reviews</h4>
+            <h4 class="index-title-h4">Nos dernières reviews</h4>
             <a class="btn-review" href="">Toutes les reviews</a>
         </div>
 
-        <div class="container-game-review">
-            <img class="review-img" src="../img/exemple/bmw2.jpg" alt="game background 1" class="image-large">
-            <div class="right-images">
-                <img class="image-small review-img" src="../img/exemple/bmw2.jpg" alt="game background 2">
-                <img class="image-small review-img" src="../img/exemple/bmw2.jpg" alt="game background 3">
+        <div class="index-container-game-review">
+            <img class="index-review-img" src="../img/exemple/bmw2.jpg" alt="game background 1"
+                class="index-image-large">
+            <div class="index-right-images">
+                <img class="index-image-small index-review-img" src="../img/exemple/bmw2.jpg" alt="game background 2">
+                <img class="index-image-small index-review-img" src="../img/exemple/bmw2.jpg" alt="game background 3">
             </div>
         </div>
 
     </section>
 
 
-    <section>
+    <section class="index-bg-color">
         <div class="form-contact">
-            <h5 class="title-h5">Nous envoyer un message</h5>
+            <h5 class="index-title-h5">Nous envoyer un message</h5>
 
 
-            <form class="form-container" action="#" method="post">
+            <form class="index-form-container" action="#" method="post">
                 <!-- Nom et Prénom -->
                 <div class="input-group">
                     <div class="input-wrapper">
@@ -143,15 +144,13 @@
 
         </div>
 
-        <div>
-            <h6 class="title-h6">Abonnez-vous à notre newsletter</h6>
-            <form class="newsletter" action="#" method="post">
+        <h6 class="index-title-h6">Abonnez-vous à notre newsletter</h6>
+        <form class="newsletter" action="#" method="post">
 
-                <input type="email" id="email" name="email" placeholder="Votre email" required>
+            <input type="email" id="email" name="email" placeholder="Votre email" required>
 
-                <button type="submit">S'abonner</button>
-            </form>
-        </div>
+            <button class="newsletter-btn" type="submit">S'abonner</button>
+        </form>
 
     </section>
 </main>

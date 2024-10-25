@@ -37,6 +37,9 @@
         <p class="footer-copyright">Copyright © - 2024 PlayVerse - Tous droits réservés</p>
     </footer>
     </body>
+
     <script src="../js/script.js"></script>
+    <script src="../js/carrousel.js"></script>
+    <script src="../js/form_contact.js"></script>
 
     </html>
