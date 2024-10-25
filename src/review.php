@@ -23,7 +23,7 @@ if (!isset($_GET["id"])) {
 
 <?php include "./template/navbar.php" ?>
 <main>
-    <h1><?= $result["review_title"] ?></h1>
+    <h1 class="title-review"><?= $result["review_title"] ?></h1>
     <section class="image-game">
         <img src="./img/images/<?= htmlspecialchars($result["image1"]); ?>" alt="<?= $result["review_title"] ?>">
     </section>

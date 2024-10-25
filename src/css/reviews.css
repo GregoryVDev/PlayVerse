@@ -1,7 +1,12 @@
 /* REVIEWS */
 
 .review-section h1 {
-  font-size: var(--fsize2);
+  font-size: clamp(
+    var(--font-size-h1-min),
+    var(--font-size-h1-preferred),
+    var(--font-size-h1-max)
+  );
+  text-align: center;
 }
 
 .review {
@@ -20,7 +25,11 @@
 .review figcaption h2 {
   text-align: center;
   margin: 15px 0;
-  font-size: var(--fsize4);
+  font-size: clamp(
+    var(--font-size-h2-min),
+    var(--font-size-h2-preferred),
+    var(--font-size-h2-max)
+  );
 }
 
 .review figcaption p {
@@ -30,8 +39,13 @@
 
 /* REVIEW INFO */
 
-h1 {
-  font-size: var(--fsize3);
+.title-review {
+  font-size: clamp(
+    var(--font-size-h1-min),
+    var(--font-size-h1-preferred),
+    var(--font-size-h1-max)
+  );
+  text-align: center;
 }
 
 .image-game {
@@ -97,8 +111,8 @@ h1 {
     width: 50%;
   }
 
-  h1 {
-    font-size: var(--fsize2);
+  .title-review {
+    text-align: center;
   }
 
   .blog {

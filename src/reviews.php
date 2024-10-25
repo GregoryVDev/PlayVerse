@@ -47,3 +47,6 @@ $reviews = $sql->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </main>
 <?php include "./template/footer.php" ?>
+<script src="./js/pagination.js"></script>
+
+</html>

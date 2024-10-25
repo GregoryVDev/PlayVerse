@@ -20,7 +20,11 @@
 
 .favoris h1 {
   margin: 50px 0px;
-  font-size: var(--fsize3);
+  font-size: clamp(
+    var(--font-size-h1-min),
+    var(--font-size-h1-preferred),
+    var(--font-size-h1-max)
+  );
 }
 
 .card {
@@ -118,10 +122,6 @@
     align-items: center;
     justify-items: center;
   }
-
-  .favoris h1 {
-    font-size: var(--fsize);
-  }
 }
 
 /* DESKTOP */
@@ -132,9 +132,5 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 50px;
-  }
-
-  .favoris h1 {
-    font-size: var(--fsize);
   }
 }
