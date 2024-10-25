@@ -155,3 +155,7 @@ session_start();
     </section>
 </main>
 <?php include "./template/footer.php" ?>
+<script src="../js/carrousel.js"></script>
+<script src="../js/form_contact.js"></script>
+
+</html>

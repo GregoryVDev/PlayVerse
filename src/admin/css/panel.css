@@ -5,6 +5,14 @@
   text-align: center;
 }
 
+.page h1 {
+  font-size: clamp(
+    var(--font-size-h1-min),
+    var(--font-size-h1-preferred),
+    var(--font-size-h1-max)
+  );
+}
+
 .gestion {
   padding-top: 80px;
   text-align: center;
