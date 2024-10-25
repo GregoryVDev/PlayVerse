@@ -1,11 +1,35 @@
+/* PANEL */
+
 .page {
   padding-top: 80px;
   text-align: center;
 }
 
+.gestion {
+  padding-top: 80px;
+  text-align: center;
+}
+
+.gestion img {
+  width: 250px;
+  position: relative;
+  animation: moveToCenter 8s ease forwards; /* Animation plus lente avec une courbe de transition */
+}
+
+@keyframes moveToCenter {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 47%;
+    transform: translateX(-50%);
+  }
+}
+
 .red {
   color: var(--colorBackOffice);
   line-height: 2.5;
+  text-transform: capitalize;
 }
 
 .page img {

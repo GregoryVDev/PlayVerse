@@ -22,7 +22,7 @@ $reviews = $sql->fetchAll(PDO::FETCH_ASSOC);
                 <article class="review">
                     <a href="./review.php?id=<?= $review["review_id"] ?>">
                         <figure>
-                            <img src="./img/images/<?= $review["image1"] ?>" alt="<?= $review["review_title"] ?>">
+                            <img src="./img/images/<?= htmlspecialchars($review["image1"]); ?>" alt="<?= $review["review_title"] ?>">
                             <figcaption>
                                 <h2><?= $review["review_title"] ?></h2>
                                 <p><?= substr($review["paragraph1"], 0, 250) . "..."; ?></p>
@@ -32,33 +32,6 @@ $reviews = $sql->fetchAll(PDO::FETCH_ASSOC);
                 </article>
 
             <?php } ?>
-            <!-- <article class="review">
-                <figure>
-                    <img src="./img/images/bmw.png" alt="Black Myth Wukong">
-                    <figcaption>
-                        <h2>Black Myth Wukong</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime aperiam rerum, tenetur enim eum ullam ratione hic esse placeat rem est modi quos atque veniam! Nulla illo culpa mollitia omnis.</p>
-                    </figcaption>
-                </figure>
-            </article>
-            <article class="review">
-                <figure>
-                    <img src="./img/images/frostpunk.png" alt="Frostpunk">
-                    <figcaption>
-                        <h2>Frostpunk 2</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime aperiam rerum, tenetur enim eum ullam ratione hic esse placeat rem est modi quos atque veniam! Nulla illo culpa mollitia omnis.</p>
-                    </figcaption>
-                </figure>
-            </article>
-            <article class="review">
-                <figure>
-                    <img src="./img/images/sims.png" alt="Les sims">
-                    <figcaption>
-                        <h2>Les Sims 4</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime aperiam rerum, tenetur enim eum ullam ratione hic esse placeat rem est modi quos atque veniam! Nulla illo culpa mollitia omnis.</p>
-                    </figcaption>
-                </figure>
-            </article> -->
         </div>
     </section>
     <div id="pagination" class="container-pages">

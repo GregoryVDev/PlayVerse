@@ -12,16 +12,16 @@ if (!isset($_SESSION["admin_gamer"])) {
 <? include "./template/navbar.php" ?>
 <main>
     <section class="page">
-        <h1>Heureux de te revoir <span class="red">Johndu58</span></h1>
+        <h1>Heureux de te revoir <span class="red"><?= $_SESSION["admin_gamer"]["pseudo"]; ?></span></h1>
         <img src="./img/crash.gif" alt="Crash">
     </section>
     <section class="panel-image">
         <div class="container-gestions">
             <article class="gestions">
                 <figure>
-                    <img src="./img/article.jpg" alt="Gestions des articles">
+                    <img src="./img/article.jpg" alt="Gestions des jeux">
                     <figcaption>
-                        <h4>Gestions des articles</h4>
+                        <h4>Gestions des jeux</h4>
                     </figcaption>
                 </figure>
             </article>

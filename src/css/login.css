@@ -1,6 +1,6 @@
 /* INSCRIPTION */
 
-h1 {
+.titre {
   text-align: center;
   margin: 50px 0;
   font-size: var(--fsize3);
@@ -131,6 +131,10 @@ input[type="checkbox"] {
   display: none;
 }
 
+.button-panel {
+  border: 3px solid red;
+}
+
 /* MOBILE */
 
 @media all and (min-width: 480px) and (max-width: 767px) {
@@ -239,6 +243,10 @@ input[type="checkbox"] {
 /* DESKTOP */
 
 @media all and (min-width: 1024px) {
+  .titre {
+    font-size: var(--fsize);
+  }
+
   .container-connexion {
     display: flex;
     justify-content: center;

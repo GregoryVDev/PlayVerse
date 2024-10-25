@@ -25,16 +25,16 @@ if (!isset($_GET["id"])) {
 <main>
     <h1><?= $result["review_title"] ?></h1>
     <section class="image-game">
-        <img src="./img/images/<?= $result["image1"] ?>" alt="<?= $result["review_title"] ?>">
+        <img src="./img/images/<?= htmlspecialchars($result["image1"]); ?>" alt="<?= $result["review_title"] ?>">
     </section>
     <section class="review-article">
         <article class="blog">
             <p><?= $result["paragraph1"] ?>
             </p>
-            <img src="./img/images/<?= $result["image2"] ?>" alt="<?= $result["review_title"] ?>">
+            <img src="./img/images/<?= htmlspecialchars($result["image2"]); ?>" alt="<?= $result["review_title"] ?>">
             <p><?= $result["paragraph2"] ?>
             </p>
-            <img src="./img/images/<?= $result["image3"] ?>" alt="<?= $result["review_title"] ?>">
+            <img src="./img/images/<?= htmlspecialchars($result["image3"]); ?>" alt="<?= $result["review_title"] ?>">
             <p><?= $result["paragraph3"] ?>
             </p>
         </article>

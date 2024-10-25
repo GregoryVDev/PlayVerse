@@ -41,5 +41,6 @@
     <script src="../js/script.js"></script>
     <script src="../js/carrousel.js"></script>
     <script src="../js/form_contact.js"></script>
+    <script src="../js/burger.js"></script>
 
     </html>

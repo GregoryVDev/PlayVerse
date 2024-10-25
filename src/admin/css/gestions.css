@@ -1,4 +1,4 @@
-/* FORMULAIRE D'AJOUT PEGI */
+/* FORMULAIRE D'AJOUT */
 
 .formulaire {
   margin-top: 40px;
@@ -173,6 +173,10 @@ input[type="checkbox"] {
     justify-content: center;
     gap: 20px;
   }
+
+  .formulaire h4 {
+    font-size: var(--fsize4);
+  }
 }
 
 /* DESKTOP */
@@ -190,10 +194,217 @@ input[type="checkbox"] {
 
   .uploadlabel {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 
   #previewImage {
     margin-top: 10px;
+  }
+}
+
+/* PAGE JEUX */
+
+.img-article img {
+  height: 250px;
+  margin: auto;
+}
+
+.formulaire-games form select {
+  padding: 8px;
+  border-radius: 10px;
+  background: var(--colorSecondary);
+  color: var(--colorPara);
+  border: none;
+  width: 215px;
+  text-align: center;
+}
+
+.container-left {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.formulaire-games .container-global {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.formulaire-games .container-global input {
+  width: 215px;
+}
+
+.container-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+textarea {
+  border-radius: 10px;
+  background: var(--colorSecondary);
+  color: var(--colorPara);
+  border: none;
+  padding: 30px;
+  width: 235px;
+}
+
+textarea::placeholder {
+  color: var(--colorPara);
+  text-align: center;
+  padding: 12px 10px;
+}
+
+form .container-global .uploadlabel {
+  padding: 40px;
+  margin: 0 0 20px;
+  width: 235px;
+  text-align: center;
+}
+
+.formulaire-games {
+  margin-top: 40px;
+}
+
+.formulaire-games h4 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: var(--fsize5);
+}
+
+.formulaire-games form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formulaire-games .container-title label,
+.container-titre label,
+.container-plateformes label,
+.container-categories label,
+.container-pegis label,
+.container-trailer label,
+.container-description label {
+  display: none;
+}
+
+.formulaire-games form input {
+  padding: 8px;
+  border-radius: 10px;
+  background: var(--colorSecondary);
+  color: var(--colorPara);
+  border: none;
+}
+
+.formulaire-games form input::placeholder {
+  color: var(--colorPara);
+  text-align: center;
+}
+
+.container-plateformes {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+}
+
+.dropdown-btn {
+  background-color: var(--colorSecondary);
+  color: var(--colorPara);
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width: 215px;
+  border-radius: 10px;
+}
+
+.list-plateformes {
+  display: none;
+  position: absolute;
+  background-color: var(--colorSecondary);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  z-index: 1;
+  padding: 10px;
+  border: 1px solid #2d2c54;
+}
+
+.list-plateformes label {
+  display: flex;
+  padding: 5px;
+  cursor: pointer;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container-plateformes.active .list-plateformes {
+  display: block;
+  width: 215px;
+  border-radius: 10px;
+}
+
+.list-plateformes input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.list-plateformes input[type="submit"] {
+  display: none;
+}
+
+.formulaire-games .container-plateformes input {
+  width: auto;
+}
+
+/* TABLET */
+
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  .formulaire-games .container-global {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .container-left {
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+  }
+
+  .container-right {
+    align-items: flex-start;
+  }
+}
+
+/* DESKTOP */
+
+@media all and (min-width: 1024px) {
+  .formulaire-games {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 120px;
+  }
+
+  .formulaire-games .container-global {
+    display: flex;
+    gap: 40px;
+    flex-direction: row;
+  }
+
+  .container-left {
+    flex-direction: column;
+    gap: 25px;
+    align-items: flex-start;
+  }
+
+  .container-right {
+    align-items: flex-start;
+  }
+
+  .formulaire-games .form-jeux form .send {
+    margin-top: 15px;
   }
 }
