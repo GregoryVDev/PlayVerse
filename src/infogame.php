@@ -1,21 +1,17 @@
 <?php include "./template/navbar.php" ?>
-<header>
 
+<main class="infogame">
     <!-- background header (desktop version) -->
-    <div class="container-header">
+    <div class="infogame-container-header">
         <img class="bg-game" src="../img/exemple/bmw.png" alt="game background">
-        <img class="pegi-header" src="../img/logos/pegi_16.png" alt="icon pegi">
+        <img class="infogame-header-pegi" src="../img/logos/pegi_16.png" alt="icon pegi">
     </div>
-
-</header>
-
-<main>
 
     <!-- main game -->
     <article class="container-game">
         <div class="mobile-main">
             <img class="game-img" src="../img/exemple/bmw2.jpg" alt="game background">
-            <img class="pegi" src="../img/logos/pegi_16.png" alt="icon pegi">
+            <img class="infogame-pegi" src="../img/logos/pegi_16.png" alt="icon pegi">
         </div>
 
         <!-- game info -->
