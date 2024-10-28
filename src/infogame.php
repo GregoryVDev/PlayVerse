@@ -63,7 +63,7 @@
 
 
 
-    <section>
+    <section class="infogame-bg-color">
 
         <!-- commentary (max 3) -->
         <h3>Voici leurs avis</h3>
