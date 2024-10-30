@@ -1,8 +1,121 @@
 <?php
-
 session_start();
+require_once("../connect.php");
 
+// Récupération des catégories
+$sql_category = "SELECT * FROM category";
+$query_category = $db->prepare($sql_category);
+$query_category->execute();
+$categories = $query_category->fetchAll(PDO::FETCH_ASSOC);
+
+// Récupération des options PEGI
+$sql_pegi = "SELECT * FROM pegi";
+$query_pegi = $db->prepare($sql_pegi);
+$query_pegi->execute();
+$pegis = $query_pegi->fetchAll(PDO::FETCH_ASSOC);
+
+// Récupération des plateformes
+$sql_plateformes = "SELECT * FROM plateformes";
+$query_plateformes = $db->prepare($sql_plateformes);
+$query_plateformes->execute();
+$plateformes = $query_plateformes->fetchAll(PDO::FETCH_ASSOC);
+
+// Fonction pour gérer l'upload sécurisé des fichiers avec formats spécifiques
+function uploadFile($fileKey, $uploadDir = 'img/games/')
+{
+    // Liste des types MIME autorisés pour les formats PNG, JPG/JPEG et WEBP
+    $allowedTypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/webp'];
+
+    // Vérifie que le fichier a été uploadé sans erreur
+    if (isset($_FILES[$fileKey]) && $_FILES[$fileKey]['error'] == 0) {
+        $fileInfo = new finfo(FILEINFO_MIME_TYPE); // Vérifie le type MIME
+        $mimeType = $fileInfo->file($_FILES[$fileKey]['tmp_name']); // Récupère le type MIME
+
+        // Vérification du type MIME
+        if (in_array($mimeType, $allowedTypes)) { // Accepte uniquement PNG, JPG/JPEG et WEBP
+            $fileName = uniqid() . '_' . basename($_FILES[$fileKey]['name']); // Génère un nom unique
+            $filePath = $uploadDir . $fileName; // Chemin du fichier
+
+            // Déplace le fichier
+            if (move_uploaded_file($_FILES[$fileKey]['tmp_name'], $filePath)) {
+                return $filePath; // Retourne le chemin du fichier
+            }
+        } else {
+            echo "<script>alert('Erreur : Format de fichier non autorisé. Seuls les formats PNG, JPG, et WEBP sont acceptés.');</script>";
+        }
+    }
+    return null; // Retourne null si échec ou type incorrect
+}
+
+if (isset($_SESSION["admin_gamer"])) {
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        // Récupération et validation des données du formulaire
+        $game_title = strip_tags($_POST["game_title"]);
+        $category_id = (int) strip_tags($_POST["category_id"]);
+        $pegi_id = (int) strip_tags($_POST["pegi_id"]);
+        $trailer = strip_tags($_POST["trailer"]);
+        $content = strip_tags($_POST["content"]);
+
+        // Upload des fichiers
+        $jacket = uploadFile('jacket');
+        $background = uploadFile('background');
+        $image1 = uploadFile('image1');
+        $image2 = uploadFile('image2');
+        $image3 = uploadFile('image3');
+        $image4 = uploadFile('image4');
+
+        // Récupération des plateformes sélectionnées
+        $plateformeIds = isset($_POST['plateformeIds']) ? array_map('intval', $_POST['plateformeIds']) : [];
+
+        try {
+            // Démarrage de la transaction
+            $db->beginTransaction();
+
+            // Insertion des données dans la table `games`
+            $sql_addjeu = "INSERT INTO games (game_title, admin_id, pegi_id, category_id, jacket, content, background, trailer, image1, image2, image3, image4) 
+                           VALUES (:game_title, :admin_id, :pegi_id, :category_id, :jacket, :content, :background, :trailer, :image1, :image2, :image3, :image4)";
+            $query = $db->prepare($sql_addjeu);
+
+            $query->bindValue(":game_title", $game_title);
+            $query->bindValue(":admin_id", $_SESSION["admin_gamer"]["admin_id"]);
+            $query->bindValue(":pegi_id", $pegi_id);
+            $query->bindValue(":category_id", $category_id);
+            $query->bindValue(":jacket", $jacket);
+            $query->bindValue(":content", $content);
+            $query->bindValue(":background", $background);
+            $query->bindValue(":trailer", $trailer);
+            $query->bindValue(":image1", $image1);
+            $query->bindValue(":image2", $image2);
+            $query->bindValue(":image3", $image3);
+            $query->bindValue(":image4", $image4);
+
+            $query->execute();
+
+            // Récupération de l'ID du jeu nouvellement inséré
+            $game_id = $db->lastInsertId();
+
+            // Insertion dans la table de liaison `gamesplateformes`
+            $sql_plateforme = "INSERT INTO gamesplateformes (game_id, plateforme_id) VALUES (:game_id, :plateforme_id)";
+            $query = $db->prepare($sql_plateforme);
+
+            foreach ($plateformeIds as $plateforme_id) {
+                $query->bindValue(":game_id", $game_id);
+                $query->bindValue(":plateforme_id", $plateforme_id);
+                $query->execute();
+            }
+
+            // Validation de la transaction
+            $db->commit();
+            echo "<script>alert('Les données ont été insérées avec succès.');</script>";
+        } catch (Exception $e) {
+            // Annulation de la transaction en cas d'erreur
+            $db->rollBack();
+            echo "<script>alert('Erreur : Les données n'ont pas été insérées.');</script>";
+        }
+    }
+}
 ?>
+
 
 <? include "./template/navbar.php"; ?>
 <main>
@@ -28,84 +141,64 @@ session_start();
                             <button class="dropdown-btn" onclick="toggleDropdown()" type="button">--Choisir la plateforme--</button>
                             <!-- Contenu du dropdown avec checkboxes -->
                             <div class="list-plateformes">
-                                <label><input type="checkbox" name="option1" value="">Playstation</label>
-                                <label><input type="checkbox" name="option2" value="">Xbox</label>
-                                <label><input type="checkbox" name="option3" value="">Switch</label>
-                                <label><input type="checkbox" name="option4" value="">PC</label>
+                                <?php foreach ($plateformes as $plateforme) { ?>
+                                    <label><input type="checkbox" name=plateformeIds[] value="<?= $plateforme["plateforme_id"] ?>"><?= $plateforme["plateforme_name"] ?></label>
+                                <?php } ?>
                             </div>
                         </div>
 
                         <div class="container-categories">
                             <label for="categorie">Catégorie :</label>
-                            <select id="categorie" name="category" required>
+                            <select id="categorie" name="category_id" required>
                                 <option value="">--Choisir la catégorie--</option>
-                                <option value="">Action</option>
-                                <option value="">Aventure</option>
-                                <option value="">FPS</option>
-                                <option value="">Simulation</option>
-                                <option value="">MMORPG</option>
-                                <option value="">Plateforme</option>
-                                <option value="">RPG</option>
-                                <option value="">Sport</option>
-                                <option value="">Stratégie</option>
+                                <?php foreach ($categories as $category) { ?>
+                                    <option value="<?= $category["category_id"] ?>"><?= $category["category_name"] ?></option>
+                                <?php } ?>
                             </select>
                         </div>
                         <div class="container-pegis">
                             <label for="pegis">Pegi :</label>
-                            <select id="pegis" name="category" required>
+                            <select id="pegis" name="pegi_id" required>
                                 <option value="">--Choisir le pegi--</option>
-                                <option value="">PEGI 3</option>
-                                <option value="">PEGI 7</option>
-                                <option value="">PEGI 12</option>
-                                <option value="">PEGI 16</option>
-                                <option value="">PEGI 18</option>
+                                <?php foreach ($pegis as $pegi) { ?>
+                                    <option value="<?= $pegi["pegi_id"] ?>"><?= $pegi["pegi_name"] ?></option>
+                                <?php } ?>
                             </select>
                         </div>
                         <div class="container-trailer">
                             <label for="trailer">Trailer :</label>
-                            <input type="text" placeholder="Lien du trailer" name="pegi_name" id="trailer" required>
+                            <input type="text" placeholder="Lien du trailer" name="trailer" id="trailer" required>
                         </div>
                         <div class="container-description">
-                            <label for="trailer">Description :</label>
-                            <textarea name="trailer" id="trailer" placeholder="Description du jeu" required></textarea>
+                            <label for="content">Description :</label>
+                            <textarea name="content" id="content" placeholder="Description du jeu" required></textarea>
                         </div>
                         <div class="container-background">
                             <label class="uploadlabel" for="background" id="uploadLabel">Uploader le background</label>
-                            <input type="file" id="background" name="pegi_icon" class="icon" placeholder="Icon du PEGI" accept="image/*" required>
-                            <img id="previewImage" src="#" alt="Aperçu de l'image" style="max-width: 100%; display: none;">
-                            <button type="button" id="deleteImageButton" style="display: none;">Supprimer</button>
+                            <input type="file" id="background" name="background" class="image" required>
                         </div>
                     </div>
                     <div class="container-right">
                         <div class="container-image">
-                            <label class="uploadlabel" for="jacket" id="uploadLabel">Uploader la jaquette</label>
-                            <input type="file" id="image" name="pegi_icon" class="icon" placeholder="Icon du PEGI" accept="image/*" required>
-                            <img id="previewImage" src="#" alt="Aperçu de l'image" style="max-width: 100%; display: none;">
-                            <button type="button" id="deleteImageButton" style="display: none;">Supprimer</button>
+                            <label class="uploadlabel" for="jacket" id="uploadJacket">Uploader la jaquette</label>
+                            <input type="file" id="jacket" name="jacket" class="image" required>
                         </div>
                         <div class="container-image">
-                            <label class="uploadlabel" for="image" id="uploadLabel">Uploader image 1</label>
-                            <input type="file" id="image" name="pegi_icon" class="icon" placeholder="Icon du PEGI" accept="image/*" required>
-                            <img id="previewImage" src="#" alt="Aperçu de l'image" style="max-width: 100%; display: none;">
-                            <button type="button" id="deleteImageButton" style="display: none;">Supprimer</button>
+                            <label class="uploadlabel" for="image1"
+                                class="uploadImage">Uploader image 1</label>
+                            <input type="file" id="image1" name="image1" class="image" required>
                         </div>
                         <div class="container-image">
-                            <label class="uploadlabel" for="image" id="uploadLabel">Uploader image 2</label>
-                            <input type="file" id="image" name="pegi_icon" class="icon" placeholder="Icon du PEGI" accept="image/*" required>
-                            <img id="previewImage" src="#" alt="Aperçu de l'image" style="max-width: 100%; display: none;">
-                            <button type="button" id="deleteImageButton" style="display: none;">Supprimer</button>
+                            <label class="uploadlabel" for="image2" class="uploadImage">Uploader image 2</label>
+                            <input type="file" id="image2" name="image2" class="image" required>
                         </div>
                         <div class="container-image">
-                            <label class="uploadlabel" for="image" id="uploadLabel">Uploader image 3</label>
-                            <input type="file" id="image" name="pegi_icon" class="icon" placeholder="Icon du PEGI" accept="image/*" required>
-                            <img id="previewImage" src="#" alt="Aperçu de l'image" style="max-width: 100%; display: none;">
-                            <button type="button" id="deleteImageButton" style="display: none;">Supprimer</button>
+                            <label class="uploadlabel" for="image3" class="uploadImage">Uploader image 3</label>
+                            <input type="file" id="image3" name="image3" class="image" required>
                         </div>
                         <div class="container-image">
-                            <label class="uploadlabel" for="image" id="uploadLabel">Uploader image 4</label>
-                            <input type="file" id="image" name="pegi_icon" class="icon" placeholder="Icon du PEGI" accept="image/*" required>
-                            <img id="previewImage" src="#" alt="Aperçu de l'image" style="max-width: 100%; display: none;">
-                            <button type="button" id="deleteImageButton" style="display: none;">Supprimer</button>
+                            <label class="uploadlabel" for="image4" class="uploadImage">Uploader image 4</label>
+                            <input type="file" id="image4" name="image4" class="image" required>
                         </div>
                     </div>
                 </div>
@@ -120,7 +213,6 @@ session_start();
             <img src="../img/logos/search.svg" alt="Search">
             <input type="search" name="search" id="search" placeholder="Cherchez un jeu...">
         </div>
-
         <table>
             <thead>
                 <tr>
@@ -149,4 +241,13 @@ session_start();
 <script src="./js/admin.js"></script>
 
 </html>
-</main>
+
+<!-- TO DO LiST 
+ 
+- Ajouter une size pour les images de 1730 x 414 pour le background
+- Le tableau à compléter en bas avec la bdd
+- faire la messagerie
+- faire la politique de conf
+- mention légal
+
+-->

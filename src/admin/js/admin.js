@@ -1,3 +1,5 @@
+// Previsualisation des images choisies
+
 document.addEventListener("DOMContentLoaded", function () {
   const iconInput = document.getElementById("icon");
   const previewImage = document.getElementById("previewImage");

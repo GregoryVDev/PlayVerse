@@ -92,7 +92,7 @@ $plateformes = $query->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div class="container-icon">
                 <label class="uploadlabel" for="icon" id="uploadLabel">Uploader icon de la plateforme</label>
-                <input type="file" id="icon" name="plateforme_icon" class="icon" placeholder="Icon de la plateforme" accept="image/*" required>
+                <input type="file" id="icon" name="plateforme_icon" class="icon" accept="image/*" required>
                 <img id="previewImage" src="#" alt="Aperçu de l'image" style="max-width: 100%; display: none;">
                 <button type="button" id="deleteImageButton" style="display: none;">Supprimer</button>
             </div>

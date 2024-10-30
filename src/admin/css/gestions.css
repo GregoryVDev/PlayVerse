@@ -54,6 +54,10 @@ input:focus {
   display: none;
 }
 
+.image {
+  display: none;
+}
+
 .send {
   color: var(--colorPara);
   padding: 5px 15px;
@@ -396,7 +400,7 @@ form .container-global .uploadlabel {
 
   .container-left {
     flex-direction: column;
-    gap: 25px;
+    gap: 27px;
     align-items: flex-start;
   }
 
