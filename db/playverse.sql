@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le : mar. 01 oct. 2024 à 10:08
+-- Généré le : mar. 29 oct. 2024 à 08:57
 -- Version du serveur : 8.0.37
 -- Version de PHP : 8.2.8
 
@@ -31,8 +31,15 @@ CREATE TABLE `admins` (
   `admin_id` int NOT NULL,
   `pseudo` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `pass` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `admins`
+--
+
+INSERT INTO `admins` (`admin_id`, `pseudo`, `email`, `pass`) VALUES
+(1, 'administrator', 'admin@admin.fr', '$2y$10$ydvlBJLRCTgCtX09FQamhuOpQAgLChhCUvxl752GnwaeZDWSYoaV2');
 
 -- --------------------------------------------------------
 
@@ -44,6 +51,16 @@ CREATE TABLE `category` (
   `category_id` int NOT NULL,
   `category_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `category`
+--
+
+INSERT INTO `category` (`category_id`, `category_name`) VALUES
+(1, 'FPS'),
+(2, 'MMORPG'),
+(6, 'Stratégie'),
+(7, 'Gestion');
 
 -- --------------------------------------------------------
 
@@ -82,6 +99,7 @@ CREATE TABLE `games` (
   `admin_id` int NOT NULL,
   `pegi_id` int NOT NULL,
   `category_id` int NOT NULL,
+  `jacket` varchar(225) NOT NULL,
   `content` text NOT NULL,
   `image` varchar(255) NOT NULL,
   `background` varchar(255) NOT NULL,
@@ -133,6 +151,17 @@ CREATE TABLE `pegi` (
   `pegi_icon` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Déchargement des données de la table `pegi`
+--
+
+INSERT INTO `pegi` (`pegi_id`, `pegi_name`, `pegi_icon`) VALUES
+(31, 'PEGI 3', './img/images/cdc7f756d74f68ee405a9b8b99006a9e.png'),
+(32, 'PEGI 7', './img/images/e6db845d063dc25755d3a87b704ec886.png'),
+(33, 'PEGI 12', './img/images/526b01ec2f2fe33229fe36d0f249d1c9.png'),
+(34, 'PEGI 16', './img/images/15c3aa5b496f9cb289c77f25f33d3031.png'),
+(38, 'PEGI 18', './img/images/1327608cefc7b195190cac1b640ef33a.png');
+
 -- --------------------------------------------------------
 
 --
@@ -145,6 +174,16 @@ CREATE TABLE `plateformes` (
   `plateforme_icon` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Déchargement des données de la table `plateformes`
+--
+
+INSERT INTO `plateformes` (`plateforme_id`, `plateforme_name`, `plateforme_icon`) VALUES
+(1, 'Playstation', './img/images/67bf8d1b15db2a9de462f8f16a56de36.png'),
+(5, 'Xbox', './img/images/925ea1b4dd26c3cfea0c0d62b2ef7705.png'),
+(6, 'Switch', './img/images/044bc0a4b136c09e425e5d8b91e565a3.png'),
+(7, 'PC', './img/images/30bd9c990b7d29144f5d8354108eb1c5.png');
+
 -- --------------------------------------------------------
 
 --
@@ -153,7 +192,6 @@ CREATE TABLE `plateformes` (
 
 CREATE TABLE `reviews` (
   `review_id` int NOT NULL,
-  `game_id` int NOT NULL,
   `admin_id` int NOT NULL,
   `review_title` varchar(255) NOT NULL,
   `paragraph1` text NOT NULL,
@@ -161,9 +199,17 @@ CREATE TABLE `reviews` (
   `paragraph3` text NOT NULL,
   `image1` varchar(255) NOT NULL,
   `image2` varchar(255) NOT NULL,
+  `image3` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `high_point` text NOT NULL,
   `weak_point` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `reviews`
+--
+
+INSERT INTO `reviews` (`review_id`, `admin_id`, `review_title`, `paragraph1`, `paragraph2`, `paragraph3`, `image1`, `image2`, `image3`, `high_point`, `weak_point`) VALUES
+(1, 1, 'Black Myth Wukong', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime aperiam rerum, tenetur enim eum ullam ratione hic esse placeat rem est modi quos atque veniam! Nulla illo culpa mollitia omnis.', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, unde voluptatum maiores minima sequi non quod? Pariatur quae debitis tenetur illum amet asperiores officia eligendi voluptates, cum maiores at corrupti! Facere et at laudantium id officia accusantium, enim non saepe exercitationem. Ipsa quod minima amet, repudiandae a ad sequi beatae nihil molestias veritatis. Excepturi vel modi dolores, ratione magni velit! Recusandae quibusdam provident hic aliquam aspernatur? Sit veritatis eveniet, modi accusamus nemo hic quod vitae, quae sint cupiditate velit eius. Nihil eligendi debitis expedita, architecto consectetur nam minus quidem provident.', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, unde voluptatum maiores minima sequi non quod? Pariatur quae debitis tenetur illum amet asperiores officia eligendi voluptates, cum maiores at corrupti! Facere et at laudantium id officia accusantium, enim non saepe exercitationem. Ipsa quod minima amet, repudiandae a ad sequi beatae nihil molestias veritatis.', 'bmw.png', 'bmw.png', 'bmw.png', '- Bon jeu\n- Graphisme\n- Jouabilité', '- Bon jeu\n- Graphisme\n- Jouabilité');
 
 -- --------------------------------------------------------
 
@@ -175,8 +221,15 @@ CREATE TABLE `users` (
   `user_id` int NOT NULL,
   `pseudo` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `pass` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`user_id`, `pseudo`, `email`, `pass`) VALUES
+(1, 'Wiggle', 'a@b.c', '$argon2id$v=19$m=65536,t=4,p=1$NHVDWHFScG5YTDB5bjdScw$oD2hUlhrtWdTWy/waiBYgf56zo5xsEJWxHutLyfadNU');
 
 --
 -- Index pour les tables déchargées
@@ -200,7 +253,7 @@ ALTER TABLE `category`
 ALTER TABLE `commentary`
   ADD PRIMARY KEY (`commentary_id`),
   ADD KEY `key_users` (`user_id`),
-  ADD KEY `key_game` (`game_id`);
+  ADD KEY `key_gaming` (`game_id`);
 
 --
 -- Index pour la table `favoris`
@@ -250,8 +303,7 @@ ALTER TABLE `plateformes`
 --
 ALTER TABLE `reviews`
   ADD PRIMARY KEY (`review_id`),
-  ADD KEY `key_admins` (`admin_id`),
-  ADD KEY `key_jeu` (`game_id`);
+  ADD KEY `key_admins` (`admin_id`);
 
 --
 -- Index pour la table `users`
@@ -267,13 +319,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `admin_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `admin_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `category_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `commentary`
@@ -309,25 +361,25 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT pour la table `pegi`
 --
 ALTER TABLE `pegi`
-  MODIFY `pegi_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `pegi_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT pour la table `plateformes`
 --
 ALTER TABLE `plateformes`
-  MODIFY `plateforme_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `plateforme_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `review_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `review_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Contraintes pour les tables déchargées
@@ -337,7 +389,7 @@ ALTER TABLE `users`
 -- Contraintes pour la table `commentary`
 --
 ALTER TABLE `commentary`
-  ADD CONSTRAINT `key_game` FOREIGN KEY (`game_id`) REFERENCES `games` (`game_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `key_gaming` FOREIGN KEY (`game_id`) REFERENCES `games` (`game_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `key_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -366,8 +418,7 @@ ALTER TABLE `gamesplateformes`
 -- Contraintes pour la table `reviews`
 --
 ALTER TABLE `reviews`
-  ADD CONSTRAINT `key_admins` FOREIGN KEY (`admin_id`) REFERENCES `admins` (`admin_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `key_jeu` FOREIGN KEY (`game_id`) REFERENCES `games` (`game_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `key_admins` FOREIGN KEY (`admin_id`) REFERENCES `admins` (`admin_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -53,21 +53,6 @@ if (!empty($_POST)) {
             } else {
                 die("le compte n'existe pas");
             }
-        } else {
-            // ICI ON CONNECTE LE MEC EN ADMIN (on vérifie le mdp avant....)
-
-            if (!password_verify($_POST["pass"], $admin["pass"])) {
-                die("Le mot de passe est incorrect");
-            }
-
-            $_SESSION["admin_gamer"] = [
-                "admin_id" => $admin["admin_id"],
-                "pseudo" => $admin["pseudo"],
-                "email" => $admin["email"],
-                "admin" => true
-            ];
-
-            header("Location: ./admin/panel.php");
         }
     } else {
         echo "Formulaire incomplet";
@@ -89,7 +74,8 @@ if (!empty($_POST)) {
             <div class="container-password">
                 <label for="pass">Mot de passe :</label>
                 <input type="password" class="form-input" name="pass" id="passCo" placeholder="Mot de passe">
-                <img src="./img/logos/eye.svg" alt="Afficher/Masquer mot de passe" id="passConnect" class="toggle-password">
+                <img src="./img/logos/eye.svg" alt="Afficher/Masquer mot de passe" id="passConnect"
+                    class="toggle-password">
             </div>
             <div class="container-para">
                 <div class="container-compte">

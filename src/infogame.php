@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+
+?>
+
+
 <?php include "./template/navbar.php" ?>
 
 <main class="infogame">
@@ -91,13 +98,21 @@
             </div>
         </div>
 
-        <!-- add a new commentary (only vissible if the user is connected) -->
         <div>
+            <?php if (isset($_SESSION["user_gamer"]) && $_SESSION["user_gamer"] == true) { ?>
+            <!-- Section pour laisser un commentaire si l'utilisateur est connecté -->
             <h4>Laissez votre avis</h4>
             <form action="#" method="post" class="form-inline">
                 <input type="text" id="commentaire" name="commentaire" placeholder="Tapez votre commentaire ici">
                 <input class="btn" type="submit" value="Envoyer">
             </form>
+            <?php } else { ?>
+            <!-- Section de connexion si l'utilisateur n'est pas connecté -->
+            <div class="infogame-connexion">
+                <h4>Veuillez vous connecter pour laisser un avis</h4>
+                <a class="info-game-connexion-btn" href="connexion.php">Se connecter</a>
+            </div>
+            <?php } ?>
         </div>
 
         <!-- last added game -->
