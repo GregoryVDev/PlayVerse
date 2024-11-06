@@ -93,7 +93,7 @@ if (!empty($_POST)) {
             </div>
             <button type="submit" id="envoie">S'inscrire</button>
         </form>
-        <img src="../img/images/csgo.png" alt="csgo" class="halo">
+        <img src="../admin/img/csgo.png" alt="csgo" class="halo">
     </div>
 </main>
 </body>

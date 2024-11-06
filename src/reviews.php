@@ -19,17 +19,17 @@ $reviews = $sql->fetchAll(PDO::FETCH_ASSOC);
         <div class="container-reviews">
             <?php foreach ($reviews as $review) { ?>
 
-                <article class="review">
-                    <a href="./review.php?id=<?= $review["review_id"] ?>">
-                        <figure>
-                            <img src="./img/images/<?= htmlspecialchars($review["image1"]); ?>" alt="<?= $review["review_title"] ?>">
-                            <figcaption>
-                                <h2><?= $review["review_title"] ?></h2>
-                                <p><?= substr($review["paragraph1"], 0, 250) . "..."; ?></p>
-                            </figcaption>
-                        </figure>
-                    </a>
-                </article>
+            <article class="review">
+                <a href="./review.php?id=<?= $review["review_id"] ?>">
+                    <figure>
+                        <img src="<?= htmlspecialchars($review["image1"]); ?>" alt="<?= $review["review_title"] ?>">
+                        <figcaption>
+                            <h2><?= $review["review_title"] ?></h2>
+                            <p><?= substr($review["paragraph1"], 0, 250) . "..."; ?></p>
+                        </figcaption>
+                    </figure>
+                </a>
+            </article>
 
             <?php } ?>
         </div>

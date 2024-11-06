@@ -102,7 +102,7 @@ if (!empty($_POST)) {
             </div>
             <button type="submit" id="envoie">Se connecter</button>
         </form>
-        <img src="../img/images/the_last_of_us.png" alt="the last of us" class="ca">
+        <img src="../admin/img/thelastofus.png" alt="the last of us" class="ca">
     </div>
 </main>
 </body>

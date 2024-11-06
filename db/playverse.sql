@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le : mar. 29 oct. 2024 à 08:57
+-- Généré le : lun. 04 nov. 2024 à 10:03
 -- Version du serveur : 8.0.37
 -- Version de PHP : 8.2.8
 
@@ -39,7 +39,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`admin_id`, `pseudo`, `email`, `pass`) VALUES
-(1, 'administrator', 'admin@admin.fr', '$2y$10$ydvlBJLRCTgCtX09FQamhuOpQAgLChhCUvxl752GnwaeZDWSYoaV2');
+(1, 'Administrator', 'admin@admin.fr', '$2y$10$ydvlBJLRCTgCtX09FQamhuOpQAgLChhCUvxl752GnwaeZDWSYoaV2');
 
 -- --------------------------------------------------------
 
@@ -101,7 +101,6 @@ CREATE TABLE `games` (
   `category_id` int NOT NULL,
   `jacket` varchar(225) NOT NULL,
   `content` text NOT NULL,
-  `image` varchar(255) NOT NULL,
   `background` varchar(255) NOT NULL,
   `trailer` varchar(255) NOT NULL,
   `image1` varchar(255) NOT NULL,
@@ -109,6 +108,13 @@ CREATE TABLE `games` (
   `image3` varchar(255) NOT NULL,
   `image4` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `games`
+--
+
+INSERT INTO `games` (`game_id`, `game_title`, `admin_id`, `pegi_id`, `category_id`, `jacket`, `content`, `background`, `trailer`, `image1`, `image2`, `image3`, `image4`) VALUES
+(15, 'lol', 1, 33, 1, 'img/games/67288d11bef6f.jpg', 'zef', 'img/games/67288d11bc0bf.jpg', 'https://www.youtube.com/watch?v=O1CHmlgR3ts', 'img/games/67288d11c02f2.jpg', 'img/games/67288d11c20ad.jpg', 'img/games/67288d11c3424.jpg', 'img/games/67288d11c5d96.jpg');
 
 -- --------------------------------------------------------
 
@@ -121,6 +127,14 @@ CREATE TABLE `gamesplateformes` (
   `game_id` int NOT NULL,
   `plateforme_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `gamesplateformes`
+--
+
+INSERT INTO `gamesplateformes` (`gplateforme_id`, `game_id`, `plateforme_id`) VALUES
+(20, 15, 5),
+(21, 15, 6);
 
 -- --------------------------------------------------------
 
@@ -229,7 +243,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `pseudo`, `email`, `pass`) VALUES
-(1, 'Wiggle', 'a@b.c', '$argon2id$v=19$m=65536,t=4,p=1$NHVDWHFScG5YTDB5bjdScw$oD2hUlhrtWdTWy/waiBYgf56zo5xsEJWxHutLyfadNU');
+(1, 'Wiggle', 'a@b.c', '$argon2id$v=19$m=65536,t=4,p=1$NHVDWHFScG5YTDB5bjdScw$oD2hUlhrtWdTWy/waiBYgf56zo5xsEJWxHutLyfadNU'),
+(2, 'Test', 'testouille@hotmail.fr', '$argon2id$v=19$m=65536,t=4,p=1$LlBabkdrTlk4ZnlaOTJVTA$1Nbda519vmRtc016NX8PResFq8I4no4EP4Jfc9oECSw');
 
 --
 -- Index pour les tables déchargées
@@ -343,13 +358,13 @@ ALTER TABLE `favoris`
 -- AUTO_INCREMENT pour la table `games`
 --
 ALTER TABLE `games`
-  MODIFY `game_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `game_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT pour la table `gamesplateformes`
 --
 ALTER TABLE `gamesplateformes`
-  MODIFY `gplateforme_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `gplateforme_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT pour la table `message`
@@ -379,7 +394,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Contraintes pour les tables déchargées
