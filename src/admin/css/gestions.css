@@ -231,7 +231,6 @@ input[type="checkbox"] {
 
 .formulaire-games .container-global {
   display: flex;
-
   flex-direction: column;
 }
 
