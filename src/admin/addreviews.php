@@ -6,7 +6,9 @@ require_once("../connect.php");
 if (isset($_SESSION["admin_gamer"])) {
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         
-        $admin_id = $_SESSION["admin_gamer"]; 
+        // Récupération de l'ID de l'admin connecté
+        $admin_id = $_SESSION["admin_gamer"]["admin_id"];
+        
         $review_title = strip_tags($_POST["review_title"]);
         $paragraph1 = strip_tags($_POST["paragraph1"]);
         $paragraph2 = strip_tags($_POST["paragraph2"]);
@@ -79,6 +81,7 @@ if (isset($_SESSION["admin_gamer"])) {
 } else {
     header("Location: ../index.php"); 
 }
+
 
 $sql = "SELECT * FROM reviews ORDER BY review_id DESC";
 $query = $db->prepare($sql);

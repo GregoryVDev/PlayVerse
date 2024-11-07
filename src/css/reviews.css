@@ -1,219 +1,222 @@
 /* REVIEWS */
 
 .review-section h1 {
-  font-size: clamp(
-    var(--font-size-h1-min),
-    var(--font-size-h1-preferred),
-    var(--font-size-h1-max)
-  );
-  text-align: center;
+    font-size: clamp(
+        var(--font-size-h1-min),
+        var(--font-size-h1-preferred),
+        var(--font-size-h1-max)
+    );
+    text-align: center;
 }
 
 .review {
-  margin: 40px 0;
+    margin: 40px 0;
 }
 
 .review figure {
-  background: var(--colorSecondary);
+    background: var(--colorSecondary);
 }
 
 .review figure img {
-  width: 100%;
-  object-fit: cover;
+    width: 100%;
+    object-fit: cover;
 }
 
 .review figcaption h2 {
-  text-align: center;
-  margin: 15px 0;
-  font-size: clamp(
-    var(--font-size-h2-min),
-    var(--font-size-h2-preferred),
-    var(--font-size-h2-max)
-  );
+    text-align: center;
+    margin: 15px 0;
+    font-size: clamp(
+        var(--font-size-h2-min),
+        var(--font-size-h2-preferred),
+        var(--font-size-h2-max)
+    );
 }
 
 .review figcaption p {
-  padding: 20px;
-  color: var(--colorPara);
+    padding: 20px;
+    color: var(--colorPara);
 }
 
 /* REVIEW INFO */
 
 .title-review {
-  font-size: clamp(
-    var(--font-size-h1-min),
-    var(--font-size-h1-preferred),
-    var(--font-size-h1-max)
-  );
-  text-align: center;
+    font-size: clamp(
+        var(--font-size-h1-min),
+        var(--font-size-h1-preferred),
+        var(--font-size-h1-max)
+    );
+    text-align: center;
 }
 
 .image-game {
-  width: 70%;
-  height: 50%;
-  margin: 50px auto;
+    width: 70%;
+    height: 50%;
+    margin: 50px auto;
 }
 
 .image-game img {
-  object-fit: cover;
+    object-fit: cover;
 }
 
 .blog {
-  width: 100%;
-  margin: 40px auto;
-  background: var(--colorSecondary);
+    width: 100%;
+    margin: 40px auto;
+    background: var(--colorSecondary);
 }
 
 .blog p {
-  padding: 35px 25px;
+    padding: 35px 25px;
 }
 
 .points {
-  display: flex;
-  gap: 20px;
-  width: 100%;
-  justify-content: space-around;
-  margin: 50px auto;
-  padding: 20px 10px;
-  background: var(--colorSecondary);
-}
-
-.forts,
-.faibles {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.dr {
-  border-right: 1px solid;
-  height: auto;
-}
-
-.points h3 {
-  margin-bottom: 10px;
-}
-
-/* TABLET */
-
-@media all and (min-width: 768px) and (max-width: 1023px) {
-  /* REVIEWS */
-
-  .container-reviews {
-    margin: 0 40px;
-  }
-
-  .review figure {
-    display: flex;
-  }
-
-  .review figure img {
-    width: 50%;
-  }
-
-  .title-review {
-    text-align: center;
-  }
-
-  .blog {
-    width: 50%;
-    margin: 40px auto;
-    background: var(--colorSecondary);
-  }
-
-  /* REVIEWS INFO */
-
-  .points {
     display: flex;
     gap: 20px;
-    width: 70%;
+    width: 100%;
     justify-content: space-around;
     margin: 50px auto;
     padding: 20px 10px;
     background: var(--colorSecondary);
-  }
+}
 
-  .forts,
-  .faibles {
+.forts,
+.faibles {
     display: flex;
     flex-direction: column;
     gap: 5px;
-  }
+}
 
-  .dr {
+.dr {
     border-right: 1px solid;
     height: auto;
-  }
+}
 
-  .points h3 {
+.points h3 {
     margin-bottom: 10px;
-  }
+}
+
+.review-img {
+    width: 100%;
+}
+/* TABLET */
+
+@media all and (min-width: 768px) and (max-width: 1023px) {
+    /* REVIEWS */
+
+    .container-reviews {
+        margin: 0 40px;
+    }
+
+    .review figure {
+        display: flex;
+    }
+
+    .review figure img {
+        width: 50%;
+    }
+
+    .title-review {
+        text-align: center;
+    }
+
+    .blog {
+        width: 50%;
+        margin: 40px auto;
+        background: var(--colorSecondary);
+    }
+
+    /* REVIEWS INFO */
+
+    .points {
+        display: flex;
+        gap: 20px;
+        width: 70%;
+        justify-content: space-around;
+        margin: 50px auto;
+        padding: 20px 10px;
+        background: var(--colorSecondary);
+    }
+
+    .forts,
+    .faibles {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .dr {
+        border-right: 1px solid;
+        height: auto;
+    }
+
+    .points h3 {
+        margin-bottom: 10px;
+    }
 }
 
 /* DESKTOP */
 
 @media all and (min-width: 1024px) {
-  /* REVIEWS */
+    /* REVIEWS */
 
-  .container-reviews {
-    width: 100%;
-  }
+    .container-reviews {
+        width: 100%;
+    }
 
-  .review figure {
-    display: flex;
-    margin: auto;
-    align-items: center;
-    width: 55%;
-  }
+    .review figure {
+        display: flex;
+        margin: auto;
+        align-items: center;
+        width: 55%;
+    }
 
-  .review figure img {
-    width: 35%;
-  }
+    .review figure img {
+        width: 35%;
+    }
 
-  /* REVIEW INFO */
+    /* REVIEW INFO */
 
-  .image-game {
-    width: 45%;
-    height: 50%;
-    margin: 50px auto;
-  }
+    .image-game {
+        width: 45%;
+        height: 50%;
+        margin: 50px auto;
+    }
 
-  .image-game img {
-    object-fit: cover;
-  }
+    .image-game img {
+        object-fit: cover;
+    }
 
-  .blog {
-    width: 45%;
-    margin: 40px auto;
-    background: var(--colorSecondary);
-  }
+    .blog {
+        width: 45%;
+        margin: 40px auto;
+        background: var(--colorSecondary);
+    }
 
-  .blog p {
-    padding: 35px 25px;
-  }
+    .blog p {
+        padding: 35px 25px;
+    }
 
-  .points {
-    display: flex;
-    justify-content: space-around;
-    gap: 30px;
-    width: 45%;
-    background: var(--colorSecondary);
-    margin: 50px auto;
-    padding: 50px;
-  }
-  .dr {
-    border-right: 1px solid;
-    height: auto;
-  }
+    .points {
+        display: flex;
+        justify-content: space-around;
+        gap: 30px;
+        width: 45%;
+        background: var(--colorSecondary);
+        margin: 50px auto;
+        padding: 50px;
+    }
+    .dr {
+        border-right: 1px solid;
+        height: auto;
+    }
 
-  .forts,
-  .faibles {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
+    .forts,
+    .faibles {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
 
-  .points h3 {
-    margin-bottom: 10px;
-  }
+    .points h3 {
+        margin-bottom: 10px;
+    }
 }
