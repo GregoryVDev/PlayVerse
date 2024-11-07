@@ -43,7 +43,7 @@ if (!empty($_POST)) {
 }
 
 ?>
-<? include "./template/navbar.php" ?>
+<?php include "./template/navbar.php" ?>
 <main>
     <h1 class="titre">Inscription</h1>
     <div class="container-inscription">

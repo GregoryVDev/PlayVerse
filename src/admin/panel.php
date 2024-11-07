@@ -3,13 +3,13 @@
 session_start();
 
 if (!isset($_SESSION["admin_gamer"])) {
-    header("Location: ../index.php");
+    header("Location: connexionadmin.php");
 }
 
 ?>
 
 
-<? include "./template/navbar.php" ?>
+<?php include "./template/navbar.php" ?>
 <main>
     <section class="page">
         <h1>Heureux de te revoir <span class="red"><?= $_SESSION["admin_gamer"]["pseudo"]; ?></span></h1>

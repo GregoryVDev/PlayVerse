@@ -2,6 +2,10 @@
 
 session_start();
 
+if (!isset($_SESSION["admin_gamer"])) {
+    header("Location: connexionadmin.php");
+}
+
 require_once("../connect.php");
 
 if (isset($_SESSION["admin_gamer"])) {
@@ -77,7 +81,7 @@ $plateformes = $query->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-<? include "./template/navbar.php"; ?>
+<?php include "./template/navbar.php"; ?>
 <main>
     <section class="gestion">
         <h1>Gestions des plateformes</h1>

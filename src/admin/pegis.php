@@ -2,6 +2,10 @@
 
 session_start();
 
+if (!isset($_SESSION["admin_gamer"])) {
+    header("Location: connexionadmin.php");
+}
+
 require_once("../connect.php");
 
 if (isset($_SESSION["admin_gamer"])) {
@@ -77,7 +81,7 @@ $pegis = $query->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-<? include "./template/navbar.php"; ?>
+<?php include "./template/navbar.php"; ?>
 <main>
     <section class="page">
         <h1>Gestions des PEGIS</h1>
@@ -92,7 +96,7 @@ $pegis = $query->fetchAll(PDO::FETCH_ASSOC);
             <div class="container-icon">
                 <label class="uploadlabel" for="icon" id="uploadLabel">Uploader icon du PEGI</label>
                 <input type="file" id="icon" name="pegi_icon" class="icon" accept="image/*" required>
-                <img id="previewImage" src="#" alt="Aperçu de l'image" style="max-width: 100%; display: none;">
+                <img id="previewImage" src="#" alt="Aperçu de l'image" style="max-width: 100%; max-height: 400px; display: none;">
                 <button type="button" id="deleteImageButton" style="display: none;">Supprimer</button>
             </div>
             <button type="submit" class="send">Envoyer</button>
@@ -134,17 +138,3 @@ $pegis = $query->fetchAll(PDO::FETCH_ASSOC);
 <script src="./js/admin.js"></script>
 
 </html>
-
-
-
-
-<!-- TO DO LIST
- 
-- CRUD JEUX
-- MESSAGERIE
-
-
-- Modification des images des étoiles favoris
-- Mettre tous les images en webp
-
--->

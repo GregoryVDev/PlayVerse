@@ -3,7 +3,7 @@ session_start();
 ?>
 
 <main>
-    <? include "./template/navbar.php" ?>
+    <?php include "./template/navbar.php" ?>
     <section class="illustration-favoris"></section>
     <section class="favoris">
         <h1>Mes favoris</h1>
@@ -70,4 +70,4 @@ session_start();
     </section>
 </main>
 <script src="./js/pagination.js"></script>
-<? include "./template/footer.php" ?>
+<?php include "./template/footer.php" ?>
