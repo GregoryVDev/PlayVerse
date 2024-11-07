@@ -20,7 +20,6 @@ $reviews = $sql->fetchAll(PDO::FETCH_ASSOC);
             <?php foreach ($reviews as $review) { ?>
 
                 <article class="review">
-
                     <figure>
                         <img src="<?= htmlspecialchars($review["image1"]); ?>" alt="<?= $review["review_title"] ?>">
                         <figcaption>
@@ -30,9 +29,7 @@ $reviews = $sql->fetchAll(PDO::FETCH_ASSOC);
                             </a>
                         </figcaption>
                     </figure>
-
                 </article>
-
             <?php } ?>
         </div>
     </section>
