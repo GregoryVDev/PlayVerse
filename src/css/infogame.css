@@ -222,11 +222,11 @@ body {
 
 /* commentaire et autre */
 
-section {
+.infogame-bg-color {
   background-color: #22213b;
 }
 
-h3 {
+.infogame-h3 {
   text-align: center;
   padding-top: 5%;
   margin-bottom: 5%;
@@ -251,7 +251,7 @@ h3 {
   margin-bottom: 2%;
 }
 
-h4 {
+.infogame-h4 {
   text-align: center;
   margin: 5% 0%;
   font-size: clamp(
@@ -278,15 +278,18 @@ h4 {
 }
 
 .form-inline input[type="text"] {
-  background-color: #201f44;
-  color: white;
+  background-color: var(--colorSecondary);
+  color: var(--colorPara);
   border: none;
   padding: 10px;
   border-radius: 10px;
+  font-family: var(--NunitoRegular);
   width: 55%;
 }
 .btn {
-  background: #3a3d63;
+  background: var(--colorButton);
+  color: var(--colorPara);
+  font-family: var(--NunitoRegular);
   border: none;
   padding: 1%;
   border-radius: 10px;
@@ -308,7 +311,7 @@ h4 {
 
 /* nos dernier jeu ajouter  */
 
-h5 {
+.infogame-h5 {
   text-align: center;
   margin: 5% 0%;
   font-size: clamp(
@@ -456,6 +459,11 @@ h5 {
 
   .btn {
     width: 120px;
+  }
+
+  .infogame-connexion {
+    width: 75%;
+    margin: auto;
   }
   /* dernier jeu ajouter */
 
