@@ -155,7 +155,7 @@ body {
     width: 50px;
 }
 
-h2 {
+.infogame-h2 {
     color: var(--colorTitle);
     font-size: clamp(
         var(--font-size-h1-min),

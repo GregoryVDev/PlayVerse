@@ -133,7 +133,7 @@ try {
 
     <!-- plateforme game -->
     <div class="container-game-plateforme">
-        <h2>Disponible sur</h2>
+        <h2 class="infogame-h2">Disponible sur</h2>
         <div class="container-plateforme">
             <img class="icon-plateforme" src="../img/logos/icon_pc.png" alt="icon pc">
             <img class="icon-plateforme" src="../img/logos/icon_playstation.png" alt="icon playstation">
