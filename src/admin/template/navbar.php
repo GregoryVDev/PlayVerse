@@ -46,7 +46,7 @@
                                         <li><a class="nav-link" href="plateformes.php">Gestions des plateformes</a></li>
                                         <li><a class="nav-link" href="pegis.php">Gestions des PEGIS</a></li>
                                         <li><a class="nav-link" href="categories.php">Gestions des catégories</a></li>
-                                        <li><a class="nav-link" href="#">Gestions des reviews</a></li>
+                                        <li><a class="nav-link" href="addreviews.php">Gestions des reviews</a></li>
                                         <li>
                                         <li><a class="nav-link" href="#">Gestions des utilisateurs</a></li>
                                         <li><a class="nav-link" href="#">Gestions des administrateurs</a></li>

@@ -59,10 +59,12 @@ if (!isset($_SESSION["admin_gamer"])) {
             </article>
             <article class="gestions">
                 <figure>
-                    <img src="./img/review.jpg" alt="Gestions des reviews">
-                    <figcaption>
-                        <h4>Gestions des reviews</h4>
-                    </figcaption>
+                    <a href="addreviews.php">
+                        <img src="./img/review.jpg" alt="Gestions des reviews">
+                        <figcaption>
+                            <h4>Gestions des reviews</h4>
+                        </figcaption>
+                    </a>
                 </figure>
             </article>
             <article class="gestions">
