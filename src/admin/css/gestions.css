@@ -165,6 +165,13 @@ input[type="checkbox"] {
   border-radius: 10px;
 }
 
+/* reviews style */
+
+.addreviews-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 /* TABLET */
 
 @media all and (min-width: 768px) and (max-width: 1023px) {
@@ -180,6 +187,20 @@ input[type="checkbox"] {
 
   .formulaire h4 {
     font-size: var(--fsize4);
+  }
+
+  /* addreviews */
+  .addreviews-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 2%;
+    justify-content: center;
+    align-items: normal;
+  }
+  .addreviews-container-points {
+    display: flex;
+    gap: 1%;
   }
 }
 
@@ -399,7 +420,7 @@ form .container-global .uploadlabel {
 
   .container-left {
     flex-direction: column;
-    gap: 27px;
+    gap: 25px;
     align-items: flex-start;
   }
 
@@ -409,5 +430,14 @@ form .container-global .uploadlabel {
 
   .formulaire-games .form-jeux form .send {
     margin-top: 15px;
+  }
+
+  /* addreviews */
+
+  .addreviews-container {
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    gap: 2%;
   }
 }

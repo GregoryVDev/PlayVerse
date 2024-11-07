@@ -1,3 +1,61 @@
+/* style ajout de commentaire */
+
+.alert-success {
+  color: var(--colorTitle);
+  margin-bottom: 10px;
+  font-size: clamp(
+    var(--font-size-h2-min),
+    var(--font-size-h2-preferred),
+    var(--font-size-h2-max)
+  );
+  font-family: var(--audioRegular);
+  text-align: center;
+}
+
+.alert-danger {
+  color: #721c24;
+  margin-bottom: 10px;
+  font-size: clamp(
+    var(--font-size-h2-min),
+    var(--font-size-h2-preferred),
+    var(--font-size-h2-max)
+  );
+  font-family: var(--audioRegular);
+  text-align: center;
+}
+
+/* page tout les commentaires */
+.h1-infogamecommentaire {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.infogame-commentaire-btn-retour,
+.more-commentary-btn {
+  border-radius: 20px;
+  padding: 10px;
+  font-size: clamp(
+    var(--font-size-p-min),
+    var(--font-size-p-preferred),
+    var(--font-size-p-max)
+  );
+  font-family: var(--NunitoRegular);
+  text-align: center;
+  background-color: var(--colorSecondary);
+  color: var(--colorPara);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.infogame-commentaire-btn-retour {
+  width: 150px;
+}
+.more-commentary-btn {
+  width: 200px;
+}
+/* page infogame */
+
 .infogame {
   position: relative;
   background-color: var(--colorMain);
@@ -97,7 +155,7 @@ body {
   width: 50px;
 }
 
-h2 {
+.infogame-h2 {
   color: var(--colorTitle);
   font-size: clamp(
     var(--font-size-h1-min),
@@ -163,6 +221,10 @@ h2 {
 }
 
 /* commentaire et autre */
+
+section {
+  background-color: #22213b;
+}
 
 h3 {
   text-align: center;
@@ -230,6 +292,18 @@ h4 {
   border-radius: 10px;
   width: 85px;
   cursor: pointer;
+}
+.info-game-connexion-btn {
+  background: var(--colorButton);
+  border: none;
+  color: var(--colorPara);
+  padding: 5px;
+  border-radius: 10px;
+  width: 150px;
+  cursor: pointer;
+  margin: auto;
+  display: flex;
+  justify-content: center;
 }
 
 /* nos dernier jeu ajouter  */

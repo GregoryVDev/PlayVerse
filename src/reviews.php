@@ -18,17 +18,21 @@ $reviews = $sql->fetchAll(PDO::FETCH_ASSOC);
         <h1>Les dernières reviews</h1>
         <div class="container-reviews">
             <?php foreach ($reviews as $review) { ?>
+
                 <article class="review">
+
                     <figure>
-                        <img src="./img/images/<?= htmlspecialchars($review["image1"]); ?>" alt="<?= $review["review_title"] ?>">
+                        <img src="<?= htmlspecialchars($review["image1"]); ?>" alt="<?= $review["review_title"] ?>">
                         <figcaption>
-                            <a href="./review.php?id=<?= $review["review_id"] ?>">
+                            <a class="img-reviews-articles" href="./review.php?id=<?= $review["review_id"] ?>">
                                 <h2><?= $review["review_title"] ?></h2>
                                 <p><?= substr($review["paragraph1"], 0, 250) . "..."; ?></p>
                             </a>
                         </figcaption>
                     </figure>
+
                 </article>
+
             <?php } ?>
         </div>
     </section>
