@@ -1,6 +1,11 @@
 <?php
 
 session_start();
+
+if (!isset($_SESSION["admin_gamer"])) {
+    header("Location: connexionadmin.php");
+}
+
 require_once("../connect.php");
 
 if (isset($_SESSION["admin_gamer"])) {

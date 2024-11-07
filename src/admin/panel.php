@@ -3,13 +3,13 @@
 session_start();
 
 if (!isset($_SESSION["admin_gamer"])) {
-    header("Location: ../index.php");
+    header("Location: connexionadmin.php");
 }
 
 ?>
 
 
-<? include "./template/navbar.php" ?>
+<?php include "./template/navbar.php" ?>
 <main>
     <section class="page">
         <h1>Heureux de te revoir <span class="red"><?= $_SESSION["admin_gamer"]["pseudo"]; ?></span></h1>
@@ -19,34 +19,42 @@ if (!isset($_SESSION["admin_gamer"])) {
         <div class="container-gestions">
             <article class="gestions">
                 <figure>
-                    <img src="./img/article.jpg" alt="Gestions des jeux">
-                    <figcaption>
-                        <h4>Gestions des jeux</h4>
-                    </figcaption>
+                    <a href="jeux.php">
+                        <img src="./img/article.jpg" alt="Gestions des jeux">
+                        <figcaption>
+                            <h4>Gestions des jeux</h4>
+                        </figcaption>
+                    </a>
                 </figure>
             </article>
             <article class="gestions">
                 <figure>
-                    <img src="./img/console.jpg" alt="Gestions des plateformes">
-                    <figcaption>
-                        <h4>Gestions des plateformes</h4>
-                    </figcaption>
+                    <a href="plateformes.php">
+                        <img src="./img/console.jpg" alt="Gestions des plateformes">
+                        <figcaption>
+                            <h4>Gestions des plateformes</h4>
+                        </figcaption>
+                    </a>
                 </figure>
             </article>
             <article class="gestions">
                 <figure>
-                    <img src="./img/utilisateurs.jpg" alt="Gestions des utilisateurs">
-                    <figcaption>
-                        <h4>Gestions des utilisateurs</h4>
-                    </figcaption>
+                    <a href="userslist.php">
+                        <img src="./img/utilisateurs.jpg" alt="Gestions des utilisateurs">
+                        <figcaption>
+                            <h4>Gestions des utilisateurs</h4>
+                        </figcaption>
+                    </a>
                 </figure>
             </article>
             <article class="gestions">
                 <figure>
-                    <img src="./img/admin.jpg" alt="Gestions des administrateurs">
-                    <figcaption>
-                        <h4>Gestions des administrateurs</h4>
-                    </figcaption>
+                    <a href="adminslist.php">
+                        <img src="./img/admin.jpg" alt="Gestions des administrateurs">
+                        <figcaption>
+                            <h4>Gestions des administrateurs</h4>
+                        </figcaption>
+                    </a>
                 </figure>
             </article>
             <article class="gestions">

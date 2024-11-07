@@ -2,6 +2,10 @@
 
 session_start();
 
+if (!isset($_SESSION["admin_gamer"])) {
+    header("Location: connexionadmin.php");
+}
+
 require_once("../connect.php");
 
 if (isset($_SESSION["admin_gamer"])) {
@@ -83,7 +87,7 @@ if (isset($_SESSION["admin_gamer"])) {
 
             // Vérifier si une catégorie a été trouvée
             if (!$edit) {
-                header("Location: plateformes.php");
+                header("Location: pegis.php");
                 exit();
             }
         }
@@ -99,7 +103,7 @@ if (!isset($_GET["id"])) {
 }
 
 ?>
-<? include "./template/navbar.php" ?>
+<?php include "./template/navbar.php" ?>
 <main>
     <section class="page">
         <h1>Modification des PEGIS</h1>

@@ -1,0 +1,8 @@
+.file-imgs[type="file"] {
+    display: none;
+}
+
+.disp-imgs {
+    width: 90px;
+    height: 90px;
+}

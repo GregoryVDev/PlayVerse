@@ -2,6 +2,10 @@
 
 session_start();
 
+if (!isset($_SESSION["admin_gamer"])) {
+    header("Location: connexionadmin.php");
+}
+
 require_once("../connect.php");
 
 if (isset($_SESSION["admin_gamer"])) {
@@ -99,7 +103,7 @@ if (!isset($_GET["id"])) {
 }
 
 ?>
-<? include "./template/navbar.php" ?>
+<?php include "./template/navbar.php" ?>
 <main>
     <section class="page">
         <h1>Modification des plateformes</h1>
