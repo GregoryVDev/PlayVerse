@@ -103,9 +103,9 @@ body {
     margin-bottom: 5%;
     margin-top: 5%;
     font-size: clamp(
-        var(--font-size-h1-min),
-        var(--font-size-h1-preferred),
-        var(--font-size-h1-max)
+        var(--font-size-h2-min),
+        var(--font-size-h2-preferred),
+        var(--font-size-h2-max)
     );
 }
 
@@ -136,14 +136,95 @@ body {
     color: var(--colorPara);
 }
 
-.index-container-game-review {
-    width: 80%;
-    margin: auto;
+.title-reviews-index {
+    font-size: 1.5rem;
+}
+.reviews-container-review-index {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 20px;
 }
 
-.index-review-img {
-    margin-bottom: 20px;
+.large-review,
+.small-review {
+    width: 100%;
 }
+
+.large-review img,
+.small-review img {
+    height: auto;
+    width: 100%;
+}
+
+.small-review {
+    height: auto;
+}
+
+.large-review .content,
+.small-review .content {
+    padding: 7px;
+    background: linear-gradient(
+        0deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgba(34, 33, 59, 0.9052871148459384) 85%,
+        rgba(34, 33, 59, 0.6896008403361344) 100%
+    );
+}
+
+.large-review .content h3,
+.small-review .content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.large-review .content .button-review-index,
+.small-review .content .button-review-index {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    width: 60px;
+    margin: auto;
+}
+/* Effet de flou sur le haut du gradient */
+.large-review .content::before,
+.small-review .content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: #22213b;
+    filter: blur(5px);
+    z-index: 1;
+}
+
+.large-review .content h3,
+.small-review .content h3 {
+    font-size: 18;
+    margin-bottom: 10px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.large-review .content .button-review-index,
+.small-review .content .button-review-index {
+    background-color: #444261;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    width: 100px;
+}
+
 /* formulaire de contact */
 
 .index-title-h5 {
@@ -366,42 +447,57 @@ body {
 
     /* review */
 
-    .index-container-game-review {
-        display: flex;
-        flex-direction: column;
-        width: 80%;
-        gap: 10px;
+    .reviews-container-review-index {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 20px;
+        width: 95%;
         margin: auto;
-        margin-top: 5%;
-        padding-bottom: 5%;
     }
 
-    .index-container-game-review img {
+    .large-review {
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .small-reviews {
+        display: grid;
+        gap: 20px;
+    }
+
+    .small-review {
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .large-review img,
+    .small-review img {
         width: 100%;
-        display: block;
+        height: 100%;
+        object-fit: cover;
     }
 
-    .index-container-game-review {
-        flex-direction: row;
-    }
-
-    .index-image-large {
-        width: 50%;
-    }
-
-    .index-right-images {
+    .large-review .content,
+    .small-review .content {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background: linear-gradient(
+            0deg,
+            rgba(2, 0, 36, 1) 0%,
+            rgba(34, 33, 59, 0.9052871148459384) 85%,
+            rgba(34, 33, 59, 1) 100%
+        );
+        padding: 10px;
         display: flex;
         flex-direction: column;
-        gap: 2%;
-        width: 48%;
-    }
-
-    .index-image-small {
-        flex: 1;
-    }
-
-    .index-review-img {
-        margin-bottom: 0px;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        z-index: 2;
     }
 
     /* form */
@@ -475,7 +571,7 @@ body {
         }
     }
 
-    /* reviews */
+    /* review */
 
     .container-title-review {
         display: flex;
@@ -491,44 +587,57 @@ body {
         width: 200px;
     }
 
-    /* review */
-
-    .index-container-game-review {
-        display: flex;
-        flex-direction: column;
-        width: 80%;
-        gap: 10px;
+    .reviews-container-review-index {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 20px;
+        width: 90%;
         margin: auto;
-        margin-top: 5%;
-        padding-bottom: 5%;
     }
 
-    .index-container-game-review img {
+    .large-review {
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .small-reviews {
+        display: grid;
+        gap: 20px;
+    }
+
+    .small-review {
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .large-review img,
+    .small-review img {
         width: 100%;
-        display: block;
+        height: 100%;
+        object-fit: cover;
     }
 
-    .index-container-game-review {
-        flex-direction: row;
-    }
-
-    .index-image-large {
-        width: 50%;
-    }
-
-    .index-right-images {
+    .large-review .content,
+    .small-review .content {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background: linear-gradient(
+            0deg,
+            rgba(2, 0, 36, 1) 0%,
+            rgba(34, 33, 59, 0.9052871148459384) 85%,
+            rgba(34, 33, 59, 1) 100%
+        );
+        padding: 10px;
         display: flex;
         flex-direction: column;
-        gap: 2%;
-        width: 48%;
-    }
-
-    .index-image-small {
-        flex: 1;
-    }
-
-    .index-review-img {
-        margin-bottom: 0px;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        z-index: 2;
     }
 
     /* form */

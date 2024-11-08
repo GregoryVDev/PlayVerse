@@ -87,18 +87,44 @@ session_start();
             <img src="../img/images/group3.png" alt="regroupement de personnages de jeux vidéo">
         </div>
 
-        <div class="container-title-review">
-            <h4 class="index-title-h4">Nos dernières reviews</h4>
-            <a class="btn-review" href="">Toutes les reviews</a>
-        </div>
-
-        <div class="index-container-game-review">
-            <img class="index-review-img" src="../img/exemple/bmw2.jpg" alt="game background 1"
-                class="index-image-large">
-            <div class="index-right-images">
-                <img class="index-image-small index-review-img" src="../img/exemple/bmw2.jpg" alt="game background 2">
-                <img class="index-image-small index-review-img" src="../img/exemple/bmw2.jpg" alt="game background 3">
+        <div>
+            <div class="container-title-review">
+                <h4 class="index-title-h4">Nos dernières reviews</h4>
+                <a class="btn-review" href="reviews.php">Toutes les reviews</a>
             </div>
+
+
+            <div class="reviews-container-review-index">
+                <!-- Large Review -->
+                <div class="large-review">
+                    <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1601580/ss_584751cfb3cc04ef4da075382e879f448d7bfedc.1920x1080.jpg?t=1689763082"
+                        alt="Frostpunk 2">
+                    <div class="content">
+                        <h3>Black Myth Wukong</h3>
+                        <a href="" class="button-review-index">Voir</a>
+                    </div>
+                </div>
+                <!-- Small Reviews -->
+                <div class="small-reviews">
+                    <div class="small-review">
+                        <img src="https://cdn.akamai.steamstatic.com/steam/apps/2358720/capsule_616x353.jpg?t=1710421488"
+                            alt="Black Myth Wukong">
+                        <div class="content">
+                            <h3>Black Myth Wukong</h3>
+                            <a href="" class="button-review-index">Voir</a>
+                        </div>
+                    </div>
+                    <div class="small-review">
+                        <img src="https://image.api.playstation.com/vulcan/img/rnd/202111/3019/Btg9YJMDRcWgsbD5E6rOcdT5.jpg"
+                            alt="The Sims 4">
+                        <div class="content">
+                            <h3>The Sims 4</h3>
+                            <a href="" class="button-review-index">Voir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </section>
