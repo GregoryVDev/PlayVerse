@@ -62,19 +62,28 @@ session_start();
 
         <!-- a remplacer par les 4 dernier jeux ajouter -->
         <div class="container-jeux-du-moment">
-            <a class="jeux-du-moment-lien" href="#">
-                <img src="../img/exemple/bmw.png" alt="exemple1">
-            </a>
-            <a class="jeux-du-moment-lien" href="#">
-                <img src="../img/exemple/frostpunk.png" alt="exemple2">
-            </a>
-            <a class="jeux-du-moment-lien" href="#">
-                <img src="../img/exemple/sims.png" alt="exemple3">
-            </a>
-            <a class="jeux-du-moment-lien" href="#">
-                <img src="../img/exemple/zelda.png" alt="exemple4">
-            </a>
+            <div class="jeux-du-moment-hover">
+                <a class="jeux-du-moment-lien" href="#">
+                    <img src="../img/exemple/bmw.png" alt="exemple1" />
+                </a>
+            </div>
+            <div class="jeux-du-moment-hover">
+                <a class="jeux-du-moment-lien" href="#">
+                    <img src="../img/exemple/frostpunk.png" alt="exemple2" />
+                </a>
+            </div>
+            <div class="jeux-du-moment-hover">
+                <a class="jeux-du-moment-lien" href="#">
+                    <img src="../img/exemple/sims.png" alt="exemple3" />
+                </a>
+            </div>
+            <div class="jeux-du-moment-hover">
+                <a class="jeux-du-moment-lien" href="#">
+                    <img src="../img/exemple/zelda.png" alt="exemple4" />
+                </a>
+            </div>
         </div>
+
 
 
     </div>
