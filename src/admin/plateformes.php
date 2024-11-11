@@ -139,19 +139,3 @@ $plateformes = $query->fetchAll(PDO::FETCH_ASSOC);
 <script src="./js/admin.js"></script>
 
 </html>
-
-
-
-
-<!-- TO DO LIST
- 
-- CRUD Catégorie
-- CRUD PLATEFORME
-- CRUD JEUX
-- MESSAGERIE
-
-
-- Modification des images des étoiles favoris
-- Mettre tous les images en webp
-
--->

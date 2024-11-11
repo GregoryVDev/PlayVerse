@@ -13,12 +13,12 @@ if (isset($_SESSION["admin_gamer"])) {
     if (isset($_GET["id"]) && !empty($_GET["id"])) {
         $id = strip_tags($_GET["id"]);
 
-        $sql_delete = "DELETE FROM category WHERE category_id=:category_id";
+        $sql_delete = "DELETE FROM users WHERE user_id=:user_id";
         $query = $db->prepare($sql_delete);
-        $query->bindValue(":category_id", $id);
+        $query->bindValue(":user_id", $id);
         $query->execute();
 
-        header("Location: categories.php");
+        header("Location: userslist.php");
         exit();
     }
 }

@@ -2,6 +2,31 @@
 
 session_start();
 
+require_once("./connect.php");
+
+$sql = "SELECT * FROM games";
+
+$query = $db->prepare($sql);
+$query->execute();
+
+$games = $query->fetchAll(PDO::FETCH_ASSOC);
+
+// Requête pour récupérer le dernier id mis
+$sql_last_review = "SELECT * FROM reviews ORDER BY review_id DESC LIMIT 1";
+$query_last = $db->prepare($sql_last_review);
+$query_last->execute();
+$last_review = $query_last->fetch(PDO::FETCH_ASSOC);
+
+
+// Requête pour récupérer l'id sans le dernier id, on le limite à 2 pour afficher que 2
+$sql_review = "SELECT * FROM reviews WHERE review_id < :last_id ORDER BY review_id DESC LIMIT 2";
+
+$query = $db->prepare($sql_review);
+$query->bindValue("last_id", $last_review["review_id"]);
+
+$query->execute();
+$reviews = $query->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <?php include "./template/navbar.php" ?>
@@ -12,48 +37,14 @@ session_start();
     </div>
     <div class="carousel-container">
         <div class="carousel" id="carousel">
-            <div class="card-carrousel">
-                <span class="favorite" onclick="toggleFavorite(this)">☆</span>
-                <a href="">
-                    <img src="../img/exemple/elden_ring.jpg" alt="elden ring">
-                </a>
-            </div>
-            <div class="card-carrousel">
-                <span class="favorite" onclick="toggleFavorite(this)">☆</span>
-                <a href="">
-                    <img src="../img/exemple/halo.jpg" alt="halo">
-                </a>
-            </div>
-            <div class="card-carrousel">
-                <span class="favorite" onclick="toggleFavorite(this)">☆</span>
-                <a href="">
-                    <img src="../img/exemple/hollow_knight.png" alt="hollow knight">
-                </a>
-            </div>
-            <div class="card-carrousel">
-                <span class="favorite" onclick="toggleFavorite(this)">☆</span>
-                <a href="">
-                    <img src="../img/exemple/lol.jpg" alt="league of legend">
-                </a>
-            </div>
-            <div class="card-carrousel">
-                <span class="favorite" onclick="toggleFavorite(this)">☆</span>
-                <a href="">
-                    <img src="../img/exemple/overwatch.png" alt="overwatch">
-                </a>
-            </div>
-            <div class="card-carrousel">
-                <span class="favorite" onclick="toggleFavorite(this)">☆</span>
-                <a href="">
-                    <img src="../img/exemple/mortal_kombat.png" alt="">
-                </a>
-            </div>
-            <div class="card-carrousel">
-                <span class="favorite" onclick="toggleFavorite(this)">☆</span>
-                <a href="">
-                    <img src="../img/exemple/sot.png" alt="sea of thieves">
-                </a>
-            </div>
+            <?php foreach ($games as $game) { ?>
+                <div class="card-carrousel">
+                    <span class="favorite" onclick="toggleFavorite(this)">☆</span>
+                    <a href="./infogame.php?id=<?= $game["game_id"] ?>">
+                        <img src="./admin/<?= htmlspecialchars($game['jacket']); ?>" alt="<?= $game["game_title"] ?>">
+                    </a>
+                </div>
+            <?php } ?>
         </div>
     </div>
 
@@ -92,24 +83,43 @@ session_start();
             <a class="btn-review" href="">Toutes les reviews</a>
         </div>
 
-        <div class="index-container-game-review">
-            <img class="index-review-img" src="../img/exemple/bmw2.jpg" alt="game background 1"
-                class="index-image-large">
-            <div class="index-right-images">
-                <img class="index-image-small index-review-img" src="../img/exemple/bmw2.jpg" alt="game background 2">
-                <img class="index-image-small index-review-img" src="../img/exemple/bmw2.jpg" alt="game background 3">
+        <div class="reviews-container-review-index">
+            <!-- Large Review -->
+            <div class="large-review">
+                <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1601580/ss_584751cfb3cc04ef4da075382e879f448d7bfedc.1920x1080.jpg?t=1689763082"
+                    alt="Frostpunk 2">
+                <div class="content">
+                    <h3>Black Myth Wukong</h3>
+                    <a href="" class="button-review-index">Voir</a>
+                </div>
+            </div>
+            <!-- Small Reviews -->
+            <div class="small-reviews">
+                <div class="small-review">
+                    <img src="https://cdn.akamai.steamstatic.com/steam/apps/2358720/capsule_616x353.jpg?t=1710421488"
+                        alt="Black Myth Wukong">
+                    <div class="content">
+                        <h3>Black Myth Wukong</h3>
+                        <a href="" class="button-review-index">Voir</a>
+                    </div>
+                </div>
+                <div class="small-review">
+                    <img src="https://image.api.playstation.com/vulcan/img/rnd/202111/3019/Btg9YJMDRcWgsbD5E6rOcdT5.jpg"
+                        alt="The Sims 4">
+                    <div class="content">
+                        <h3>The Sims 4</h3>
+                        <a href="" class="button-review-index">Voir</a>
+                    </div>
+                </div>
             </div>
         </div>
-
     </section>
-
-
     <section class="index-bg-color">
         <div class="form-contact">
             <h5 class="index-title-h5">Nous envoyer un message</h5>
 
 
-            <form class="index-form-container" action="#" method="post">
+            <form class="index-form-container" action="./admin/messages.php" method="post">
                 <!-- Nom et Prénom -->
                 <div class="input-group">
                     <div class="input-wrapper">

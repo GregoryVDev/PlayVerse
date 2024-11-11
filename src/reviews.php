@@ -4,7 +4,7 @@ session_start();
 require_once("./connect.php");
 
 
-$sql = $db->prepare("SELECT * FROM reviews ORDER BY review_id DESC");
+$sql = $db->prepare("SELECT * FROM reviews ORDER BY review_id ASC");
 
 $sql->execute();
 

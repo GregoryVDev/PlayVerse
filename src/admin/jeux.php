@@ -129,7 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $sql_add_plateforme = "INSERT INTO gamesplateformes (game_id, plateforme_id) VALUES (:game_id, :plateforme_id)";
             $query = $db->prepare($sql_add_plateforme);
 
-            // Parcourt chaque plateforme cochée et l'ajoute à la table de liaison
+            // Parcourt chaque plateforme cochée et l'ajoute à la table de liaison ou Parcourt le tableau plateformeIds et chaque ligne du tableau on récupère dans le jeu créé l'id coché
             foreach ($_POST['plateformeIds'] as $plateforme_id) {
                 $query->execute([':game_id' => $game_id, ':plateforme_id' => (int) $plateforme_id]);
             }
