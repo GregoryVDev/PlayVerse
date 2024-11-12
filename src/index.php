@@ -53,19 +53,28 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
 
         <!-- a remplacer par les 4 dernier jeux ajouter -->
         <div class="container-jeux-du-moment">
-            <a class="jeux-du-moment-lien" href="#">
-                <img src="../img/exemple/bmw.png" alt="exemple1">
-            </a>
-            <a class="jeux-du-moment-lien" href="#">
-                <img src="../img/exemple/frostpunk.png" alt="exemple2">
-            </a>
-            <a class="jeux-du-moment-lien" href="#">
-                <img src="../img/exemple/sims.png" alt="exemple3">
-            </a>
-            <a class="jeux-du-moment-lien" href="#">
-                <img src="../img/exemple/zelda.png" alt="exemple4">
-            </a>
+            <div class="jeux-du-moment-hover">
+                <a class="jeux-du-moment-lien" href="#">
+                    <img src="../img/exemple/bmw.png" alt="exemple1" />
+                </a>
+            </div>
+            <div class="jeux-du-moment-hover">
+                <a class="jeux-du-moment-lien" href="#">
+                    <img src="../img/exemple/frostpunk.png" alt="exemple2" />
+                </a>
+            </div>
+            <div class="jeux-du-moment-hover">
+                <a class="jeux-du-moment-lien" href="#">
+                    <img src="../img/exemple/sims.png" alt="exemple3" />
+                </a>
+            </div>
+            <div class="jeux-du-moment-hover">
+                <a class="jeux-du-moment-lien" href="#">
+                    <img src="../img/exemple/zelda.png" alt="exemple4" />
+                </a>
+            </div>
         </div>
+
 
 
     </div>
@@ -78,24 +87,26 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
             <img src="../img/images/group3.png" alt="regroupement de personnages de jeux vidéo">
         </div>
 
-        <div class="container-title-review">
-            <h4 class="index-title-h4">Nos dernières reviews</h4>
-            <a class="btn-review" href="">Toutes les reviews</a>
-        </div>
-
-        <div class="reviews-container-review-index">
-            <div class="index-container-game-review">
-                <?php if ($last_review) { ?>
-                    <img class="index-review-img" src="../<?= $last_review['image1'] ?>" alt="<?= $last_review["review_title"] ?>" class="index-image-large">
-                <?php } ?>
-
-                <div class="index-right-images">
-                    <?php foreach ($reviews as $review) { ?>
-                        <img class="index-image-small index-review-img" src="../<?= $review['image1'] ?>" alt="<?= $review["review_title"] ?>">
-                    <?php } ?>
-                </div>
+        <div>
+            <div class="container-title-review">
+                <h4 class="index-title-h4">Nos dernières reviews</h4>
+                <a class="btn-review" href="reviews.php">Toutes les reviews</a>
             </div>
-        </div>
+
+            <div class="reviews-container-review-index">
+                <div class="index-container-game-review">
+                    <?php if ($last_review) { ?>
+                        <img class="index-review-img" src="../<?= $last_review['image1'] ?>" alt="<?= $last_review["review_title"] ?>" class="index-image-large">
+                    <?php } ?>
+
+                    <div class="index-right-images">
+                        <?php foreach ($reviews as $review) { ?>
+                            <img class="index-image-small index-review-img" src="../<?= $review['image1'] ?>" alt="<?= $review["review_title"] ?>">
+                        <?php } ?>
+                    </div>
+                </div>
+
+            </div>
     </section>
     <section class="index-bg-color">
         <div class="form-contact">

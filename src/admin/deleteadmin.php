@@ -9,16 +9,16 @@ if (isset($_SESSION["admin_gamer"])) {
         $id = (int)strip_tags($_GET["id"]);
 
         // Suppression de l'entrée dans la table commentary
-        $sql_delete_commentary = "DELETE FROM commentary WHERE commentary_id = :commentary_id";
+        $sql_delete_commentary = "DELETE FROM admins WHERE admin_id = :admin_id";
         $query_delete = $db->prepare($sql_delete_commentary);
 
         // Exécuter la requête de suppression
-        if ($query_delete->execute(['commentary_id' => $id])) {
+        if ($query_delete->execute(['admin_id' => $id])) {
             // Redirection en cas de succès
-            header("Location: commentary.php?status=success");
+            header("Location: adminslist.php?status=success");
         } else {
             // Gestion des erreurs : rediriger avec un message d'erreur en cas d'échec
-            header("Location: commentary.php?status=error");
+            header("Location: adminslist.php?status=error");
         }
         exit;
     }
