@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../css/games.css">
     <link rel="stylesheet" href="../css/infogame.css">
     <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/privacy.css">
     <title>PlayVerse</title>
 </head>
 

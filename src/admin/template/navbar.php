@@ -1,3 +1,22 @@
+<?php
+
+if (!isset($_SESSION["admin_gamer"])) {
+    header("Location: connexionadmin.php");
+}
+
+if (!isset($db)) {
+    require("./../connect.php");
+}
+
+$sql = "SELECT * FROM message ORDER BY message_id DESC";
+
+$query = $db->prepare($sql);
+$query->execute();
+$messages = $query->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -59,7 +78,17 @@
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark" style="padding-left: 10px">
                                         <li><a class="nav-link" href="#">Modifier son profil</a></li>
-                                        <li><a class="nav-link" href="messagerie.php">Messagerie</a></li>
+                                        <?php foreach ($messages as $message) { ?>
+                                            <?php if ($message["lu"] === "unread") { ?>
+                                                <style>
+                                                    .unread-message {
+                                                        color: var(--colorBackOffice);
+                                                    }
+                                                </style>
+                                                <li><a class="nav-link unread-message" href="messagerie.php">Messagerie</a></li>
+                                            <?php
+                                            }  ?>
+                                        <?php } ?>
                                         <li><a class="nav-link" href="./../deconnect.php">Se déconnecter</a></li>
                                         <hr class="dropdown-divider">
                                     </ul>

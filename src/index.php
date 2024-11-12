@@ -92,21 +92,33 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
                 <h4 class="index-title-h4">Nos dernières reviews</h4>
                 <a class="btn-review" href="reviews.php">Toutes les reviews</a>
             </div>
-
             <div class="reviews-container-review-index">
-                <div class="index-container-game-review">
-                    <?php if ($last_review) { ?>
-                        <img class="index-review-img" src="../<?= $last_review['image1'] ?>" alt="<?= $last_review["review_title"] ?>" class="index-image-large">
-                    <?php } ?>
-
-                    <div class="index-right-images">
-                        <?php foreach ($reviews as $review) { ?>
-                            <img class="index-image-small index-review-img" src="../<?= $review['image1'] ?>" alt="<?= $review["review_title"] ?>">
-                        <?php } ?>
+                <!-- Large Review -->
+                <?php if ($last_review) { ?>
+                    <div class="large-review">
+                        <img src="../<?= $last_review['image1'] ?>"
+                            alt="<?= $last_review["review_title"] ?>">
+                        <div class="content">
+                            <h3><?= $last_review["review_title"] ?></h3>
+                            <a href="review.php?id=<?= $last_review["review_id"] ?>" class="button-review-index">Voir</a>
+                        </div>
                     </div>
-                </div>
+                <?php } ?>
 
+                <!-- Small Reviews -->
+                <div class="small-reviews">
+                    <?php foreach ($reviews as $review) { ?>
+                        <div class="small-review">
+                            <img src="../<?= $review['image1'] ?>" alt="<?= $review["review_title"] ?>">
+                            <div class="content">
+                                <h3><?= $review["review_title"] ?></h3>
+                                <a href="review.php?id=<?= $review["review_id"] ?>" class="button-review-index">Voir</a>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
             </div>
+        </div>
     </section>
     <section class="index-bg-color">
         <div class="form-contact">

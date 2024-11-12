@@ -6,14 +6,6 @@ if (!isset($_SESSION["admin_gamer"])) {
     header("Location: connexionadmin.php");
 }
 
-require_once("../connect.php");
-
-$sql = "SELECT * FROM message";
-
-$query = $db->prepare($sql);
-$query->execute();
-$messages = $query->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
 
 <?php include "./template/navbar.php"; ?>

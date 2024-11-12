@@ -8,10 +8,10 @@ function validateEmail($email)
 
 // Vérifie si le formulaire est soumis et non vide
 if (!empty($_POST)) {
-    
+
     // Vérifie que tous les champs nécessaires sont présents et non vides
     if (isset($_POST["pseudo"], $_POST["email"], $_POST["pass"], $_POST["pass2"], $_POST["terms"]) && !empty($_POST["pseudo"]) && !empty($_POST["email"]) && !empty($_POST["pass"]) && !empty($_POST["pass2"]) && !empty($_POST["terms"])) {
-        
+
         // Nettoie le champ "pseudo" pour éviter l'injection HTML
         $pseudo = strip_tags($_POST["pseudo"]);
 
@@ -84,7 +84,7 @@ if (!empty($_POST)) {
             <div class="container-general">
                 <div class="container-politique">
                     <label for="checkbox" class="custom-checkbox">
-                        J'accepte <a href="#" class="politique">la politique de confidentialité</a></label>
+                        J'accepte <a href="../privacy.php" class="politique">la politique de confidentialité</a></label>
                     <input type="checkbox" id="checkbox" name="terms">
                 </div>
                 <div class="container-paragraph">

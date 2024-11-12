@@ -34,8 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $query->bindValue(":message", $message);
             $query->bindValue(":date_message", $date_message);
 
-            $query->execute();
-
             // Exécution de la requête et vérification du succès
             if ($query->execute()) {
                 echo "<script>alert('Message envoyé avec succès'); window.location.href='../index.php';</script>";
