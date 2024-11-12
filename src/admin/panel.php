@@ -69,10 +69,12 @@ if (!isset($_SESSION["admin_gamer"])) {
             </article>
             <article class="gestions">
                 <figure>
-                    <img src="./img/messagerie.jpg" alt="Messagerie">
-                    <figcaption>
-                        <h4>Messagerie</h4>
-                    </figcaption>
+                    <a href="messagerie.php">
+                        <img src="./img/messagerie.jpg" alt="Messagerie">
+                        <figcaption>
+                            <h4>Messagerie</h4>
+                        </figcaption>
+                    </a>
                 </figure>
             </article>
         </div>

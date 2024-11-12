@@ -21,7 +21,7 @@
 .gestion img {
   width: 250px;
   position: relative;
-  animation: moveToCenter 8s ease forwards; /* Animation plus lente avec une courbe de transition */
+  animation: moveToCenter 8s ease forwards; /* Animation plus lente et avec une légère transition */
 }
 
 @keyframes moveToCenter {

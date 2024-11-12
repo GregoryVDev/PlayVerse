@@ -1,0 +1,12 @@
+td img {
+  margin: auto;
+  cursor: pointer;
+}
+
+td .openmail {
+  cursor: pointer;
+}
+
+.openmail a {
+  color: var(--colorPara);
+}

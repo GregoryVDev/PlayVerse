@@ -222,7 +222,6 @@ header {
   opacity: 1; /* Pleine opacité */
   transform: translateY(0); /*Retourne à sa position d'origine */
   font-size: 0.9em;
-  background: var(--colorMain);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   padding: 0 10px;
@@ -279,6 +278,7 @@ header {
 
   .dropdown.active .dropdown-content {
     text-align: left;
+    background: var(--colorMain);
   }
 
   .dropdown-content a {
@@ -367,6 +367,7 @@ header {
 
   .dropdown.active .dropdown-content {
     display: flex !important; /* Affiche le menu */
+    background: var(--colorMain);
     flex-direction: column;
     opacity: 1; /* Pleine opacité */
     transform: translateY(0); /* Retourne à sa position d'origine */

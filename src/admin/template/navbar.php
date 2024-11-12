@@ -59,7 +59,7 @@
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark" style="padding-left: 10px">
                                         <li><a class="nav-link" href="#">Modifier son profil</a></li>
-                                        <li><a class="nav-link" href="pegis.php">Messagerie</a></li>
+                                        <li><a class="nav-link" href="messagerie.php">Messagerie</a></li>
                                         <li><a class="nav-link" href="./../deconnect.php">Se déconnecter</a></li>
                                         <hr class="dropdown-divider">
                                     </ul>

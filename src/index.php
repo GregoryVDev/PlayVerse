@@ -84,32 +84,15 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
         </div>
 
         <div class="reviews-container-review-index">
-            <!-- Large Review -->
-            <div class="large-review">
-                <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1601580/ss_584751cfb3cc04ef4da075382e879f448d7bfedc.1920x1080.jpg?t=1689763082"
-                    alt="Frostpunk 2">
-                <div class="content">
-                    <h3>Black Myth Wukong</h3>
-                    <a href="" class="button-review-index">Voir</a>
-                </div>
-            </div>
-            <!-- Small Reviews -->
-            <div class="small-reviews">
-                <div class="small-review">
-                    <img src="https://cdn.akamai.steamstatic.com/steam/apps/2358720/capsule_616x353.jpg?t=1710421488"
-                        alt="Black Myth Wukong">
-                    <div class="content">
-                        <h3>Black Myth Wukong</h3>
-                        <a href="" class="button-review-index">Voir</a>
-                    </div>
-                </div>
-                <div class="small-review">
-                    <img src="https://image.api.playstation.com/vulcan/img/rnd/202111/3019/Btg9YJMDRcWgsbD5E6rOcdT5.jpg"
-                        alt="The Sims 4">
-                    <div class="content">
-                        <h3>The Sims 4</h3>
-                        <a href="" class="button-review-index">Voir</a>
-                    </div>
+            <div class="index-container-game-review">
+                <?php if ($last_review) { ?>
+                    <img class="index-review-img" src="../<?= $last_review['image1'] ?>" alt="<?= $last_review["review_title"] ?>" class="index-image-large">
+                <?php } ?>
+
+                <div class="index-right-images">
+                    <?php foreach ($reviews as $review) { ?>
+                        <img class="index-image-small index-review-img" src="../<?= $review['image1'] ?>" alt="<?= $review["review_title"] ?>">
+                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -119,16 +102,16 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
             <h5 class="index-title-h5">Nous envoyer un message</h5>
 
 
-            <form class="index-form-container" action="./admin/messages.php" method="post">
+            <form class="index-form-container" action="./admin/traitement_contact.php" method="POST">
                 <!-- Nom et Prénom -->
                 <div class="input-group">
                     <div class="input-wrapper">
                         <img src="../img/images/nom.png" alt="Icon Nom">
-                        <input placeholder="Nom" type="text" id="nom" name="nom" required>
+                        <input placeholder="Nom" type="text" id="nom" name="name" required>
                     </div>
                     <div class="input-wrapper">
                         <img src="../img/images/prenom.png" alt="Icon Prénom">
-                        <input placeholder="Prénom" type="text" id="prenom" name="prenom" required>
+                        <input placeholder="Prénom" type="text" id="prenom" name="firstname" required>
                     </div>
                 </div>
 
@@ -136,7 +119,7 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
                 <div class="input-group">
                     <div class="input-wrapper">
                         <img src="../img/images/objet.png" alt="Icon Objet">
-                        <input placeholder="Objet" type="text" id="objet" name="objet" required>
+                        <input placeholder="Objet" type="text" id="objet" name="object" required>
                     </div>
                     <div class="input-wrapper">
                         <img src="../img/images/email.png" alt="Icon Email">
