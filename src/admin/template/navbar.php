@@ -8,11 +8,19 @@ if (!isset($db)) {
     require("./../connect.php");
 }
 
+$countMessage = 0;
+
 $sql = "SELECT * FROM message ORDER BY message_id DESC";
 
 $query = $db->prepare($sql);
 $query->execute();
 $messages = $query->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($messages as $message) {
+    if ($message["lu"] === "unread") {
+        $countMessage++;
+    }
+}
 
 ?>
 
@@ -40,9 +48,15 @@ $messages = $query->fetchAll(PDO::FETCH_ASSOC);
         <header>
             <nav class="navbar navbar-dark bg-dark fixed-top" style="background: transparent !important">
                 <div class="container-fluid" style="justify-content: flex-end; margin-right: 10px;">
-                    <button class="navbar-toggler" style="background-color: var(--colorButton)" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                    <?php if ($countMessage > 0) {  ?>
+                        <button class="navbar-toggler" style="background-color: var(--colorBackOffice)" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    <?php } else { ?>
+                        <button class="navbar-toggler" style="background-color: var(--colorButton)" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    <?php } ?>
                     <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
                         <div class="offcanvas-header">
                             <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel" style="text-transform: uppercase"><?= $_SESSION["admin_gamer"]["pseudo"]; ?></h5>
@@ -78,17 +92,16 @@ $messages = $query->fetchAll(PDO::FETCH_ASSOC);
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark" style="padding-left: 10px">
                                         <li><a class="nav-link" href="#">Modifier son profil</a></li>
-                                        <?php foreach ($messages as $message) { ?>
-                                            <?php if ($message["lu"] === "unread") { ?>
+                                        <li><a class="nav-link" href="messagerie.php">Messagerie
                                                 <style>
                                                     .unread-message {
                                                         color: var(--colorBackOffice);
                                                     }
                                                 </style>
-                                                <li><a class="nav-link unread-message" href="messagerie.php">Messagerie</a></li>
-                                            <?php
-                                            }  ?>
-                                        <?php } ?>
+                                                <?php if ($countMessage > 0) { ?>
+                                                    <span class="unread-message"> <?= $countMessage; ?></span>
+                                                <?php } ?>
+                                            </a></li>
                                         <li><a class="nav-link" href="./../deconnect.php">Se déconnecter</a></li>
                                         <hr class="dropdown-divider">
                                     </ul>

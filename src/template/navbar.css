@@ -1,3 +1,11 @@
+.unread-message {
+  color: var(--colorBackOffice) !important;
+}
+
+.unread-message:hover {
+  opacity: 0.8 !important;
+}
+
 header {
   display: flex;
 }

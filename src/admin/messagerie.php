@@ -43,10 +43,15 @@ if (!isset($_SESSION["admin_gamer"])) {
                 </tbody>
             <?php } ?>
         </table>
+        <!-- PAGINATION -->
+        <div id="pagination" class="container-pages">
+            <span id="pageNumbers"></span>
+        </div>
         <button class="deleteall">Supprimer tout</button>
     </section>
 </main>
 </body>
 <script src="./js/admin.js"></script>
+<script src="./js/pagination.js"></script>
 
 </html>

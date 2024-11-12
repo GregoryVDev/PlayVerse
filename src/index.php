@@ -170,6 +170,11 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
 
     </section>
 </main>
+<div id="scroll-to-top">
+    <a href="#" title="arrow">
+        <img src="./img/logos/arrow-mario.jpg" alt="Retour en haut" style="width: 120px; height: 120px; object-fit: cover;">
+    </a>
+</div>
 <?php include "./template/footer.php" ?>
 <script src="../js/carrousel.js"></script>
 <script src="../js/form_contact.js"></script>

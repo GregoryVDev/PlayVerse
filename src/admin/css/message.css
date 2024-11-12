@@ -53,3 +53,9 @@ td .openmail {
 .retour > a {
   color: var(--colorPara);
 }
+
+.container-pages {
+  display: flex;
+  margin-top: 25px;
+  justify-content: center;
+}

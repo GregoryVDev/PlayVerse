@@ -1,3 +1,30 @@
+<?php
+
+if (!isset($_SESSION["admin_gamer"])) {
+    header("Location: connexionadmin.php");
+}
+
+if (!isset($db)) {
+    require("../connect.php");
+}
+
+$countMessage = 0;
+
+$sql = "SELECT * FROM message ORDER BY message_id DESC";
+
+$query = $db->prepare($sql);
+$query->execute();
+$messages = $query->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($messages as $message) {
+    if ($message["lu"] === "unread") {
+        $countMessage++;
+    }
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -73,7 +100,12 @@
                         <a href="#" onclick="toggleDropdown()">Mon compte</a>
                         <div class="dropdown-content" style="padding: 0px 10px;">
                             <a href="favoris.php">Mes favoris</a>
-                            <a href="../admin/panel.php">Retour panel</a>
+                            <?php if ($countMessage > 0) { ?>
+                                <a href="../admin/panel.php" class="unread-message">Retour panel
+                                </a>
+                            <?php } else { ?>
+                                <a href="../admin/panel.php">Retour panel</a>
+                            <?php } ?>
                             <a href="deconnect.php">Déconnexion</a>
 
                         </div>

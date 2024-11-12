@@ -1,21 +1,21 @@
 // PAGINATION
 
 document.addEventListener("DOMContentLoaded", function () {
-  const articlesPerPage = 15; // On affiche une limitation de 3 articles par page
+  const articlesPerPage = 15; // On affiche une limitation de 15 articles par page
   const articles = document.querySelectorAll(
     ".container-favoris .card, .container-reviews .review"
-  ); // Séléction des class container-favoris et card et on récupère les articles à l'intérieur
+  ); // Sélection des class container-favoris et card et on récupère les articles à l'intérieur
   const totalPages = Math.ceil(articles.length / articlesPerPage); // Calcule le nombre de pages en divisant le nombre total d'articles et l'arrondir supérieurement pour avoir assez de page pour les articles
   let currentPage = 1; // Page par défaut
 
   function showPage(page) {
-    const start = (page - 1) * articlesPerPage; // L'index commencera à 0 donc on aura les index 0,1,2 sur la page 1
+    const start = (page - 1) * articlesPerPage; // L'index commencera à 0 donc on aura les index 0,1,2 sur la page 1 quand c'est limité à 3 articles par page
     const end = start + articlesPerPage; // On va afficher les index 3,4,5
 
     // On parcourt chaques articles dans la liste
     articles.forEach((article, index) => {
       if (index >= start && index < end) {
-        article.style.display = "block"; // Permet d'afficher les 3 articles
+        article.style.display = "block"; // Permet d'afficher les 15 articles
       } else {
         article.style.display = "none"; // Permet de cacher les autres articles
       }
