@@ -31,17 +31,17 @@ $games = $query->fetchAll(PDO::FETCH_ASSOC);
 
         <!-- First game card -->
         <?php foreach ($games as $game) { ?>
-        <article class="games-card-game">
-            <img class="games-star" src="img/logos/star.svg" alt="star logo">
-            <a href="infogame.php?id=<?= $game["game_id"] ?>">
-                <img class="games-card-img" src="<?= $game['jacket'] ?>" alt="<?= $game["game_title"] ?>" />
-            </a>
-            <div class="games-card-body">
-                <h3 class="games-card-title"><?= $game["game_title"] ?></h3>
+            <article class="games-card-game">
                 <img class="games-star" src="img/logos/star.svg" alt="star logo">
-                <a class="games-card-btn" href="infogame.php?id=<?= $game["game_id"] ?>">Voir</a>
-            </div>
-        </article>
+                <a href="infogame.php?id=<?= $game["game_id"] ?>">
+                    <img class="games-card-img" src="./admin/<?= $game['jacket'] ?>" alt="<?= $game["game_title"] ?>" />
+                </a>
+                <div class="games-card-body">
+                    <h3 class="games-card-title"><?= $game["game_title"] ?></h3>
+                    <img class="games-star" src="img/logos/star.svg" alt="star logo">
+                    <a class="games-card-btn" href="infogame.php?id=<?= $game["game_id"] ?>">Voir</a>
+                </div>
+            </article>
         <?php } ?>
 
     </div>
