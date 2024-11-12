@@ -5,11 +5,16 @@ session_start();
 // Connexion à la base de données
 require_once("connect.php");
 
-// Récupération de l'identifiant de l'utilisateur connecté
-$user_id = $_SESSION["user_gamer"]["user_id"];
+// Vérifier si l'utilisateur est connecté en vérifiant si "user_gamer" existe dans $_SESSION
+if (isset($_SESSION["user_gamer"])) {
+    // Récupération de l'identifiant de l'utilisateur connecté
+    $user_id = $_SESSION["user_gamer"]["user_id"];
+} else {
+    // Si l'utilisateur n'est pas connecté, définir $user_id comme null ou un autre comportement
+    $user_id = null;
+}
 
-
-// Utiliser game_id depuis la requête GET si elle existe ; sinon, utiliser la valeur 1 (A MODIF UNE FOIS LAJOUT DE JEU EFECTUER)
+// Utiliser game_id depuis la requête GET si elle existe ; sinon, utiliser la valeur 1
 $game_id = isset($_GET['game_id']) ? (int)$_GET['game_id'] : 1;
 
 
@@ -198,31 +203,37 @@ try {
         <h5 class="infogame-h5">Nos derniers jeux ajouter</h5>
         <div class="jeu-container">
             <article class="card-game">
+                <img class="gameinfo-star" src="img/logos/star.svg" alt="star logo">
                 <a href="">
                     <img class="card-img" src="../img/exemple/hollow_knight.png" alt="hollow knight" />
                 </a>
                 <div class="card-body">
                     <h3 class="card-title">NAME GAME</h3>
+                    <img class="gameinfo-star" src="img/logos/star.svg" alt="star logo">
                     <a class="card-btn" href="">Voir</a>
                 </div>
             </article>
 
             <article class="card-game">
+                <img class="gameinfo-star" src="img/logos/star.svg" alt="star logo">
                 <a href="">
                     <img class="card-img" src="../img/exemple/elden_ring.jpg" alt="elden ring">
                 </a>
                 <div class="card-body">
                     <h3 class="card-title">NAME GAME</h3>
+                    <img class="gameinfo-star" src="img/logos/star.svg" alt="star logo">
                     <a class="card-btn" href="">Voir</a>
                 </div>
             </article>
 
             <article class="card-game">
+                <img class="gameinfo-star" src="img/logos/star.svg" alt="star logo">
                 <a href="">
                     <img class="card-img" src="../img/exemple/lol.jpg" alt="league of legend">
                 </a>
                 <div class="card-body">
                     <h3 class="card-title">NAME GAME</h3>
+                    <img class="gameinfo-star" src="img/logos/star.svg" alt="star logo">
                     <a class="card-btn" href="">Voir</a>
                 </div>
             </article>

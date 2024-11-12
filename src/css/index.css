@@ -577,7 +577,8 @@ body {
         left: -110%;
         background-color: rgba(255, 255, 255, 0.1);
         transition: 0.4s;
-        transform: skewX(10deg);
+        /* transform: skewX(50deg); */
+        transform: skewX(50deg);
     }
 
     .jeux-du-moment-hover a:hover::after {
