@@ -57,6 +57,30 @@ if (!empty($_POST)) {
                 $errorMessage = "L'adresse mail est déjà associée à un compte.";
             }
 
+            // Vérification si l'email existe déjà dans la table admin
+            $sql_check_pseudo_admin = "SELECT COUNT(*) FROM admins WHERE pseudo = :pseudo";
+            $query_pseudo_admin = $db->prepare($sql_check_pseudo_admin);
+            $query_pseudo_admin->bindValue(":pseudo", $_POST["pseudo"]);
+            $query_pseudo_admin->execute();
+            $count_pseudo_admin = $query_pseudo_admin->fetchColumn();
+
+            if ($count_pseudo_admin > 0) {
+                $errorMessage = "Le pseudo est déjà utilisée.";
+            }
+
+            // Vérification si l'email existe déjà dans la table admin
+            $sql_check_email_admin = "SELECT COUNT(*) FROM admins WHERE email = :email";
+            $query_email_admin = $db->prepare($sql_check_email_admin);
+            $query_email_admin->bindValue(":email", $_POST["email"]);
+            $query_email_admin->execute();
+            $count_email_admin = $query_email_admin->fetchColumn();
+
+            if ($count_email_admin > 0) {
+                $errorMessage = "L'adresse mail est déjà utilisée.";
+            }
+
+
+
             // Insertion dans la base de données uniquement s'il n'y a pas d'erreur
             if (empty($errorMessage)) {
                 $sql = "INSERT INTO users (pseudo, email, pass) VALUES (:pseudo, :email, :pass)";

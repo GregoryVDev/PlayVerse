@@ -10,63 +10,65 @@ if (!empty($_POST)) {
 
     if (isset($_POST["email"], $_POST["pass"]) && !empty($_POST["email"]) && !empty($_POST["pass"])) {
         if (!validateEmail($_POST["email"])) {
-            die("L'adresse email est incorrecte");
-        }
+            $errorMessage = "L'adresse email est incorrect.";
+        } else {
+            require_once("./connect.php");
 
-        require_once("./connect.php");
-
-        $sql_search = "SELECT * FROM admins WHERE email = :email";
-        $query = $db->prepare($sql_search);
-
-        $query->bindValue(":email", $_POST["email"]);
-
-        $query->execute();
-
-        $admin = $query->fetch();
-
-
-
-        if (!$admin) {
-            // ERREUR IL N'EST PAS ADMIN
-            $sql_user = "SELECT * FROM users WHERE email = :email";
-            $query = $db->prepare($sql_user);
-
+            // On vérifie si le mail est bien celui d'un admin 
+            $sql_search = "SELECT * FROM admins WHERE email = :email";
+            $query = $db->prepare($sql_search);
             $query->bindValue(":email", $_POST["email"]);
-
             $query->execute();
+            $admin = $query->fetch();
 
-            $user = $query->fetch();
+            if (!$admin) {
+                // Recherche dans la table users si l'email n'est pas admin
+                $sql_user = "SELECT * FROM users WHERE email = :email";
+                $query = $db->prepare($sql_user);
+                $query->bindValue(":email", $_POST["email"]);
+                $query->execute();
+                $user = $query->fetch();
 
-            if ($user) {
-                if (!password_verify($_POST["pass"], $user["pass"])) {
-                    die("Le mot de passe est incorrect");
+                if ($user) {
+                    // Vérification du mot de passe avant de créer la session
+                    if (password_verify($_POST["pass"], $user["pass"])) {
+                        // Si le mot de passe est correct, on crée la session
+                        $_SESSION["user_gamer"] = [
+                            "user_id" => $user["user_id"],
+                            "pseudo" => $user["pseudo"],
+                            "email" => $user["email"],
+                            "user" => true
+                        ];
+
+                        header("Location: index.php");
+                        exit();
+                    } else {
+                        $errorMessage = "L'adresse email et/ou le mot de passe est incorrect.";
+                    }
+                } else {
+                    // Si aucun compte trouvé, afficher un message
+                    $errorMessage = "L'adresse email et/ou le mot de passe est incorrect.";
                 }
-
-                $_SESSION["user_gamer"] = [
-                    "user_id" => $user["user_id"],
-                    "pseudo" => $user["pseudo"],
-                    "email" => $user["email"],
-                    "user" => true
-                ];
-
-                header("Location: index.php");
             } else {
-                die("le compte n'existe pas");
+                // Si c'est un admin, afficher un message indiquant une erreur
+                $errorMessage = "L'adresse email et/ou le mot de passe est incorrect.";
             }
         }
     } else {
-        echo "Formulaire incomplet";
+        $errorMessage = "Formulaire incomplet";
     }
 }
 
+
 ?>
-
-
 <?php include "./template/navbar.php" ?>
 <main>
     <h1 class="titre">Connexion</h1>
     <div class="container-connexion">
         <form method="POST" class="form-login">
+            <?php if (!empty($errorMessage)): ?>
+                <div class="error-message"><?php echo $errorMessage; ?></div>
+            <?php endif; ?>
             <div class="container-email">
                 <label for="email">Email :</label>
                 <input type="email" class="form-input" name="email" id="email" placeholder="Email">
