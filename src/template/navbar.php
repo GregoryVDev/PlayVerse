@@ -1,11 +1,7 @@
 <?php
 
-if (!isset($_SESSION["admin_gamer"])) {
-    header("Location: connexionadmin.php");
-}
-
 if (!isset($db)) {
-    require("../connect.php");
+    require("./connect.php");
 }
 
 $countMessage = 0;

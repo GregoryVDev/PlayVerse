@@ -52,6 +52,10 @@ require_once("../close.php");
             </tbody>
         <?php } ?>
     </table>
+    <!-- PAGINATION -->
+    <div id="pagination" class="container-pages">
+        <span id="pageNumbers"></span>
+    </div>
     <button class="deleteall">Supprimer tout</button>
 </section>
 </main>

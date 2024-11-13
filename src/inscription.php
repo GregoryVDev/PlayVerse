@@ -6,12 +6,19 @@ function validateEmail($email)
 }
 
 if (!empty($_POST)) {
-    if (isset($_POST["pseudo"], $_POST["email"], $_POST["pass"], $_POST["pass2"], $_POST["terms"]) && !empty($_POST["pseudo"]) && !empty($_POST["email"]) && !empty($_POST["pass"]) && !empty($_POST["pass2"]) && !empty($_POST["terms"])) {
+    // Vérifiez d'abord si la case "terms" est cochée
+    if (!isset($_POST["terms"])) {
+        $errorMessage = "Vous devez accepter la politique de confidentialité.";
+    } else if (
+        isset($_POST["pseudo"], $_POST["email"], $_POST["pass"], $_POST["pass2"])
+        && !empty($_POST["pseudo"]) && !empty($_POST["email"])
+        && !empty($_POST["pass"]) && !empty($_POST["pass2"])
+    ) {
 
         $pseudo = strip_tags($_POST["pseudo"]);
 
         if (!validateEmail($_POST["email"])) {
-            die("L'adresse email est incorrect");
+            $errorMessage = "L'adresse mail est incorrecte.";
         }
 
         if (isset($_POST["pass"]) && isset($_POST["pass2"])) {
@@ -22,7 +29,7 @@ if (!empty($_POST)) {
         if ($pass === $pass2) {
             $pass = password_hash($_POST["pass"], PASSWORD_ARGON2ID);
         } else {
-            die("Les mots de passes ne correspondent pas");
+            $errorMessage = "Les mots de passe ne correspondent pas.";
         }
 
         try {
@@ -36,7 +43,7 @@ if (!empty($_POST)) {
             $count_pseudo = $query_pseudo->fetchColumn();
 
             if ($count_pseudo > 0) {
-                die("Le pseudo est déjà utilisé. Veuillez en choisir un autre.");
+                $errorMessage = "Le pseudo " . htmlspecialchars($_POST['pseudo']) . " est déjà utilisé.";
             }
 
             // Vérification si l'email existe déjà
@@ -47,50 +54,41 @@ if (!empty($_POST)) {
             $count_email = $query_email->fetchColumn();
 
             if ($count_email > 0) {
-                die("L'adresse email est déjà utilisée. Veuillez en choisir une autre.");
+                $errorMessage = "L'adresse mail est déjà associée à un compte.";
             }
 
+            // Insertion dans la base de données uniquement s'il n'y a pas d'erreur
+            if (empty($errorMessage)) {
+                $sql = "INSERT INTO users (pseudo, email, pass) VALUES (:pseudo, :email, :pass)";
+                $query = $db->prepare($sql);
+                $query->bindValue(":pseudo", $pseudo);
+                $query->bindValue(":email", $_POST["email"]);
+                $query->bindValue(":pass", $pass);
+                $query->execute();
 
-
-            // Vérifier si l'email ou le pseudo existent déjà
-            $sql_check = "SELECT COUNT(*) FROM users WHERE email = :email OR pseudo = :pseudo";
-            $query_check = $db->prepare($sql_check);
-            $query_check->bindValue(":email", $_POST["email"]);
-            $query_check->bindValue(":pseudo", $pseudo);
-            $query_check->execute();
-            // On récupère les colonnes des emails et des pseudos
-            $count = $query_check->fetchColumn();
-
-            if ($count > 0) {
-                die("L'email ou le pseudo est déjà utilisé. Veuillez en choisir un autre.");
+                header("Location: connexion.php");
+                exit();
             }
-
-            $sql = "INSERT INTO users (pseudo, email, pass) VALUES (:pseudo, :email, '$pass')";
-
-            $query = $db->prepare($sql);
-
-            $query->bindValue(":pseudo", $pseudo);
-            $query->bindValue(":email", $_POST["email"]);
-
-            $query->execute();
-
-            header("Location: connexion.php");
         } catch (PDOException $e) {
             die("Erreur de connexion : " . $e->getMessage());
         }
     } else {
-        die("Le formulaire est incomplet");
+        $errorMessage = "Le formulaire est incomplet.";
     }
 }
 
-
-
 ?>
+
+
 <?php include "./template/navbar.php" ?>
 <main>
     <h1 class="titre">Inscription</h1>
     <div class="container-inscription">
         <form method="POST" class="form-login">
+            <!-- Affiche le message d'erreur, si présent -->
+            <?php if (!empty($errorMessage)): ?>
+                <div class="error-message"><?php echo $errorMessage; ?></div>
+            <?php endif; ?>
             <div class="container-pseudo">
                 <label for="pseudo">Pseudo :</label>
                 <input type="text" class="form-input" name="pseudo" id="pseudo" placeholder="Pseudo">

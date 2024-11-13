@@ -1,7 +1,7 @@
 <?php
 
 if (!isset($_SESSION["admin_gamer"])) {
-    header("Location: connexionadmin.php");
+    header("Location: ./connexionadmin.php");
 }
 
 if (!isset($db)) {

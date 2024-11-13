@@ -274,19 +274,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </tr>
                 </tbody>
             <?php } ?>
-            <!-- PAGINATION -->
-            <div id="pagination" class="container-pages">
-                <a id="prevPage" href="#pagination">
-                    <img src="./img/logos/angles-left.svg" alt="Page précédente">
-                    Précédente
-                </a>
-                <span id="pageNumbers"></span>
-                <a id="nextPage" href="#pagination">
-                    Suivante
-                    <img src="./img/logos/angles-right.svg" alt="Page suivante">
-                </a>
-            </div>
         </table>
+        <!-- PAGINATION -->
+        <div id="pagination" class="container-pages">
+            <span id="pageNumbers"></span>
+        </div>
         <button class="deleteall">Supprimer tout</button>
     </section>
 </main>
