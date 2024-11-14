@@ -80,7 +80,6 @@ if (!empty($_POST)) {
             }
 
 
-
             // Insertion dans la base de données uniquement s'il n'y a pas d'erreur
             if (empty($errorMessage)) {
                 $sql = "INSERT INTO users (pseudo, email, pass) VALUES (:pseudo, :email, :pass)";

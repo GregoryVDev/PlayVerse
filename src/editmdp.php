@@ -39,9 +39,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $query_edit->execute();
 
                 $succesMessage = "Mot de passe mis à jour avec succès";
+            } else {
+                $errorMessage = "Les mots de passe ne correspondent pas.";
             }
         } else {
-            $errorMessage = "Les mots de passe ne correspondent pas.";
+            $errorMessage = "Ton mot de passe actuel n'est pas correct.";
         }
     } else {
         $errorMessage = "Formulaire incomplet";
@@ -58,6 +60,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </section>
     <section class="formulaire-mdp">
         <form action="" method="POST" id="edit">
+            <?php if (isset($succesMessage)) { ?>
+                <div class="success-message"><?= htmlspecialchars($succesMessage) ?></div>
+            <?php } elseif (isset($errorMessage)) { ?>
+                <div class="error-message"><?= htmlspecialchars($errorMessage) ?></div>
+            <?php } ?>
             <div class="container-title">
                 <label for="password">Mot de passe actuel :</label>
                 <input type="password" placeholder="Mot de passe actuel" name="ancien_pass">

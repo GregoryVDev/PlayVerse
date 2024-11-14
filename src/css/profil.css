@@ -54,3 +54,15 @@
   border-radius: 10px;
   border: none;
 }
+
+/* MESSAGES ERROR / SUCCESS */
+
+.error-message {
+  text-align: center;
+  color: var(--colorBackOffice);
+}
+
+.success-message {
+  text-align: center;
+  color: var(--colorSuccess);
+}
