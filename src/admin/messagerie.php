@@ -23,7 +23,6 @@ if (!isset($_SESSION["admin_gamer"])) {
                     <th>Nom</th>
                     <th>Aperçu</th>
                     <th>Action</th>
-                    <th><input type="checkbox"></th>
                 </tr>
             </thead>
             <?php foreach ($messages as $message) { ?>
@@ -38,7 +37,6 @@ if (!isset($_SESSION["admin_gamer"])) {
                         <td class="actions">
                             <a href="deletemessage.php?id=<?= $message["message_id"] ?>" class="btn-delete">Supprimer</a>
                         </td>
-                        <td><label><input type="checkbox"></label></td>
                     </tr>
                 </tbody>
             <?php } ?>

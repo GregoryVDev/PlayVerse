@@ -257,7 +257,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <th>Action</th>
                     <th>Titre</th>
                     <th>Admin</th>
-                    <th><input type="checkbox"></th>
                 </tr>
 
             </thead>
@@ -270,7 +269,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         </td>
                         <td><?= $game["game_title"] ?></td>
                         <td><?= $game["pseudo"] ?></td>
-                        <td><input type="checkbox"></td>
                     </tr>
                 </tbody>
             <?php } ?>

@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 
 if (isset($_GET["id"]) && !empty($_GET["id"])) {
@@ -12,14 +12,20 @@ if (isset($_GET["id"]) && !empty($_GET["id"])) {
     $sql->execute();
 
     $result = $sql->fetch();
-}
 
-if (!isset($_GET["id"])) {
+    // Vérifier si un résultat a été trouvé
+    if (!$result) {
+        // Si l'id n'existe pas dans la base de données, rediriger vers reviews.php
+        header("Location: reviews.php");
+        exit();
+    }
+} else {
+    // Si l'id n'est pas présent dans l'URL, rediriger vers reviews.php
     header("Location: reviews.php");
     exit();
 }
-
 ?>
+
 
 <?php include "./template/navbar.php" ?>
 <main>

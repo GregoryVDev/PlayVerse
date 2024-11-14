@@ -91,7 +91,8 @@ foreach ($messages as $message) {
                                         Profil
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark" style="padding-left: 10px">
-                                        <li><a class="nav-link" href="#">Modifier son profil</a></li>
+                                        <li><a class="nav-link" href="editemail.php">Modifier mon adresse email</a></li>
+                                        <li><a class="nav-link" href="editmdp.php">Modifier mon mot de passe</a></li>
                                         <li><a class="nav-link" href="messagerie.php">Messagerie
                                                 <style>
                                                     .unread-message {

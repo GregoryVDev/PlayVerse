@@ -39,6 +39,8 @@ foreach ($messages as $message) {
     <link rel="stylesheet" href="../css/infogame.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/privacy.css">
+    <link rel="stylesheet" href="./css/profil.css">
+
     <title>PlayVerse</title>
 </head>
 
@@ -67,6 +69,8 @@ foreach ($messages as $message) {
                         <a href="#" onclick="toggleDropdown()">Mon compte</a>
                         <div class="dropdown-content" style="padding: 0px 10px;">
                             <a href="favoris.php">Mes favoris</a>
+                            <a href="editemail.php">Email</a>
+                            <a href="editmdp.php">Mot de passe</a>
                             <a href="deconnect.php">Déconnexion</a>
                         </div>
                     </li>
