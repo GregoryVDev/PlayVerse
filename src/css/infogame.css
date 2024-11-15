@@ -238,9 +238,9 @@ body {
     padding-top: 5%;
     margin-bottom: 5%;
     font-size: clamp(
-        var(--font-size-h1-min),
-        var(--font-size-h1-preferred),
-        var(--font-size-h1-max)
+        var(--font-size-h2-min),
+        var(--font-size-h2-preferred),
+        var(--font-size-h2-max)
     );
     font-family: var(--audioRegular);
 }
@@ -274,9 +274,9 @@ body {
     text-align: center;
     margin: 5% 0%;
     font-size: clamp(
-        var(--font-size-h1-min),
-        var(--font-size-h1-preferred),
-        var(--font-size-h1-max)
+        var(--font-size-h2-min),
+        var(--font-size-h2-preferred),
+        var(--font-size-h2-max)
     );
     font-family: var(--audioRegular);
 }
@@ -341,9 +341,9 @@ body {
     text-align: center;
     margin: 5% 0%;
     font-size: clamp(
-        var(--font-size-h1-min),
-        var(--font-size-h1-preferred),
-        var(--font-size-h1-max)
+        var(--font-size-h2-min),
+        var(--font-size-h2-preferred),
+        var(--font-size-h2-max)
     );
     font-family: var(--audioRegular);
 }

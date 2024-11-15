@@ -7,7 +7,6 @@ if (!isset($_SESSION["admin_gamer"])) {
     header("Location: connexionadmin.php");
     exit();
 }
-
 require_once("../connect.php");
 
 
@@ -204,12 +203,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <div class="container-left">
                         <div class="container-titre">
                             <label for="titre">Titre :</label>
-                            <input type="text" placeholder="Titre du jeu" name="game_title" id="title" value="<?= $edit["game_title"] ?>" required>
+                            <input type="text" placeholder="Titre du jeu" name="game_title" id="title"
+                                value="<?= $edit["game_title"] ?>" required>
                         </div>
 
                         <div class="container-plateformes">
                             <!-- Bouton du dropdown -->
-                            <button class="dropdown-btn" onclick="toggleDropdown()" type="button">--Choisir la plateforme--</button>
+                            <button class="dropdown-btn" onclick="toggleDropdown()" type="button">--Choisir la
+                                plateforme--</button>
                             <!-- Contenu du dropdown avec checkboxes -->
                             <div class="list-plateformes">
                                 <?php
@@ -227,11 +228,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                         }
                                     }
                                 ?>
-                                    <label>
-                                        <!-- Afficher une case à cocher pour la plateforme, avec la valeur et le statut checked si associé -->
-                                        <input type="checkbox" name="plateformeIds[]" value="<?= $plateforme["plateforme_id"] ?>" <?= $checked ?>>
-                                        <?= $plateforme["plateforme_name"] ?>
-                                    </label>
+                                <label>
+                                    <!-- Afficher une case à cocher pour la plateforme, avec la valeur et le statut checked si associé -->
+                                    <input type="checkbox" name="plateformeIds[]"
+                                        value="<?= $plateforme["plateforme_id"] ?>" <?= $checked ?>>
+                                    <?= $plateforme["plateforme_name"] ?>
+                                </label>
                                 <?php } ?>
                             </div>
                         </div>
@@ -242,13 +244,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <?php
                                 // Parcourir chaque catégorie pour l'afficher dans le menu déroulant
                                 foreach ($categories as $category) { ?>
-                                    <option value="<?= $category["category_id"] ?>"
-                                        <?=
+                                <option value="<?= $category["category_id"] ?>" <?=
                                         //  condition ? valeur_si_vrai : valeur_si_faux; 
                                         $category["category_id"] === $edit["category_id"] ? "selected" : "" ?>>
-                                        <!-- Afficher l'option avec l'attribut selected si elle correspond à la catégorie actuelle du jeu -->
-                                        <?= $category["category_name"] ?>
-                                    </option>
+                                    <!-- Afficher l'option avec l'attribut selected si elle correspond à la catégorie actuelle du jeu -->
+                                    <?= $category["category_name"] ?>
+                                </option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -259,59 +260,72 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <?php
                                 // Parcourir chaque option PEGI pour l'afficher dans le menu déroulant
                                 foreach ($pegis as $pegi) { ?>
-                                    <option value="<?= $pegi["pegi_id"] ?>"
-                                        <?= $pegi["pegi_id"] === $edit["pegi_id"] ? "selected" : "" ?>>
-                                        <!-- Afficher l'option avec l'attribut selected si elle correspond au PEGI actuel du jeu -->
-                                        <?= $pegi["pegi_name"] ?>
-                                    </option>
+                                <option value="<?= $pegi["pegi_id"] ?>"
+                                    <?= $pegi["pegi_id"] === $edit["pegi_id"] ? "selected" : "" ?>>
+                                    <!-- Afficher l'option avec l'attribut selected si elle correspond au PEGI actuel du jeu -->
+                                    <?= $pegi["pegi_name"] ?>
+                                </option>
                                 <?php } ?>
                             </select>
                         </div>
                         <div class="container-trailer">
                             <label for="trailer">Trailer :</label>
-                            <input type="text" placeholder="Lien du trailer" name="trailer" value="<?= $edit["trailer"] ?>" id="trailer" required>
+                            <input type="text" placeholder="Lien du trailer" name="trailer"
+                                value="<?= $edit["trailer"] ?>" id="trailer" required>
                         </div>
                         <div class="container-description">
                             <label for="content">Description :</label>
-                            <textarea name="content" id="content" placeholder="Description du jeu"><?= $edit["content"] ?></textarea>
+                            <textarea name="content" id="content"
+                                placeholder="Description du jeu"><?= $edit["content"] ?></textarea>
                         </div>
                         <div class="container-background">
                             <label class="uploadlabel" for="background" class="uploadImg">Uploader le background</label>
-                            <img src="<?= $edit["background"] ?>" alt="" style="width: 235px; height: 235px; object-fit: cover;">
-                            <input type="file" id="background" name="background" class="image" onchange="previewImage(this, 'backgroundPreview')">
+                            <img src="<?= $edit["background"] ?>" alt=""
+                                style="width: 235px; height: 235px; object-fit: cover;">
+                            <input type="file" id="background" name="background" class="image"
+                                onchange="previewImage(this, 'backgroundPreview')">
                             <div class="preview" id="backgroundPreview"></div>
                         </div>
                     </div>
                     <div class="container-right">
                         <div class="container-image">
                             <label class="uploadlabel" for="jacket" class="uploadImg">Uploader la jaquette</label>
-                            <img src="<?= $edit["jacket"] ?>" alt="" style="width: 235px; height: 235px; object-fit: cover; margin-bottom: 20px;">
-                            <input type="file" id="jacket" name="jacket" class="image" onchange="previewImage(this, 'jacketPreview')">
+                            <img src="<?= $edit["jacket"] ?>" alt=""
+                                style="width: 235px; height: 235px; object-fit: cover; margin-bottom: 20px;">
+                            <input type="file" id="jacket" name="jacket" class="image"
+                                onchange="previewImage(this, 'jacketPreview')">
                             <div class="preview" id="jacketPreview"></div>
                         </div>
                         <div class="container-image">
-                            <label class="uploadlabel" for="image1"
-                                class="uploadImage">Uploader image 1</label>
-                            <img src="<?= $edit["image1"] ?>" alt="" style="width: 235px; height: 235px; object-fit: cover; margin-bottom: 20px;">
-                            <input type="file" id="image1" name="image1" class="image" onchange="previewImage(this, 'image1Preview')">
+                            <label class="uploadlabel" for="image1" class="uploadImage">Uploader image 1</label>
+                            <img src="<?= $edit["image1"] ?>" alt=""
+                                style="width: 235px; height: 235px; object-fit: cover; margin-bottom: 20px;">
+                            <input type="file" id="image1" name="image1" class="image"
+                                onchange="previewImage(this, 'image1Preview')">
                             <div class="preview" id="image1Preview"></div>
                         </div>
                         <div class="container-image">
                             <label class="uploadlabel" for="image2" class="uploadImage">Uploader image 2</label>
-                            <img src="<?= $edit["image2"] ?>" alt="" style="width: 235px; height: 235px; object-fit: cover; margin-bottom: 20px;">
-                            <input type="file" id="image2" name="image2" class="image" onchange="previewImage(this, 'image2Preview')">
+                            <img src="<?= $edit["image2"] ?>" alt=""
+                                style="width: 235px; height: 235px; object-fit: cover; margin-bottom: 20px;">
+                            <input type="file" id="image2" name="image2" class="image"
+                                onchange="previewImage(this, 'image2Preview')">
                             <div class="preview" id="image2Preview"></div>
                         </div>
                         <div class="container-image">
                             <label class="uploadlabel" for="image3" class="uploadImage">Uploader image 3</label>
-                            <img src="<?= $edit["image3"] ?>" alt="" style="width: 235px; height: 235px; object-fit: cover; margin-bottom: 20px;">
-                            <input type="file" id="image3" name="image3" class="image" onchange="previewImage(this, 'image3Preview')">
+                            <img src="<?= $edit["image3"] ?>" alt=""
+                                style="width: 235px; height: 235px; object-fit: cover; margin-bottom: 20px;">
+                            <input type="file" id="image3" name="image3" class="image"
+                                onchange="previewImage(this, 'image3Preview')">
                             <div class="preview" id="image3Preview"></div>
                         </div>
                         <div class="container-image">
                             <label class="uploadlabel" for="image4" class="uploadImage">Uploader image 4</label>
-                            <img src="<?= $edit["image4"] ?>" alt="" style="width: 235px; height: 235px; object-fit: cover; margin-bottom: 20px;">
-                            <input type="file" id="image4" name="image4" class="image" onchange="previewImage(this, 'image4Preview')">
+                            <img src="<?= $edit["image4"] ?>" alt=""
+                                style="width: 235px; height: 235px; object-fit: cover; margin-bottom: 20px;">
+                            <input type="file" id="image4" name="image4" class="image"
+                                onchange="previewImage(this, 'image4Preview')">
                             <div class="preview" id="image4Preview"></div>
                         </div>
                     </div>

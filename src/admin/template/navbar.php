@@ -41,6 +41,7 @@ foreach ($messages as $message) {
     <link rel="stylesheet" href="./css/panel.css">
     <link rel="stylesheet" href="./css/utilisateurs.css">
     <link rel="stylesheet" href="./css/message.css">
+    <link rel="stylesheet" href="./css/admin_profil.css">
     <link rel="stylesheet" href="./css/gestions.css">
     <title>PlayVerse</title>
 </head>

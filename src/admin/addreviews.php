@@ -113,53 +113,61 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
                 <input type="text" placeholder="Titre de la review" name="review_title" id="review_title" required
                     style="margin-bottom: 20px;">
             </div>
+
             <div class="addreviews-container">
 
                 <div class="addreviews-container-paragraph">
-                    <div class="container-title">
+                    <div class="container-description review-para">
                         <label for="paragraph1">Paragraphe 1 :</label>
-                        <textarea placeholder="Contenu du paragraphe 1" name="paragraph1" id="paragraph1" required
-                            style="margin-bottom: 20px;"></textarea>
+                        <textarea class="review-para" placeholder="Contenu du paragraphe 1" name="paragraph1"
+                            id="paragraph1" required style="margin-bottom: 20px;"></textarea>
                     </div>
-                    <div class="container-title">
+                    <div class="container-description review-para">
                         <label for="paragraph2">Paragraphe 2 :</label>
-                        <textarea placeholder="Contenu du paragraphe 2" name="paragraph2" id="paragraph2" required
-                            style="margin-bottom: 20px;"></textarea>
+                        <textarea class="review-para" placeholder="Contenu du paragraphe 2" name="paragraph2"
+                            id="paragraph2" required style="margin-bottom: 20px;"></textarea>
                     </div>
-                    <div class="container-title">
+                    <div class="container-description">
                         <label for="paragraph3">Paragraphe 3 :</label>
-                        <textarea placeholder="Contenu du paragraphe 3" name="paragraph3" id="paragraph3" required
-                            style="margin-bottom: 20px;"></textarea>
+                        <textarea class="review-para" placeholder="Contenu du paragraphe 3" name="paragraph3"
+                            id="paragraph3" required style="margin-bottom: 20px;"></textarea>
                     </div>
                 </div>
 
                 <div class="addreviews-container-img">
-                    <div class="container-title">
-                        <label for="image1">Image 1 :</label>
-                        <input type="file" name="image1" id="image1" required style="margin-bottom: 20px;">
+                    <div class="container-image addreview-img">
+                        <label class="uploadlabel" for="image1">Uploader image 1</label>
+                        <input type="file" id="image1" name="image1" class="image" required
+                            onchange="previewImage(this, 'image1Preview')">
+                        <div class="preview" id="image1Preview"></div>
                     </div>
 
-                    <div class="container-title">
-                        <label for="image2">Image 2 :</label>
-                        <input type="file" name="image2" id="image2" required style="margin-bottom: 20px;">
+                    <div class="container-image addreview-img">
+                        <label class="uploadlabel" for="image2">Uploader image 2</label>
+                        <input type="file" id="image2" name="image2" class="image" required
+                            onchange="previewImage(this, 'image2Preview')">
+                        <div class="preview" id="image2Preview"></div>
                     </div>
 
-                    <div class="container-title">
-                        <label for="image3">Image 3 :</label>
-                        <input type="file" name="image3" id="image3" required style="margin-bottom: 20px;">
+                    <div class="container-image addreview-img">
+                        <label class="uploadlabel" for="image3">Uploader image 3</label>
+                        <input type="file" id="image3" name="image3" class="image" required
+                            onchange="previewImage(this, 'image3Preview')">
+                        <div class="preview" id="image3Preview"></div>
                     </div>
+
                 </div>
 
                 <div class="addreviews-container-points">
                     <div class="container-title">
                         <label for="high_point">Points forts :</label>
-                        <textarea placeholder="Points forts de la review" name="high_point" id="high_point" required
-                            style="margin-bottom: 20px;"></textarea>
+                        <textarea class="review-para" placeholder="Points forts de la review" name="high_point"
+                            id="high_point" required style="margin-bottom: 20px;"></textarea>
                     </div>
                     <div class="container-title">
                         <label for="weak_point">Points faibles :</label>
-                        <textarea placeholder="Points faibles de la review" name="weak_point" id="weak_point" required
-                            style="margin-bottom: 20px;"></textarea>
+                        <textarea class="review-para" placeholder="Points faibles de la review" name="weak_point"
+                            id="weak_point" required style="margin-bottom: 20px;"></textarea>
                     </div>
                 </div>
             </div>
@@ -178,19 +186,20 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
                 </tr>
             </thead>
             <?php foreach ($reviews as $review) { ?>
-                <tbody>
-                    <tr data-page="1">
-                        <td class="actions">
-                            <a class="btn-edit" href="editreview.php?id=<?= $review["review_id"] ?>">Modifier</a>
-                            <a class="btn-delete" href="deletereview.php?id=<?= $review["review_id"] ?>">Supprimer</a>
-                        </td>
-                        <td><?= $review["review_title"] ?></td>
-                    </tr>
-                </tbody>
+            <tbody>
+                <tr data-page="1">
+                    <td class="actions">
+                        <a class="btn-edit" href="editreview.php?id=<?= $review["review_id"] ?>">Modifier</a>
+                        <a class="btn-delete" href="deletereview.php?id=<?= $review["review_id"] ?>">Supprimer</a>
+                    </td>
+                    <td><?= $review["review_title"] ?></td>
+                </tr>
+            </tbody>
             <?php } ?>
         </table>
     </section>
 </main>
+<script src="./js/previewgame.js"></script>
 <script src="./js/admin.js"></script>
 </body>
 
