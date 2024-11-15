@@ -18,9 +18,11 @@ if (isset($_SESSION["user_gamer"]["user_id"])) {
 
     // Récupérer tous les résultats et les stocker dans $games
     $games = $query->fetchAll(PDO::FETCH_ASSOC);
+    
+    // Redirige si l'utilisateur n'est pas connecté
 } else {
-    echo "Veuillez vous connecter pour voir vos favoris.";
-    exit; // Arrête l'exécution si l'utilisateur n'est pas connecté
+    header("Location: index.php"); 
+    exit;
 }
 ?>
 
