@@ -1,0 +1,80 @@
+/* Main container for the mentions legales page */
+.mentions-legales-main {
+    background-color: var(--colorSecondary);
+    padding: 40px 0;
+}
+
+/* Container for content */
+.mentions-legales-container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--colorBlack);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title of the page */
+.mentions-legales-title {
+    font-family: var(--NunitoBold), sans-serif;
+    font-size: clamp(
+        var(--font-size-h1-min),
+        var(--font-size-h1-preferred),
+        var(--font-size-h1-max)
+    );
+    color: var(--colorTitle);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Section styles */
+.mentions-legales-section {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: var(--colorMain);
+    border: 1px solid var(--colorBlack);
+    border-radius: 8px;
+}
+
+/* Style for h2 in each section */
+.mentions-legales-h2 {
+    font-family: var(--NunitoBold), sans-serif;
+    font-size: clamp(
+        var(--font-size-h1-min),
+        var(--font-size-h1-preferred),
+        var(--font-size-h1-max)
+    );
+    margin-bottom: 10px;
+    color: var(--colorTitle);
+    border-bottom: 2px solid var(--colorBackOffice);
+    padding-bottom: 5px;
+}
+
+/* Paragraph styling inside each section */
+.mentions-legales-paragraph {
+    font-family: var(--NunitoRegular), sans-serif;
+    font-size: clamp(
+        var(--font-size-p-min),
+        var(--font-size-p-preferred),
+        q var(--font-size-p-max)
+    );
+    line-height: 1.7;
+    margin-bottom: 10px;
+    color: var(--colorPara);
+}
+
+/* Styling for strong text (like in "Nom du site") */
+.mentions-legales-paragraph strong {
+    color: var(--colorBackOffice);
+}
+
+/* Styling for links */
+.mentions-legales-paragraph a {
+    color: var(--colorTitle);
+    text-decoration: none;
+}
+
+.mentions-legales-paragraph a:hover {
+    text-decoration: underline;
+}

@@ -46,7 +46,6 @@ $admins = $query->fetchAll(PDO::FETCH_ASSOC);
                     <th>admin_id</th>
                     <th>pseudo</th>
                     <th>email</th>
-                    <th><input type="checkbox"></th>
                 </tr>
             </thead>
             <?php foreach ($admins as $admin) { ?>
@@ -58,12 +57,10 @@ $admins = $query->fetchAll(PDO::FETCH_ASSOC);
                     <td><?= $admin["admin_id"] ?></td>
                     <td><?= $admin["pseudo"] ?></td>
                     <td><?= $admin["email"] ?></td>
-                    <td><label><input type="checkbox"></label></td>
                 </tr>
             </tbody>
             <?php } ?>
         </table>
-        <button class="deleteall">Supprimer tout</button>
     </section>
 </main>
 <script src="./js/admin.js"></script>

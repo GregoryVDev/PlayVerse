@@ -5,8 +5,15 @@ session_start();
 // Connexion à la base de données
 require_once("connect.php");
 
-$game_id = 1; // A REMPLACER PAR : $game_id = isset($_GET['game_id']) ? (int)$_GET['game_id'] : 1
+// Récupère l'ID du jeu depuis l'URL, et le convertit en entier pour éviter les erreurs
+$game_id = (int)$_GET['game_id'];
 
+// Vérifie si l'ID du jeu existe dans la base de données
+if ($game_id <= 0) {
+    // Redirige vers index.php si l'ID du jeu est invalide
+    header("Location: index.php");
+    exit();
+}
 // Récupération des 3 derniers commentaires et pseudos
 
 try {
@@ -26,6 +33,11 @@ try {
     // Exécution de la requête
     $query->execute();
 
+        // Si aucun jeu n'est trouvé, redirige vers index.php
+        if ($query->rowCount() == 0) {
+            header("Location: index.php");
+            exit();
+        }
     // Récupérer les derniers commentaires avec les pseudos et le titre du jeu
     $comments = $query->fetchAll(PDO::FETCH_ASSOC);
 

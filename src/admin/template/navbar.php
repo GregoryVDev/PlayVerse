@@ -31,8 +31,11 @@ foreach ($messages as $message) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
     <link rel="stylesheet" href="./../css/fonts.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="./css/panel.css">
@@ -45,7 +48,8 @@ foreach ($messages as $message) {
 <body>
 
     <?php if (isset($_SESSION["admin_gamer"]) && $_SESSION["admin_gamer"] == true) { ?>
-        <header>
+        <<<<<<< HEAD
+            <header>
             <nav class="navbar navbar-dark bg-dark fixed-top" style="background: transparent !important">
                 <div class="container-fluid" style="justify-content: flex-end; margin-right: 10px;">
                     <?php if ($countMessage > 0) {  ?>
@@ -81,8 +85,8 @@ foreach ($messages as $message) {
                                         <li><a class="nav-link" href="categories.php">Gestions des catégories</a></li>
                                         <li><a class="nav-link" href="addreviews.php">Gestions des reviews</a></li>
                                         <li>
-                                        <li><a class="nav-link" href="#">Gestions des utilisateurs</a></li>
-                                        <li><a class="nav-link" href="#">Gestions des administrateurs</a></li>
+                                        <li><a class="nav-link" href="userlist.php">Gestions des utilisateurs</a></li>
+                                        <li><a class="nav-link" href="adminslist.php">Gestions des administrateurs</a></li>
                                         <hr class="dropdown-divider">
                                     </ul>
                                 </li>
@@ -91,8 +95,7 @@ foreach ($messages as $message) {
                                         Profil
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark" style="padding-left: 10px">
-                                        <li><a class="nav-link" href="editemail.php">Modifier mon adresse email</a></li>
-                                        <li><a class="nav-link" href="editmdp.php">Modifier mon mot de passe</a></li>
+                                        <li><a class="nav-link" href="adminprofil.php">Modifier son profil</a></li>
                                         <li><a class="nav-link" href="messagerie.php">Messagerie
                                                 <style>
                                                     .unread-message {
@@ -112,5 +115,5 @@ foreach ($messages as $message) {
                     </div>
                 </div>
             </nav>
-        </header>
-    <?php } ?>
+            </header>
+        <?php } ?>
