@@ -8,16 +8,17 @@ function validateEmail($email)
 
 // Vérifie si le formulaire est soumis et non vide
 if (!empty($_POST)) {
-
+    if (!isset($_POST["terms"])) {
+        $errorMessage = "Vous devez accepter la politique de confidentialité.";
+    } else if
     // Vérifie que tous les champs nécessaires sont présents et non vides
-    if (isset($_POST["pseudo"], $_POST["email"], $_POST["pass"], $_POST["pass2"], $_POST["terms"]) && !empty($_POST["pseudo"]) && !empty($_POST["email"]) && !empty($_POST["pass"]) && !empty($_POST["pass2"]) && !empty($_POST["terms"])) {
-
+    (isset($_POST["pseudo"], $_POST["email"], $_POST["pass"], $_POST["pass2"]) && !empty($_POST["pseudo"]) && !empty($_POST["email"]) && !empty($_POST["pass"]) && !empty($_POST["pass2"])) {
         // Nettoie le champ "pseudo" pour éviter l'injection HTML
         $pseudo = strip_tags($_POST["pseudo"]);
 
         // Vérifie la validité de l'email
         if (!validateEmail($_POST["email"])) {
-            die("L'adresse email est incorrect");
+            $errorMessage = "L'adresse mail est incorrecte.";
         }
 
         // Récupère et vérifie les mots de passe
@@ -30,28 +31,79 @@ if (!empty($_POST)) {
             // Hache le mot de passe pour le sécuriser
             $pass = password_hash($_POST["pass"], PASSWORD_ARGON2ID);
         } else {
-            die("Les mots de passes ne correspondent pas");
+            $errorMessage = "Les mots de passe ne correspondent pas.";
         }
 
-        // Connexion à la base de données
-        require_once("../connect.php");
+        try {
+            // Connexion à la base de données
+            require_once("../connect.php");
 
-        // Prépare l'insertion des données dans la table "admins"
-        $sql = "INSERT INTO admins (pseudo, email, pass) VALUES (:pseudo, :email, '$pass')";
+            // Vérification si le pseudo existe déjà
+            $sql_check_pseudo = "SELECT COUNT(*) FROM users WHERE pseudo = :pseudo";
+            $query_pseudo = $db->prepare($sql_check_pseudo);
+            $query_pseudo->bindValue(":pseudo", $pseudo);
+            $query_pseudo->execute();
+            $count_pseudo = $query_pseudo->fetchColumn();
 
-        $query = $db->prepare($sql);
+            if ($count_pseudo > 0) {
+                $errorMessage = "Le pseudo " . htmlspecialchars($_POST['pseudo']) . " est déjà utilisé.";
+            }
 
-        // Associe les valeurs aux paramètres de la requête SQL
-        $query->bindValue(":pseudo", $pseudo);
-        $query->bindValue(":email", $_POST["email"]);
+            // Vérification si l'email existe déjà
+            $sql_check_email = "SELECT COUNT(*) FROM users WHERE email = :email";
+            $query_email = $db->prepare($sql_check_email);
+            $query_email->bindValue(":email", $_POST["email"]);
+            $query_email->execute();
+            $count_email = $query_email->fetchColumn();
 
-        // Exécute la requête
-        $query->execute();
+            if ($count_email > 0) {
+                $errorMessage = "L'adresse mail est déjà associée à un compte.";
+            }
 
-        // Redirige vers la page de connexion administrateur
-        header("Location: ../admin/connexionadmin.php");
+            // Vérification si l'email existe déjà dans la table admin
+            $sql_check_pseudo_admin = "SELECT COUNT(*) FROM admins WHERE pseudo = :pseudo";
+            $query_pseudo_admin = $db->prepare($sql_check_pseudo_admin);
+            $query_pseudo_admin->bindValue(":pseudo", $_POST["pseudo"]);
+            $query_pseudo_admin->execute();
+            $count_pseudo_admin = $query_pseudo_admin->fetchColumn();
+
+            if ($count_pseudo_admin > 0) {
+                $errorMessage = "Le pseudo " . htmlspecialchars($_POST["pseudo"]) . " est déjà utilisée.";
+            }
+
+            // Vérification si l'email existe déjà dans la table admin
+            $sql_check_email_admin = "SELECT COUNT(*) FROM admins WHERE email = :email";
+            $query_email_admin = $db->prepare($sql_check_email_admin);
+            $query_email_admin->bindValue(":email", $_POST["email"]);
+            $query_email_admin->execute();
+            $count_email_admin = $query_email_admin->fetchColumn();
+
+            if ($count_email_admin > 0) {
+                $errorMessage = "L'adresse mail est déjà utilisée.";
+            }
+
+            if (empty($errorMessage)) {
+                // Prépare l'insertion des données dans la table "admins"
+                $sql = "INSERT INTO admins (pseudo, email, pass) VALUES (:pseudo, :email, '$pass')";
+
+                $query = $db->prepare($sql);
+
+                // Associe les valeurs aux paramètres de la requête SQL
+                $query->bindValue(":pseudo", $pseudo);
+                $query->bindValue(":email", $_POST["email"]);
+
+                // Exécute la requête
+                $query->execute();
+
+                // Redirige vers la page de connexion administrateur
+                header("Location: ../admin/connexionadmin.php");
+                exit();
+            }
+        } catch (PDOException $e) {
+            die("Erreur de connexion : " . $e->getMessage());
+        }
     } else {
-        die("Le formulaire est incomplet");
+        $errorMessage = "Le formulaire est incomplet.";
     }
 }
 
@@ -82,6 +134,9 @@ if (!empty($_POST)) {
         <h1 class="titre">Inscription admin</h1>
         <div class="container-inscription">
             <form method="POST" class="form-login">
+                <?php if (!empty($errorMessage)): ?>
+                    <div class="error-message"><?php echo $errorMessage; ?></div>
+                <?php endif; ?>
                 <div class="container-pseudo">
                     <label for="pseudo">Pseudo :</label>
                     <input type="text" class="form-input" name="pseudo" id="pseudo" placeholder="Pseudo">

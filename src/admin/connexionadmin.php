@@ -10,67 +10,56 @@ if (!empty($_POST)) {
 
     if (isset($_POST["email"], $_POST["pass"]) && !empty($_POST["email"]) && !empty($_POST["pass"])) {
         if (!validateEmail($_POST["email"])) {
-            die("L'adresse email est incorrecte");
-        }
+            $errorMessage = "L'adresse email est incorrect.";
+        } else {
+            require_once("../connect.php");
 
-        require_once("../connect.php");
-
-        $sql_search = "SELECT * FROM admins WHERE email = :email";
-        $query = $db->prepare($sql_search);
-
-        $query->bindValue(":email", $_POST["email"]);
-
-        $query->execute();
-
-        $admin = $query->fetch();
-
-
-
-        if (!$admin) {
-            // ERREUR IL N'EST PAS ADMIN
-            $sql_user = "SELECT * FROM users WHERE email = :email";
-            $query = $db->prepare($sql_user);
-
+            // On vérifie si le mail est bien celui d'un user 
+            $sql_search = "SELECT * FROM users WHERE email = :email";
+            $query = $db->prepare($sql_search);
             $query->bindValue(":email", $_POST["email"]);
-
             $query->execute();
-
             $user = $query->fetch();
 
-            if ($user) {
-                if (!password_verify($_POST["pass"], $user["pass"])) {
-                    die("Le mot de passe est incorrect");
+
+
+            if (!$user) {
+                // Rechercher dans la table admins si l'email n'est pas celui d'un user
+                $sql_user = "SELECT * FROM admins WHERE email = :email";
+                $query = $db->prepare($sql_user);
+
+                $query->bindValue(":email", $_POST["email"]);
+
+                $query->execute();
+
+                $admin = $query->fetch();
+
+                if ($admin) {
+                    // Vérification du mot de passe avant de créer la session
+                    if (password_verify($_POST["pass"], $admin["pass"])) {
+                        // Si le mot de passe est correct, on crée la session
+                        $_SESSION["admin_gamer"] = [
+                            "admin_id" => $admin["admin_id"],
+                            "pseudo" => $admin["pseudo"],
+                            "email" => $admin["email"],
+                            "admin" => true
+                        ];
+
+                        header("Location: panel.php");
+                        exit();
+                    } else {
+                        $errorMessage = "L'adresse email et/ou le mot de passe est incorrect.";
+                    }
+                } else {
+                    // Si aucun compte trouvé, afficher un message
+                    $errorMessage = "L'adresse email et/ou le mot de passe est incorrect.";
                 }
-
-                $_SESSION["user_gamer"] = [
-                    "user_id" => $user["user_id"],
-                    "pseudo" => $user["pseudo"],
-                    "email" => $user["email"],
-                    "user" => true
-                ];
-
-                header("Location: panel.php");
             } else {
-                die("le compte n'existe pas");
+                $errorMessage = "L'adresse email et/ou le mot de passe est incorrect.";
             }
-        } else {
-            // ICI ON CONNECTE LE MEC EN ADMIN (on vérifie le mdp avant....)
-
-            if (!password_verify($_POST["pass"], $admin["pass"])) {
-                die("Le mot de passe est incorrect");
-            }
-
-            $_SESSION["admin_gamer"] = [
-                "admin_id" => $admin["admin_id"],
-                "pseudo" => $admin["pseudo"],
-                "email" => $admin["email"],
-                "admin" => true
-            ];
-
-            header("Location: panel.php");
         }
     } else {
-        echo "Formulaire incomplet";
+        $errorMessage = "Formulaire incomplet";
     }
 }
 
@@ -98,6 +87,9 @@ if (!empty($_POST)) {
         <h1 class="titre">Connexion admin</h1>
         <div class="container-connexion">
             <form method="POST" class="form-login">
+                <?php if (!empty($errorMessage)): ?>
+                    <div class="error-message"><?php echo $errorMessage; ?></div>
+                <?php endif; ?>
                 <div class="container-email">
                     <label for="email">Email :</label>
                     <input type="email" class="form-input" name="email" id="email" placeholder="Email">
