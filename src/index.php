@@ -37,13 +37,48 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <div class="carousel-container">
         <div class="carousel" id="carousel">
-            <?php foreach ($games as $game) { ?>
-                <div class="card-carrousel">
-                    <span class="favorite" onclick="toggleFavorite(this)">☆</span>
-                    <a href="./infogame.php?id=<?= $game["game_id"] ?>">
-                        <img src="./admin/<?= htmlspecialchars($game['jacket']); ?>" alt="<?= $game["game_title"] ?>">
-                    </a>
-                </div>
+
+
+
+            <?php foreach ($games as $game) {?>
+            <div class="card-carrousel">
+
+                <?php
+                    // Vérifie si l'utilisateur est connecté en vérifiant la présence de 'user_id' dans la session
+                    if (isset($_SESSION['user_gamer']['user_id'])) {
+                        // Récupère l'ID de l'utilisateur depuis la session
+                        $user_id = $_SESSION['user_gamer']['user_id'];
+                        // Récupère l'ID du jeu actuel
+                        $game_id = $game['game_id'];
+
+                        // Prépare une requête SQL pour vérifier si le jeu est déjà dans les favoris de l'utilisateur
+                        $checkFavoriteSql = "SELECT * FROM favoris WHERE user_id = :user_id AND game_id = :game_id";
+                        $checkFavoriteStmt = $db->prepare($checkFavoriteSql);
+                        // Lie les paramètres de la requête pour sécuriser les données
+                        $checkFavoriteStmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+                        $checkFavoriteStmt->bindParam(':game_id', $game_id, PDO::PARAM_INT);
+                        // Exécute la requête-
+                        $checkFavoriteStmt->execute();
+                        // Vérifie si une ligne est retournée, ce qui signifie que le jeu est déjà en favori
+                        $isFavorite = $checkFavoriteStmt->fetchColumn() !== false;
+                    ?>
+                <!-- Affiche une étoile remplie si le jeu est en favori, sinon une étoile vide -->
+                <span class="favorite <?= $isFavorite ? 'filled' : '' ?>" data-game-id="<?= $game_id ?>"
+                    onclick="toggleFavorite(this, <?= $game_id ?>)">
+                    <?= $isFavorite ? '★' : '☆' ?>
+                </span>
+                <?php } else { ?>
+                <!-- Si l'utilisateur n'est pas connecté, affiche une étoile vide désactivée -->
+                <span class="favorite disabled" onclick="alertNotLoggedIn()">
+                    ☆
+                </span>
+                <?php } ?>
+
+
+                <a href="./infogame.php?game_id=<?= $game["game_id"] ?>">
+                    <img src="./admin/<?= htmlspecialchars($game['jacket']); ?>" alt="<?= $game["game_title"] ?>">
+                </a>
+            </div>
             <?php } ?>
         </div>
     </div>
@@ -96,12 +131,14 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
             <div class="reviews-container-review-index">
                 <div class="index-container-game-review">
                     <?php if ($last_review) { ?>
-                        <img class="index-review-img" src="../<?= $last_review['image1'] ?>" alt="<?= $last_review["review_title"] ?>" class="index-image-large">
+                    <img class="index-review-img" src="../<?= $last_review['image1'] ?>"
+                        alt="<?= $last_review["review_title"] ?>" class="index-image-large">
                     <?php } ?>
 
                     <div class="index-right-images">
                         <?php foreach ($reviews as $review) { ?>
-                            <img class="index-image-small index-review-img" src="../<?= $review['image1'] ?>" alt="<?= $review["review_title"] ?>">
+                        <img class="index-image-small index-review-img" src="../<?= $review['image1'] ?>"
+                            alt="<?= $review["review_title"] ?>">
                         <?php } ?>
                     </div>
                 </div>
@@ -158,8 +195,7 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
 
     </section>
 </main>
+<script src="./js/carrousel.js"></script>
+<script src="./js/form_contact.js"></script>
+<script src="./js/favoris.js"></script>
 <?php include "./template/footer.php" ?>
-<script src="../js/carrousel.js"></script>
-<script src="../js/form_contact.js"></script>
-
-</html>

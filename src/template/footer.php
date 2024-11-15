@@ -10,7 +10,7 @@
                     <a href="">Contactez-nous</a>
                 </li>
                 <li>
-                    <a href="">Mention légales</a>
+                    <a href="../mentions_legales.php">Mention légales</a>
                 </li>
             </ul>
             <div class="container-footer-nos-reseaux">
@@ -36,7 +36,9 @@
         </div>
         <p class="footer-copyright">Copyright © - 2024 PlayVerse - Tous droits réservés</p>
     </footer>
-    </body>
-
     <script src="../js/script.js"></script>
     <script src="../js/burger.js"></script>
+
+    </body>
+
+    </html>

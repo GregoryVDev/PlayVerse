@@ -18,10 +18,6 @@ function duplicateCards() {
 
 duplicateCards(); // Dupliquer suffisamment de cartes pour éviter l'espace blanc
 
-function toggleFavorite(star) {
-    star.classList.toggle("filled");
-}
-
 function startAutoScroll() {
     autoScrollInterval = setInterval(() => {
         scrollPosition -= 1; // Avancer d'un pixel à chaque tick

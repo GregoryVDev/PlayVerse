@@ -179,7 +179,6 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
                 <tr>
                     <th>Action</th>
                     <th>Titre</th>
-                    <th><input type="checkbox"></th>
                 </tr>
             </thead>
             <?php foreach ($reviews as $review) { ?>
@@ -190,12 +189,10 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
                         <a class="btn-delete" href="deletereview.php?id=<?= $review["review_id"] ?>">Supprimer</a>
                     </td>
                     <td><?= $review["review_title"] ?></td>
-                    <td><label><input type="checkbox"></label></td>
                 </tr>
             </tbody>
             <?php } ?>
         </table>
-        <button class="deleteall">Supprimer tout</button>
     </section>
 </main>
 <script src="./js/admin.js"></script>

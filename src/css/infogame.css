@@ -56,15 +56,6 @@
 }
 
 /* page infogame */
-/* star */
-.gameinfo-star {
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-}
 .infogame {
     position: relative;
     background-color: var(--colorMain);
@@ -174,9 +165,8 @@ body {
     font-family: var(--audioRegular);
 }
 
-/* test */
-/* test */
-/* test */
+/* vidéo */
+
 .iframe-container {
     position: relative;
     overflow: hidden;
@@ -196,39 +186,47 @@ body {
 
 /* picture game */
 
-.container-picture-game {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    gap: 10px;
-    margin: auto;
-    margin-top: 5%;
-    padding-bottom: 5%;
+.container-infogame-img {
+    width: 85%;
+    margin: 5% auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 20px;
 }
 
-.container-picture-game img {
+.large-img-infogame {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    height: 100%;
+}
+
+.small-imgs-infogame {
+    display: grid;
+    gap: 20px;
+}
+
+.small-img-infogame {
+    position: relative;
+    overflow: hidden;
+}
+
+.large-img-infogame img,
+.small-img-infogame img {
     width: 100%;
-    display: block;
-}
-.container-picture-game {
-    flex-direction: row;
+    height: 100%;
+    object-fit: cover;
 }
 
-.image-large {
-    width: 50%;
-}
+/* vague */
 
-.right-images {
-    display: flex;
-    flex-direction: column;
-    gap: 2%;
-    width: 48%;
+.infogame-vague {
+    background-image: url("../img/images/vague.png");
+    background-repeat: no-repeat;
+    background-size: 100vw;
+    height: 50px;
 }
-
-.image-small {
-    flex: 1;
-}
-
 /* commentaire et autre */
 
 .infogame-bg-color {
@@ -257,7 +255,19 @@ body {
 }
 
 .pseudo {
+    font-size: clamp(18px, 4vw, 24px);
     margin-bottom: 2%;
+    text-transform: uppercase;
+    font-family: var(--audioRegular);
+}
+
+.message {
+    font-size: clamp(
+        var(--font-size-p-min),
+        var(--font-size-p-preferred),
+        var(--font-size-p-max)
+    );
+    font-family: var(--NunitoRegular);
 }
 
 .infogame-h4 {
@@ -316,6 +326,13 @@ body {
     margin: auto;
     display: flex;
     justify-content: center;
+}
+.input-commentaire {
+    font-size: clamp(
+        var(--font-size-p-min),
+        var(--font-size-p-preferred),
+        var(--font-size-p-max)
+    );
 }
 
 /* nos dernier jeu ajouter  */
@@ -407,6 +424,11 @@ body {
             text-align: center;
         }
     }
+    /* vague */
+
+    .infogame-vague {
+        height: 80px;
+    }
 }
 
 @media all and (min-width: 1024px) {
@@ -461,13 +483,24 @@ body {
         width: 60%;
     }
 
+    /* vague */
+
+    .infogame-vague {
+        height: 15vh;
+    }
+
     /* commentaire */
+
     .commentaire {
         margin-bottom: 2%;
+    }
+    .form-inline input[type="text"] {
+        width: 500px;
     }
 
     .btn {
         width: 120px;
+        padding: 15px;
     }
 
     .infogame-connexion {
@@ -486,5 +519,27 @@ body {
         top: 0%;
         transition: 0.3s;
         opacity: 1;
+    }
+}
+
+/* Media queries pour picture game */
+@media all and (min-width: 769px) {
+    .container-infogame-img {
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: auto;
+        gap: 20px;
+    }
+
+    .large-img-infogame {
+        height: 100%;
+    }
+
+    .small-img-infogame {
+        height: auto;
+    }
+
+    .large-img-infogame img,
+    .small-img-infogame img {
+        height: 100%;
     }
 }
