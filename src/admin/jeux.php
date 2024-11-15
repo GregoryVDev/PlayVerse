@@ -28,7 +28,7 @@ $plateformes = $query_plateformes->fetchAll(PDO::FETCH_ASSOC);
 // Récupère le pseudo de l'admin en jointure
 $sql_games = "SELECT g.game_id, g.game_title, a.pseudo 
                FROM games g 
-               JOIN admins a ON g.admin_id = a.admin_id";
+               JOIN admins a ON g.admin_id = a.admin_id ORDER BY game_id DESC";
 
 $query_games = $db->prepare($sql_games);
 $query_games->execute();
@@ -212,7 +212,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         </div>
                         <div class="container-image">
                             <label class="uploadlabel" for="image1"
-                                class="uploadImage">Uploader image 1</label>
+                                class="uploadImage">Image de présentation</label>
                             <input type="file" id="image1" name="image1" class="image" required onchange="previewImage(this, 'image1Preview')">
                             <div class="preview" id="image1Preview"></div>
                         </div>
@@ -239,11 +239,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </section>
     <section class="dashboard">
         <h2>Dashboard</h2>
-
-        <div class="container-search">
-            <img src="../img/logos/search.svg" alt="Search">
-            <input type="search" name="search" id="search" placeholder="Cherchez un jeu...">
-        </div>
         <table>
             <thead>
                 <tr>
@@ -265,12 +260,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </tr>
                 </tbody>
             <?php } ?>
-        </table>
-        <!-- PAGINATION -->
-        <div id="pagination" class="container-pages">
-            <span id="pageNumbers"></span>
-        </div>
-        <button class="deleteall">Supprimer tout</button>
+            <!-- PAGINATION -->
+            <div id="pagination" class="container-pages">
+                <span id="pageNumbers"></span>
+            </div>
     </section>
 </main>
 </body>

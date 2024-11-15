@@ -11,14 +11,14 @@ $game_id = isset($_GET['game_id']) ? (int)$_GET['game_id'] : 0;
 // Vérifie si l'ID du jeu est valide
 if ($game_id <= 0) {
     // Redirige vers index.php si l'ID du jeu est invalide ou absent
-    header("Location: index.php");
+    header("Location: games.php");
     exit();
 }
 // Vérifie si l'utilisateur est connecté
 if (isset($_SESSION["user_gamer"])) {
     // Si l'utilisateur est connecté, récupère son ID
     $user_id = $_SESSION["user_gamer"]["user_id"];
-    
+
     // Vérifie si le formulaire a été soumis
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Nettoie le commentaire soumis par l'utilisateur (enlève les espaces superflus)
@@ -60,7 +60,8 @@ if (isset($_SESSION["user_gamer"])) {
 }
 
 // Fonction pour afficher un message flash (succès ou erreur)
-function set_flash_message($type, $message) {
+function set_flash_message($type, $message)
+{
     $_SESSION['flash_message'] = ['type' => $type, 'message' => $message];
 }
 
@@ -97,11 +98,11 @@ try {
     $game_info->bindValue(':game_id', $game_id, PDO::PARAM_INT);
     $game_info->execute();
 
-        // Si aucun jeu n'est trouvé, redirige vers index.php
-        if ($game_info->rowCount() == 0) {
-            header("Location: index.php");
-            exit();
-        }
+    // Si aucun jeu n'est trouvé, redirige vers index.php
+    if ($game_info->rowCount() == 0) {
+        header("Location: games.php");
+        exit();
+    }
     $game_data = $game_info->fetch(PDO::FETCH_ASSOC);
 
     // Requête pour récupérer les plateformes associées au jeu
@@ -145,7 +146,6 @@ try {
     $query_last_games->bindValue(':game_id', $game_id, PDO::PARAM_INT);
     $query_last_games->execute();
     $last_games_info = $query_last_games->fetchAll(PDO::FETCH_ASSOC);
-
 } catch (PDOException $e) {
     // Gestion des erreurs SQL
     echo 'Erreur lors de la récupération des informations : ' . $e->getMessage();
@@ -158,11 +158,11 @@ try {
 <main class="infogame">
     <!-- Ajouter des messages de succès ou d'erreur -->
     <?php if (isset($_SESSION['flash_message'])): ?>
-    <div
-        class="alert <?php echo $_SESSION['flash_message']['type'] === 'success' ? 'alert-success' : 'alert-danger'; ?>">
-        <?php echo $_SESSION['flash_message']['message']; ?>
-    </div>
-    <?php unset($_SESSION['flash_message']); ?>
+        <div
+            class="alert <?php echo $_SESSION['flash_message']['type'] === 'success' ? 'alert-success' : 'alert-danger'; ?>">
+            <?php echo $_SESSION['flash_message']['message']; ?>
+        </div>
+        <?php unset($_SESSION['flash_message']); ?>
     <?php endif; ?>
 
     <!-- Background header (desktop version) -->
@@ -196,34 +196,34 @@ try {
 
     <!-- Ajouter favoris -->
     <?php
-                    // Vérifie si l'utilisateur est connecté en vérifiant la présence de 'user_id' dans la session
-                    if (isset($_SESSION['user_gamer']['user_id'])) {
-                        // Récupère l'ID de l'utilisateur depuis la session
-                        $user_id = $_SESSION['user_gamer']['user_id'];
-                        // Récupère l'ID du jeu actuel
-                        $game_id = (int)$_GET['game_id'];
+    // Vérifie si l'utilisateur est connecté en vérifiant la présence de 'user_id' dans la session
+    if (isset($_SESSION['user_gamer']['user_id'])) {
+        // Récupère l'ID de l'utilisateur depuis la session
+        $user_id = $_SESSION['user_gamer']['user_id'];
+        // Récupère l'ID du jeu actuel
+        $game_id = (int)$_GET['game_id'];
 
-                        // Prépare une requête SQL pour vérifier si le jeu est déjà dans les favoris de l'utilisateur
-                        $checkFavoriteSql = "SELECT * FROM favoris WHERE user_id = :user_id AND game_id = :game_id";
-                        $checkFavoriteStmt = $db->prepare($checkFavoriteSql);
-                        // Lie les paramètres de la requête pour sécuriser les données
-                        $checkFavoriteStmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-                        $checkFavoriteStmt->bindParam(':game_id', $game_id, PDO::PARAM_INT);
-                        // Exécute la requête-
-                        $checkFavoriteStmt->execute();
-                        // Vérifie si une ligne est retournée, ce qui signifie que le jeu est déjà en favori
-                        $isFavorite = $checkFavoriteStmt->fetchColumn() !== false;
-                    ?>
-    <!-- Affiche une étoile remplie si le jeu est en favori, sinon une étoile vide -->
-    <span class="favorite <?= $isFavorite ? 'filled' : '' ?>" data-game-id="<?= $game_id ?>"
-        onclick="toggleFavorite(this, <?= $game_id ?>)">
-        <?= $isFavorite ? '★' : '☆' ?>
-    </span>
+        // Prépare une requête SQL pour vérifier si le jeu est déjà dans les favoris de l'utilisateur
+        $checkFavoriteSql = "SELECT * FROM favoris WHERE user_id = :user_id AND game_id = :game_id";
+        $checkFavoriteStmt = $db->prepare($checkFavoriteSql);
+        // Lie les paramètres de la requête pour sécuriser les données
+        $checkFavoriteStmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $checkFavoriteStmt->bindParam(':game_id', $game_id, PDO::PARAM_INT);
+        // Exécute la requête-
+        $checkFavoriteStmt->execute();
+        // Vérifie si une ligne est retournée, ce qui signifie que le jeu est déjà en favori
+        $isFavorite = $checkFavoriteStmt->fetchColumn() !== false;
+    ?>
+        <!-- Affiche une étoile remplie si le jeu est en favori, sinon une étoile vide -->
+        <span class="favorite <?= $isFavorite ? 'filled' : '' ?>" data-game-id="<?= $game_id ?>"
+            onclick="toggleFavorite(this, <?= $game_id ?>)">
+            <?= $isFavorite ? '★' : '☆' ?>
+        </span>
     <?php } else { ?>
-    <!-- Si l'utilisateur n'est pas connecté, affiche une étoile vide désactivée -->
-    <span class="favorite disabled" onclick="alertNotLoggedIn()">
-        ☆
-    </span>
+        <!-- Si l'utilisateur n'est pas connecté, affiche une étoile vide désactivée -->
+        <span class="favorite disabled" onclick="alertNotLoggedIn()">
+            ☆
+        </span>
     <?php } ?>
 
     <!-- Plateforme game -->
@@ -232,8 +232,8 @@ try {
         <div class="container-plateforme">
 
             <?php foreach ($platforms as $platform): ?>
-            <img class="icon-plateforme" src="./admin/<?php echo htmlspecialchars($platform['plateforme_icon']); ?>"
-                alt="<?php echo htmlspecialchars($platform['plateforme_name']); ?>">
+                <img class="icon-plateforme" src="./admin/<?php echo htmlspecialchars($platform['plateforme_icon']); ?>"
+                    alt="<?php echo htmlspecialchars($platform['plateforme_name']); ?>">
             <?php endforeach; ?>
 
         </div>
@@ -270,10 +270,10 @@ try {
         <h3 class="infogame-h3">Voici leurs avis</h3>
         <div class="container-commentaire">
             <?php foreach ($comments as $comment): ?>
-            <div class="commentaire">
-                <p class="pseudo"><?php echo htmlspecialchars($comment['pseudo']); ?></p>
-                <p class="message"><?php echo nl2br(htmlspecialchars($comment['message'])); ?></p>
-            </div>
+                <div class="commentaire">
+                    <p class="pseudo"><?php echo htmlspecialchars($comment['pseudo']); ?></p>
+                    <p class="message"><?php echo nl2br(htmlspecialchars($comment['message'])); ?></p>
+                </div>
             <?php endforeach; ?>
             <a class="more-commentary-btn" href="infogamecommentaire.php?game_id=<?= $game_data["game_id"] ?>">Voir tous
                 les commentaires</a>
@@ -281,19 +281,19 @@ try {
 
         <div>
             <?php if (isset($_SESSION["user_gamer"])): ?>
-            <!-- Section pour laisser un commentaire si l'utilisateur est connecté -->
-            <h4 class="infogame-h4">Laissez votre avis</h4>
-            <form action="#" method="post" class="form-inline">
-                <input class="input-commentaire" type="text" id="commentaire" name="commentaire"
-                    placeholder="Tapez votre commentaire ici">
-                <input class="btn" type="submit" value="Envoyer">
-            </form>
+                <!-- Section pour laisser un commentaire si l'utilisateur est connecté -->
+                <h4 class="infogame-h4">Laissez votre avis</h4>
+                <form action="#" method="post" class="form-inline">
+                    <input class="input-commentaire" type="text" id="commentaire" name="commentaire"
+                        placeholder="Tapez votre commentaire ici">
+                    <input class="btn" type="submit" value="Envoyer">
+                </form>
             <?php else: ?>
-            <!-- Section de connexion si l'utilisateur n'est pas connecté -->
-            <div class="infogame-connexion">
-                <h4 class="infogame-h4">Veuillez vous connecter pour laisser un avis</h4>
-                <a class="info-game-connexion-btn" href="connexion.php">Se connecter</a>
-            </div>
+                <!-- Section de connexion si l'utilisateur n'est pas connecté -->
+                <div class="infogame-connexion">
+                    <h4 class="infogame-h4">Veuillez vous connecter pour laisser un avis</h4>
+                    <a class="info-game-connexion-btn" href="connexion.php">Se connecter</a>
+                </div>
             <?php endif; ?>
         </div>
 
@@ -301,16 +301,16 @@ try {
         <h5 class="infogame-h5">Nos derniers jeux ajoutés</h5>
         <div class="jeu-container">
             <?php foreach ($last_games_info as $last_game): ?>
-            <article class="card-game">
-                <a href="infogame.php?game_id=<?= $last_game["game_id"] ?>">
-                    <img class="card-img" src="./admin/<?php echo htmlspecialchars($last_game['jacket']); ?>"
-                        alt="<?php echo htmlspecialchars($last_game['game_title']); ?>" />
-                </a>
-                <div class="card-body">
-                    <h3 class="card-title"><?php echo htmlspecialchars($last_game['game_title']); ?></h3>
-                    <a class="card-btn" href="infogame.php?game_id=<?= $last_game["game_id"] ?>">Voir</a>
-                </div>
-            </article>
+                <article class="card-game">
+                    <a href="infogame.php?game_id=<?= $last_game["game_id"] ?>">
+                        <img class="card-img" src="./admin/<?php echo htmlspecialchars($last_game['jacket']); ?>"
+                            alt="<?php echo htmlspecialchars($last_game['game_title']); ?>" />
+                    </a>
+                    <div class="card-body">
+                        <h3 class="card-title"><?php echo htmlspecialchars($last_game['game_title']); ?></h3>
+                        <a class="card-btn" href="infogame.php?game_id=<?= $last_game["game_id"] ?>">Voir</a>
+                    </div>
+                </article>
             <?php endforeach; ?>
         </div>
     </section>

@@ -6,14 +6,13 @@ require_once("../connect.php");
 if (isset($_SESSION["admin_gamer"])) {
 
     $sql = "SELECT * FROM admins ORDER BY admin_id DESC";
-$query = $db->prepare($sql);
+    $query = $db->prepare($sql);
 
-$query->execute();
+    $query->execute();
 
-$admins = $query->fetchAll(PDO::FETCH_ASSOC);
-
+    $admins = $query->fetchAll(PDO::FETCH_ASSOC);
 } else {
-    header("Location: ../index.php"); 
+    header("Location: ../index.php");
 }
 
 ?>
@@ -33,12 +32,6 @@ $admins = $query->fetchAll(PDO::FETCH_ASSOC);
 
     <section class="dashboard">
         <h2>Dashboard</h2>
-
-        <div class="container-search">
-            <img src="../img/logos/search.svg" alt="Search">
-            <input type="search" name="search" id="search" placeholder="Cherchez un jeu...">
-        </div>
-
         <table>
             <thead>
                 <tr>
@@ -49,16 +42,16 @@ $admins = $query->fetchAll(PDO::FETCH_ASSOC);
                 </tr>
             </thead>
             <?php foreach ($admins as $admin) { ?>
-            <tbody>
-                <tr data-page="1">
-                    <td class="actions">
-                        <a class="btn-delete" href="deleteadmin.php?id=<?= $admin["admin_id"] ?>">Supprimer</a>
-                    </td>
-                    <td><?= $admin["admin_id"] ?></td>
-                    <td><?= $admin["pseudo"] ?></td>
-                    <td><?= $admin["email"] ?></td>
-                </tr>
-            </tbody>
+                <tbody>
+                    <tr data-page="1">
+                        <td class="actions">
+                            <a class="btn-delete" href="deleteadmin.php?id=<?= $admin["admin_id"] ?>">Supprimer</a>
+                        </td>
+                        <td><?= $admin["admin_id"] ?></td>
+                        <td><?= $admin["pseudo"] ?></td>
+                        <td><?= $admin["email"] ?></td>
+                    </tr>
+                </tbody>
             <?php } ?>
         </table>
     </section>

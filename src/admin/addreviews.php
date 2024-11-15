@@ -5,10 +5,10 @@ require_once("../connect.php");
 
 if (isset($_SESSION["admin_gamer"])) {
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        
+
         // Récupération de l'ID de l'admin connecté
         $admin_id = $_SESSION["admin_gamer"]["admin_id"];
-        
+
         $review_title = strip_tags($_POST["review_title"]);
         $paragraph1 = strip_tags($_POST["paragraph1"]);
         $paragraph2 = strip_tags($_POST["paragraph2"]);
@@ -26,7 +26,7 @@ if (isset($_SESSION["admin_gamer"])) {
 
         // Vérification que les fichiers ont été téléchargés
         if (isset($image1, $image2, $image3) && is_uploaded_file($image1['tmp_name']) && is_uploaded_file($image2['tmp_name']) && is_uploaded_file($image3['tmp_name'])) {
-            
+
             // Génération de noms de fichiers uniques
             $imageName1 = md5(uniqid() . 'image1') . '.' . pathinfo($image1['name'], PATHINFO_EXTENSION);
             $imageName2 = md5(uniqid() . 'image2') . '.' . pathinfo($image2['name'], PATHINFO_EXTENSION);
@@ -38,16 +38,18 @@ if (isset($_SESSION["admin_gamer"])) {
             $imagePath3 = $uploadDir . $imageName3;
 
             // Déplacement des fichiers téléchargés
-            if (move_uploaded_file($image1['tmp_name'], $imagePath1) && 
-                move_uploaded_file($image2['tmp_name'], $imagePath2) && 
-                move_uploaded_file($image3['tmp_name'], $imagePath3)) {
-                
+            if (
+                move_uploaded_file($image1['tmp_name'], $imagePath1) &&
+                move_uploaded_file($image2['tmp_name'], $imagePath2) &&
+                move_uploaded_file($image3['tmp_name'], $imagePath3)
+            ) {
+
                 // Préparation de la requête SQL
                 $sql_addreview = "INSERT INTO reviews (admin_id, review_title, paragraph1, paragraph2, paragraph3, image1, image2, image3, high_point, weak_point)
                                 VALUES (:admin_id, :review_title, :paragraph1, :paragraph2, :paragraph3, :image1, :image2, :image3, :high_point, :weak_point)";
-                
+
                 $query = $db->prepare($sql_addreview);
-                
+
                 // Liaison des valeurs, en ajoutant le chemin relatif dans les noms des images
                 $query->bindValue(":admin_id", $admin_id, PDO::PARAM_INT);
                 $query->bindValue(":review_title", $review_title);
@@ -66,7 +68,7 @@ if (isset($_SESSION["admin_gamer"])) {
 
                     // Fermeture de la connexion et redirection
                     require_once("../close.php");
-                    header("Location: ../admin/addreviews.php"); 
+                    header("Location: ../admin/addreviews.php");
                     exit();
                 } catch (PDOException $e) {
                     echo "Erreur SQL : " . $e->getMessage();
@@ -79,7 +81,7 @@ if (isset($_SESSION["admin_gamer"])) {
         }
     }
 } else {
-    header("Location: ../index.php"); 
+    header("Location: ../index.php");
 }
 
 
@@ -168,12 +170,6 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
 
     <section class="dashboard">
         <h2>Dashboard</h2>
-
-        <div class="container-search">
-            <img src="../img/logos/search.svg" alt="Search">
-            <input type="search" name="search" id="search" placeholder="Cherchez un jeu...">
-        </div>
-
         <table>
             <thead>
                 <tr>
@@ -182,15 +178,15 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
                 </tr>
             </thead>
             <?php foreach ($reviews as $review) { ?>
-            <tbody>
-                <tr data-page="1">
-                    <td class="actions">
-                        <a class="btn-edit" href="editreview.php?id=<?= $review["review_id"] ?>">Modifier</a>
-                        <a class="btn-delete" href="deletereview.php?id=<?= $review["review_id"] ?>">Supprimer</a>
-                    </td>
-                    <td><?= $review["review_title"] ?></td>
-                </tr>
-            </tbody>
+                <tbody>
+                    <tr data-page="1">
+                        <td class="actions">
+                            <a class="btn-edit" href="editreview.php?id=<?= $review["review_id"] ?>">Modifier</a>
+                            <a class="btn-delete" href="deletereview.php?id=<?= $review["review_id"] ?>">Supprimer</a>
+                        </td>
+                        <td><?= $review["review_title"] ?></td>
+                    </tr>
+                </tbody>
             <?php } ?>
         </table>
     </section>
