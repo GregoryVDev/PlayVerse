@@ -241,7 +241,7 @@ try {
 
     <!-- Trailer game -->
     <div class="iframe-container">
-        <iframe src="https://www.youtube.com/embed/6NWj-EWlguc?si=aGMYK_tnFe0rXLqF" allowfullscreen></iframe>
+        <iframe src="<?= $game_data["trailer"] ?>" allowfullscreen></iframe>
     </div>
 
     <!-- 3 picture of game -->
