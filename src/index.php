@@ -11,6 +11,11 @@ $query->execute();
 
 $games = $query->fetchAll(PDO::FETCH_ASSOC);
 
+$sql_game = "SELECT * FROM games ORDER BY game_id DESC LIMIT 4";
+$query_game = $db->prepare($sql_game);
+$query_game->execute();
+$jeux = $query_game->fetchAll(PDO::FETCH_ASSOC);
+
 // Requête pour récupérer le dernier id mis
 $sql_last_review = "SELECT * FROM reviews ORDER BY review_id DESC LIMIT 1";
 $query_last = $db->prepare($sql_last_review);
@@ -40,10 +45,10 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-            <?php foreach ($games as $game) {?>
-            <div class="card-carrousel">
+            <?php foreach ($games as $game) { ?>
+                <div class="card-carrousel">
 
-                <?php
+                    <?php
                     // Vérifie si l'utilisateur est connecté en vérifiant la présence de 'user_id' dans la session
                     if (isset($_SESSION['user_gamer']['user_id'])) {
                         // Récupère l'ID de l'utilisateur depuis la session
@@ -62,23 +67,23 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
                         // Vérifie si une ligne est retournée, ce qui signifie que le jeu est déjà en favori
                         $isFavorite = $checkFavoriteStmt->fetchColumn() !== false;
                     ?>
-                <!-- Affiche une étoile remplie si le jeu est en favori, sinon une étoile vide -->
-                <span class="favorite <?= $isFavorite ? 'filled' : '' ?>" data-game-id="<?= $game_id ?>"
-                    onclick="toggleFavorite(this, <?= $game_id ?>)">
-                    <?= $isFavorite ? '★' : '☆' ?>
-                </span>
-                <?php } else { ?>
-                <!-- Si l'utilisateur n'est pas connecté, affiche une étoile vide désactivée -->
-                <span class="favorite disabled" onclick="alertNotLoggedIn()">
-                    ☆
-                </span>
-                <?php } ?>
+                        <!-- Affiche une étoile remplie si le jeu est en favori, sinon une étoile vide -->
+                        <span class="favorite <?= $isFavorite ? 'filled' : '' ?>" data-game-id="<?= $game_id ?>"
+                            onclick="toggleFavorite(this, <?= $game_id ?>)">
+                            <?= $isFavorite ? '★' : '☆' ?>
+                        </span>
+                    <?php } else { ?>
+                        <!-- Si l'utilisateur n'est pas connecté, affiche une étoile vide désactivée -->
+                        <span class="favorite disabled" onclick="alertNotLoggedIn()">
+                            ☆
+                        </span>
+                    <?php } ?>
 
 
-                <a href="./infogame.php?game_id=<?= $game["game_id"] ?>">
-                    <img src="./admin/<?= htmlspecialchars($game['jacket']); ?>" alt="<?= $game["game_title"] ?>">
-                </a>
-            </div>
+                    <a href="./infogame.php?game_id=<?= $game["game_id"] ?>">
+                        <img src="./admin/<?= htmlspecialchars($game['jacket']); ?>" alt="<?= $game["game_title"] ?>">
+                    </a>
+                </div>
             <?php } ?>
         </div>
     </div>
@@ -88,26 +93,13 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
 
         <!-- a remplacer par les 4 dernier jeux ajouter -->
         <div class="container-jeux-du-moment">
-            <div class="jeux-du-moment-hover">
-                <a class="jeux-du-moment-lien" href="#">
-                    <img src="../img/exemple/bmw.png" alt="exemple1" />
-                </a>
-            </div>
-            <div class="jeux-du-moment-hover">
-                <a class="jeux-du-moment-lien" href="#">
-                    <img src="../img/exemple/frostpunk.png" alt="exemple2" />
-                </a>
-            </div>
-            <div class="jeux-du-moment-hover">
-                <a class="jeux-du-moment-lien" href="#">
-                    <img src="../img/exemple/sims.png" alt="exemple3" />
-                </a>
-            </div>
-            <div class="jeux-du-moment-hover">
-                <a class="jeux-du-moment-lien" href="#">
-                    <img src="../img/exemple/zelda.png" alt="exemple4" />
-                </a>
-            </div>
+            <?php foreach ($jeux as $jeu) { ?>
+                <div class="jeux-du-moment-hover">
+                    <a class="jeux-du-moment-lien" href="infogame.php?game_id=<?= $jeu["game_id"] ?>">
+                        <img src="../admin/<?= $jeu["image1"] ?>" alt="<?= $jeu["game_title"] ?>" />
+                    </a>
+                </div>
+            <?php } ?>
         </div>
 
 
@@ -127,23 +119,39 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
                 <h4 class="index-title-h4">Nos dernières reviews</h4>
                 <a class="btn-review" href="reviews.php">Toutes les reviews</a>
             </div>
-
             <div class="reviews-container-review-index">
-                <div class="index-container-game-review">
-                    <?php if ($last_review) { ?>
-                    <img class="index-review-img" src="../<?= $last_review['image1'] ?>"
-                        alt="<?= $last_review["review_title"] ?>" class="index-image-large">
+                <!-- Large Review -->
+                <?php if ($last_review) { ?>
+                    <div class="large-review">
+                        <img src="../<?= $last_review['image1'] ?>"
+                            alt="<?= $last_review["review_title"] ?>">
+                        <div class="content">
+                            <h3><?= $last_review["review_title"] ?></h3>
+                            <a href="review.php?id=<?= $last_review["review_id"] ?>" class="button-review-index">Voir</a>
+                        </div>
+                    </div>
+                <?php } ?>
+
+                <!-- Small Reviews -->
+                <div class="small-reviews">
+                    <?php foreach ($reviews as $review) { ?>
+                        <div class="small-review">
+                            <img src="../<?= $review['image1'] ?>" alt="<?= $review["review_title"] ?>">
+                            <div class="content">
+                                <h3><?= $review["review_title"] ?></h3>
+                                <a href="review.php?id=<?= $review["review_id"] ?>" class="button-review-index">Voir</a>
+                            </div>
+                        </div>
                     <?php } ?>
 
                     <div class="index-right-images">
                         <?php foreach ($reviews as $review) { ?>
-                        <img class="index-image-small index-review-img" src="../<?= $review['image1'] ?>"
-                            alt="<?= $review["review_title"] ?>">
+                            <img class="index-image-small index-review-img" src="../<?= $review['image1'] ?>" alt="<?= $review["review_title"] ?>">
                         <?php } ?>
                     </div>
                 </div>
-
             </div>
+        </div>
     </section>
     <section class="index-bg-color">
         <div class="form-contact">
@@ -199,3 +207,5 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
 <script src="./js/form_contact.js"></script>
 <script src="./js/favoris.js"></script>
 <?php include "./template/footer.php" ?>
+<script src="../js/carrousel.js"></script>
+<script src="../js/form_contact.js"></script>

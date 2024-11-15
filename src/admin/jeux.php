@@ -44,54 +44,47 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $trailer = strip_tags($_POST["trailer"]); // Nettoie l'URL du trailer
     $content = strip_tags($_POST["content"]); // Nettoie le contenu (description)
 
-    // Définir le répertoire de destination pour les images téléchargées.
+    // Définir le répertoire de destination pour les images téléchargées
 
     $uploadDir = 'img/games/';
-    // Définir une liste des types MIME autorisés pour les fichiers d'image.
-    // Les types MIME indiquent le format du fichier et permettent de restreindre l'upload à des types d'image spécifiques.
+    // Définir une liste des types MIME autorisés pour les fichiers d'image
+    // Les types MIME indiquent le format du fichier et permettent de restreindre l'upload à des types d'image spécifiques
 
     $allowedTypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/webp'];
 
-    // Définir la taille maximale des fichiers autorisés pour chaque image téléchargée.
-    // La taille est exprimée en octets, donc 4 * 1024 * 1024 permet de convertir 4 Mo en octets (4 194 304 octets).
+    // Définir la taille maximale des fichiers autorisés pour chaque image téléchargée
+    // La taille est exprimée en octets, donc 4 * 1024 * 1024 permet de convertir 4 Mo en octets (4 194 304 octets)
     $maxFileSize = 4 * 1024 * 1024; // 4 Mo
 
-    // Créer un tableau des champs d'images définis dans le formulaire d'upload.
-    // Chaque élément du tableau correspond à un nom d'image unique ('jacket', 'background', etc.),
-    // utilisé comme clé pour accéder aux fichiers téléchargés et vérifier si chaque champ d'image a été rempli.
+    // Créer un tableau des champs d'images définis dans le formulaire d'upload
+    // Chaque élément du tableau correspond à un nom d'image unique ('jacket', 'background', etc.), utilisé comme clé pour accéder aux fichiers téléchargés et vérifier si chaque champ d'image a été rempli
     $imageFiles = ['jacket', 'background', 'image1', 'image2', 'image3', 'image4'];
 
     // Boucle à travers chaque champ d'image listé dans le tableau $imageFiles.
-    // Cette boucle permet de traiter chaque image individuellement en appliquant les mêmes vérifications
-    // et opérations (vérification de la taille, du type, génération d'un nom unique, etc.) pour chaque fichier.
+    // Cette boucle permet de traiter chaque image individuellement en appliquant les mêmes vérifications et opérations (vérification de la taille, du type, génération d'un nom unique, etc.) pour chaque fichier
     foreach ($imageFiles as $fileKey) {
 
-        // Vérifier si un fichier a été uploadé pour le champ d'image actuel ($fileKey)
-        // et s'il n'y a pas eu d'erreur lors de l'upload.
+        // Vérifier si un fichier a été uploadé pour le champ d'image actuel ($fileKey) et s'il n'y a pas eu d'erreur lors de l'upload
         // $_FILES[$fileKey]['error'] est un code indiquant l'état de l'upload :
         // - '0' signifie que l'upload s'est bien passé,
         if (isset($_FILES[$fileKey]) && $_FILES[$fileKey]['error'] == 0) {
 
-            // Vérifier que le fichier répond aux critères de taille et de type MIME avant de l'accepter.
-            // On compare la taille du fichier ($_FILES[$fileKey]['size']) avec la limite de taille ($maxFileSize),
-            // et on vérifie le type MIME avec mime_content_type(), en s’assurant qu'il est dans $allowedTypes.
+            // Vérifier que le fichier répond aux critères de taille et de type MIME avant de l'accepter
+            // On compare la taille du fichier ($_FILES[$fileKey]['size']) avec la limite de taille ($maxFileSize), et on vérifie le type MIME avec mime_content_type(), en s’assurant qu'il est dans $allowedTypes
 
             if ($_FILES[$fileKey]['size'] <= $maxFileSize && in_array(mime_content_type($_FILES[$fileKey]['tmp_name']), $allowedTypes)) {
 
-                // Générer un nom unique pour le fichier uploadé pour éviter les conflits de noms.
-                // uniqid() génère un identifiant unique basé sur l’heure actuelle en microsecondes,
-                // et pathinfo() est utilisé pour obtenir l’extension du fichier original.
-                // Ce nouveau nom est ensuite combiné avec le répertoire cible ($uploadDir) pour créer un chemin complet
-                // vers lequel le fichier sera déplacé.
+                // Générer un nom unique pour le fichier uploadé pour éviter les conflits de noms
+                // uniqid() génère un identifiant unique basé sur l’heure actuelle en microsecondes, et pathinfo() est utilisé pour obtenir l’extension du fichier original
+                // Ce nouveau nom est ensuite combiné avec le répertoire cible ($uploadDir) pour créer un chemin complet vers lequel le fichier sera déplacé
                 ${$fileKey} = $uploadDir . uniqid() . '.' . pathinfo($_FILES[$fileKey]['name'], PATHINFO_EXTENSION);
 
-                // Déplacer le fichier depuis son emplacement temporaire (où il est stocké par PHP après l'upload)
-                // vers le dossier final spécifié par $uploadDir. 
-                // La fonction move_uploaded_file() renvoie 'true' si le déplacement a réussi et 'false' en cas d'échec.
+                // Déplacer le fichier depuis son emplacement temporaire (où il est stocké par PHP après l'upload) vers le dossier final spécifié par $uploadDir
+                // La fonction move_uploaded_file() renvoie 'true' si le déplacement a réussi et 'false' en cas d'échec
                 move_uploaded_file($_FILES[$fileKey]['tmp_name'], ${$fileKey});
             } else {
-                // Si la taille du fichier ou son type MIME ne respectent pas les règles établies,
-                // Cette alerte mentionne le nom du champ d'image en erreur pour que l'utilisateur sache quel fichier corriger.
+                // Si la taille du fichier ou son type MIME ne respectent pas les règles établies
+                // Cette alerte mentionne le nom du champ d'image en erreur pour que l'utilisateur sache quel fichier corriger
                 echo "<script>alert('Erreur : Fichier $fileKey invalide ou trop volumineux.');</script>";
             }
         }
@@ -257,7 +250,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <th>Action</th>
                     <th>Titre</th>
                     <th>Admin</th>
-                    <th><input type="checkbox"></th>
                 </tr>
 
             </thead>
@@ -270,23 +262,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         </td>
                         <td><?= $game["game_title"] ?></td>
                         <td><?= $game["pseudo"] ?></td>
-                        <td><input type="checkbox"></td>
                     </tr>
                 </tbody>
             <?php } ?>
-            <!-- PAGINATION -->
-            <div id="pagination" class="container-pages">
-                <a id="prevPage" href="#pagination">
-                    <img src="./img/logos/angles-left.svg" alt="Page précédente">
-                    Précédente
-                </a>
-                <span id="pageNumbers"></span>
-                <a id="nextPage" href="#pagination">
-                    Suivante
-                    <img src="./img/logos/angles-right.svg" alt="Page suivante">
-                </a>
-            </div>
         </table>
+        <!-- PAGINATION -->
+        <div id="pagination" class="container-pages">
+            <span id="pageNumbers"></span>
+        </div>
         <button class="deleteall">Supprimer tout</button>
     </section>
 </main>

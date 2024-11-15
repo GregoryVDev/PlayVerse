@@ -1,3 +1,11 @@
+.unread-message {
+  color: var(--colorBackOffice) !important;
+}
+
+.unread-message:hover {
+  opacity: 0.8 !important;
+}
+
 header {
   display: flex;
 }
@@ -380,7 +388,7 @@ header {
   }
 
   #search {
-    width: 1000px;
+    width: 300px;
   }
 
   #burger-menu {

@@ -6,14 +6,6 @@ if (!isset($_SESSION["admin_gamer"])) {
     header("Location: connexionadmin.php");
 }
 
-require_once("../connect.php");
-
-$sql = "SELECT * FROM message";
-
-$query = $db->prepare($sql);
-$query->execute();
-$messages = $query->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
 
 <?php include "./template/navbar.php"; ?>
@@ -31,7 +23,6 @@ $messages = $query->fetchAll(PDO::FETCH_ASSOC);
                     <th>Nom</th>
                     <th>Aperçu</th>
                     <th>Action</th>
-                    <th><input type="checkbox"></th>
                 </tr>
             </thead>
             <?php foreach ($messages as $message) { ?>
@@ -46,15 +37,19 @@ $messages = $query->fetchAll(PDO::FETCH_ASSOC);
                         <td class="actions">
                             <a href="deletemessage.php?id=<?= $message["message_id"] ?>" class="btn-delete">Supprimer</a>
                         </td>
-                        <td><label><input type="checkbox"></label></td>
                     </tr>
                 </tbody>
             <?php } ?>
         </table>
+        <!-- PAGINATION -->
+        <div id="pagination" class="container-pages">
+            <span id="pageNumbers"></span>
+        </div>
         <button class="deleteall">Supprimer tout</button>
     </section>
 </main>
 </body>
 <script src="./js/admin.js"></script>
+<script src="./js/pagination.js"></script>
 
 </html>

@@ -66,7 +66,6 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
                 <tr>
                     <th>Action</th>
                     <th>Catégorie</th>
-                    <th><input type="checkbox"></th>
                 </tr>
             </thead>
             <?php foreach ($categories as $category) { ?>
@@ -77,7 +76,6 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
                             <a href="deletecategory.php?id=<?= $category["category_id"] ?>" class="btn-delete">Supprimer</a>
                         </td>
                         <td><?= $category["category_name"] ?></td>
-                        <td><label><input type="checkbox"></label></td>
                     </tr>
                 </tbody>
             <?php } ?>
@@ -87,5 +85,6 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
 </main>
 </body>
 <script src="./js/admin.js"></script>
+
 
 </html>

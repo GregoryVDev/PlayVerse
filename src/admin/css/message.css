@@ -10,3 +10,52 @@ td .openmail {
 .openmail a {
   color: var(--colorPara);
 }
+
+/* READ */
+
+.container-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.container-messages p {
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.date,
+.name,
+.firstname,
+.email,
+.message {
+  border-radius: 10px;
+  padding: 10px;
+  width: 300px;
+  background: var(--colorSecondary);
+}
+
+.deleteall > a {
+  color: var(--colorPara);
+}
+
+.retour {
+  color: var(--colorPara);
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: var(--colorButton);
+}
+
+.retour > a {
+  color: var(--colorPara);
+}
+
+.container-pages {
+  display: flex;
+  margin-top: 25px;
+  justify-content: center;
+}

@@ -37,7 +37,6 @@ require_once("../close.php");
             <tr>
                 <th>Action</th>
                 <th>Pseudo</th>
-                <th><input type="checkbox"></th>
             </tr>
         </thead>
         <?php foreach ($users as $user) { ?>
@@ -47,11 +46,14 @@ require_once("../close.php");
                         <a href="deleteuser.php?id=<?= $user["user_id"] ?>" class="btn-delete">Supprimer</a>
                     </td>
                     <td><?= $user["pseudo"] ?></td>
-                    <td><label><input type="checkbox"></label></td>
                 </tr>
             </tbody>
         <?php } ?>
     </table>
+    <!-- PAGINATION -->
+    <div id="pagination" class="container-pages">
+        <span id="pageNumbers"></span>
+    </div>
     <button class="deleteall">Supprimer tout</button>
 </section>
 </main>

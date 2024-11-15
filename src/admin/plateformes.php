@@ -116,7 +116,6 @@ $plateformes = $query->fetchAll(PDO::FETCH_ASSOC);
                 <tr>
                     <th>Action</th>
                     <th>Titre</th>
-                    <th><input type="checkbox"></th>
                 </tr>
             </thead>
             <?php foreach ($plateformes as $plateforme) { ?>
@@ -127,7 +126,6 @@ $plateformes = $query->fetchAll(PDO::FETCH_ASSOC);
                             <a href="deleteplateforme.php?id=<?= $plateforme["plateforme_id"] ?>" class="btn-delete">Supprimer</a>
                         </td>
                         <td><?= $plateforme["plateforme_name"] ?></td>
-                        <td><label><input type="checkbox"></label></td>
                     </tr>
                 </tbody>
             <?php } ?>

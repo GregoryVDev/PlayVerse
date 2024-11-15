@@ -1,0 +1,36 @@
+.container-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.container-title h1 {
+  text-align: center;
+}
+
+.privacy-policy h2 {
+  text-align: center;
+}
+
+.privacy-policy h3 {
+  text-align: center;
+}
+
+.privacy-policy .container-text {
+  padding: 0 30px;
+  margin: 25px auto 25px;
+}
+
+.privacy-policy li {
+  list-style: disc;
+}
+
+/* DESKTOP */
+@media all and (min-width: 1024px) {
+  .container-text {
+    width: 50%;
+    margin: auto;
+  }
+}

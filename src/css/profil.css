@@ -1,0 +1,68 @@
+/* FORMULAIRE EMAIL */
+
+.page {
+  padding-top: 50px;
+  text-align: center;
+}
+
+.page h1 {
+  font-size: clamp(
+    var(--font-size-h1-min),
+    var(--font-size-h1-preferred),
+    var(--font-size-h1-max)
+  );
+}
+
+.formulaire-email #edit,
+.formulaire-mdp #edit {
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.formulaire-email label,
+.formulaire-mdp label {
+  display: none;
+}
+
+.formulaire-email input,
+.formulaire-mdp input {
+  padding: 15px;
+  border-radius: 10px;
+  background: var(--colorSecondary);
+  color: var(--colorPara);
+  border: none;
+  width: 300px;
+}
+
+.formulaire-email .container-title,
+.formulaire-mdp .container-title {
+  text-align: center;
+}
+
+.formulaire-email ::placeholder,
+.formulaire-mdp ::placeholder {
+  color: var(--colorPara);
+  text-align: center;
+}
+
+.send {
+  color: var(--colorPara);
+  padding: 5px 15px;
+  border-radius: 10px;
+  border: none;
+}
+
+/* MESSAGES ERROR / SUCCESS */
+
+.error-message {
+  text-align: center;
+  color: var(--colorBackOffice);
+}
+
+.success-message {
+  text-align: center;
+  color: var(--colorSuccess);
+}

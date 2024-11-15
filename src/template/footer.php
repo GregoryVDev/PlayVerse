@@ -34,10 +34,16 @@
                 </div>
             </div>
         </div>
+        <div id="scroll-to-top">
+            <a href="#" title="arrow">
+                <img src="./img/logos/scroll-up.png" alt="Retour en haut">
+            </a>
+        </div>
         <p class="footer-copyright">Copyright © - 2024 PlayVerse - Tous droits réservés</p>
     </footer>
     <script src="../js/script.js"></script>
     <script src="../js/burger.js"></script>
+    <script src="../js/scroll-up.js"></script>
 
     </body>
 

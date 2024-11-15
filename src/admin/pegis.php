@@ -115,7 +115,6 @@ $pegis = $query->fetchAll(PDO::FETCH_ASSOC);
                 <tr>
                     <th>Action</th>
                     <th>Titre</th>
-                    <th><input type="checkbox"></th>
                 </tr>
             </thead>
             <?php foreach ($pegis as $pegi) { ?>
@@ -126,7 +125,6 @@ $pegis = $query->fetchAll(PDO::FETCH_ASSOC);
                             <a href="deletepegi.php?id=<?= $pegi["pegi_id"] ?>" class="btn-delete">Supprimer</a>
                         </td>
                         <td><?= $pegi["pegi_name"] ?></td>
-                        <td><label><input type="checkbox"></label></td>
                     </tr>
                 </tbody>
             <?php } ?>
