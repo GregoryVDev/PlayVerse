@@ -207,22 +207,22 @@ input[type="checkbox"] {
     border-radius: 10px;
     background: var(--colorButton);
 }
+
 /* admin profil  */
 .profil-admin-btn {
-    margin: 30px 0px;
-    padding-top: 30px;
     color: var(--colorPara);
     padding: 10px;
     border: none;
     border-radius: 10px;
     background: var(--colorButton);
 }
-
-.admin-container-profil {
+.container-link-admin-profil {
+    margin-top: 50px;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    gap: 2%;
 }
 
 /* TABLET */
