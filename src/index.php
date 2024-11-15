@@ -46,9 +46,9 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
 
 
             <?php foreach ($games as $game) { ?>
-                <div class="card-carrousel">
+            <div class="card-carrousel">
 
-                    <?php
+                <?php
                     // Vérifie si l'utilisateur est connecté en vérifiant la présence de 'user_id' dans la session
                     if (isset($_SESSION['user_gamer']['user_id'])) {
                         // Récupère l'ID de l'utilisateur depuis la session
@@ -67,23 +67,23 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
                         // Vérifie si une ligne est retournée, ce qui signifie que le jeu est déjà en favori
                         $isFavorite = $checkFavoriteStmt->fetchColumn() !== false;
                     ?>
-                        <!-- Affiche une étoile remplie si le jeu est en favori, sinon une étoile vide -->
-                        <span class="favorite <?= $isFavorite ? 'filled' : '' ?>" data-game-id="<?= $game_id ?>"
-                            onclick="toggleFavorite(this, <?= $game_id ?>)">
-                            <?= $isFavorite ? '★' : '☆' ?>
-                        </span>
-                    <?php } else { ?>
-                        <!-- Si l'utilisateur n'est pas connecté, affiche une étoile vide désactivée -->
-                        <span class="favorite disabled" onclick="alertNotLoggedIn()">
-                            ☆
-                        </span>
-                    <?php } ?>
+                <!-- Affiche une étoile remplie si le jeu est en favori, sinon une étoile vide -->
+                <span class="favorite <?= $isFavorite ? 'filled' : '' ?>" data-game-id="<?= $game_id ?>"
+                    onclick="toggleFavorite(this, <?= $game_id ?>)">
+                    <?= $isFavorite ? '★' : '☆' ?>
+                </span>
+                <?php } else { ?>
+                <!-- Si l'utilisateur n'est pas connecté, affiche une étoile vide désactivée -->
+                <span class="favorite disabled" onclick="alertNotLoggedIn()">
+                    ☆
+                </span>
+                <?php } ?>
 
 
-                    <a href="./infogame.php?game_id=<?= $game["game_id"] ?>">
-                        <img src="./admin/<?= htmlspecialchars($game['jacket']); ?>" alt="<?= $game["game_title"] ?>">
-                    </a>
-                </div>
+                <a href="./infogame.php?game_id=<?= $game["game_id"] ?>">
+                    <img src="./admin/<?= htmlspecialchars($game['jacket']); ?>" alt="<?= $game["game_title"] ?>">
+                </a>
+            </div>
             <?php } ?>
         </div>
     </div>
@@ -94,11 +94,11 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
         <!-- a remplacer par les 4 dernier jeux ajouter -->
         <div class="container-jeux-du-moment">
             <?php foreach ($jeux as $jeu) { ?>
-                <div class="jeux-du-moment-hover">
-                    <a class="jeux-du-moment-lien" href="infogame.php?game_id=<?= $jeu["game_id"] ?>">
-                        <img src="../admin/<?= $jeu["image1"] ?>" alt="<?= $jeu["game_title"] ?>" />
-                    </a>
-                </div>
+            <div class="jeux-du-moment-hover">
+                <a class="jeux-du-moment-lien" href="infogame.php?game_id=<?= $jeu["game_id"] ?>">
+                    <img src="../admin/<?= $jeu["image1"] ?>" alt="<?= $jeu["game_title"] ?>" />
+                </a>
+            </div>
             <?php } ?>
         </div>
 
@@ -122,26 +122,25 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
             <div class="reviews-container-review-index">
                 <!-- Large Review -->
                 <?php if ($last_review) { ?>
-                    <div class="large-review">
-                        <img src="../<?= $last_review['image1'] ?>"
-                            alt="<?= $last_review["review_title"] ?>">
-                        <div class="content">
-                            <h3><?= $last_review["review_title"] ?></h3>
-                            <a href="review.php?id=<?= $last_review["review_id"] ?>" class="button-review-index">Voir</a>
-                        </div>
+                <div class="large-review">
+                    <img src="../<?= $last_review['image1'] ?>" alt="<?= $last_review["review_title"] ?>">
+                    <div class="content">
+                        <h3><?= $last_review["review_title"] ?></h3>
+                        <a href="review.php?id=<?= $last_review["review_id"] ?>" class="button-review-index">Voir</a>
                     </div>
+                </div>
                 <?php } ?>
 
                 <!-- Small Reviews -->
                 <div class="small-reviews">
                     <?php foreach ($reviews as $review) { ?>
-                        <div class="small-review">
-                            <img src="../<?= $review['image1'] ?>" alt="<?= $review["review_title"] ?>">
-                            <div class="content">
-                                <h3><?= $review["review_title"] ?></h3>
-                                <a href="review.php?id=<?= $review["review_id"] ?>" class="button-review-index">Voir</a>
-                            </div>
+                    <div class="small-review">
+                        <img src="../<?= $review['image1'] ?>" alt="<?= $review["review_title"] ?>">
+                        <div class="content">
+                            <h3><?= $review["review_title"] ?></h3>
+                            <a href="review.php?id=<?= $review["review_id"] ?>" class="button-review-index">Voir</a>
                         </div>
+                    </div>
                     <?php } ?>
                 </div>
             </div>
