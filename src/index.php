@@ -165,5 +165,3 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
 <?php include "./template/footer.php" ?>
 <script src="../js/carrousel.js"></script>
 <script src="../js/form_contact.js"></script>
-
-</html>
