@@ -1,5 +1,12 @@
 <?php
 
+// Vérifie si l'utilisateur a le rôle admin_gamer
+if (!isset($_SESSION["admin_gamer"]) || $_SESSION["admin_gamer"] !== true) {
+    // Redirige vers la page index.php si l'utilisateur n'est pas admin_gamer
+    header("Location: ../index.php");
+    exit();
+}
+
 // Fonction pour valider l'adresse e-mail
 function validateEmail($email)
 {
@@ -63,8 +70,11 @@ if (!empty($_POST)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
     <link rel="stylesheet" href="./../css/fonts.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="./css/panel.css">
@@ -93,7 +103,8 @@ if (!empty($_POST)) {
                 <div class="container-password">
                     <label for="pass">Mot de passe :</label>
                     <input type="password" class="form-input" name="pass" id="pass" placeholder="Mot de passe">
-                    <img src="../img/logos/eye.svg" alt="Afficher/Masquer mot de passe" id="myPass" class="toggle-password">
+                    <img src="../img/logos/eye.svg" alt="Afficher/Masquer mot de passe" id="myPass"
+                        class="toggle-password">
                 </div>
                 <div class="container-confirm">
                     <label for="pass2">Confirmation :</label>
@@ -105,7 +116,8 @@ if (!empty($_POST)) {
                 <div class="container-general">
                     <div class="container-politique">
                         <label for="checkbox" class="custom-checkbox">
-                            J'accepte <a href="../privacy.php" class="politique">la politique de confidentialité</a></label>
+                            J'accepte <a href="../privacy.php" class="politique">la politique de
+                                confidentialité</a></label>
                         <input type="checkbox" id="checkbox" name="terms">
                     </div>
                     <div class="container-paragraph">
