@@ -7,48 +7,40 @@ if (!isset($_SESSION["admin_gamer"])) {
 }
 
 require_once("../connect.php");
+$category_id = strip_tags($_GET["id"]);
 
-if (isset($_SESSION["admin_gamer"])) {
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        if (isset($_POST["id"])) {
-            $category_id = strip_tags($_POST["id"]);
-            $category_name = strip_tags($_POST["category_name"]);
+$sql = "SELECT * FROM category WHERE category_id=:category_id";
+$query = $db->prepare($sql);
 
-            $sql_edit = "UPDATE category SET category_name = :category_name WHERE category_id = :category_id";
+$query->bindValue(":category_id", $category_id);
+$query->execute();
 
-            $query = $db->prepare($sql_edit);
+$edit = $query->fetch();
 
-            $query->bindValue(":category_id", $category_id);
-            $query->bindValue(":category_name", $category_name);
-
-            $query->execute();
-            require_once("../close.php");
-
-            header("Location: categories.php");
-            exit();
-        }
-    } else {
-        if (isset($_GET["id"])) {
-            $category_id = strip_tags($_GET["id"]);
-
-            $sql = "SELECT * FROM category WHERE category_id=:category_id";
-            $query = $db->prepare($sql);
-
-            $query->bindValue(":category_id", $category_id);
-            $query->execute();
-
-            $edit = $query->fetch();
-
-            // Vérifier si une catégorie a été trouvée
-            if (!$edit) {
-                header("Location: categories.php");
-                exit();
-            }
-        }
-    }
-} else {
-    header("Location: panel.php");
+// Vérifier si une catégorie a été trouvée
+if (!$edit) {
+    header("Location: categories.php");
     exit();
+}
+
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    if (isset($_GET["id"])) {
+        $category_id = strip_tags($_GET["id"]);
+        $category_name = strip_tags($_POST["category_name"]);
+
+        $sql_edit = "UPDATE category SET category_name = :category_name WHERE category_id = :category_id";
+
+        $query = $db->prepare($sql_edit);
+
+        $query->bindValue(":category_id", $category_id);
+        $query->bindValue(":category_name", $category_name);
+
+        $query->execute();
+        require_once("../close.php");
+
+        header("Location: categories.php");
+    }
 }
 
 if (!isset($_GET["id"])) {

@@ -28,7 +28,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $pass_confirm = $_POST["pass_confirm"];
             }
 
-            if ($new_pass === $pass_confirm) {
+            // Vérification des critères du mot de passe
+            $passwordPattern = "/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[\W_]).{6,}$/";
+            if (!preg_match($passwordPattern, $new_pass)) {
+                $errorMessage = "Le mot de passe doit contenir :
+                <ul style='color: var(--colorPara);'>
+                    <li>- Au moins une lettre majuscule</li>
+                    <li>- Au moins une lettre minuscule</li>
+                    <li>- Au moins un chiffre</li>
+                    <li>- Au moins un caractère spécial</li>
+                    <li>- 16 caractères minimum</li>
+                </ul>";
+            } elseif ($new_pass === $pass_confirm) {
                 $new_pass = password_hash($_POST["new_pass"], PASSWORD_ARGON2ID);
 
                 $sql_edit = "UPDATE users SET pass=:new_pass WHERE user_id = :user_id";
@@ -61,9 +72,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <section class="formulaire-mdp">
         <form action="" method="POST" id="edit">
             <?php if (isset($succesMessage)) { ?>
-                <div class="success-message"><?= htmlspecialchars($succesMessage) ?></div>
+                <div class="success-message"><?php echo $succesMessage ?></div>
             <?php } elseif (isset($errorMessage)) { ?>
-                <div class="error-message"><?= htmlspecialchars($errorMessage) ?></div>
+                <div class="error-message"><?php echo $errorMessage ?></div>
             <?php } ?>
             <div class="container-title">
                 <label for="password">Mot de passe actuel :</label>

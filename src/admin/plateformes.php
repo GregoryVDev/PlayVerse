@@ -44,12 +44,14 @@ if (isset($_SESSION["admin_gamer"])) {
             // On déplace le fichier de tmp à images en le renommant
             if (!move_uploaded_file($_FILES["plateforme_icon"]["tmp_name"], $newfilename)) {
                 echo "L'upload a échoué ";
+                exit();
             }
 
             // Type est correct
             // On limite à 500Ko (500 * 1024)
             if ($filesize > 500 * 1024) {
                 echo "L'image est trop volumineux";
+                exit();
             }
         }
 

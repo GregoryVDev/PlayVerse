@@ -25,8 +25,18 @@ if (!empty($_POST)) {
             $pass = $_POST["pass"];
             $pass2 = $_POST["pass2"];
         }
-
-        if ($pass === $pass2) {
+        // Vérification des critères du mot de passe
+        $passwordPattern = "/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[\W_]).{6,}$/";
+        if (!preg_match($passwordPattern, $pass)) {
+            $errorMessage = "Le mot de passe doit contenir :
+            <ul style='color: var(--colorPara);'>
+                <li>- Au moins une lettre majuscule</li>
+                <li>- Au moins une lettre minuscule</li>
+                <li>- Au moins un chiffre</li>
+                <li>- Au moins un caractère spécial</li>
+                <li>- 16 caractères minimum</li>
+            </ul>";
+        } elseif ($pass === $pass2) {
             $pass = password_hash($_POST["pass"], PASSWORD_ARGON2ID);
         } else {
             $errorMessage = "Les mots de passe ne correspondent pas.";

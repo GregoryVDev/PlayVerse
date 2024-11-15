@@ -60,6 +60,8 @@
 .error-message {
   text-align: center;
   color: var(--colorBackOffice);
+  text-align: left;
+  width: 270px;
 }
 
 .success-message {

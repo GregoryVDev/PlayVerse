@@ -113,7 +113,6 @@ foreach ($messages as $message) {
                     <li class="dropdown">
                         <a href="#" onclick="toggleDropdown()">Mon compte</a>
                         <div class="dropdown-content" style="padding: 0px 10px;">
-                            <a href="favoris.php">Mes favoris</a>
                             <?php if ($countMessage > 0) { ?>
                                 <a href="../admin/panel.php" class="unread-message">Retour panel
                                 </a>

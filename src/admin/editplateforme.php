@@ -26,26 +26,31 @@ if (isset($_SESSION["admin_gamer"])) {
                 $filetype = $_FILES["plateforme_icon"]["type"];
                 $filesize = $_FILES["plateforme_icon"]["size"];
 
+                // Vérifier la taille avant de procéder à toute autre action
+                if ($filesize > 500 * 1024) {
+                    echo "L'image est trop volumineuse";
+                    exit();
+                }
+
+                // Vérifier l'extension et le type de fichier
                 $extension = pathinfo($filename, PATHINFO_EXTENSION);
                 if (!array_key_exists($extension, $allowed) || !in_array($filetype, $allowed)) {
                     echo "Erreur : format de l'image incorrect";
                     exit();
                 }
+
+                // Générer un nom unique pour l'image
                 $newname = md5(uniqid());
                 $newfilename = __DIR__ . "/img/images/$newname.$extension";
                 $url_image = "./img/images/$newname.$extension";
 
+                // Déplacer le fichier vers le dossier d'images
                 if (!move_uploaded_file($_FILES["plateforme_icon"]["tmp_name"], $newfilename)) {
                     echo "L'upload de l'image a échoué";
                     exit();
                 }
 
-                if ($filesize > 500 * 1024) {
-                    echo "L'image est trop volumineux";
-                    exit();
-                }
-
-                // Vérifier si l'ancienne image a été supprimé
+                // Vérifier si l'ancienne image a été supprimée
                 if (!unlink($ancienne_image)) {
                     echo "Problème unlink";
                     exit();
@@ -53,39 +58,40 @@ if (isset($_SESSION["admin_gamer"])) {
 
                 $plateforme_icon = $url_image;
 
+                // Préparer la requête de mise à jour avec l'icône de la plateforme
                 $sql_edit = "UPDATE plateformes SET plateforme_name=:plateforme_name, plateforme_icon=:plateforme_icon WHERE plateforme_id=:plateforme_id";
-
                 $query = $db->prepare($sql_edit);
                 $query->bindValue(":plateforme_icon", $plateforme_icon);
             }
         } else {
+            // Si aucune nouvelle image n'est téléchargée, on ne met à jour que le nom
             $sql_edit = "UPDATE plateformes SET plateforme_name=:plateforme_name WHERE plateforme_id=:plateforme_id";
-
             $query = $db->prepare($sql_edit);
         }
 
+        // Lier les valeurs et exécuter la requête
         $query->bindValue(":plateforme_id", $plateforme_id);
         $query->bindValue(":plateforme_name", $plateforme_name);
-
         $query->execute();
 
         require_once("../close.php");
 
+        // Redirection après modification
         header("Location: plateformes.php");
         exit();
     } else {
         if (isset($_GET["id"])) {
             $plateforme_id = strip_tags($_GET["id"]);
 
+            // Récupérer les données de la plateforme
             $sql = "SELECT * FROM plateformes WHERE plateforme_id=:plateforme_id";
             $query = $db->prepare($sql);
-
             $query->bindValue(":plateforme_id", $plateforme_id);
             $query->execute();
 
             $edit = $query->fetch();
 
-            // Vérifier si une catégorie a été trouvée
+            // Vérifier si une plateforme a été trouvée
             if (!$edit) {
                 header("Location: plateformes.php");
                 exit();
@@ -117,7 +123,7 @@ if (!isset($_GET["id"])) {
             </div>
             <div class="container-icon">
                 <label class="uploadlabel" for="icon" id="uploadLabel">Uploader icon de la plateforme</label>
-                <input type="file" id="icon" name="plateforme_icon" class="icon" placeholder="Icon de la plateforme" accept="image/*" required>
+                <input type="file" id="icon" name="plateforme_icon" class="icon" placeholder="Icon de la plateforme" accept="image/*">
                 <img id="previewImage" src="#" alt="Aperçu de l'image" style="max-width: 100%; display: none;">
                 <button type="button" id="deleteImageButton" style="display: none;">Supprimer</button>
             </div>
