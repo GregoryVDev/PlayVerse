@@ -1,3 +1,10 @@
+function alertNotLoggedIn() {
+    // Affiche une alerte invitant l'utilisateur à se connecter ou s'inscrire
+    alert(
+        "Veuillez vous connecter ou vous inscrire pour ajouter ce jeu en favori."
+    );
+}
+
 function toggleFavorite(star, gameId) {
     // Détermine si l'action est un ajout ou un retrait des favoris
     const isAdding = !star.classList.contains("filled");
