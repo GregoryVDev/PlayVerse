@@ -65,7 +65,7 @@ if (!empty($_POST)) {
             $count_pseudo_admin = $query_pseudo_admin->fetchColumn();
 
             if ($count_pseudo_admin > 0) {
-                $errorMessage = "Le pseudo est déjà utilisée.";
+                $errorMessage = "Le pseudo " . htmlspecialchars($_POST["pseudo"]) . " est déjà utilisée.";
             }
 
             // Vérification si l'email existe déjà dans la table admin

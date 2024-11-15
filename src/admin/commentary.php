@@ -35,12 +35,6 @@ if (isset($_SESSION["admin_gamer"])) {
 
     <section class="dashboard">
         <h2>Dashboard</h2>
-
-        <div class="container-search">
-            <img src="../img/logos/search.svg" alt="Search">
-            <input type="search" name="search" id="search" placeholder="Cherchez un jeu...">
-        </div>
-
         <table>
             <thead>
                 <tr>
@@ -53,22 +47,22 @@ if (isset($_SESSION["admin_gamer"])) {
             </thead>
             <tbody>
                 <?php if ($comments): ?>
-                <?php foreach ($comments as $comment): ?>
-                <tr data-page="1">
-                    <td class="actions">
-                        <a class="btn-delete"
-                            href="deletecommentary.php?id=<?= htmlspecialchars($comment["commentary_id"]) ?>">Supprimer</a>
-                    </td>
-                    <td><?= htmlspecialchars($comment["game_title"]) ?></td>
-                    <td><?= htmlspecialchars($comment["pseudo"]) ?></td>
-                    <td><?= nl2br(htmlspecialchars($comment["message"])) ?></td>
-                    <td><label><input type="checkbox"></label></td>
-                </tr>
-                <?php endforeach; ?>
+                    <?php foreach ($comments as $comment): ?>
+                        <tr data-page="1">
+                            <td class="actions">
+                                <a class="btn-delete"
+                                    href="deletecommentary.php?id=<?= htmlspecialchars($comment["commentary_id"]) ?>">Supprimer</a>
+                            </td>
+                            <td><?= htmlspecialchars($comment["game_title"]) ?></td>
+                            <td><?= htmlspecialchars($comment["pseudo"]) ?></td>
+                            <td><?= nl2br(htmlspecialchars($comment["message"])) ?></td>
+                            <td><label><input type="checkbox"></label></td>
+                        </tr>
+                    <?php endforeach; ?>
                 <?php else: ?>
-                <tr>
-                    <td colspan="5">Aucun commentaire trouvé.</td>
-                </tr>
+                    <tr>
+                        <td colspan="5">Aucun commentaire trouvé.</td>
+                    </tr>
                 <?php endif; ?>
             </tbody>
         </table>

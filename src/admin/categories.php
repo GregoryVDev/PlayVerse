@@ -55,12 +55,6 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
     </section>
     <section class="dashboard">
         <h2>Dashboard</h2>
-
-        <div class="container-search">
-            <img src="../img/logos/search.svg" alt="Search">
-            <input type="search" name="search" id="search" placeholder="Cherchez un jeu...">
-        </div>
-
         <table>
             <thead>
                 <tr>
@@ -80,7 +74,6 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
                 </tbody>
             <?php } ?>
         </table>
-        <button class="deleteall">Supprimer tout</button>
     </section>
 </main>
 </body>

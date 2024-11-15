@@ -8,7 +8,7 @@ if (!isset($_SESSION["admin_gamer"])) {
 
 require_once("../connect.php");
 
-$sql = "SELECT * FROM users";
+$sql = "SELECT * FROM users ORDER BY user_id DESC";
 
 $query = $db->prepare($sql);
 $query->execute();
@@ -26,11 +26,6 @@ require_once("../close.php");
 <section class="illustration-user"></section>
 <section class="dashboard">
     <h2>Dashboard</h2>
-
-    <div class="container-search">
-        <img src="../img/logos/search.svg" alt="Search">
-        <input type="search" name="search" id="search" placeholder="Cherchez un jeu...">
-    </div>
 
     <table style="margin-top: 50px;">
         <thead>
@@ -54,7 +49,6 @@ require_once("../close.php");
     <div id="pagination" class="container-pages">
         <span id="pageNumbers"></span>
     </div>
-    <button class="deleteall">Supprimer tout</button>
 </section>
 </main>
 </body>

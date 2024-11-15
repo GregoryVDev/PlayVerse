@@ -48,8 +48,7 @@ foreach ($messages as $message) {
 <body>
 
     <?php if (isset($_SESSION["admin_gamer"]) && $_SESSION["admin_gamer"] == true) { ?>
-        <<<<<<< HEAD
-            <header>
+        <header>
             <nav class="navbar navbar-dark bg-dark fixed-top" style="background: transparent !important">
                 <div class="container-fluid" style="justify-content: flex-end; margin-right: 10px;">
                     <?php if ($countMessage > 0) {  ?>
@@ -85,7 +84,7 @@ foreach ($messages as $message) {
                                         <li><a class="nav-link" href="categories.php">Gestions des catégories</a></li>
                                         <li><a class="nav-link" href="addreviews.php">Gestions des reviews</a></li>
                                         <li>
-                                        <li><a class="nav-link" href="userlist.php">Gestions des utilisateurs</a></li>
+                                        <li><a class="nav-link" href="userslist.php">Gestions des utilisateurs</a></li>
                                         <li><a class="nav-link" href="adminslist.php">Gestions des administrateurs</a></li>
                                         <hr class="dropdown-divider">
                                     </ul>
@@ -115,5 +114,5 @@ foreach ($messages as $message) {
                     </div>
                 </div>
             </nav>
-            </header>
-        <?php } ?>
+        </header>
+    <?php } ?>

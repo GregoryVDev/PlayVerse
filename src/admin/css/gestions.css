@@ -13,339 +13,339 @@
 /* FORMULAIRE D'AJOUT */
 
 .formulaire {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .formulaire h4 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: var(--fsize5);
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: var(--fsize5);
 }
 
 .formulaire form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .formulaire .container-title label {
-    display: none;
+  display: none;
 }
 
 .formulaire form input {
-    padding: 8px;
-    border-radius: 10px;
-    background: var(--colorSecondary);
-    color: var(--colorPara);
-    border: none;
+  padding: 8px;
+  border-radius: 10px;
+  background: var(--colorSecondary);
+  color: var(--colorPara);
+  border: none;
 }
 
 input:focus {
-    outline: none;
-    border: none;
+  outline: none;
+  border: none;
 }
 
 .formulaire form input::placeholder {
-    color: var(--colorPara);
-    text-align: center;
+  color: var(--colorPara);
+  text-align: center;
 }
 
 .uploadlabel {
-    display: inline-block;
-    background-color: var(--colorSecondary);
-    color: var(--colorPara);
-    cursor: pointer;
-    font-size: 14px;
-    margin: 20px 0;
-    height: 100px;
-    padding: 40px;
-    border-radius: 10px;
+  display: inline-block;
+  background-color: var(--colorSecondary);
+  color: var(--colorPara);
+  cursor: pointer;
+  font-size: 14px;
+  margin: 20px 0;
+  height: 100px;
+  padding: 40px;
+  border-radius: 10px;
 }
 
 .icon {
-    display: none;
+  display: none;
 }
 
 .image {
-    display: none;
+  display: none;
 }
 
 .send {
-    color: var(--colorPara);
-    padding: 5px 15px;
-    border-radius: 10px;
-    border: none;
+  color: var(--colorPara);
+  padding: 5px 15px;
+  border-radius: 10px;
+  border: none;
 }
 
 /* DASHBOARD */
 
 .dashboard {
-    margin-top: 40px;
-    text-align: center;
+  margin-top: 40px;
+  text-align: center;
 }
 
 .dashboard h2 {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .container-search {
-    display: flex;
-    position: relative;
-    max-width: 300px;
-    margin: auto auto 50px;
+  display: flex;
+  position: relative;
+  max-width: 300px;
+  margin: auto auto 50px;
 }
 
 .container-search img {
-    position: absolute;
-    left: 10px;
-    bottom: 9px;
+  position: absolute;
+  left: 10px;
+  bottom: 9px;
 }
 
 #search {
-    border-radius: 10px;
-    padding: 10px 10px 10px 40px;
-    width: 100%;
-    border: transparent;
-    background: var(--colorSecondary);
-    color: var(--colorPara);
-    font-family: var(--nunitoRegular);
+  border-radius: 10px;
+  padding: 10px 10px 10px 40px;
+  width: 100%;
+  border: transparent;
+  background: var(--colorSecondary);
+  color: var(--colorPara);
+  font-family: var(--nunitoRegular);
 }
 
 #search:focus {
-    outline: none;
-    border: none;
+  outline: none;
+  border: none;
 }
 
 table {
-    width: 300px;
-    border-collapse: collapse;
-    background-color: #15143b; /* Couleur de fond sombre */
-    margin: auto;
+  width: 300px;
+  border-collapse: collapse;
+  background-color: #15143b; /* Couleur de fond sombre */
+  margin: auto auto 15px auto;
 }
 
 th,
 td {
-    border: 1px solid white;
-    padding: 10px;
-    text-align: center;
+  border: 1px solid white;
+  padding: 10px;
+  text-align: center;
 }
 
 th {
-    background-color: #3c4065; /* Couleur des en-têtes */
-    color: white;
+  background-color: #3c4065; /* Couleur des en-têtes */
+  color: white;
 }
 
 td {
-    background-color: #1b1c5a; /* Couleur des cellules */
+  background-color: #1b1c5a; /* Couleur des cellules */
 }
 
 td.actions {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 tbody tr:nth-child(2n) td {
-    background-color: #33335f; /* Couleur des lignes paires */
+  background-color: #33335f; /* Couleur des lignes paires */
 }
 
 input[type="checkbox"] {
-    width: 20px;
-    height: 15px;
+  width: 20px;
+  height: 15px;
 }
 
 .btn-see {
-    color: var(--colorPara);
+  color: var(--colorPara);
 }
 
 .btn-see:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 .btn-delete {
-    color: var(--colorBackOffice);
+  color: var(--colorBackOffice);
 }
 
 .btn-delete:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 .deleteall {
-    margin: 30px 0px;
-    color: var(--colorPara);
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
+  margin: 30px 0px;
+  color: var(--colorPara);
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
 }
 
 /* reviews style */
 
 .addreviews-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* addadmin */
 
 .gestion-des-admins {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 .btn-add-admin {
-    margin: 30px 0px;
-    padding-top: 30px;
-    color: var(--colorPara);
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    background: var(--colorButton);
+  margin: 30px 0px;
+  padding-top: 30px;
+  color: var(--colorPara);
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: var(--colorButton);
 }
 /* admin profil  */
 .profil-admin-btn {
-    margin: 30px 0px;
-    padding-top: 30px;
-    color: var(--colorPara);
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    background: var(--colorButton);
+  margin: 30px 0px;
+  padding-top: 30px;
+  color: var(--colorPara);
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: var(--colorButton);
 }
 
 .admin-container-profil {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 /* TABLET */
 
 @media all and (min-width: 768px) and (max-width: 1023px) {
-    table {
-        width: 600px;
-    }
+  table {
+    width: 600px;
+  }
 
-    td.actions {
-        flex-direction: row;
-        justify-content: center;
-        gap: 20px;
-    }
+  td.actions {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+  }
 
-    .formulaire h4 {
-        font-size: var(--fsize4);
-    }
+  .formulaire h4 {
+    font-size: var(--fsize4);
+  }
 
-    /* addreviews */
-    .addreviews-container {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        gap: 2%;
-        justify-content: center;
-        align-items: normal;
-    }
-    .addreviews-container-points {
-        display: flex;
-        gap: 1%;
-    }
+  /* addreviews */
+  .addreviews-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 2%;
+    justify-content: center;
+    align-items: normal;
+  }
+  .addreviews-container-points {
+    display: flex;
+    gap: 1%;
+  }
 }
 
 /* DESKTOP */
 
 @media all and (min-width: 1024px) {
-    table {
-        width: 900px;
-    }
+  table {
+    width: 900px;
+  }
 
-    td.actions {
-        flex-direction: row;
-        justify-content: center;
-        gap: 20px;
-    }
+  td.actions {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+  }
 
-    .uploadlabel {
-        display: block;
-        margin-bottom: 20px;
-    }
+  .uploadlabel {
+    display: block;
+    margin-bottom: 20px;
+  }
 
-    #previewImage {
-        margin-top: 10px;
-    }
+  #previewImage {
+    margin-top: 10px;
+  }
 }
 
 /* PAGE JEUX */
 
 .img-article img {
-    height: 250px;
-    margin: auto;
+  height: 250px;
+  margin: auto;
 }
 
 .formulaire-games form select {
-    padding: 8px;
-    border-radius: 10px;
-    background: var(--colorSecondary);
-    color: var(--colorPara);
-    border: none;
-    width: 215px;
-    text-align: center;
+  padding: 8px;
+  border-radius: 10px;
+  background: var(--colorSecondary);
+  color: var(--colorPara);
+  border: none;
+  width: 215px;
+  text-align: center;
 }
 
 .container-left {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
 .formulaire-games .container-global {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .formulaire-games .container-global input {
-    width: 215px;
+  width: 215px;
 }
 
 .container-right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 textarea {
-    border-radius: 10px;
-    background: var(--colorSecondary);
-    color: var(--colorPara);
-    border: none;
-    padding: 30px;
-    width: 235px;
+  border-radius: 10px;
+  background: var(--colorSecondary);
+  color: var(--colorPara);
+  border: none;
+  padding: 30px;
+  width: 235px;
 }
 
 textarea::placeholder {
-    color: var(--colorPara);
-    text-align: center;
-    padding: 12px 10px;
+  color: var(--colorPara);
+  text-align: center;
+  padding: 12px 10px;
 }
 
 form .container-global .uploadlabel {
-    padding: 40px;
-    margin: 0 0 20px;
-    width: 235px;
-    text-align: center;
+  padding: 40px;
+  margin: 0 0 20px;
+  width: 235px;
+  text-align: center;
 }
 
 .formulaire-games {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .formulaire-games h4 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: var(--fsize5);
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: var(--fsize5);
 }
 
 .formulaire-games form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .formulaire-games .container-title label,
@@ -355,134 +355,134 @@ form .container-global .uploadlabel {
 .container-pegis label,
 .container-trailer label,
 .container-description label {
-    display: none;
+  display: none;
 }
 
 .formulaire-games form input {
-    padding: 8px;
-    border-radius: 10px;
-    background: var(--colorSecondary);
-    color: var(--colorPara);
-    border: none;
+  padding: 8px;
+  border-radius: 10px;
+  background: var(--colorSecondary);
+  color: var(--colorPara);
+  border: none;
 }
 
 .formulaire-games form input::placeholder {
-    color: var(--colorPara);
-    text-align: center;
+  color: var(--colorPara);
+  text-align: center;
 }
 
 .container-plateformes {
-    position: relative;
-    display: inline-block;
-    width: 200px;
+  position: relative;
+  display: inline-block;
+  width: 200px;
 }
 
 .dropdown-btn {
-    background-color: var(--colorSecondary);
-    color: var(--colorPara);
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    width: 215px;
-    border-radius: 10px;
+  background-color: var(--colorSecondary);
+  color: var(--colorPara);
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width: 215px;
+  border-radius: 10px;
 }
 
 .list-plateformes {
-    display: none;
-    position: absolute;
-    background-color: var(--colorSecondary);
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    z-index: 1;
-    padding: 10px;
-    border: 1px solid #2d2c54;
+  display: none;
+  position: absolute;
+  background-color: var(--colorSecondary);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  z-index: 1;
+  padding: 10px;
+  border: 1px solid #2d2c54;
 }
 
 .list-plateformes label {
-    display: flex;
-    padding: 5px;
-    cursor: pointer;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  padding: 5px;
+  cursor: pointer;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .container-plateformes.active .list-plateformes {
-    display: block;
-    width: 215px;
-    border-radius: 10px;
+  display: block;
+  width: 215px;
+  border-radius: 10px;
 }
 
 .list-plateformes input[type="checkbox"] {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .list-plateformes input[type="submit"] {
-    display: none;
+  display: none;
 }
 
 .formulaire-games .container-plateformes input {
-    width: auto;
+  width: auto;
 }
 
 /* TABLET */
 
 @media all and (min-width: 768px) and (max-width: 1023px) {
-    .formulaire-games .container-global {
-        display: flex;
-        gap: 40px;
-        align-items: center;
-        flex-direction: row;
-    }
+  .formulaire-games .container-global {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-direction: row;
+  }
 
-    .container-left {
-        flex-direction: column;
-        gap: 30px;
-        align-items: flex-start;
-    }
+  .container-left {
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+  }
 
-    .container-right {
-        align-items: flex-start;
-    }
+  .container-right {
+    align-items: flex-start;
+  }
 }
 
 /* DESKTOP */
 
 @media all and (min-width: 1024px) {
-    .formulaire-games {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 120px;
-    }
+  .formulaire-games {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 120px;
+  }
 
-    .formulaire-games .container-global {
-        display: flex;
-        gap: 40px;
-        flex-direction: row;
-    }
+  .formulaire-games .container-global {
+    display: flex;
+    gap: 40px;
+    flex-direction: row;
+  }
 
-    .container-left {
-        flex-direction: column;
-        gap: 25px;
-        align-items: flex-start;
-    }
+  .container-left {
+    flex-direction: column;
+    gap: 25px;
+    align-items: flex-start;
+  }
 
-    .container-right {
-        align-items: flex-start;
-    }
+  .container-right {
+    align-items: flex-start;
+  }
 
-    .formulaire-games .form-jeux form .send {
-        margin-top: 15px;
-    }
+  .formulaire-games .form-jeux form .send {
+    margin-top: 15px;
+  }
 
-    /* addreviews */
+  /* addreviews */
 
-    .addreviews-container {
-        display: flex;
-        flex-direction: row;
-        align-items: normal;
-        gap: 2%;
-    }
+  .addreviews-container {
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    gap: 2%;
+  }
 }

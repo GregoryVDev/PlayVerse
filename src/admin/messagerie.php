@@ -12,11 +12,6 @@ if (!isset($_SESSION["admin_gamer"])) {
 <main>
     <section class="dashboard">
         <h2>Dashboard</h2>
-
-        <div class="container-search">
-            <img src="../img/logos/search.svg" alt="Search">
-            <input type="search" name="search" id="search" placeholder="Cherchez un jeu...">
-        </div>
         <table>
             <thead>
                 <tr>
@@ -45,7 +40,6 @@ if (!isset($_SESSION["admin_gamer"])) {
         <div id="pagination" class="container-pages">
             <span id="pageNumbers"></span>
         </div>
-        <button class="deleteall">Supprimer tout</button>
     </section>
 </main>
 </body>

@@ -63,7 +63,7 @@ require_once("../close.php");
             <p><?= $messages_read["firstname"] ?></p>
         </div>
         <div class="email">
-            <p><?= $messages_read["email"] ?></p>
+            <p><a href="mailto:<?= $messages_read["email"] ?>"><?= $messages_read["email"] ?></a></p>
         </div>
         <div class="message">
             <p><?= $messages_read["message"] ?></p>

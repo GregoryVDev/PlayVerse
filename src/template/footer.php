@@ -4,7 +4,7 @@
             <img class="footer-logo-playverse-inside" src="../img/logos/playverse.png" alt="icon playverse">
             <ul class="footer-info">
                 <li>
-                    <a href="">Condition d'utilisation</a>
+                    <a href="../privacy.php">Condition d'utilisation</a>
                 </li>
                 <li>
                     <a href="">Contactez-nous</a>
