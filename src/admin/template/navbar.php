@@ -92,6 +92,9 @@ foreach ($messages as $message) {
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Profil
+                                        <?php if ($countMessage > 0) { ?>
+                                            <span class="unread-message"> <?= $countMessage; ?></span>
+                                        <?php } ?>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark" style="padding-left: 10px">
                                         <li><a class="nav-link" href="adminprofil.php">Modifier son profil</a></li>
