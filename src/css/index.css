@@ -80,7 +80,11 @@ body {
 .jeux-du-moment-lien {
     width: 100%;
 }
-
+.jeux-du-moment-lien > img {
+    width: 100vw;
+    object-fit: cover;
+    border-radius: 10px;
+}
 .index-title-h2 {
     text-align: center;
     color: var(--colorTitle);

@@ -116,17 +116,17 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
             <div class="addreviews-container">
 
                 <div class="addreviews-container-paragraph">
-                    <div class="container-title">
+                    <div class="container-description">
                         <label for="paragraph1">Paragraphe 1 :</label>
                         <textarea placeholder="Contenu du paragraphe 1" name="paragraph1" id="paragraph1" required
                             style="margin-bottom: 20px;"></textarea>
                     </div>
-                    <div class="container-title">
+                    <div class="container-description">
                         <label for="paragraph2">Paragraphe 2 :</label>
                         <textarea placeholder="Contenu du paragraphe 2" name="paragraph2" id="paragraph2" required
                             style="margin-bottom: 20px;"></textarea>
                     </div>
-                    <div class="container-title">
+                    <div class="container-description">
                         <label for="paragraph3">Paragraphe 3 :</label>
                         <textarea placeholder="Contenu du paragraphe 3" name="paragraph3" id="paragraph3" required
                             style="margin-bottom: 20px;"></textarea>
@@ -178,15 +178,15 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
                 </tr>
             </thead>
             <?php foreach ($reviews as $review) { ?>
-                <tbody>
-                    <tr data-page="1">
-                        <td class="actions">
-                            <a class="btn-edit" href="editreview.php?id=<?= $review["review_id"] ?>">Modifier</a>
-                            <a class="btn-delete" href="deletereview.php?id=<?= $review["review_id"] ?>">Supprimer</a>
-                        </td>
-                        <td><?= $review["review_title"] ?></td>
-                    </tr>
-                </tbody>
+            <tbody>
+                <tr data-page="1">
+                    <td class="actions">
+                        <a class="btn-edit" href="editreview.php?id=<?= $review["review_id"] ?>">Modifier</a>
+                        <a class="btn-delete" href="deletereview.php?id=<?= $review["review_id"] ?>">Supprimer</a>
+                    </td>
+                    <td><?= $review["review_title"] ?></td>
+                </tr>
+            </tbody>
             <?php } ?>
         </table>
     </section>
