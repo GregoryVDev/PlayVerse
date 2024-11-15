@@ -143,12 +143,6 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                         </div>
                     <?php } ?>
-
-                    <div class="index-right-images">
-                        <?php foreach ($reviews as $review) { ?>
-                            <img class="index-image-small index-review-img" src="../<?= $review['image1'] ?>" alt="<?= $review["review_title"] ?>">
-                        <?php } ?>
-                    </div>
                 </div>
             </div>
         </div>
