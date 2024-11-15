@@ -183,6 +183,14 @@ input[type="checkbox"] {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+}
+
+.review-para {
+    overflow: hidden;
+    outline: none;
+    height: 150px;
+    margin-bottom: 20px;
 }
 
 /* addadmin */
@@ -478,11 +486,19 @@ form .container-global .uploadlabel {
     }
 
     /* addreviews */
-
     .addreviews-container {
         display: flex;
         flex-direction: row;
         align-items: normal;
-        gap: 2%;
+        gap: 10%;
+    }
+
+    .addreview-img {
+        width: 250px;
+        margin-top: -20px;
+        margin-bottom: 40px;
+        label {
+            text-align: center;
+        }
     }
 }
