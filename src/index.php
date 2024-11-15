@@ -11,6 +11,11 @@ $query->execute();
 
 $games = $query->fetchAll(PDO::FETCH_ASSOC);
 
+$sql_game = "SELECT * FROM games ORDER BY game_id DESC LIMIT 4";
+$query_game = $db->prepare($sql_game);
+$query_game->execute();
+$jeux = $query_game->fetchAll(PDO::FETCH_ASSOC);
+
 // Requête pour récupérer le dernier id mis
 $sql_last_review = "SELECT * FROM reviews ORDER BY review_id DESC LIMIT 1";
 $query_last = $db->prepare($sql_last_review);
@@ -53,26 +58,13 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
 
         <!-- a remplacer par les 4 dernier jeux ajouter -->
         <div class="container-jeux-du-moment">
-            <div class="jeux-du-moment-hover">
-                <a class="jeux-du-moment-lien" href="#">
-                    <img src="../img/exemple/bmw.png" alt="exemple1" />
-                </a>
-            </div>
-            <div class="jeux-du-moment-hover">
-                <a class="jeux-du-moment-lien" href="#">
-                    <img src="../img/exemple/frostpunk.png" alt="exemple2" />
-                </a>
-            </div>
-            <div class="jeux-du-moment-hover">
-                <a class="jeux-du-moment-lien" href="#">
-                    <img src="../img/exemple/sims.png" alt="exemple3" />
-                </a>
-            </div>
-            <div class="jeux-du-moment-hover">
-                <a class="jeux-du-moment-lien" href="#">
-                    <img src="../img/exemple/zelda.png" alt="exemple4" />
-                </a>
-            </div>
+            <?php foreach ($jeux as $jeu) { ?>
+                <div class="jeux-du-moment-hover">
+                    <a class="jeux-du-moment-lien" href="infogame.php?game_id=<?= $jeu["game_id"] ?>">
+                        <img src="../admin/<?= $jeu["image1"] ?>" alt="<?= $jeu["game_title"] ?>" />
+                    </a>
+                </div>
+            <?php } ?>
         </div>
 
 
