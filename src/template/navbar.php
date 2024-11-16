@@ -4,17 +4,6 @@ if (!isset($db)) {
     require("./connect.php");
 }
 
-if (isset($_GET["search"]) && !empty($_GET["search"])) {
-    $search = $_GET["search"] . "%";
-
-
-    $sql_search = "SELECT game_title FROM games WHERE game_title UNION ALL SELECT review_title FROM reviews WHERE review_title";
-    $query_search = $db->prepare($sql_search);
-    $query->execute();
-
-    $results = $query_search->fetchAll(PDO::FETCH_ASSOC);
-}
-
 $countMessage = 0;
 
 $sql = "SELECT * FROM message ORDER BY message_id DESC";
@@ -98,8 +87,10 @@ foreach ($messages as $message) {
                     <img src="../img/logos/playverse.png" alt="Logo">
                 </div>
                 <div class="container-search">
-                    <img src="../img/logos/search.svg" alt="Search">
-                    <input type="search" name="search" id="search" placeholder="Cherchez un jeu...">
+                    <form action="" method="GET">
+                        <img src="../img/logos/search.svg" alt="Search">
+                        <input type="search" name="search" id="search" placeholder="Cherchez un jeu...">
+                    </form>
                 </div>
             </div>
             <div id="burger-menu">
