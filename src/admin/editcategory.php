@@ -54,7 +54,7 @@ if (!isset($_GET["id"])) {
 <?php include "./template/navbar.php" ?>
 <main>
     <section class="page">
-        <h1>Modification des Catégories</h1>
+        <h1>Modification des catégories</h1>
     </section>
     <section class="formulaire">
         <form action="" method="POST" id="formajout" enctype="multipart/form-data">
