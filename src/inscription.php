@@ -34,7 +34,7 @@ if (!empty($_POST)) {
                 <li>- Au moins une lettre minuscule</li>
                 <li>- Au moins un chiffre</li>
                 <li>- Au moins un caractère spécial</li>
-                <li>- 16 caractères minimum</li>
+                <li>- 6 caractères minimum</li>
             </ul>";
         } elseif ($pass === $pass2) {
             $pass = password_hash($_POST["pass"], PASSWORD_ARGON2ID);
