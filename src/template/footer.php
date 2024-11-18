@@ -7,10 +7,10 @@
                     <a href="../privacy.php">Condition d'utilisation</a>
                 </li>
                 <li>
-                    <a href="">Contactez-nous</a>
+                    <a href="#">Contactez-nous</a>
                 </li>
                 <li>
-                    <a href="../mentions_legales.php">Mention légales</a>
+                    <a href="../mentions_legales.php">Mentions légales</a>
                 </li>
             </ul>
             <div class="container-footer-nos-reseaux">
