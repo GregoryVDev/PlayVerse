@@ -1,8 +1,9 @@
 <?php
 
-// Vérifie si l'utilisateur a le rôle admin_gamer
-if (!isset($_SESSION["admin_gamer"]) || $_SESSION["admin_gamer"] !== true) {
-    // Redirige vers la page index.php si l'utilisateur n'est pas admin_gamer
+session_start();
+
+// Vérifier si l'utilisateur a la session "admin_gamer" active
+if (!isset($_SESSION["admin_gamer"]) || $_SESSION["admin_gamer"]["admin"] !== true) {
     header("Location: ../index.php");
     exit();
 }
@@ -145,7 +146,7 @@ if (!empty($_POST)) {
         <div class="container-inscription">
             <form method="POST" class="form-login">
                 <?php if (!empty($errorMessage)): ?>
-                    <div class="error-message"><?php echo $errorMessage; ?></div>
+                <div class="error-message"><?php echo $errorMessage; ?></div>
                 <?php endif; ?>
                 <div class="container-pseudo">
                     <label for="pseudo">Pseudo :</label>

@@ -3,8 +3,7 @@ session_start();
 
 require_once("./connect.php");
 
-
-$sql = $db->prepare("SELECT * FROM reviews ORDER BY review_id ASC");
+$sql = $db->prepare("SELECT * FROM reviews ORDER BY review_id DESC");
 
 $sql->execute();
 
@@ -18,17 +17,17 @@ $reviews = $sql->fetchAll(PDO::FETCH_ASSOC);
         <h1>Les dernières reviews</h1>
         <div class="container-reviews">
             <?php foreach ($reviews as $review) { ?>
-                <article class="review">
-                    <figure>
-                        <img src="<?= htmlspecialchars($review["image1"]); ?>" alt="<?= $review["review_title"] ?>">
-                        <figcaption>
-                            <a class="img-reviews-articles" href="./review.php?id=<?= $review["review_id"] ?>">
-                                <h2><?= $review["review_title"] ?></h2>
-                                <p><?= substr($review["paragraph1"], 0, 250) . "..."; ?></p>
-                            </a>
-                        </figcaption>
-                    </figure>
-                </article>
+            <article class="review">
+                <figure>
+                    <img src="<?= htmlspecialchars($review["image1"]); ?>" alt="<?= $review["review_title"] ?>">
+                    <figcaption>
+                        <a class="img-reviews-articles" href="./review.php?id=<?= $review["review_id"] ?>">
+                            <h2><?= $review["review_title"] ?></h2>
+                            <p><?= substr($review["paragraph1"], 0, 250) . "..."; ?></p>
+                        </a>
+                    </figcaption>
+                </figure>
+            </article>
             <?php } ?>
         </div>
     </section>
