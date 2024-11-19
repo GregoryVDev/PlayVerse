@@ -91,7 +91,6 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
     <div>
         <h2 class="index-title-h2">Jeux du moment</h2>
 
-        <!-- a remplacer par les 4 dernier jeux ajouter -->
         <div class="container-jeux-du-moment">
             <?php foreach ($jeux as $jeu) { ?>
             <div class="jeux-du-moment-hover">
@@ -110,7 +109,6 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
     <section class="index-bg-color">
         <div class="parti-2">
             <h3 class="index-title-h3">Rejoins les légendes du jeu vidéo et vis l'aventure ultime</h3>
-            <!-- <img src="../img/images/secondary.png" alt="regroupement de personnages de jeux vidéo"> -->
             <img src="../img/images/group3.png" alt="regroupement de personnages de jeux vidéo">
         </div>
 
@@ -152,7 +150,7 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
 
 
             <form class="index-form-container" action="./admin/traitement_contact.php" method="POST">
-                <!-- Nom et Prénom -->
+
                 <div class="input-group">
                     <div class="input-wrapper">
                         <img src="../img/images/nom.png" alt="Icon Nom">
@@ -164,7 +162,6 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
 
-                <!-- Objet et E-mail -->
                 <div class="input-group">
                     <div class="input-wrapper">
                         <img src="../img/images/objet.png" alt="Icon Objet">
@@ -176,7 +173,6 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
 
-                <!-- Message : occupe toute la largeur -->
                 <div class="full-width">
                     <img src="../img/images/message.png" alt="Icon Message">
                     <textarea placeholder="Message" id="message" name="message" rows="5" required></textarea>
