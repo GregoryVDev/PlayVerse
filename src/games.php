@@ -18,7 +18,7 @@ $games = $query->fetchAll(PDO::FETCH_ASSOC);
 <main>
 
     <div class="games-container-title">
-        <h1 class="games-h1-games">Voici notre sélection de jeux PC</h1>
+        <h1 class="games-h1-games">Voici notre sélection de jeux</h1>
         <div class="games-container-plateforme">
             <img class="games-icon-plateforme" src="../img/logos/icon_pc.png" alt="icon pc">
             <img class="games-icon-plateforme" src="../img/logos/icon_playstation.png" alt="icon playstation">

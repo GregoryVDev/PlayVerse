@@ -27,6 +27,7 @@ foreach ($messages as $message) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="png" href="../img/logos/favicon.png" />
     <link rel="stylesheet" href="../template/navbar.css">
     <link rel="stylesheet" href="../template/footer.css">
     <link rel="stylesheet" href="../css/reset.css">
