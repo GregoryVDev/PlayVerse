@@ -104,7 +104,7 @@ if (!empty($_POST)) {
                 $query->execute();
 
                 // Redirige vers la page de connexion administrateur
-                header("Location: ../admin/connexionadmin.php");
+                header("Location: ../admin/panel.php");
                 exit();
             }
         } catch (PDOException $e) {
