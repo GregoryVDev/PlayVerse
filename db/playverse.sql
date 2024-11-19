@@ -4,6 +4,7 @@
 --
 -- Hôte : db
 -- Généré le : dim. 17 nov. 2024 à 16:34
+-- Généré le : dim. 17 nov. 2024 à 16:34
 -- Version du serveur : 8.0.37
 -- Version de PHP : 8.2.8
 
@@ -39,8 +40,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`admin_id`, `pseudo`, `email`, `pass`) VALUES
-(1, 'Grégory', 'admin@admin.fr', '$2y$10$ydvlBJLRCTgCtX09FQamhuOpQAgLChhCUvxl752GnwaeZDWSYoaV2'),
-(3, 'Jonathan', 'jonathan@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$cGdxSy92Tm92ZVdSODliUQ$FMkg7gsYaKDoWdnPt/kBkKerSL/4periVXz26JVMZ9o');
+(1, 'Grégory', 'admin@admin.fr', '$2y$10$ydvlBJLRCTgCtX09FQamhuOpQAgLChhCUvxl752GnwaeZDWSYoaV2');
 
 -- --------------------------------------------------------
 
@@ -270,16 +270,6 @@ CREATE TABLE `reviews` (
   `weak_point` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Déchargement des données de la table `reviews`
---
-
-INSERT INTO `reviews` (`review_id`, `admin_id`, `review_title`, `paragraph1`, `paragraph2`, `paragraph3`, `image1`, `image2`, `image3`, `high_point`, `weak_point`) VALUES
-(6, 3, 'Grounded : un univers miniature captivant', 'Grounded, développé par Obsidian Entertainment, plonge les joueurs dans un monde où l\'ordinaire devient extraordinaire. Le jeu propose une expérience unique en réduisant les joueurs à la taille d\'une fourmi, les propulsant dans un jardin ordinaire qui devient soudainement un terrain de survie immense et dangereux. Le joueur incarne un adolescent miniaturisé, perdu dans ce monde hostile, où chaque brin d\'herbe devient une tour et chaque insecte un géant terrifiant. Cette perspective innovante transforme les environnements du quotidien en un champ de bataille captivant où l\'exploration et l\'ingéniosité sont essentielles pour survivre.', 'Dans Grounded, la survie repose sur la collecte de ressources, la construction de bases, et la confection d’outils et d’armes à partir des matériaux trouvés dans le jardin. Les joueurs doivent affronter des menaces variées, comme des araignées géantes ou des coléoptères, tout en gérant leur faim, leur soif, et leurs limites physiques. Le mode multijoueur coopératif permet à plusieurs amis de s\'allier pour explorer, construire, et combattre ensemble, ajoutant une dimension sociale et stratégique au jeu. En parallèle, le mode histoire propose une quête captivante où l\'on découvre pourquoi les personnages ont été miniaturisés, ajoutant une intrigue supplémentaire au gameplay.', 'L’esthétique de Grounded mélange des graphismes colorés et détaillés, qui rendent le monde miniature vivant et crédible. Le réalisme des insectes et la représentation soignée des objets familiers à une échelle gigantesque ajoutent une touche d’émerveillement. De plus, la bande-son et les effets sonores renforcent l’immersion, entre le bruissement des herbes et les sons intimidants des créatures proches. Que ce soit pour les amateurs de jeux de survie, les passionnés d’exploration, ou ceux à la recherche d’un concept original, Grounded offre une aventure mémorable et palpitante.', 'img/reviews/ba32fe22d5484bf3f45f427ea94d0ac6.jpg', 'img/reviews/e3f4b20e939b7b4210514ded00f913f9.webp', 'img/reviews/aa0402d1f725193fac523e91b139eb24.jpg', '-Concept innovant\r\n-Graphismes détaillés\r\n-Mode coopératif', '-Difficulté variable\r\n-Problèmes d’IA\r\n-Optimisation variable'),
-(7, 3, 'Sea of Thieves : Une aventure pirate sans limites', 'Sea of Thieves, développé par Rare, invite les joueurs à incarner des pirates dans un vaste monde ouvert maritime. Ce jeu multijoueur en ligne repose sur l’exploration, les batailles navales, et la recherche de trésors enfouis sur des îles mystérieuses. Que vous voguiez seul ou en équipage, l’expérience est marquée par une liberté totale : les joueurs choisissent leur propre voie, qu’il s’agisse de chasse au trésor, de commerce, ou de piraterie. Chaque session est une aventure unique grâce à la combinaison d’événements aléatoires, d’interactions avec d’autres joueurs, et de quêtes variées.', 'Le cœur du jeu réside dans la navigation et la coopération entre membres d’équipage. Les joueurs doivent collaborer pour manœuvrer leur navire, tirer au canon, et réparer les dégâts, ce qui donne lieu à des moments épiques et souvent hilarants. En plus de son système de progression basé sur la réputation, Sea of Thieves propose des aventures narratives ponctuelles et des saisons avec du contenu mis à jour régulièrement. Le style artistique coloré et la bande-son immersive renforcent l’ambiance d’une époque de piraterie fantaisiste.', 'Si Sea of Thieves brille par son atmosphère et sa créativité, il n’est pas sans défauts. Certains joueurs critiquent un manque de direction pour ceux qui préfèrent des objectifs clairs, tandis que les interactions avec d\'autres joueurs peuvent devenir répétitives ou frustrantes, notamment avec des attaques incessantes. Cependant, pour ceux qui apprécient l’idée d’écrire leur propre histoire de pirate, le jeu offre une expérience inégalée et sans contraintes.', 'img/reviews/63258c77042a24845a8289bc1235fd26.webp', 'img/reviews/ee5f5a817e9fdc91fcd85936a7e55799.jpg', 'img/reviews/d68962a047182d11cf8cbdcbb9e28343.jpg', '-Exploration en monde ouvert\r\n-Graphismes et ambiance\r\n-Coopération unique\r\n-Mises à jour régulières\r\n-Expériences imprévisibles', '-Interactions PvP frustrantes\r\n-Contenu répétitif\r\n-Temps morts\r\n-Départ difficile pour les nouveaux joueurs'),
-(8, 3, 'Monster Hunter: World – Un combat épique contre des créatures monstrueuses', 'Monster Hunter: World, développé par Capcom, plonge les joueurs dans un monde ouvert où l\'objectif principal est de traquer et d\'affronter des créatures gigantesques. Le jeu combine exploration, stratégie et combats intenses dans un environnement riche et détaillé. En tant que chasseur, vous devrez utiliser un large éventail d\'armes et de tactiques pour abattre vos ennemis, tout en collectant des matériaux pour améliorer votre équipement et vos capacités. Avec son système de quête ouvert et ses missions de groupe, Monster Hunter: World offre une expérience de jeu variée et engageante.', 'Les batailles contre les monstres sont l\'essence même du jeu, demandant des compétences, de la patience et une excellente gestion de l’environnement. Le monde du jeu est vivant et réactif, avec des écosystèmes complexes et des créatures interagissant de manière dynamique entre elles. Le jeu encourage aussi la coopération entre joueurs, permettant de former des équipes pour affronter des monstres encore plus puissants. Chaque victoire est une célébration de travail d’équipe, de stratégie et de persévérance.', 'Cependant, bien que Monster Hunter: World offre une expérience immersive et palpitante, il n’est pas sans défauts. Sa courbe d\'apprentissage peut être intimidante pour les nouveaux joueurs, et le gameplay peut devenir répétitif à long terme. De plus, bien que les combats soient extrêmement satisfaisants, certains joueurs peuvent trouver le manque de profondeur de l\'histoire un peu décevant.\r\n\r\n', 'img/reviews/7edf54c6ddfa52228140e64a75980556.jpg', 'img/reviews/40b219d2bdc2dda8cf1176a7246eb4fa.webp', 'img/reviews/70c9b31b8200da83a8176cd481e297b8.jpg', '-Monde ouvert et vaste\r\n-Combats dynamiques et stratégiques\r\n-Immersion dans un écosystème vivant\r\n-Système de progression enrichissant\r\n-Contenu varié et multijoueur coopératif', '-Problèmes d’équilibrage pour certains types d’armes\r\n-Quelques bugs et problèmes de connexion en ligne\r\n-Manque d’histoire approfondi'),
-(9, 3, 'Hollow Knight – Un voyage dans un monde souterrain mystérieux', 'Hollow Knight, développé par Team Cherry, est un jeu d\'action-aventure en 2D se déroulant dans le royaume souterrain de Hallownest. Les joueurs incarnent un chevalier sans nom, un insecte en quête de vérité dans un monde magnifique mais dévasté. Ce jeu propose une exploration libre, où chaque recoin cache des secrets à découvrir et des défis à relever. Le gameplay est centré sur les combats fluides et les capacités que l\'on acquiert au fur et à mesure de l\'aventure, tout en affrontant des boss impressionnants et en découvrant une riche mythologie.', 'L’un des points forts de Hollow Knight réside dans sa mécanique d\'exploration ouverte. Les joueurs peuvent s\'aventurer librement dans le monde vaste et interconnecté, mais cela vient avec un défi constant. La difficulté du jeu est présente, non seulement à travers les combats intenses, mais aussi dans les puzzles environnementaux et les ennemis redoutables qui exigent patience et précision. Le monde de Hallownest est d\'une beauté particulière, avec une direction artistique envoûtante et une bande-son émotive qui plonge le joueur dans une atmosphère unique.', 'Cependant, bien que Hollow Knight soit un jeu acclamé par la critique, il comporte quelques inconvénients. La difficulté peut être décourageante pour certains, avec des passages très complexes, et l\'absence d\'indices clairs peut rendre l\'exploration encore plus ardue. La progression peut également sembler lente pour ceux qui cherchent à avancer rapidement, et bien que l\'absence de narration directe soit un choix artistique intéressant, elle peut ne pas convenir à tous les joueurs.', 'img/reviews/860aa20d266c2958e24479ae58b0a1a4.webp', 'img/reviews/73a07adda3ce00598424c33c682a220e.jpg', 'img/reviews/2e49344bb0891ed612c377a6ed0d0a6f.jpg', '-Monde vaste et interconnecté\r\n-Combats fluides et exigeants\r\n-Direction artistique et ambiance immersive\r\n-Contenu riche et varié\r\n-Atmosphère unique', '-Difficulté élevée\r\n-Manque d\'indices pour la progression\r\n-Quelques moments de frustration');
-
 -- --------------------------------------------------------
 
 --
@@ -389,7 +379,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `admin_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `admin_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `category`
@@ -443,7 +433,7 @@ ALTER TABLE `plateformes`
 -- AUTO_INCREMENT pour la table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `review_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `review_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `users`
