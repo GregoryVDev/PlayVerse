@@ -4,6 +4,7 @@
 --
 -- Hôte : db
 -- Généré le : dim. 17 nov. 2024 à 16:34
+-- Généré le : dim. 17 nov. 2024 à 16:34
 -- Version du serveur : 8.0.37
 -- Version de PHP : 8.2.8
 
@@ -39,7 +40,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`admin_id`, `pseudo`, `email`, `pass`) VALUES
-(1, 'Administrator', 'admin@admin.fr', '$2y$10$ydvlBJLRCTgCtX09FQamhuOpQAgLChhCUvxl752GnwaeZDWSYoaV2');
+(1, 'Grégory', 'admin@admin.fr', '$2y$10$ydvlBJLRCTgCtX09FQamhuOpQAgLChhCUvxl752GnwaeZDWSYoaV2');
 
 -- --------------------------------------------------------
 
@@ -269,13 +270,6 @@ CREATE TABLE `reviews` (
   `weak_point` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Déchargement des données de la table `reviews`
---
-
-INSERT INTO `reviews` (`review_id`, `admin_id`, `review_title`, `paragraph1`, `paragraph2`, `paragraph3`, `image1`, `image2`, `image3`, `high_point`, `weak_point`) VALUES
-(1, 1, 'Black Myth Wukong', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime aperiam rerum, tenetur enim eum ullam ratione hic esse placeat rem est modi quos atque veniam! Nulla illo culpa mollitia omnis.', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, unde voluptatum maiores minima sequi non quod? Pariatur quae debitis tenetur illum amet asperiores officia eligendi voluptates, cum maiores at corrupti! Facere et at laudantium id officia accusantium, enim non saepe exercitationem. Ipsa quod minima amet, repudiandae a ad sequi beatae nihil molestias veritatis. Excepturi vel modi dolores, ratione magni velit! Recusandae quibusdam provident hic aliquam aspernatur? Sit veritatis eveniet, modi accusamus nemo hic quod vitae, quae sint cupiditate velit eius. Nihil eligendi debitis expedita, architecto consectetur nam minus quidem provident.', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, unde voluptatum maiores minima sequi non quod? Pariatur quae debitis tenetur illum amet asperiores officia eligendi voluptates, cum maiores at corrupti! Facere et at laudantium id officia accusantium, enim non saepe exercitationem. Ipsa quod minima amet, repudiandae a ad sequi beatae nihil molestias veritatis.', 'bmw.png', 'bmw.png', 'bmw.png', '- Bon jeu\n- Graphisme\n- Jouabilité', '- Bon jeu\n- Graphisme\n- Jouabilité');
-
 -- --------------------------------------------------------
 
 --
@@ -385,7 +379,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `admin_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `admin_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `category`
@@ -439,7 +433,7 @@ ALTER TABLE `plateformes`
 -- AUTO_INCREMENT pour la table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `review_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `review_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `users`
