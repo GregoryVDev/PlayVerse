@@ -282,7 +282,7 @@ try {
         <div>
             <?php if (isset($_SESSION["user_gamer"])): ?>
             <!-- Section pour laisser un commentaire si l'utilisateur est connecté -->
-            <h4 class="infogame-h4">Laissez votre avis</h4>
+            <h4 class="infogame-h4">Laissez votre commentaire</h4>
             <form action="#" method="post" class="form-inline">
                 <input class="input-commentaire" type="text" id="commentaire" name="commentaire"
                     placeholder="Tapez votre commentaire ici">
@@ -291,7 +291,7 @@ try {
             <?php else: ?>
             <!-- Section de connexion si l'utilisateur n'est pas connecté -->
             <div class="infogame-connexion">
-                <h4 class="infogame-h4">Veuillez vous connecter pour laisser un avis</h4>
+                <h4 class="infogame-h4">Veuillez vous connecter pour laisser un commentaire</h4>
                 <a class="info-game-connexion-btn" href="connexion.php">Se connecter</a>
             </div>
             <?php endif; ?>
