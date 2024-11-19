@@ -317,3 +317,4 @@ try {
 </main>
 <script src="./js/favoris.js"></script>
 <?php include "./template/footer.php" ?>
+

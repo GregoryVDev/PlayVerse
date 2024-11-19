@@ -29,7 +29,7 @@ $games = $query->fetchAll(PDO::FETCH_ASSOC);
 
     <div class="games-jeu-container">
 
-        <!-- First game card -->
+        <!-- crée un articles pour chaque jeu trouver -->
         <?php foreach ($games as $game) {?>
         <article class="games-card-game">
             <?php
