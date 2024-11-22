@@ -30,7 +30,21 @@ PlayVerse is a gaming blog developed by Jonathan and Gregory as part of our inte
 - Advanced Search 🔍: Implement a search feature for games and reviews.
 - Comments Section 📝: Enable users to leave comments and engage with the content.
 
-###### Authors
+####### Deployment of a dynamic web or mobile web application and  deployment on the github
+
+- Install `docker desktop`.
+- Check that the `docker-compose.yml` file is in the right path.
+- Building the docker `docker-compose build`.
+- Excecute the docker `docker-compose up`.
+- The site can be found at `localhost: 8012`.
+- The database can be found on the `localhost:8092`.
+
+- Create `repository`.
+- Clone the `file` to the correct path.
+- Create the `folder` in the correct path
+
+
+######## Authors
 
 - Jonathan
 - Gregory
