@@ -44,6 +44,7 @@
     <script src="../js/script.js"></script>
     <script src="../js/burger.js"></script>
     <script src="../js/scroll-up.js"></script>
+    <script src="../js/search.js"></script>
 
     </body>
 
