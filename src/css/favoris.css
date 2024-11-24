@@ -123,10 +123,12 @@
 
 @media all and (min-width: 768px) and (max-width: 1023px) {
   .container-favoris {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
   }
 }
 
