@@ -167,8 +167,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <!-- Contenu du dropdown avec checkboxes -->
                             <div class="list-plateformes">
                                 <?php foreach ($plateformes as $plateforme) { ?>
-                                    <label><input type="checkbox" name=plateformeIds[]
-                                            value="<?= $plateforme["plateforme_id"] ?>"><?= $plateforme["plateforme_name"] ?></label>
+                                <label><input type="checkbox" name=plateformeIds[]
+                                        value="<?= $plateforme["plateforme_id"] ?>"><?= $plateforme["plateforme_name"] ?></label>
                                 <?php } ?>
                             </div>
                         </div>
@@ -178,8 +178,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <select id="categorie" name="category_id" required>
                                 <option value="">--Choisir la catégorie--</option>
                                 <?php foreach ($categories as $category) { ?>
-                                    <option value="<?= $category["category_id"] ?>"><?= $category["category_name"] ?>
-                                    </option>
+                                <option value="<?= $category["category_id"] ?>"><?= $category["category_name"] ?>
+                                </option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -188,7 +188,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <select id="pegis" name="pegi_id" required>
                                 <option value="">--Choisir le pegi--</option>
                                 <?php foreach ($pegis as $pegi) { ?>
-                                    <option value="<?= $pegi["pegi_id"] ?>"><?= $pegi["pegi_name"] ?></option>
+                                <option value="<?= $pegi["pegi_id"] ?>"><?= $pegi["pegi_name"] ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -256,16 +256,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             </thead>
             <?php foreach ($games as $game) { ?>
-                <tbody>
-                    <tr data-page="1">
-                        <td class="actions">
-                            <a href="editjeux.php?id=<?= $game["game_id"] ?>" class="btn-edit">Modifier</a>
-                            <a href="deletejeu.php?id=<?= $game["game_id"] ?>" class="btn-delete">Supprimer</a>
-                        </td>
-                        <td><?= $game["game_title"] ?></td>
-                        <td><?= $game["pseudo"] ?></td>
-                    </tr>
-                </tbody>
+            <tbody>
+                <tr data-page="1">
+                    <td class="actions">
+                        <a href="editjeux.php?id=<?= $game["game_id"] ?>" class="btn-edit">Modifier</a>
+                        <a href="deletejeu.php?id=<?= $game["game_id"] ?>" class="btn-delete">Supprimer</a>
+                    </td>
+                    <td><?= $game["game_title"] ?></td>
+                    <td><?= $game["pseudo"] ?></td>
+                </tr>
+            </tbody>
             <?php } ?>
             <!-- PAGINATION -->
             <div id="pagination" class="container-pages">
