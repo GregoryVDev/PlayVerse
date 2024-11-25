@@ -67,7 +67,7 @@ if (!empty($_POST)) {
                 $errorMessage = "L'adresse mail est déjà associée à un compte.";
             }
 
-            // Vérification si pseudo existe déjà dans la table admin
+            // Vérification si l'email existe déjà dans la table admin
             $sql_check_pseudo_admin = "SELECT COUNT(*) FROM admins WHERE pseudo = :pseudo";
             $query_pseudo_admin = $db->prepare($sql_check_pseudo_admin);
             $query_pseudo_admin->bindValue(":pseudo", $_POST["pseudo"]);
@@ -120,7 +120,7 @@ if (!empty($_POST)) {
         <form method="POST" class="form-login">
             <!-- Affiche le message d'erreur, si présent -->
             <?php if (!empty($errorMessage)): ?>
-            <div class="error-message"><?php echo $errorMessage; ?></div>
+                <div class="error-message"><?php echo $errorMessage; ?></div>
             <?php endif; ?>
             <div class="container-pseudo">
                 <label for="pseudo">Pseudo :</label>
@@ -137,10 +137,8 @@ if (!empty($_POST)) {
             </div>
             <div class="container-confirm">
                 <label for="pass2">Confirmation :</label>
-                <input type="password" class="form-input" name="pass2" id="pass2"
-                    placeholder="Confirmation mot de passe">
-                <img src="./img/logos/eye.svg" alt="Afficher/Masquer mot de passe" id="myPassConfirm"
-                    class="toggle-password">
+                <input type="password" class="form-input" name="pass2" id="pass2" placeholder="Confirmation mot de passe">
+                <img src="./img/logos/eye.svg" alt="Afficher/Masquer mot de passe" id="myPassConfirm" class="toggle-password">
             </div>
             <div class="container-general">
                 <div class="container-politique">
