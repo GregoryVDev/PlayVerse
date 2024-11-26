@@ -19,7 +19,7 @@ function previewImage(input, previewId) {
       const removeButton = document.createElement("button");
       removeButton.innerText = "Supprimer";
       removeButton.style.display = "flex";
-      removeButton.style.background = "var(--colorBackOffice";
+      removeButton.style.background = "var(--colorBackOffice)";
       removeButton.style.color = "var(--colorPara)";
       removeButton.style.borderRadius = "10px";
       removeButton.style.margin = "15px auto";
