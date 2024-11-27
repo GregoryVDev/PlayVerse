@@ -1,6 +1,8 @@
 <?php
+
 // Démarre la session pour gérer l'identification de l'utilisateur
 session_start();
+include "./template/navbar.php";
 
 // Inclut le fichier de connexion à la base de données
 require_once("connect.php");
@@ -33,7 +35,7 @@ if (isset($_SESSION["user_gamer"])) {
                 // Lie les paramètres à la requête pour prévenir des injections SQL
                 $query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
                 $query->bindValue(':game_id', $game_id, PDO::PARAM_INT);
-                $query->bindValue(':message', htmlspecialchars($commentaire), PDO::PARAM_STR); // Sécurise le commentaire contre les attaques XSS
+                $query->bindValue(':message', $commentaire); // Sécurise le commentaire contre les attaques XSS
 
                 // Exécute la requête d'insertion et vérifie si elle a réussi
                 if ($query->execute()) {
@@ -153,16 +155,14 @@ try {
 ?>
 
 
-<?php include "./template/navbar.php" ?>
-
 <main class="infogame">
     <!-- Ajouter des messages de succès ou d'erreur -->
     <?php if (isset($_SESSION['flash_message'])): ?>
-    <div
-        class="alert <?php echo $_SESSION['flash_message']['type'] === 'success' ? 'alert-success' : 'alert-danger'; ?>">
-        <?php echo $_SESSION['flash_message']['message']; ?>
-    </div>
-    <?php unset($_SESSION['flash_message']); ?>
+        <div
+            class="alert <?php echo $_SESSION['flash_message']['type'] === 'success' ? 'alert-success' : 'alert-danger'; ?>">
+            <?php echo $_SESSION['flash_message']['message']; ?>
+        </div>
+        <?php unset($_SESSION['flash_message']); ?>
     <?php endif; ?>
 
     <!-- Background header (desktop version) -->
@@ -214,16 +214,16 @@ try {
         // Vérifie si une ligne est retournée, ce qui signifie que le jeu est déjà en favori
         $isFavorite = $checkFavoriteStmt->fetchColumn() !== false;
     ?>
-    <!-- Affiche une étoile remplie si le jeu est en favori, sinon une étoile vide -->
-    <span class="favorite <?= $isFavorite ? 'filled' : '' ?>" data-game-id="<?= $game_id ?>"
-        onclick="toggleFavorite(this, <?= $game_id ?>)">
-        <?= $isFavorite ? '★' : '☆' ?>
-    </span>
+        <!-- Affiche une étoile remplie si le jeu est en favori, sinon une étoile vide -->
+        <span class="favorite <?= $isFavorite ? 'filled' : '' ?>" data-game-id="<?= $game_id ?>"
+            onclick="toggleFavorite(this, <?= $game_id ?>)">
+            <?= $isFavorite ? '★' : '☆' ?>
+        </span>
     <?php } else { ?>
-    <!-- Si l'utilisateur n'est pas connecté, affiche une étoile vide désactivée -->
-    <span class="favorite disabled" onclick="alertNotLoggedIn()">
-        ☆
-    </span>
+        <!-- Si l'utilisateur n'est pas connecté, affiche une étoile vide désactivée -->
+        <span class="favorite disabled" onclick="alertNotLoggedIn()">
+            ☆
+        </span>
     <?php } ?>
 
     <!-- Plateforme game -->
@@ -232,8 +232,8 @@ try {
         <div class="container-plateforme">
 
             <?php foreach ($platforms as $platform): ?>
-            <img class="icon-plateforme" src="./admin/<?php echo htmlspecialchars($platform['plateforme_icon']); ?>"
-                alt="<?php echo htmlspecialchars($platform['plateforme_name']); ?>">
+                <img class="icon-plateforme" src="./admin/<?php echo htmlspecialchars($platform['plateforme_icon']); ?>"
+                    alt="<?php echo htmlspecialchars($platform['plateforme_name']); ?>">
             <?php endforeach; ?>
 
         </div>
@@ -270,10 +270,10 @@ try {
         <h3 class="infogame-h3">Voici leurs avis</h3>
         <div class="container-commentaire">
             <?php foreach ($comments as $comment): ?>
-            <div class="commentaire">
-                <p class="pseudo"><?php echo htmlspecialchars($comment['pseudo']); ?></p>
-                <p class="message"><?php echo nl2br(htmlspecialchars($comment['message'])); ?></p>
-            </div>
+                <div class="commentaire">
+                    <p class="pseudo"><?php echo htmlspecialchars($comment['pseudo']); ?></p>
+                    <p class="message"><?php echo nl2br(htmlspecialchars($comment['message'])); ?></p>
+                </div>
             <?php endforeach; ?>
             <a class="more-commentary-btn" href="infogamecommentaire.php?game_id=<?= $game_data["game_id"] ?>">Voir tous
                 les commentaires</a>
@@ -281,19 +281,19 @@ try {
 
         <div>
             <?php if (isset($_SESSION["user_gamer"])): ?>
-            <!-- Section pour laisser un commentaire si l'utilisateur est connecté -->
-            <h4 class="infogame-h4">Laissez votre commentaire</h4>
-            <form action="#" method="post" class="form-inline">
-                <input class="input-commentaire" type="text" id="commentaire" name="commentaire"
-                    placeholder="Tapez votre commentaire ici">
-                <input class="btn" type="submit" value="Envoyer">
-            </form>
+                <!-- Section pour laisser un commentaire si l'utilisateur est connecté -->
+                <h4 class="infogame-h4">Laissez votre commentaire</h4>
+                <form action="#" method="post" class="form-inline">
+                    <input class="input-commentaire" type="text" id="commentaire" name="commentaire"
+                        placeholder="Tapez votre commentaire ici">
+                    <input class="btn" type="submit" value="Envoyer">
+                </form>
             <?php else: ?>
-            <!-- Section de connexion si l'utilisateur n'est pas connecté -->
-            <div class="infogame-connexion">
-                <h4 class="infogame-h4">Veuillez vous connecter pour laisser un commentaire</h4>
-                <a class="info-game-connexion-btn" href="connexion.php">Se connecter</a>
-            </div>
+                <!-- Section de connexion si l'utilisateur n'est pas connecté -->
+                <div class="infogame-connexion">
+                    <h4 class="infogame-h4">Veuillez vous connecter pour laisser un commentaire</h4>
+                    <a class="info-game-connexion-btn" href="connexion.php">Se connecter</a>
+                </div>
             <?php endif; ?>
         </div>
 
@@ -301,20 +301,19 @@ try {
         <h5 class="infogame-h5">Nos derniers jeux ajoutés</h5>
         <div class="jeu-container">
             <?php foreach ($last_games_info as $last_game): ?>
-            <article class="card-game">
-                <a href="infogame.php?game_id=<?= $last_game["game_id"] ?>">
-                    <img class="card-img" src="./admin/<?php echo htmlspecialchars($last_game['jacket']); ?>"
-                        alt="<?php echo htmlspecialchars($last_game['game_title']); ?>" />
-                </a>
-                <div class="card-body">
-                    <h3 class="card-title"><?php echo htmlspecialchars($last_game['game_title']); ?></h3>
-                    <a class="card-btn" href="infogame.php?game_id=<?= $last_game["game_id"] ?>">Voir</a>
-                </div>
-            </article>
+                <article class="card-game">
+                    <a href="infogame.php?game_id=<?= $last_game["game_id"] ?>">
+                        <img class="card-img" src="./admin/<?php echo htmlspecialchars($last_game['jacket']); ?>"
+                            alt="<?php echo htmlspecialchars($last_game['game_title']); ?>" />
+                    </a>
+                    <div class="card-body">
+                        <h3 class="card-title"><?php echo htmlspecialchars($last_game['game_title']); ?></h3>
+                        <a class="card-btn" href="infogame.php?game_id=<?= $last_game["game_id"] ?>">Voir</a>
+                    </div>
+                </article>
             <?php endforeach; ?>
         </div>
     </section>
 </main>
 <script src="./js/favoris.js"></script>
 <?php include "./template/footer.php" ?>
-

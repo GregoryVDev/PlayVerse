@@ -26,18 +26,18 @@ try {
         WHERE c.game_id = :game_id
         ORDER BY c.commentary_id DESC
     ");
-    
+
     // Lier l'id du jeu à la requête
     $query->bindValue(':game_id', $game_id, PDO::PARAM_INT);
 
     // Exécution de la requête
     $query->execute();
 
-        // Si aucun jeu n'est trouvé, redirige vers index.php
-        if ($query->rowCount() == 0) {
-            header("Location: index.php");
-            exit();
-        }
+    // Si aucun jeu n'est trouvé, redirige vers index.php
+    if ($query->rowCount() == 0) {
+        header("Location: index.php");
+        exit();
+    }
     // Récupérer les derniers commentaires avec les pseudos et le titre du jeu
     $comments = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -49,7 +49,6 @@ try {
         // Si aucun commentaire n'est trouvé, utiliser un titre par défaut
         $game_title = "Inconnu";
     }
-
 } catch (PDOException $e) {
     // Gestion des erreurs
     echo 'Erreur lors de la récupération des commentaires : ' . $e->getMessage();
@@ -66,10 +65,10 @@ try {
     <a class="infogame-commentaire-btn-retour" href="#" onclick="history.go(-1)">Retour</a>
     <div class="container-commentaire">
         <?php foreach ($comments as $comment) { ?>
-        <div class="commentaire">
-            <p class="pseudo"><?php echo htmlspecialchars($comment['pseudo']); ?></p>
-            <p><?php echo nl2br(htmlspecialchars($comment['message'])); ?></p>
-        </div>
+            <div class="commentaire">
+                <p class="pseudo"><?php echo htmlspecialchars($comment['pseudo']); ?></p>
+                <p><?php echo nl2br(htmlspecialchars($comment['message'])); ?></p>
+            </div>
         <?php } ?>
     </div>
 
