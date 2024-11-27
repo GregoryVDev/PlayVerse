@@ -3,6 +3,7 @@ session_start();
 require_once("../connect.php");
 
 if (isset($_SESSION["admin_gamer"])) {
+    // Récupère l'ID dans l'url
     if (isset($_GET["id"]) && !empty($_GET["id"])) {
 
         $id = strip_tags($_GET["id"]);
@@ -18,10 +19,8 @@ if (isset($_SESSION["admin_gamer"])) {
             foreach (['image1', 'image2', 'image3'] as $imageField) {
                 $imagePath = $review_images[$imageField];
                 if ($imagePath) {
-                    // Ajouter le chemin
+                    // chemin de l'image
                     $fullImagePath = realpath('../' . $imagePath);
-
-                    // Suppression des messages de vérification
                     if ($fullImagePath && file_exists($fullImagePath)) {
                         // Suppression de l'image
                         unlink($fullImagePath);
@@ -39,7 +38,7 @@ if (isset($_SESSION["admin_gamer"])) {
 
         // Redirection vers addreviews.php
         header("Location: addreviews.php");
-        exit;
+        exit();
     }
 } else {
     header("Location: panel.php");
