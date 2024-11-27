@@ -20,7 +20,7 @@ $admin = $query->fetch(PDO::FETCH_ASSOC);
 <?php include "./template/navbar.php"; ?>
 <main>
     <section class="page">
-        <h1>Que voulez vous modifier ?</h1>
+        <h1>Que voulez-vous modifier ?</h1>
 
         <div class="container-link-admin-profil">
             <a class="profil-admin-btn" href="edit_pseudo_admin.php?admin_id=<?= $admin['admin_id'] ?>">Modifier le

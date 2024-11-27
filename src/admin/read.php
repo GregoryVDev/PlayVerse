@@ -69,7 +69,7 @@ require_once("../close.php");
             <p><?= $messages_read["message"] ?></p>
         </div>
 
-        <button class="deleteall"><a href="deletemessage.php?id=<?= $messages_read["message_id"] ?>">Spprimer le message</a></button>
+        <button class="deleteall"><a href="deletemessage.php?id=<?= $messages_read["message_id"] ?>">Supprimer le message</a></button>
         <a href="./messagerie.php" class="retour">Retour</a>
     </div>
 </main>

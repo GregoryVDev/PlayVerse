@@ -84,7 +84,7 @@ if (!empty($_POST)) {
 
 <body>
     <main>
-        <h1 class="titre">Connexion admin</h1>
+        <h1 class="titre">Connexion <span class="connexion-color-admin">admin</span></h1>
         <div class="container-connexion">
             <form method="POST" class="form-login">
                 <?php if (!empty($errorMessage)): ?>

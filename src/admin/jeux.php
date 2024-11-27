@@ -45,7 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $content = strip_tags($_POST["content"]); // Nettoie le contenu (description)
 
     // Définir le répertoire de destination pour les images téléchargées
-
     $uploadDir = 'img/games/';
     // Définir une liste des types MIME autorisés pour les fichiers d'image
     // Les types MIME indiquent le format du fichier et permettent de restreindre l'upload à des types d'image spécifiques
@@ -163,11 +162,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                         <div class="container-plateformes">
                             <!-- Bouton du dropdown -->
-                            <button class="dropdown-btn" onclick="toggleDropdown()" type="button">--Choisir la plateforme--</button>
+                            <button class="dropdown-btn" onclick="toggleDropdown()" type="button">--Choisir la
+                                plateforme--</button>
                             <!-- Contenu du dropdown avec checkboxes -->
                             <div class="list-plateformes">
                                 <?php foreach ($plateformes as $plateforme) { ?>
-                                    <label><input type="checkbox" name=plateformeIds[] value="<?= $plateforme["plateforme_id"] ?>"><?= $plateforme["plateforme_name"] ?></label>
+                                    <label><input type="checkbox" name=plateformeIds[]
+                                            value="<?= $plateforme["plateforme_id"] ?>"><?= $plateforme["plateforme_name"] ?></label>
                                 <?php } ?>
                             </div>
                         </div>
@@ -177,7 +178,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <select id="categorie" name="category_id" required>
                                 <option value="">--Choisir la catégorie--</option>
                                 <?php foreach ($categories as $category) { ?>
-                                    <option value="<?= $category["category_id"] ?>"><?= $category["category_name"] ?></option>
+                                    <option value="<?= $category["category_id"] ?>"><?= $category["category_name"] ?>
+                                    </option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -200,35 +202,40 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         </div>
                         <div class="container-background">
                             <label class="uploadlabel" for="background" class="uploadImg">Uploader le background</label>
-                            <input type="file" id="background" name="background" class="image" required onchange="previewImage(this, 'backgroundPreview')">
+                            <input type="file" id="background" name="background" class="image" required
+                                onchange="previewImage(this, 'backgroundPreview')">
                             <div class="preview" id="backgroundPreview"></div>
                         </div>
                     </div>
                     <div class="container-right">
                         <div class="container-image">
                             <label class="uploadlabel" for="jacket" class="uploadImg">Uploader la jaquette</label>
-                            <input type="file" id="jacket" name="jacket" class="image" required onchange="previewImage(this, 'jacketPreview')">
+                            <input type="file" id="jacket" name="jacket" class="image" required
+                                onchange="previewImage(this, 'jacketPreview')">
                             <div class="preview" id="jacketPreview"></div>
                         </div>
                         <div class="container-image">
-                            <label class="uploadlabel" for="image1"
-                                class="uploadImage">Image de présentation</label>
-                            <input type="file" id="image1" name="image1" class="image" required onchange="previewImage(this, 'image1Preview')">
+                            <label class="uploadlabel" for="image1" class="uploadImage">Image de présentation</label>
+                            <input type="file" id="image1" name="image1" class="image" required
+                                onchange="previewImage(this, 'image1Preview')">
                             <div class="preview" id="image1Preview"></div>
                         </div>
                         <div class="container-image">
                             <label class="uploadlabel" for="image2" class="uploadImage">Uploader image 2</label>
-                            <input type="file" id="image2" name="image2" class="image" required onchange="previewImage(this, 'image2Preview')">
+                            <input type="file" id="image2" name="image2" class="image" required
+                                onchange="previewImage(this, 'image2Preview')">
                             <div class="preview" id="image2Preview"></div>
                         </div>
                         <div class="container-image">
                             <label class="uploadlabel" for="image3" class="uploadImage">Uploader image 3</label>
-                            <input type="file" id="image3" name="image3" class="image" required onchange="previewImage(this, 'image3Preview')">
+                            <input type="file" id="image3" name="image3" class="image" required
+                                onchange="previewImage(this, 'image3Preview')">
                             <div class="preview" id="image3Preview"></div>
                         </div>
                         <div class="container-image">
                             <label class="uploadlabel" for="image4" class="uploadImage">Uploader image 4</label>
-                            <input type="file" id="image4" name="image4" class="image" required onchange="previewImage(this, 'image4Preview')">
+                            <input type="file" id="image4" name="image4" class="image" required
+                                onchange="previewImage(this, 'image4Preview')">
                             <div class="preview" id="image4Preview"></div>
                         </div>
                     </div>
@@ -266,19 +273,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
     </section>
 </main>
-</body>
 <script src="./js/dropdown.js"></script>
 <script src="./js/pagination.js"></script>
 <script src="./js/previewgame.js"></script>
+</body>
 
 </html>
-
-<!-- TO DO LiST 
-
-- Afficher la jacket dans le carrousel
-- Afficher la review sur l'index
-- faire la messagerie
-- faire la politique de conf
-- mention légal
-
--->

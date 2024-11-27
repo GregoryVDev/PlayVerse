@@ -1,6 +1,5 @@
 <?php
 
-
 session_start();
 
 if (!isset($_SESSION["admin_gamer"])) {
@@ -193,7 +192,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <main>
     <section class="page">
-        <h1>Gestions des jeux</h1>
+        <h1>Modification des jeux</h1>
     </section>
     <section class="formulaire-games">
         <article class="form-jeux">
@@ -228,12 +227,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                         }
                                     }
                                 ?>
-                                <label>
-                                    <!-- Afficher une case à cocher pour la plateforme, avec la valeur et le statut checked si associé -->
-                                    <input type="checkbox" name="plateformeIds[]"
-                                        value="<?= $plateforme["plateforme_id"] ?>" <?= $checked ?>>
-                                    <?= $plateforme["plateforme_name"] ?>
-                                </label>
+                                    <label>
+                                        <!-- Afficher une case à cocher pour la plateforme, avec la valeur et le statut checked si associé -->
+                                        <input type="checkbox" name="plateformeIds[]"
+                                            value="<?= $plateforme["plateforme_id"] ?>" <?= $checked ?>>
+                                        <?= $plateforme["plateforme_name"] ?>
+                                    </label>
                                 <?php } ?>
                             </div>
                         </div>
@@ -244,12 +243,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <?php
                                 // Parcourir chaque catégorie pour l'afficher dans le menu déroulant
                                 foreach ($categories as $category) { ?>
-                                <option value="<?= $category["category_id"] ?>" <?=
-                                        //  condition ? valeur_si_vrai : valeur_si_faux; 
-                                        $category["category_id"] === $edit["category_id"] ? "selected" : "" ?>>
-                                    <!-- Afficher l'option avec l'attribut selected si elle correspond à la catégorie actuelle du jeu -->
-                                    <?= $category["category_name"] ?>
-                                </option>
+                                    <option value="<?= $category["category_id"] ?>" <?=
+                                                                                    //  condition ? valeur_si_vrai : valeur_si_faux; 
+                                                                                    $category["category_id"] === $edit["category_id"] ? "selected" : "" ?>>
+                                        <!-- Afficher l'option avec l'attribut selected si elle correspond à la catégorie actuelle du jeu -->
+                                        <?= $category["category_name"] ?>
+                                    </option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -260,11 +259,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <?php
                                 // Parcourir chaque option PEGI pour l'afficher dans le menu déroulant
                                 foreach ($pegis as $pegi) { ?>
-                                <option value="<?= $pegi["pegi_id"] ?>"
-                                    <?= $pegi["pegi_id"] === $edit["pegi_id"] ? "selected" : "" ?>>
-                                    <!-- Afficher l'option avec l'attribut selected si elle correspond au PEGI actuel du jeu -->
-                                    <?= $pegi["pegi_name"] ?>
-                                </option>
+                                    <option value="<?= $pegi["pegi_id"] ?>"
+                                        <?= $pegi["pegi_id"] === $edit["pegi_id"] ? "selected" : "" ?>>
+                                        <!-- Afficher l'option avec l'attribut selected si elle correspond au PEGI actuel du jeu -->
+                                        <?= $pegi["pegi_name"] ?>
+                                    </option>
                                 <?php } ?>
                             </select>
                         </div>

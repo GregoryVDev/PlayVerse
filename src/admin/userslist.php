@@ -23,7 +23,6 @@ require_once("../close.php");
 <section class="page">
     <h1>Gestions des utilisateurs</h1>
 </section>
-<section class="illustration-user"></section>
 <section class="dashboard">
     <h2>Dashboard</h2>
 

@@ -36,19 +36,19 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
 
 <?php include "./template/navbar.php" ?>
 <main>
+
+    <!-- introduction -->
     <div class="container-header">
         <h1 class="index-title-h1">Plonge dans l'univers de tes jeux favoris</h1>
         <img src="../img/images/principal.png" alt="regroupement de personnages de jeux vidéo">
     </div>
+
+    <!-- carrousel -->
     <div class="carousel-container">
         <div class="carousel" id="carousel">
-
-
-
             <?php foreach ($games as $game) { ?>
-            <div class="card-carrousel">
-
-                <?php
+                <div class="card-carrousel">
+                    <?php
                     // Vérifie si l'utilisateur est connecté en vérifiant la présence de 'user_id' dans la session
                     if (isset($_SESSION['user_gamer']['user_id'])) {
                         // Récupère l'ID de l'utilisateur depuis la session
@@ -67,23 +67,21 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
                         // Vérifie si une ligne est retournée, ce qui signifie que le jeu est déjà en favori
                         $isFavorite = $checkFavoriteStmt->fetchColumn() !== false;
                     ?>
-                <!-- Affiche une étoile remplie si le jeu est en favori, sinon une étoile vide -->
-                <span class="favorite <?= $isFavorite ? 'filled' : '' ?>" data-game-id="<?= $game_id ?>"
-                    onclick="toggleFavorite(this, <?= $game_id ?>)">
-                    <?= $isFavorite ? '★' : '☆' ?>
-                </span>
-                <?php } else { ?>
-                <!-- Si l'utilisateur n'est pas connecté, affiche une étoile vide désactivée -->
-                <span class="favorite disabled" onclick="alertNotLoggedIn()">
-                    ☆
-                </span>
-                <?php } ?>
-
-
-                <a href="./infogame.php?game_id=<?= $game["game_id"] ?>">
-                    <img src="./admin/<?= htmlspecialchars($game['jacket']); ?>" alt="<?= $game["game_title"] ?>">
-                </a>
-            </div>
+                        <!-- Affiche une étoile remplie si le jeu est en favori, sinon une étoile vide -->
+                        <span class="favorite <?= $isFavorite ? 'filled' : '' ?>" data-game-id="<?= $game_id ?>"
+                            onclick="toggleFavorite(this, <?= $game_id ?>)">
+                            <?= $isFavorite ? '★' : '☆' ?>
+                        </span>
+                    <?php } else { ?>
+                        <!-- Si l'utilisateur n'est pas connecté, affiche une étoile vide désactivée -->
+                        <span class="favorite disabled" onclick="alertNotLoggedIn()">
+                            ☆
+                        </span>
+                    <?php } ?>
+                    <a href="./infogame.php?game_id=<?= $game["game_id"] ?>">
+                        <img src="./admin/<?= htmlspecialchars($game['jacket']); ?>" alt="<?= $game["game_title"] ?>">
+                    </a>
+                </div>
             <?php } ?>
         </div>
     </div>
@@ -91,56 +89,54 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
     <div>
         <h2 class="index-title-h2">Jeux du moment</h2>
 
-        <!-- a remplacer par les 4 dernier jeux ajouter -->
+        <!-- affiche les 4 dernier jeux ajoutés -->
         <div class="container-jeux-du-moment">
             <?php foreach ($jeux as $jeu) { ?>
-            <div class="jeux-du-moment-hover">
-                <a class="jeux-du-moment-lien" href="infogame.php?game_id=<?= $jeu["game_id"] ?>">
-                    <img src="../admin/<?= $jeu["image1"] ?>" alt="<?= $jeu["game_title"] ?>" />
-                </a>
-            </div>
+                <div class="jeux-du-moment-hover">
+                    <a class="jeux-du-moment-lien" href="infogame.php?game_id=<?= $jeu["game_id"] ?>">
+                        <img src="../admin/<?= $jeu["image1"] ?>" alt="<?= $jeu["game_title"] ?>" />
+                    </a>
+                </div>
             <?php } ?>
         </div>
-
-
-
     </div>
-
-
     <section class="index-bg-color">
+
+        <!-- banière -->
         <div class="parti-2">
             <h3 class="index-title-h3">Rejoins les légendes du jeu vidéo et vis l'aventure ultime</h3>
-            <!-- <img src="../img/images/secondary.png" alt="regroupement de personnages de jeux vidéo"> -->
             <img src="../img/images/group3.png" alt="regroupement de personnages de jeux vidéo">
         </div>
 
+        <!-- reviews -->
         <div>
             <div class="container-title-review">
                 <h4 class="index-title-h4">Nos dernières reviews</h4>
                 <a class="btn-review" href="reviews.php">Toutes les reviews</a>
             </div>
             <div class="reviews-container-review-index">
+
                 <!-- Large Review -->
                 <?php if ($last_review) { ?>
-                <div class="large-review">
-                    <img src="../<?= $last_review['image1'] ?>" alt="<?= $last_review["review_title"] ?>">
-                    <div class="content">
-                        <h3><?= $last_review["review_title"] ?></h3>
-                        <a href="review.php?id=<?= $last_review["review_id"] ?>" class="button-review-index">Voir</a>
+                    <div class="large-review">
+                        <img src="../<?= $last_review['image1'] ?>" alt="<?= $last_review["review_title"] ?>">
+                        <div class="content">
+                            <h3><?= $last_review["review_title"] ?></h3>
+                            <a href="review.php?id=<?= $last_review["review_id"] ?>" class="button-review-index">Voir</a>
+                        </div>
                     </div>
-                </div>
                 <?php } ?>
 
                 <!-- Small Reviews -->
                 <div class="small-reviews">
                     <?php foreach ($reviews as $review) { ?>
-                    <div class="small-review">
-                        <img src="../<?= $review['image1'] ?>" alt="<?= $review["review_title"] ?>">
-                        <div class="content">
-                            <h3><?= $review["review_title"] ?></h3>
-                            <a href="review.php?id=<?= $review["review_id"] ?>" class="button-review-index">Voir</a>
+                        <div class="small-review">
+                            <img src="../<?= $review['image1'] ?>" alt="<?= $review["review_title"] ?>">
+                            <div class="content">
+                                <h3><?= $review["review_title"] ?></h3>
+                                <a href="review.php?id=<?= $review["review_id"] ?>" class="button-review-index">Voir</a>
+                            </div>
                         </div>
-                    </div>
                     <?php } ?>
                 </div>
             </div>
@@ -150,9 +146,8 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
         <div class="form-contact">
             <h5 class="index-title-h5">Nous envoyer un message</h5>
 
-
+            <!-- formulaire de contact -->
             <form class="index-form-container" action="./admin/traitement_contact.php" method="POST">
-                <!-- Nom et Prénom -->
                 <div class="input-group">
                     <div class="input-wrapper">
                         <img src="../img/images/nom.png" alt="Icon Nom">
@@ -163,8 +158,6 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
                         <input placeholder="Prénom" type="text" id="prenom" name="firstname" required>
                     </div>
                 </div>
-
-                <!-- Objet et E-mail -->
                 <div class="input-group">
                     <div class="input-wrapper">
                         <img src="../img/images/objet.png" alt="Icon Objet">
@@ -175,25 +168,20 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
                         <input placeholder="E-mail" type="email" id="email" name="email" required>
                     </div>
                 </div>
-
-                <!-- Message : occupe toute la largeur -->
                 <div class="full-width">
                     <img src="../img/images/message.png" alt="Icon Message">
                     <textarea placeholder="Message" id="message" name="message" rows="5" required></textarea>
                 </div>
-
                 <input type="submit" value="Envoyer">
             </form>
         </div>
 
+        <!-- newsletter -->
         <h6 class="index-title-h6">Abonnez-vous à notre newsletter</h6>
         <form class="newsletter" action="#" method="post">
-
             <input type="email" id="email" name="email" placeholder="Votre email" required>
-
             <button class="newsletter-btn" type="submit">S'abonner</button>
         </form>
-
     </section>
 </main>
 <script src="./js/carrousel.js"></script>

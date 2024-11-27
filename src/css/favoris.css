@@ -1,145 +1,147 @@
 .illustration-favoris {
-    background: url("../img/images/deathroom.jpg") fixed;
-    height: 65vh;
-    background-position-x: 45%;
-    background-position-y: 45%;
-    border-top: 1px solid #f5f5f5;
-    background-size: cover;
+  background: url("../img/images/deathroom.jpg") fixed;
+  height: 65vh;
+  background-position-x: 45%;
+  background-position-y: 45%;
+  border-top: 1px solid #f5f5f5;
+  background-size: cover;
 }
 
 .container-favoris {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .favoris {
-    text-align: center;
+  text-align: center;
 }
 .no-favoris {
-    font-size: clamp(
-        var(--font-size-h2-min),
-        var(--font-size-h2-preferred),
-        var(--font-size-h2-max)
-    );
-    margin-bottom: 5%;
+  font-size: clamp(
+    var(--font-size-h2-min),
+    var(--font-size-h2-preferred),
+    var(--font-size-h2-max)
+  );
+  margin-bottom: 5%;
 }
 .favoris h1 {
-    margin: 50px 0px;
-    font-size: clamp(
-        var(--font-size-h1-min),
-        var(--font-size-h1-preferred),
-        var(--font-size-h1-max)
-    );
+  margin: 50px 0px;
+  font-size: clamp(
+    var(--font-size-h1-min),
+    var(--font-size-h1-preferred),
+    var(--font-size-h1-max)
+  );
 }
 
 .card {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .card figure {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    max-width: 300px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  max-width: 300px;
 }
 
 .card figure img {
-    width: 230px;
-    height: 300px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    background-size: cover;
+  width: 230px;
+  height: 300px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  object-fit: cover;
 }
 
 .card figcaption {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 230px;
-    height: 80px;
-    background: var(--colorSecondary);
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 230px;
+  height: 80px;
+  background: var(--colorSecondary);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .card .star {
-    height: 30px;
-    width: 30px;
-    position: absolute;
-    top: 10px;
-    right: 5px;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 10px;
+  right: 5px;
 }
 
 .container-pages {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
 }
 
 #prevPage img,
 #nextPage img {
-    width: 10px;
+  width: 10px;
 }
 
 #pageNumbers {
-    color: var(--colorPara);
+  color: var(--colorPara);
 }
 
 #prevPage,
 #nextPage {
-    cursor: pointer;
-    background: none;
-    border: none;
-    font: inherit;
-    display: flex;
-    align-items: center;
-    gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font: inherit;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .container-pages a {
-    color: var(--colorPara);
+  color: var(--colorPara);
 }
 
 #delete {
-    padding: 10px;
-    background: var(--colorButton);
-    color: var(--colorPara);
-    border: none;
-    margin: 20px;
-    border-radius: 10px;
-    font-size: var(--fsize4);
+  padding: 10px;
+  background: var(--colorButton);
+  color: var(--colorPara);
+  border: none;
+  margin: 20px;
+  border-radius: 10px;
+  font-size: var(--fsize4);
 }
 
 #delete:hover {
-    opacity: 0.9;
+  opacity: 0.9;
 }
 
 /* TABLET */
 
 @media all and (min-width: 768px) and (max-width: 1023px) {
-    .container-favoris {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        align-items: center;
-        justify-items: center;
-    }
+  .container-favoris {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
 }
 
 /* DESKTOP */
 
 @media all and (min-width: 1024px) {
-    .container-favoris {
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 50px;
-    }
-    .no-favoris {
-        margin-bottom: 3%;
-    }
+  .container-favoris {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+  }
+  .no-favoris {
+    margin-bottom: 3%;
+  }
 }

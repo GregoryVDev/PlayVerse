@@ -466,7 +466,8 @@ body {
     .game-img {
         max-width: 40vw;
         min-width: 30vh;
-        height: auto;
+        height: 500px;
+        object-fit: cover;
     }
     .container-game-type {
         gap: 20px;

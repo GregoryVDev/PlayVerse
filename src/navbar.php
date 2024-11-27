@@ -1,4 +1,5 @@
 <?php
+
 if (!isset($db)) {
     require("./connect.php");
 }
@@ -16,7 +17,9 @@ foreach ($messages as $message) {
         $countMessage++;
     }
 }
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -24,20 +27,20 @@ foreach ($messages as $message) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="png" href="../img/logos/favicon.png" />
-    <link rel="stylesheet" href="../template/navbar.css">
-    <link rel="stylesheet" href="../template/footer.css">
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/fonts.css">
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="icon" type="png" href="./img/logos/favicon.png" />
+    <link rel="stylesheet" href="./template/navbar.css">
+    <link rel="stylesheet" href="./template/footer.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/fonts.css">
+    <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/favoris.css">
-    <link rel="stylesheet" href="../css/reviews.css">
-    <link rel="stylesheet" href="../css/games.css">
-    <link rel="stylesheet" href="../css/infogame.css">
-    <link rel="stylesheet" href="../css/mentions_legales.css">
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/privacy.css">
+    <link rel="stylesheet" href="./css/reviews.css">
+    <link rel="stylesheet" href="./css/games.css">
+    <link rel="stylesheet" href="./css/infogame.css">
+    <link rel="stylesheet" href="./css/mentions_legales.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/privacy.css">
     <link rel="stylesheet" href="./css/profil.css">
 
     <title>PlayVerse</title>
@@ -49,12 +52,12 @@ foreach ($messages as $message) {
         <header>
             <div class="container-left">
                 <div class="logo">
-                    <img src="../img/logos/playverse.png" alt="Logo">
+                    <img src="./img/logos/playverse.png" alt="Logo">
                 </div>
                 <div class="container-search">
-                    <form action="traitement_search.php" method="GET" id="searchForm">
-                        <img src="../img/logos/search.svg" alt="Search">
-                        <input type="search" name="search" id="search" placeholder="Cherchez un jeu...">
+                    <form action="" method="GET">
+                        <img src="./img/logos/search.svg" alt="Search">
+                        <input type="search" name="search" id="search" placeholder="Cherchez un jeu..">
                     </form>
                 </div>
             </div>
@@ -63,9 +66,9 @@ foreach ($messages as $message) {
             </div>
             <nav id="nav">
                 <ul class="nav_list">
-                    <li><a href="../index.php">Accueil</a></li>
-                    <li><a href="../games.php">Jeux</a></li>
-                    <li><a href="../reviews.php">Reviews</a></li>
+                    <li><a href="./index.php">Accueil</a></li>
+                    <li><a href="./games.php">Jeux</a></li>
+                    <li><a href="./reviews.php">Reviews</a></li>
                     <li class="dropdown">
                         <a href="#" onclick="toggleDropdown()">Mon compte</a>
                         <div class="dropdown-content" style="padding: 0px 10px;">
@@ -82,12 +85,12 @@ foreach ($messages as $message) {
         <header>
             <div class="container-left">
                 <div class="logo">
-                    <img src="../img/logos/playverse.png" alt="Logo">
+                    <img src="./img/logos/playverse.png" alt="Logo">
                 </div>
                 <div class="container-search">
-                    <form action="traitement_search.php" method="GET" id="searchForm">
-                        <img src="../img/logos/search.svg" alt="Search">
-                        <input type="search" name="search" id="search" placeholder="Cherchez un jeu...">
+                    <form action="" method="GET">
+                        <img src="./img/logos/search.svg" alt="Search">
+                        <input type="search" name="search" id="search" placeholder="Cherchez un jeu..">
                     </form>
                 </div>
             </div>
@@ -96,19 +99,20 @@ foreach ($messages as $message) {
             </div>
             <nav id="nav">
                 <ul class="nav_list">
-                    <li><a href="../index.php">Accueil</a></li>
-                    <li><a href="../games.php">Jeux</a></li>
-                    <li><a href="../reviews.php">Reviews</a></li>
+                    <li><a href="./index.php">Accueil</a></li>
+                    <li><a href="./games.php">Jeux</a></li>
+                    <li><a href="./reviews.php">Reviews</a></li>
                     <li class="dropdown">
                         <a href="#" onclick="toggleDropdown()">Mon compte</a>
                         <div class="dropdown-content" style="padding: 0px 10px;">
                             <?php if ($countMessage > 0) { ?>
-                                <a href="../admin/panel.php" class="unread-message">Retour panel
+                                <a href="./admin/panel.php" class="unread-message">Retour panel
                                 </a>
                             <?php } else { ?>
-                                <a href="../admin/panel.php">Retour panel</a>
+                                <a href="./admin/panel.php">Retour panel</a>
                             <?php } ?>
                             <a href="deconnect.php">Déconnexion</a>
+
                         </div>
                     </li>
                 </ul>
@@ -119,13 +123,11 @@ foreach ($messages as $message) {
         <header>
             <div class="container-left">
                 <div class="logo">
-                    <img src="../img/logos/playverse.png" alt="Logo">
+                    <img src="./img/logos/playverse.png" alt="Logo">
                 </div>
                 <div class="container-search">
-                    <form action="traitement_search.php" method="GET" id="searchForm">
-                        <img src="../img/logos/search.svg" alt="Search">
-                        <input type="search" name="search" id="search" placeholder="Cherchez un jeu...">
-                    </form>
+                    <img src="./img/logos/search.svg" alt="Search">
+                    <input type="search" name="search" id="search" placeholder="Cherchez un jeu..">
                 </div>
             </div>
             <div id="burger-menu">
@@ -133,15 +135,15 @@ foreach ($messages as $message) {
             </div>
             <nav id="nav">
                 <ul class="nav_list">
-                    <li><a href="../index.php">Accueil</a></li>
-                    <li><a href="../games.php">Jeux</a></li>
-                    <li><a href="../reviews.php">Reviews</a></li>
-                    <li><a href="../connexion.php" class="button-connect">Connexion</a></li>
-                    <li><a href="../inscription.php" class="button-inscri">Inscription</a></li>
+                    <li><a href="./index.php">Accueil</a></li>
+                    <li><a href="./games.php">Jeux</a></li>
+                    <li><a href="./reviews.php">Reviews</a></li>
+                    <li><a href="./connexion.php" class="button-connect">Connexion</a></li>
+                    <li><a href="./inscription.php" class="button-inscri">Inscription</a></li>
                 </ul>
                 <div class="container-buttons">
-                    <a href="../connexion.php" class="button-connection">Connexion</a>
-                    <a href="../inscription.php" class="button-inscription">Inscription</a>
+                    <a href="./connexion.php" class="button-connection">Connexion</a>
+                    <a href="./inscription.php" class="button-inscription">Inscription</a>
                 </div>
             </nav>
         </header>
