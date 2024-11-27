@@ -18,10 +18,10 @@ if (isset($_SESSION["user_gamer"]["user_id"])) {
 
     // Récupérer tous les résultats et les stocker dans $games
     $games = $query->fetchAll(PDO::FETCH_ASSOC);
-    
+
     // Redirige si l'utilisateur n'est pas connecté
 } else {
-    header("Location: index.php"); 
+    header("Location: index.php");
     exit;
 }
 ?>
@@ -34,57 +34,57 @@ if (isset($_SESSION["user_gamer"]["user_id"])) {
         <div class="container-favoris">
 
             <?php if (!empty($games)) { ?>
-            <?php foreach ($games as $game) {?>
+                <?php foreach ($games as $game) { ?>
 
-            <article class="card">
+                    <article class="card">
 
-                <figure>
-                    <a href="./infogame.php?id=<?= htmlspecialchars($game["game_id"]) ?>">
-                        <img src="./admin/<?= htmlspecialchars($game["jacket"]) ?>"
-                            alt="<?= htmlspecialchars($game["game_title"]) ?>">
-                    </a>
-                    <figcaption>
-                        <p><?= htmlspecialchars($game["game_title"]) ?></p>
-                    </figcaption>
-                    <!-- Affiche l'étoile pleine (★) si le jeu est en favoris, sinon affiche l'étoile vide (☆) -->
-                    <!-- L'attribut data-game-id est ajouté pour identifier le jeu lors des actions de favori -->
-                    <?php
-                    // Vérifie si l'utilisateur est connecté en vérifiant la présence de 'user_id' dans la session
-                    if (isset($_SESSION['user_gamer']['user_id'])) {
-                        // Récupère l'ID de l'utilisateur depuis la session
-                        $user_id = $_SESSION['user_gamer']['user_id'];
-                        // Récupère l'ID du jeu actuel
-                        $game_id = $game['game_id'];
+                        <figure>
+                            <a href="./infogame.php?id=<?= htmlspecialchars($game["game_id"]) ?>">
+                                <img src="./admin/<?= htmlspecialchars($game["jacket"]) ?>"
+                                    alt="<?= htmlspecialchars($game["game_title"]) ?>">
+                            </a>
+                            <figcaption>
+                                <p><?= htmlspecialchars($game["game_title"]) ?></p>
+                            </figcaption>
+                            <!-- Affiche l'étoile pleine (★) si le jeu est en favoris, sinon affiche l'étoile vide (☆) -->
+                            <!-- L'attribut data-game-id est ajouté pour identifier le jeu lors des actions de favori -->
+                            <?php
+                            // Vérifie si l'utilisateur est connecté en vérifiant la présence de 'user_id' dans la session
+                            if (isset($_SESSION['user_gamer']['user_id'])) {
+                                // Récupère l'ID de l'utilisateur depuis la session
+                                $user_id = $_SESSION['user_gamer']['user_id'];
+                                // Récupère l'ID du jeu actuel
+                                $game_id = $game['game_id'];
 
-                        // Prépare une requête SQL pour vérifier si le jeu est déjà dans les favoris de l'utilisateur
-                        $checkFavoriteSql = "SELECT * FROM favoris WHERE user_id = :user_id AND game_id = :game_id";
-                        $checkFavoriteStmt = $db->prepare($checkFavoriteSql);
-                        // Lie les paramètres de la requête pour sécuriser les données
-                        $checkFavoriteStmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-                        $checkFavoriteStmt->bindParam(':game_id', $game_id, PDO::PARAM_INT);
-                        // Exécute la requête-
-                        $checkFavoriteStmt->execute();
-                        // Vérifie si une ligne est retournée, ce qui signifie que le jeu est déjà en favori
-                        $isFavorite = $checkFavoriteStmt->fetchColumn() !== false;
-                    ?>
-                    <!-- Affiche une étoile remplie si le jeu est en favori, sinon une étoile vide -->
-                    <span class="favorite <?= $isFavorite ? 'filled' : '' ?>" data-game-id="<?= $game_id ?>"
-                        onclick="toggleFavorite(this, <?= $game_id ?>)">
-                        <?= $isFavorite ? '★' : '☆' ?>
-                    </span>
-                    <?php } else { ?>
-                    <!-- Si l'utilisateur n'est pas connecté, affiche une étoile vide désactivée -->
-                    <span class="favorite disabled" onclick="alertNotLoggedIn()">
-                        ☆
-                    </span>
-                    <?php } ?>
-                </figure>
+                                // Prépare une requête SQL pour vérifier si le jeu est déjà dans les favoris de l'utilisateur
+                                $checkFavoriteSql = "SELECT * FROM favoris WHERE user_id = :user_id AND game_id = :game_id";
+                                $checkFavoriteStmt = $db->prepare($checkFavoriteSql);
+                                // Lie les paramètres de la requête pour sécuriser les données
+                                $checkFavoriteStmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+                                $checkFavoriteStmt->bindParam(':game_id', $game_id, PDO::PARAM_INT);
+                                // Exécute la requête-
+                                $checkFavoriteStmt->execute();
+                                // Vérifie si une ligne est retournée, ce qui signifie que le jeu est déjà en favori
+                                $isFavorite = $checkFavoriteStmt->fetchColumn() !== false;
+                            ?>
+                                <!-- Affiche une étoile remplie si le jeu est en favori, sinon une étoile vide -->
+                                <span class="favorite <?= $isFavorite ? 'filled' : '' ?>" data-game-id="<?= $game_id ?>"
+                                    onclick="toggleFavorite(this, <?= $game_id ?>)">
+                                    <?= $isFavorite ? '★' : '☆' ?>
+                                </span>
+                            <?php } else { ?>
+                                <!-- Si l'utilisateur n'est pas connecté, affiche une étoile vide désactivée -->
+                                <span class="favorite disabled" onclick="alertNotLoggedIn()">
+                                    ☆
+                                </span>
+                            <?php } ?>
+                        </figure>
 
-            </article>
+                    </article>
 
-            <?php } ?>
+                <?php } ?>
             <?php } else {  ?>
-            <p class="no-favoris">Vous n'avez pas de favoris.</p>
+                <p class="no-favoris">Vous n'avez pas de favoris.</p>
             <?php } ?>
 
         </div>
