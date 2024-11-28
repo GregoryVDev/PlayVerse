@@ -35,7 +35,7 @@ if (isset($_SESSION["admin_gamer"])) {
         $query_delete->execute(['review_id' => $id]);
 
         require_once("../close.php");
-
+        $_SESSION['succes_delete_review'] = "Review supprimer avec succès !";
         // Redirection vers addreviews.php
         header("Location: addreviews.php");
         exit();

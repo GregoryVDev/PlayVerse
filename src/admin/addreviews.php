@@ -75,6 +75,9 @@ if (isset($_SESSION["admin_gamer"])) {
                 try {
                     // Exécution de la requête
                     $query->execute();
+                    $_SESSION['succes_add_review'] = "Review ajoutée avec succès !";
+
+                    // Redirection
                     header("Location: ../admin/addreviews.php");
                     exit();
 
@@ -107,12 +110,22 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
 <?php include "./template/navbar.php"; ?>
 <main>
 
-    <?php
-if (isset($_SESSION['succes_edit_review'])) {
-    echo '<p class="success-message">' . $_SESSION['succes_edit_review'] . '</p>';
-     // Supprimer le message après l'affichage
-    unset($_SESSION['succes_edit_review']);
-}
+<?php
+    if (isset($_SESSION['succes_add_review'])) {
+        echo '<p class="success-message">' . $_SESSION['succes_add_review'] . '</p>';
+        // Supprimer le message après l'affichage
+        unset($_SESSION['succes_add_review']);
+    }
+    if (isset($_SESSION['succes_edit_review'])) {
+        echo '<p class="success-message">' . $_SESSION['succes_edit_review'] . '</p>';
+        // Supprimer le message après l'affichage
+        unset($_SESSION['succes_edit_review']);
+    }
+    if (isset($_SESSION['succes_delete_review'])) {
+        echo '<p class="success-message">' . $_SESSION['succes_delete_review'] . '</p>';
+        // Supprimer le message après l'affichage
+        unset($_SESSION['succes_delete_review']);
+    }
 ?>
 
     <section class="page">
