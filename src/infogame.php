@@ -2,7 +2,6 @@
 
 // Démarre la session pour gérer l'identification de l'utilisateur
 session_start();
-include "./template/navbar.php";
 
 // Inclut le fichier de connexion à la base de données
 require_once("connect.php");
@@ -154,6 +153,7 @@ try {
 }
 ?>
 
+<?php include "./template/navbar.php"; ?>
 
 <main class="infogame">
     <!-- Ajouter des messages de succès ou d'erreur -->
