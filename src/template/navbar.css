@@ -1,0 +1,456 @@
+.unread-message {
+  color: var(--colorBackOffice) !important;
+}
+
+.unread-message:hover {
+  opacity: 0.8 !important;
+}
+
+header {
+  display: flex;
+}
+
+.logo {
+  height: 120px;
+}
+
+.logo img {
+  width: 120px;
+  height: 120px;
+}
+
+.container-left {
+  display: flex;
+}
+
+.container-search {
+  display: flex;
+  position: relative;
+  max-width: 300px;
+  margin: auto;
+}
+
+.container-search img {
+  position: absolute;
+  left: 10px;
+  bottom: 8px;
+}
+
+#search {
+  border-radius: 10px;
+  padding: 10px 10px 10px 40px;
+  width: 100%;
+  border: transparent;
+  background: var(--colorSecondary);
+  color: var(--colorPara);
+  font-family: var(--nunitoRegular);
+}
+
+#search:focus {
+  outline: none;
+  border: none;
+}
+
+#burger-menu {
+  cursor: pointer;
+  height: 35px;
+  width: 40px;
+  margin: 20px;
+  overflow: visible;
+  position: relative;
+  top: 25px;
+  z-index: 2;
+}
+
+#burger-menu span,
+#burger-menu span:before,
+#burger-menu span:after {
+  background: #fff;
+  display: block;
+  height: 4px;
+  opacity: 1;
+  position: absolute;
+  transition: 0.3s ease-in-out;
+}
+
+#burger-menu span:before,
+#burger-menu span:after {
+  content: "";
+}
+
+#burger-menu span {
+  right: 0px;
+  top: 14px;
+  width: 27px;
+}
+
+#burger-menu span:before {
+  left: 0px;
+  top: -10px;
+  width: 16px;
+}
+
+#burger-menu span:after {
+  left: 0px;
+  top: 10px;
+  width: 20px;
+}
+
+#burger-menu.close span {
+  transform: rotate(-45deg);
+  top: 14px;
+  width: 27px;
+}
+
+#burger-menu.close span:before {
+  top: 0px;
+  transform: rotate(90deg);
+  width: 27px;
+}
+
+#burger-menu.close span:after {
+  top: 0px;
+  left: 0;
+  transform: rotate(90deg);
+  opacity: 0;
+  width: 0;
+}
+
+#nav {
+  z-index: 1;
+  min-width: 100%;
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+  height: 0;
+  visibility: hidden;
+  opacity: 0;
+  text-align: center;
+  padding-top: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+#nav.overlay {
+  visibility: visible;
+  opacity: 1;
+  padding-top: 100px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#nav li a {
+  color: var(--colorPara);
+  display: inline-block;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.button-connect,
+.button-inscri {
+  display: none !important;
+}
+
+.button-connection {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 8px;
+  color: var(--colorPara) !important;
+  background: var(--colorTitle);
+}
+
+.button-connection:hover {
+  opacity: 0.9;
+}
+
+.button-inscription {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 8px;
+  color: var(--colorPara) !important;
+  background: var(--colorButton);
+}
+
+.button-inscription:hover {
+  opacity: 0.9;
+}
+
+.button-connect,
+.button-inscri {
+  display: none;
+}
+
+#nav li a:hover {
+  color: var(--colorTitle);
+}
+
+.container-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* DROPDOWN */
+
+.dropdown-content {
+  display: none; /* Cache le menu par défaut */
+  width: 100%;
+  position: absolute;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(-10px); /*Commence légèrement au-dessus*/
+  transition: opacity 0.5s ease, transform 0.5s ease; /*Transition fluide*/
+}
+
+.dropdown-content a {
+  color: white; /* Couleur des liens dans le dropdown */
+  padding: 12px 30px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Flèche à côté du texte du dropdown */
+.dropdown > a::after {
+  content: " ▼";
+  font-size: 12px;
+  transition: transform 0.5s ease; /*Transition pour la flèche */
+}
+
+/* Flèche vers le haut quand le dropdown est ouvert */
+.dropdown.active > a::after {
+  content: " ▲"; /* Flèche vers le haut */
+  transform: rotate(180deg); /* Flèche vers le haut avec rotation */
+}
+
+/* Affichage du dropdown quand il est actif */
+.dropdown.active .dropdown-content {
+  display: flex !important; /* Affiche le menu */
+  flex-direction: column;
+  width: 100%;
+  opacity: 1; /* Pleine opacité */
+  transform: translateY(0); /*Retourne à sa position d'origine */
+  font-size: 0.9em;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 0 10px;
+}
+
+/* MOBILE */
+
+@media all and (min-width: 321px) and (max-width: 768px) {
+  header {
+    justify-content: space-between;
+  }
+
+  .dropdown-content {
+    display: flex !important;
+    flex-direction: column !important;
+    min-width: 140px;
+    box-shadow: none;
+  }
+
+  /* Flèche à côté du texte du dropdown */
+  .dropdown > a::after {
+    content: " ▼";
+    font-size: 12px;
+    transition: transform 0.5s ease; /* Transition pour la flèche */
+  }
+
+  /* Flèche vers le haut quand le dropdown est ouvert */
+  .dropdown.active > a::after {
+    content: " ▲"; /* Flèche vers le haut */
+    transform: rotate(180deg); /* Flèche vers le haut avec rotation */
+  }
+
+  /* Affichage du dropdown quand il est actif */
+  .dropdown.active .dropdown-content {
+    display: flex; /* Affiche le menu */
+    flex-direction: column !important;
+    opacity: 1; /* Pleine opacité */
+    transform: translateY(0); /* Retourne à sa position d'origine */
+  }
+}
+
+/* TABLET */
+
+@media all and (min-width: 769px) and (max-width: 1023px) {
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .dropdown-content {
+    box-shadow: none;
+  }
+
+  .dropdown.active .dropdown-content {
+    text-align: left;
+    background: var(--colorMain);
+  }
+
+  .dropdown-content a {
+    padding: 15px 0px 5px;
+  }
+
+  #burger-menu {
+    display: none;
+  }
+
+  #nav {
+    visibility: visible;
+    opacity: 1;
+    min-width: 0;
+    min-height: 0;
+    height: auto;
+    position: unset;
+    padding-top: 0;
+  }
+
+  .nav_list {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  #nav li a {
+    margin-bottom: 0;
+    font-size: var(--fsize5);
+  }
+
+  #nav li button {
+    display: block;
+  }
+
+  #nav li button a:hover {
+    color: var(--colorPara);
+  }
+
+  .container-buttons {
+    display: none;
+  }
+
+  .button-connect {
+    display: block !important;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 5px;
+    background: var(--colorTitle);
+  }
+
+  .button-inscri {
+    display: block !important;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 5px;
+    background: var(--colorButton);
+  }
+
+  .button-connect:hover {
+    color: var(--colorPara) !important;
+    opacity: 0.9;
+  }
+
+  .button-inscri:hover {
+    color: var(--colorPara) !important;
+    opacity: 0.9;
+  }
+}
+
+/* DESKTOP */
+
+@media all and (min-width: 1024px) {
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .dropdown-content {
+    box-shadow: none;
+    width: 130px;
+    text-align: left;
+    font-size: 0.9em;
+  }
+
+  .dropdown.active .dropdown-content {
+    display: flex !important; /* Affiche le menu */
+    background: var(--colorMain);
+    flex-direction: column;
+    opacity: 1; /* Pleine opacité */
+    transform: translateY(0); /* Retourne à sa position d'origine */
+    width: auto;
+  }
+
+  .dropdown-content a {
+    text-align: left;
+    padding: 10px 0px;
+  }
+
+  #search {
+    width: 300px;
+  }
+
+  #burger-menu {
+    display: none;
+  }
+
+  #nav {
+    visibility: visible;
+    opacity: 1;
+    min-width: 0;
+    min-height: 0;
+    height: auto;
+    position: unset;
+    padding-top: 0;
+  }
+
+  .nav_list {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  #nav li a {
+    margin-bottom: 0;
+    font-size: var(--fsize4);
+  }
+
+  #nav li button {
+    display: block;
+  }
+
+  #nav li button a:hover {
+    color: var(--colorPara);
+  }
+
+  .container-buttons {
+    display: none;
+  }
+
+  .button-connect {
+    display: block !important;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 5px;
+    background: var(--colorTitle);
+  }
+
+  .button-inscri {
+    display: block !important;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 5px;
+    background: var(--colorButton);
+  }
+
+  .button-connect:hover {
+    color: var(--colorPara) !important;
+    opacity: 0.9;
+  }
+
+  .button-inscri:hover {
+    color: var(--colorPara) !important;
+    opacity: 0.9;
+  }
+}
