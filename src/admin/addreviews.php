@@ -6,26 +6,37 @@ require_once("../connect.php");
 if (isset($_SESSION["admin_gamer"])) {
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-        // Récupération de l'ID de l'admin connecté
-        $admin_id = $_SESSION["admin_gamer"]["admin_id"];
+        // Vérification que les champs du formulaire sont remplis
+        if (
+            isset($_POST["review_title"], $_POST["paragraph1"], $_POST["paragraph2"], $_POST["paragraph3"], $_POST["high_point"], $_POST["weak_point"]) &&
+            !empty(trim($_POST["review_title"])) &&
+            !empty(trim($_POST["paragraph1"])) &&
+            !empty(trim($_POST["paragraph2"])) &&
+            !empty(trim($_POST["paragraph3"])) &&
+            !empty(trim($_POST["high_point"])) &&
+            !empty(trim($_POST["weak_point"])) &&
+            isset($_FILES["image1"], $_FILES["image2"], $_FILES["image3"]) &&
+            is_uploaded_file($_FILES["image1"]["tmp_name"]) &&
+            is_uploaded_file($_FILES["image2"]["tmp_name"]) &&
+            is_uploaded_file($_FILES["image3"]["tmp_name"])
+        ) {
+            // Récupération de l'ID de l'admin connecté
+            $admin_id = $_SESSION["admin_gamer"]["admin_id"];
 
-        $review_title = strip_tags($_POST["review_title"]);
-        $paragraph1 = strip_tags($_POST["paragraph1"]);
-        $paragraph2 = strip_tags($_POST["paragraph2"]);
-        $paragraph3 = strip_tags($_POST["paragraph3"]);
-        $high_point = strip_tags($_POST["high_point"]);
-        $weak_point = strip_tags($_POST["weak_point"]);
+            $review_title = strip_tags($_POST["review_title"]);
+            $paragraph1 = strip_tags($_POST["paragraph1"]);
+            $paragraph2 = strip_tags($_POST["paragraph2"]);
+            $paragraph3 = strip_tags($_POST["paragraph3"]);
+            $high_point = strip_tags($_POST["high_point"]);
+            $weak_point = strip_tags($_POST["weak_point"]);
 
-        // Récupérer les images depuis $_FILES
-        $image1 = $_FILES["image1"];
-        $image2 = $_FILES["image2"];
-        $image3 = $_FILES["image3"];
+            // Récupérer les images depuis $_FILES
+            $image1 = $_FILES["image1"];
+            $image2 = $_FILES["image2"];
+            $image3 = $_FILES["image3"];
 
-        // Dossier d'images
-        $uploadDir = '../img/reviews/';
-
-        // Vérification que les fichiers ont été téléchargés
-        if (isset($image1, $image2, $image3) && is_uploaded_file($image1['tmp_name']) && is_uploaded_file($image2['tmp_name']) && is_uploaded_file($image3['tmp_name'])) {
+            // Dossier d'images
+            $uploadDir = '../img/reviews/';
 
             // Génération de noms de fichiers uniques
             $imageName1 = md5(uniqid() . 'image1') . '.' . pathinfo($image1['name'], PATHINFO_EXTENSION);
@@ -43,7 +54,6 @@ if (isset($_SESSION["admin_gamer"])) {
                 move_uploaded_file($image2['tmp_name'], $imagePath2) &&
                 move_uploaded_file($image3['tmp_name'], $imagePath3)
             ) {
-
                 // Préparation de la requête SQL
                 $sql_addreview = "INSERT INTO reviews (admin_id, review_title, paragraph1, paragraph2, paragraph3, image1, image2, image3, high_point, weak_point)
                                 VALUES (:admin_id, :review_title, :paragraph1, :paragraph2, :paragraph3, :image1, :image2, :image3, :high_point, :weak_point)";
@@ -56,20 +66,21 @@ if (isset($_SESSION["admin_gamer"])) {
                 $query->bindValue(":paragraph1", $paragraph1);
                 $query->bindValue(":paragraph2", $paragraph2);
                 $query->bindValue(":paragraph3", $paragraph3);
-                $query->bindValue(":image1", 'img/reviews/' . $imageName1);  // Ajouter le chemin relatif dans le nom de l'image
-                $query->bindValue(":image2", 'img/reviews/' . $imageName2);  // Ajouter le chemin relatif dans le nom de l'image
-                $query->bindValue(":image3", 'img/reviews/' . $imageName3);  // Ajouter le chemin relatif dans le nom de l'image
+                $query->bindValue(":image1", 'img/reviews/' . $imageName1);
+                $query->bindValue(":image2", 'img/reviews/' . $imageName2);
+                $query->bindValue(":image3", 'img/reviews/' . $imageName3);
                 $query->bindValue(":high_point", $high_point);
                 $query->bindValue(":weak_point", $weak_point);
 
                 try {
                     // Exécution de la requête
                     $query->execute();
+                    $_SESSION['succes_add_review'] = "Review ajoutée avec succès !";
 
-                    // Fermeture de la connexion et redirection
-                    require_once("../close.php");
+                    // Redirection
                     header("Location: ../admin/addreviews.php");
                     exit();
+
                 } catch (PDOException $e) {
                     echo "Erreur SQL : " . $e->getMessage();
                 }
@@ -77,13 +88,12 @@ if (isset($_SESSION["admin_gamer"])) {
                 echo "Erreur lors du téléchargement des fichiers.";
             }
         } else {
-            echo "Les images n'ont pas été correctement téléchargées.";
+            echo "Certains champs sont manquants ou mal remplis.";
         }
     }
 } else {
     header("Location: ../index.php");
 }
-
 
 $sql = "SELECT * FROM reviews ORDER BY review_id DESC";
 $query = $db->prepare($sql);
@@ -99,6 +109,24 @@ $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
 
 <?php include "./template/navbar.php"; ?>
 <main>
+
+<?php
+    if (isset($_SESSION['succes_add_review'])) {
+        echo '<p class="success-message">' . $_SESSION['succes_add_review'] . '</p>';
+        // Supprimer le message après l'affichage
+        unset($_SESSION['succes_add_review']);
+    }
+    if (isset($_SESSION['succes_edit_review'])) {
+        echo '<p class="success-message">' . $_SESSION['succes_edit_review'] . '</p>';
+        // Supprimer le message après l'affichage
+        unset($_SESSION['succes_edit_review']);
+    }
+    if (isset($_SESSION['succes_delete_review'])) {
+        echo '<p class="success-message">' . $_SESSION['succes_delete_review'] . '</p>';
+        // Supprimer le message après l'affichage
+        unset($_SESSION['succes_delete_review']);
+    }
+?>
 
     <section class="page">
         <h1>Gestions des reviews </h1>

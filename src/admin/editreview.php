@@ -6,8 +6,8 @@ require_once("../connect.php");
 if (isset($_SESSION["admin_gamer"])) {
     // Vérifier si l'ID de la review est passé dans l'URL avec 'id' comme paramètre
     if (isset($_GET['id']) && !empty($_GET['id'])) {
-        $review_id = $_GET['id'];  // Utiliser 'id' au lieu de 'review_id'
 
+        $review_id = $_GET['id'];
 
         // Récupérer les données actuelles de la review
         $sql = "SELECT * FROM reviews WHERE review_id = :review_id";
@@ -17,7 +17,8 @@ if (isset($_SESSION["admin_gamer"])) {
         $review = $query->fetch(PDO::FETCH_ASSOC);
 
         if (!$review) {
-            echo "Review introuvable.";
+            // si l'id existe pas on redirige vers addreviews
+            header("Location: addreviews.php");
             exit;
         }
 
@@ -56,7 +57,6 @@ if (isset($_SESSION["admin_gamer"])) {
 
             // Si une nouvelle image 2 est téléchargée, on la traite
             if (isset($image2) && is_uploaded_file($image2['tmp_name'])) {
-                // Supprimer l'ancienne image si elle existe
                 if (file_exists("../" . $review['image2'])) {
                     unlink("../" . $review['image2']);
                 }
@@ -68,7 +68,6 @@ if (isset($_SESSION["admin_gamer"])) {
 
             // Si une nouvelle image 3 est téléchargée, on la traite
             if (isset($image3) && is_uploaded_file($image3['tmp_name'])) {
-                // Supprimer l'ancienne image si elle existe
                 if (file_exists("../" . $review['image3'])) {
                     unlink("../" . $review['image3']);
                 }
@@ -106,24 +105,23 @@ if (isset($_SESSION["admin_gamer"])) {
             try {
                 // Exécution de la mise à jour
                 $query->execute();
-                // Rediriger vers la page des reviews après la mise à jour
+                // Rediriger vers la page des reviews après la mise à jour et affiche un message de succès 
+                $_SESSION['succes_edit_review'] = "La review a été modifiée avec succès.";
                 header("Location: addreviews.php");
                 exit();
             } catch (PDOException $e) {
+                // Afficher une erreur et arrêter le script
                 echo "Erreur SQL : " . $e->getMessage();
-            }
-            header("Location: ../index.php"); // Rediriger vers la page d'accueil si l'admin n'est pas connecté
-            exit();
+                exit();
+        }
         }
     } else {
-        echo "ID de la review non spécifié.";
-        exit;
+        // si aucun id existe dans l'url on redirige la personne sur addreviews
+        header("Location: addreviews.php");
     }
-} else {
-    header("Location: ../index.php"); // Rediriger vers la page d'accueil si l'admin n'est pas connecté
-    exit();
 }
 ?>
+
 
 <?php include "./template/navbar.php"; ?>
 <main>
